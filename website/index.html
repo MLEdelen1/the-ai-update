@@ -159,7 +159,7 @@ document.querySelectorAll(".signup-container").forEach(container => {
         btn.disabled = true;
 
         try {
-            const resp = await fetch("/subscribe", {
+            const resp = await fetch("https://zrmwt-99-146-50-4.a.free.pinggy.link/subscribe", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
