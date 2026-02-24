@@ -18,6 +18,10 @@ def run_full_business_cycle():
     print("Phase 1: Scanning Global AI Intelligence...")
     subprocess.run(["python", "/a0/usr/projects/x-manage/src/news_scanner.py"])
 
+    # Phase 1.5: Technical Journalism Enrichment
+    print("Phase 1.5: Enriching Intelligence with Technical Journalism...")
+    subprocess.run(["python", "/a0/usr/projects/x-manage/src/technical_journalist.py"])
+
     # Phase 2: Content & Portal Generation
     print("Phase 2: Generating Technical Journalism & Site Update...")
     subprocess.run(["python", "/a0/usr/projects/x-manage/src/site_generator.py"])

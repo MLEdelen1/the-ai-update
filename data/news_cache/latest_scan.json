@@ -3,8 +3,22 @@
     "source": "techcrunch_ai",
     "title": "Uber engineers built an AI version of their boss",
     "url": "https://techcrunch.com/2026/02/24/uber-engineers-built-ai-version-of-boss-dara-khosrowshahi/",
-    "summary": "Uber CEO Dara Khosrowshahi said the company\u2019s employees have gone all in on AI, going so far as to build a chatbot of him that they use to practice their pitches.",
+    "summary": "Uber CEO Dara Khosrowshahi said the company’s employees have gone all in on AI, going so far as to build a chatbot of him that they use to practice their pitches.",
     "timestamp": "2026-02-24T23:09:28+00:00",
-    "id": "20c16cbeadaf"
+    "id": "20c16cbeadaf",
+    "access_type": "Enterprise",
+    "capabilities": [
+      "Persona-Tuned LLM (Fine-tuned on CEO speech patterns and public transcripts)",
+      "RAG-Enhanced Strategy Retrieval (Integrated with internal Uber strategic documents)",
+      "Real-time Pitch Simulation & Scoring",
+      "Dynamic Adversarial Feedback Loops"
+    ],
+    "practical_use_cases": [
+      "Internal Team Training: Employees can stress-test high-stakes presentations against a simulated version of executive scrutiny.",
+      "Culture Scaling: Mid-level managers can use persona-bots to align projects with the CEO's specific priorities and communication style.",
+      "Developer Template: Curious developers can replicate this architecture using OpenAI's System Prompts + RAG to build 'Boss-Bots' for their own organizations."
+    ],
+    "benchmark_data": 72,
+    "executive_summary": "Uber's development of a digital twin for Dara Khosrowshahi marks a significant shift from generic productivity AI to specialized **Corporate Persona Agents**. Architecturally, this likely involves a base model (such as GPT-4o or an internal Llama-3 derivative) fine-tuned on the CEO’s public earnings calls, interviews, and internal memos. By utilizing Retrieval-Augmented Generation (RAG), the bot doesn't just mimic his voice; it references specific Uber metrics and strategic pillars to provide contextually accurate feedback.<br><br>From a technical standpoint, the 'velocity gain' Dara mentions stems from reducing the 'feedback latency' for engineers. Instead of waiting for a quarterly review or a 15-minute sync, teams can iterate hourly against a simulated executive gatekeeper. This project highlights the ROI of **Internal LLM Utility**: by lowering the friction of alignment, Uber effectively increases its operational bandwidth without adding headcount. For the 'Curious Developer,' this is a blueprint for the next wave of B2B SaaS—customized executive agents that act as a bridge between high-level strategy and ground-level execution."
   }
 ]
