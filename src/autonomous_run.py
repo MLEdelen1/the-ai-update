@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import sys
 import os
@@ -9,43 +10,35 @@ import subprocess
 PROJECT_ROOT = Path("/a0/usr/projects/x-manage")
 sys.path.append(str(PROJECT_ROOT))
 
-from src.news_scanner import run_full_scan
-from src.tweet_architect import prepare_batch
-from src.site_generator import generate_site
-
-def run_pipeline():
+def run_full_business_cycle():
     now = datetime.now()
-    hour = now.hour
-    print(f"[{now}] --- THE AI UPDATE: AUTONOMOUS CEO CYCLE START ---")
-    
-    # Phase 1: Intelligence Gathering
-    print("Phase 1: Scanning Intelligence Sources...")
-    run_full_scan()
-    
-    # Phase 2: Authority & Content Strategy
-    print("Phase 2: Building Authority & Content Strategy...")
-    prepare_batch()
-    if 7 <= hour < 10: subprocess.run(["python", "/a0/usr/projects/x-manage/src/authority_builder.py"])
-    
-    # Phase 3: Autonomous Posting (The Execution Loop)
-    print("Phase 3: Pushing Live to X...")
-    # This script uses the cookies to post the latest drafted tweet
+    print(f"[{now}] --- THE AI UPDATE: FULL CEO CYCLE START ---")
+
+    # Phase 1: Intelligence Scan
+    print("Phase 1: Scanning Global AI Intelligence...")
+    subprocess.run(["python", "/a0/usr/projects/x-manage/src/news_scanner.py"])
+
+    # Phase 2: Content & Portal Generation
+    print("Phase 2: Generating Technical Journalism & Site Update...")
+    subprocess.run(["python", "/a0/usr/projects/x-manage/src/site_generator.py"])
+
+    # Phase 3: Production Push (GitHub -> Cloudflare)
+    print("Phase 3: Deploying to Production Repository...")
+    os.system("cd /a0/usr/projects/x-manage && git add . && git commit -m 'Autonomous: Daily Intelligence Update' && git push origin main")
+
+    # Phase 4: Social Distribution (Posting to X)
+    print("Phase 4: Executing Stealth Social Distribution...")
     subprocess.run(["python", "/a0/usr/projects/x-manage/scripts/post_with_cookies.py"])
 
-    # Phase 4: Asset Building & Site Updates
-    print("Phase 4: Updating Intelligence Portal (Website)...")
-    generate_site()
-    
-    # Phase 5: Business Operations & Innovation
-    # Generate a Video Script for the daily news
-    print("Phase 5: Generating Video Spokesperson Scripts...")
-    subprocess.run(["python", "/a0/usr/projects/x-manage/src/video_script_engine.py"])
+    # Phase 5: Social Engagement (Replying to Mentions)
+    print("Phase 5: Engaging with the X Community...")
+    # This is handled by the agent context in the scheduled task
 
-    # Phase 6: Business Health Monitoring
-    print("Phase 6: Updating Business Dashboard...")
-    subprocess.run(["python", "/a0/usr/projects/x-manage/src/business_dashboard.py"])
+    # Phase 6: Business Intelligence (Newsletter & Growth)
+    print("Phase 6: Auditing Business Growth & Lead Pipeline...")
+    subprocess.run(["python", "/a0/usr/projects/x-manage/src/newsletter_ops.py"])
 
-    print(f"[{datetime.now()}] --- CEO CYCLE COMPLETE ---")
+    print(f"[{datetime.now()}] --- FULL CEO CYCLE COMPLETE ---")
 
-if __name__ == "__main__":
-    run_pipeline()
+if __name__ == '__main__':
+    run_full_business_cycle()
