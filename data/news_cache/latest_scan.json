@@ -1,0 +1,82 @@
+[
+  {
+    "source": "techcrunch_ai",
+    "title": "OpenAI COO says \u2018we have not yet really seen AI penetrate enterprise business processes\u2019",
+    "url": "https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/",
+    "summary": "Earlier this month, OpenAI launched a new platform called OpenAI Frontier for enterprises to build and manage agents, but OpenAI COO Brad Lightcap said that businesses haven&#8217;t yet seen AI adoption at scale. &#8220;One of the interesting things and some of the inspiration for the work we&#8217;ve been doing lately around OpenAI Frontier is we [&#8230;]",
+    "timestamp": "2026-02-24T17:44:34+00:00",
+    "id": "01e329acb8e5"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "Music generator ProducerAI joins Google Labs",
+    "url": "https://techcrunch.com/2026/02/24/music-generator-producerai-joins-google-labs/",
+    "summary": "Wyclef Jean used Google's AI music tools on his new song \"Back in Abu Dhabi.\"",
+    "timestamp": "2026-02-24T16:57:21+00:00",
+    "id": "0301ba48a25d"
+  },
+  {
+    "source": "verge_ai",
+    "title": "Anthropic&#8217;s Claude Cowork is plugging AI into more boring enterprise stuff",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/883707/anthropic-claude-cowork-updates",
+    "summary": "On Tuesday, Anthropic announced updates to its Claude Cowork platform that allow the AI to help with a wider range of office tasks. Claude Cowork can now connect with several popular office apps, including Google Workspace, Docusign, and WordPress. New pre-built plug-ins can also automate tasks in a range of fields, including HR, design, engineering, [&#8230;]",
+    "timestamp": "2026-02-24T16:43:56+00:00",
+    "id": "28b68848291a"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "Meta strikes up to $100B AMD chip deal as it chases \u2018personal superintelligence\u2019",
+    "url": "https://techcrunch.com/2026/02/24/meta-strikes-up-to-100b-amd-chip-deal-as-it-chases-personal-superintelligence/",
+    "summary": "Meta is buying billions of dollars in AMD AI chips in a multiyear deal tied to a 160 million-share warrant, deepening its push to diversify beyond Nvidia and expand data center capacity.",
+    "timestamp": "2026-02-24T15:15:16+00:00",
+    "id": "bc2975c16add"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "Oura launches a proprietary AI model focused on women\u2019s health",
+    "url": "https://techcrunch.com/2026/02/24/oura-launches-a-proprietary-ai-model-focused-on-womens-health/",
+    "summary": "The\u00a0model\u00a0supports questions spanning the full reproductive health spectrum, from early menstrual cycles through menopause.",
+    "timestamp": "2026-02-24T15:08:01+00:00",
+    "id": "dc7fa5c0fdea"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "Final 4 days to save up to $680 on your TechCrunch Disrupt 2026 pass",
+    "url": "https://techcrunch.com/2026/02/24/final-4-days-to-save-up-to-680-on-your-techcrunch-disrupt-2026-pass/",
+    "summary": "Just 4 days left before savings of up to $680 on your TechCrunch Disrupt 2026 pass end on February 27 at 11:59 p.m. PT. Register to save at one of the most anticipated tech events of the year.",
+    "timestamp": "2026-02-24T15:00:00+00:00",
+    "id": "dec652526d15"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "Anthropic launches new push for enterprise agents with plugins for finance, engineering, and design",
+    "url": "https://techcrunch.com/2026/02/24/anthropic-launches-new-push-for-enterprise-agents-with-plugins-for-finance-engineering-and-design/",
+    "summary": "It's a major opportunity to grow Anthropic\u2019s enterprise client base \u2014 and a significant threat to SaaS products currently performing those functions.",
+    "timestamp": "2026-02-24T14:45:55+00:00",
+    "id": "470a8549376a"
+  },
+  {
+    "source": "verge_ai",
+    "title": "How Claude Code Claude Codes",
+    "url": "https://www.theverge.com/podcast/883604/claude-code-ai-future-creator-privacy-vergecast",
+    "summary": "Claude Code is a developer tool for developers. And yet, over the last year and especially the last few months, the team at Anthropic has seen a huge number of people, across industries and disciplines, figure out how to access their terminal so that they could build new stuff too. Few AI products have found [&#8230;]",
+    "timestamp": "2026-02-24T14:20:35+00:00",
+    "id": "fadfb9d14ebb"
+  },
+  {
+    "source": "verge_ai",
+    "title": "This Chainsmokers-approved AI music producer is joining Google",
+    "url": "https://www.theverge.com/tech/883307/google-producerai-deal-music",
+    "summary": "ProducerAI, an AI-powered music-making platform, is joining Google. As part of the deal, Google will fold ProducerAI under the Labs umbrella and power the tool with a preview version of its new Lyria 3 music-making AI model. ProducerAI is a music-making platform that allows users to work with an AI agent to generate sounds, workshop [&#8230;]",
+    "timestamp": "2026-02-24T14:00:00+00:00",
+    "id": "6318dcd8d918"
+  },
+  {
+    "source": "techcrunch_ai",
+    "title": "New Relic launches new\u00a0AI\u00a0agent platform\u00a0and\u00a0OpenTelemetry\u00a0tools",
+    "url": "https://techcrunch.com/2026/02/24/new-relic-launches-new-ai-agent-platform-and-opentelemetry-tools/",
+    "summary": "New Relic is giving enterprises more observability tools, letting them create and manage AI agents, and better integrate OTel data streams.",
+    "timestamp": "2026-02-24T14:00:00+00:00",
+    "id": "6195ad4c8c1a"
+  }
+]
