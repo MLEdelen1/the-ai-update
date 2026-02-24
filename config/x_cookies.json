@@ -1,0 +1,56 @@
+[
+  {
+    "domain": ".x.com",
+    "name": "auth_token",
+    "value": "b409173f98617e8d82f3373a9671740df5886f51",
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "None"
+  },
+  {
+    "domain": ".x.com",
+    "name": "guest_id",
+    "value": "v1%3A177189199500590652",
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None"
+  },
+  {
+    "domain": ".x.com",
+    "name": "twid",
+    "value": "u%3D2026088528745234433",
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None"
+  },
+  {
+    "domain": ".x.com",
+    "name": "ct0",
+    "value": "f800fa0afecc1567353eddacbac070f7328777c90afdbe3c19db70a163f6a0442c3bcbe95959e285c602a4efb5c679f49926caa99146d812b829b18d0cd32e0e215fcd677bca368db9db049da0f93d71",
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "Lax"
+  },
+  {
+    "domain": ".x.com",
+    "name": "dnt",
+    "value": "1",
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None"
+  },
+  {
+    "domain": ".x.com",
+    "name": "kdt",
+    "value": "5kQvFytgFdxCdHsn0ASqCSX5rkyRGPxpG4fNxf0h",
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "None"
+  }
+]

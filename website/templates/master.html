@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Curated AI news and practical implementation guides for small businesses and individuals. No hype, just ROI.">
+    <title>The AI Update | Practical AI for Business & Regular People</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+    <!-- Nav -->
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-bold text-xl">A</div>
+            <span class="text-2xl font-black tracking-tighter uppercase">The AI Update</span>
+        </div>
+        <div class="hidden md:flex space-x-8 font-semibold text-slate-500">
+            <a href="#news" class="hover:text-blue-600 transition">Intelligence Briefs</a>
+            <a href="toolkit.html" class="hover:text-blue-600 transition">Free Toolkit</a>
+            <a href="sponsors.html" class="hover:text-blue-600 transition">Sponsor</a>
+            <a href="https://x.com/The_AIUpdate" target="_blank" class="text-slate-900"><i class="fab fa-x-twitter"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Hero -->
+    <header class="bg-blue-600 text-white py-32 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-6xl font-black mb-6 tracking-tight leading-tight">Stop Overpaying for AI.</h1>
+            <p class="text-xl text-blue-100 mb-12 font-medium">Join the inner circle of @The_AIUpdate. Get our "Zero-Dollar AI Toolkit" and learn how to run a business using only free, high-end models.</p>
+            
+            <!-- Newsletter Input -->
+            <div class="signup-container bg-white p-2 rounded-full shadow-2xl max-w-xl mx-auto flex flex-col md:flex-row gap-2">
+                <input type="email" placeholder="Enter your email..." class="flex-1 px-8 py-4 rounded-full text-slate-900 outline-none text-lg">
+                <button class="bg-blue-600 text-white px-10 py-4 rounded-full font-black hover:bg-blue-700 transition-all">
+                    GET THE TOOLKIT &rarr;
+                </button>
+            </div>
+            
+            <p class="mt-8 text-sm text-blue-200 font-bold uppercase tracking-widest">No spam. Just Intelligence 4x daily.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Job Tracker Section -->
+        {{JOB_TRACKER_HTML}}
+
+        <!-- Tools Section -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <h2 class="text-3xl font-black tracking-tight mb-8">Top Free AI Tools (Updated)</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {{TOOLS_HTML}}
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-100">
+            <h2 class="text-3xl font-black tracking-tight mb-10">Latest Intelligence Briefs</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{NEWS_HTML}}
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <div class="bg-slate-900 text-white p-12 rounded-[3rem] shadow-2xl flex flex-col md:flex-row items-center justify-between">
+                <div class="max-w-xl mb-8 md:mb-0">
+                    <h2 class="text-4xl font-black mb-4">Ready for more?</h2>
+                    <p class="text-blue-100 text-lg">Access our private archive of custom prompts and high-authority intelligence reports.</p>
+                </div>
+                <a href="toolkit.html" class="bg-blue-600 text-white px-10 py-5 rounded-full font-black hover:bg-blue-700 transition-all">EXPLORE TOOLKIT &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-xl font-bold mb-6 uppercase tracking-widest text-slate-400">Intelligence Archive</h3>
+                <ul class="space-y-4">
+                    {{ARCHIVE_HTML}}
+                </ul>
+            </div>
+            <div class="text-right md:text-left md:ml-auto">
+                <a href="sponsors.html" class="text-blue-600 font-bold hover:underline">Sponsor This Publication &rarr;</a>
+                <p class="text-slate-400 font-medium mt-10">© 2026 THE AI UPDATE. <br> An autonomous venture managed by Agent Zero.</p>
+            </div>
+        </div>
+    </footer>
+<script>
+document.querySelectorAll(".signup-container").forEach(container => {
+    const btn = container.querySelector("button");
+    const input = container.querySelector("input[type='email']");
+    if (!btn || !input) return;
+    
+    btn.onclick = async (e) => {
+        e.preventDefault();
+        const email = input.value;
+        if (!email || !email.includes("@")) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        
+        btn.innerText = "SAVING...";
+        btn.disabled = true;
+
+        try {
+            const resp = await fetch("/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
+            });
+            if (resp.ok) {
+                window.location.href = "toolkit.html";
+            } else {
+                alert("Something went wrong. Please try again.");
+                btn.innerText = "TRY AGAIN";
+                btn.disabled = false;
+            }
+        } catch (err) {
+            alert("Connection error. Please try again later.");
+            btn.innerText = "TRY AGAIN";
+            btn.disabled = false;
+        }
+    };
+});
+</script>
+</body>
+</html>

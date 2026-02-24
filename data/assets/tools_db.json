@@ -1,0 +1,8 @@
+[
+    {"name": "DeepSeek V3", "category": "Regular People", "use_case": "Free, high-end alternative to GPT-4 for logic and coding.", "url": "https://chat.deepseek.com/"},
+    {"name": "NotebookLM", "category": "Workplace", "use_case": "Upload company docs and get instant summaries and audio discussions.", "url": "https://notebooklm.google.com/"},
+    {"name": "Microsoft Designer", "category": "Regular People", "use_case": "Free AI graphic design and image generation.", "url": "https://designer.microsoft.com/"},
+    {"name": "HuggingFace Chat", "category": "Regular People", "use_case": "Access top open-source models (Llama, Qwen) for free.", "url": "https://huggingface.co/chat/"},
+    {"name": "Perplexity", "category": "Workplace", "use_case": "Real-time AI search for fast business research.", "url": "https://www.perplexity.ai/"},
+    {"name": "Claude.ai", "category": "Regular People", "use_case": "Best-in-class natural writing for emails and documents.", "url": "https://claude.ai/"}
+]

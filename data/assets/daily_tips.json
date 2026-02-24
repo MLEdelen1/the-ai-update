@@ -1,0 +1,5 @@
+[
+    {"tip": "Use 'DeepSeek' instead of GPT-4 for logic-heavy tasks to save on subscription costs.", "category": "Practical"},
+    {"tip": "NotebookLM can turn your company PDFs into a 10-minute briefing podcast for free.", "category": "Workplace"},
+    {"tip": "Running LLMs locally? Check out LM Studio for a zero-code implementation.", "category": "Regular People"}
+]
