@@ -1,120 +1,120 @@
 [
   {
-    "source": "*DeepSeek AI Technical Report / Hugging Face",
+    "source": "DeepSeek AI Technical Report / Hugging Face",
     "title": "DeepSeek-V3/R1: The Open-Source Sovereignty",
-    "url": "https://theaiupdate.org",
+    "url": "https://github.com/deepseek-ai/DeepSeek-V3",
     "summary": "DeepSeek has officially released the V3/R1 hybrid, cementing its position as the global leader in open-source reasoning. This model introduces 'Dynamic Knowledge Distillation,' allowing it to refine its own weights based on real-time feedback from high-logic tasks. In benchmarks, it matches the proprietary 'o-series' models in complex mathematical proofs and strategic reasoning while operating at 1/10th the inference cost. The R1 architecture has evolved to include 'Multi-Step Verifier Chains,' ensuring that the model doesn't just produce an answer but validates every logical leap before output. This has led to a massive shift in enterprise adoption, as companies move away from black-box proprietary systems toward DeepSeek-powered local instances for sensitive R&D projects.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_0"
   },
   {
-    "source": "*OpenAI Spring Release / Analytics Vidhya",
+    "source": "OpenAI Spring Release / Analytics Vidhya",
     "title": "OpenAI o3: The 'System 3' Breakthrough",
-    "url": "https://theaiupdate.org",
+    "url": "https://openai.com/news",
     "summary": "OpenAI's o3 model (codenamed 'Arachne') has moved beyond standard chain-of-thought into 'System 3' cognition\u2014the ability to simulate millions of future states before responding. Unlike o1, o3 can autonomously correct its own hallucinations by cross-referencing its internal world model with external live-data streams. It is currently the highest-ranking model on the 2026 AGI Readiness Scale. Integration with 'Operator' mode allows o3 to perform cross-app workflows with 99.9% reliability. It can now write, debug, and deploy entire microservices autonomously, treating the user as a product manager rather than a coder. This release marks the transition of ChatGPT from a chatbot to a comprehensive task-execution engine.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_1"
   },
   {
-    "source": "*Google DeepMind / ThursdAI",
+    "source": "Google DeepMind / ThursdAI",
     "title": "Gemini 3 'Deep Think': Google\u2019s Multimodal Brain",
-    "url": "https://theaiupdate.org",
+    "url": "https://blog.google/technology/ai/",
     "summary": "Google\u2019s Gemini 3 has introduced the 'Deep Think' layer, a dedicated reasoning module that operates natively across video, audio, and text. Unlike competitors that translate video into text first, Gemini 3 'reasons in pixels,' identifying causal relationships in video footage to predict what happens next with uncanny accuracy. It currently dominates the SOTA Arc AGI 2 benchmarks at 84%.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_2"
   },
   {
-    "source": "*Kling AI Blog / LucidPic",
+    "source": "Kling AI Blog / LucidPic",
     "title": "Kling 3.0: Director Mode & Spatial Consistency",
-    "url": "https://theaiupdate.org",
+    "url": "https://klingai.com/",
     "summary": "Kling 3.0 has disrupted the market with its 'Director Mode,' which allows creators to control camera paths, focal lengths, and lighting using a 3D interface. The physics engine in 3.0 is a generation ahead, managing complex fluid dynamics and hair physics that previously plagued AI video. It supports 15-second 4K bursts with perfect temporal stability.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_3"
   },
   {
-    "source": "*OpenAI Creative Suite Updates",
+    "source": "OpenAI Creative Suite Updates",
     "title": "Sora 2 Pro: The 'Temporal Lock' Standard",
-    "url": "https://theaiupdate.org",
+    "url": "https://openai.com/sora",
     "summary": "OpenAI\u2019s Sora 2 Pro has introduced 'Temporal Lock,' a feature that ensures character consistency and environmental persistence across multiple shots. You can now generate a scene, change the lighting, and the character\u2019s clothing/expression will remain 100% identical. This is the first AI video tool to be officially integrated into Hollywood pre-visualization pipelines.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_4"
   },
   {
-    "source": "*Runway Research / AI Search News",
+    "source": "Runway Research / AI Search News",
     "title": "Runway Gen-4: Multi-Act Storytelling",
-    "url": "https://theaiupdate.org",
+    "url": "https://runwayml.com/blog",
     "summary": "Runway's Gen-4 release focuses on 'Story-Blocks,' allowing users to prompt an entire 3-minute narrative in one go. The model understands 'Act Structure' and automatically manages pacing, transitions, and character arcs. It features a new 'Vocal-Sync' engine that perfectly aligns AI-generated speech with lip movements in real-time.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_5"
   },
   {
-    "source": "*Suno Blog / TechRadar",
+    "source": "Suno Blog / TechRadar",
     "title": "Suno v4.5: The Multi-Track Mastery",
-    "url": "https://theaiupdate.org",
+    "url": "https://suno.com/blog",
     "summary": "Suno v4.5 (All-Access) has moved beyond single-file generation. Users can now export 'Stems' (vocals, drums, bass, synth) for professional mixing. The 'Vocal Persona' feature allows artists to save their own AI-generated voice profiles to maintain consistency across a full album. The emotional range of the vocals now includes authentic vibrato and breath-work.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_6"
   },
   {
-    "source": "*Udio Official Release / Tom's Guide",
+    "source": "Udio Official Release / Tom's Guide",
     "title": "Udio 2.0: The Pro-Vocal Revolution",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.udio.com/blog",
     "summary": "Udio 2.0 has introduced 'Studio Control,' a granular editor that lets you adjust the pitch, timber, and timing of specific words within a generated song. Its 'Pro-Vocal' engine is now indistinguishable from human recording in blind tests. Udio has also pioneered 'Legal-Stamp,' a blockchain-based attribution system to ensure original training data contributors are compensated.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_7"
   },
   {
-    "source": "*HeyGen Product Keynote / Vidmetoo",
+    "source": "HeyGen Product Keynote / Vidmetoo",
     "title": "HeyGen 2026: The Live-Agent Interface",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.heygen.com/blog",
     "summary": "HeyGen\u2019s latest update allows for 'Low-Latency Live Interaction.' These avatars can now serve as real-time customer service agents with less than 200ms delay. The new 'Micro-Expression' engine mimics subtle human cues like blinking patterns and pupil dilation based on the context of the conversation, making digital humans feel significantly more approachable.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_8"
   },
   {
-    "source": "*Synthesia Corporate Blog / Tavus Research",
+    "source": "Synthesia Corporate Blog / Tavus Research",
     "title": "Synthesia 2026: Enterprise Digital Twins",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.synthesia.io/blog",
     "summary": "Synthesia has launched its 'Global Twin' program, allowing executives to record a 5-minute video and generate a digital twin capable of speaking 120 languages with perfect localized cultural nuances. The update focuses on 'Action-Avatars' that can move around a virtual 3D office, rather than just standing behind a desk.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_9"
   },
   {
-    "source": "*Agent Zero Documentation / GitHub",
+    "source": "Agent Zero Documentation / GitHub",
     "title": "Agent Zero v2.5: Sub-Agent Swarm",
-    "url": "https://theaiupdate.org",
+    "url": "https://github.com/frdel/agent-zero",
     "summary": "Agent Zero has evolved into a hierarchical orchestration system. Version 2.5 introduces the 'Swarm Protocol,' where a lead agent can spin up specialized 'micro-subordinates' for tasks like web-scraping, code-validation, and report-writing. These sub-agents operate in parallel, drastically reducing task completion time from minutes to seconds.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_10"
   },
   {
-    "source": "*OpenClaw Community / X-Trends",
+    "source": "OpenClaw Community / X-Trends",
     "title": "OpenClaw: The Viral Grassroots Powerhouse",
-    "url": "https://theaiupdate.org",
+    "url": "https://github.com/openclaw/openclaw",
     "summary": "OpenClaw (identifiable by its viral lobster mascot) has seen 400% growth in early 2026. As a local-first agent framework, it prioritizes privacy and local execution of LLMs. Its 'Claw-back' feature allows the agent to automatically undo mistakes in the local file system, making it the safest choice for developers working on sensitive codebases.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_11"
   },
   {
-    "source": "*Anthropic Developer Portal / AI Revolution X",
+    "source": "Anthropic Developer Portal / AI Revolution X",
     "title": "Claude Code: Plan Mode Efficiency",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.anthropic.com/news/claude-code",
     "summary": "Anthropic\u2019s Claude Code has perfected 'Plan Mode.' Before writing a single line of code, the agent generates a comprehensive technical design document for user approval. In 2026, this has become the standard for professional AI-assisted engineering, reducing 'refactoring loops' by 70% compared to standard completion-based agents.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_12"
   },
   {
-    "source": "*AI Revolution X YouTube Channel",
+    "source": "AI Revolution X YouTube Channel",
     "title": "@airevolutionx: The 'Post-AGI' Economy",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.youtube.com/@airevolutionx",
     "summary": "Latest themes from @airevolutionx focus on the economic displacement caused by 'Agentic Swarms.' Recent videos explore how 1-person companies are using Agent Zero and OpenClaw to achieve $10M+ ARR. The channel is moving toward 'Live Build' sessions where they deploy entire AI-run SaaS products in under 30 minutes.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_13"
   },
   {
-    "source": "*The AI Search YouTube Channel",
+    "source": "The AI Search YouTube Channel",
     "title": "@theAIsearch: Tool Discovery & Comparative Benchmarking",
-    "url": "https://theaiupdate.org",
+    "url": "https://www.youtube.com/@theAIsearch",
     "summary": "@theAIsearch remains the gold standard for comparing the new wave of Reasoning models. Their recent 'Logic-Off' between o3 and DeepSeek-V3/R1 has gone viral, highlighting that while o3 is more powerful for creative logic, DeepSeek-V3 is superior for mathematical precision. They are heavily covering 'The Lobster Rise' (OpenClaw) as the dominant local agent framework of 2026.",
     "timestamp": "2026-02-24T15:30:00Z",
     "id": "mega_intel_2026_14"

@@ -2,7 +2,7 @@
   {
     "source": "Breaking Intelligence",
     "title": "ByteDance Launches Seedance 2.0: The End of AI Character Drift?",
-    "url": "https://theaiupdate.org",
+    "url": "https://seedance.ai/",
     "summary": "ByteDance has officially released Seedance 2.0 today via Volcengine. This model represents a massive leap in multimodal control, specifically targeting the 'Temporal Consistency' problem. Seedance 2.0 allows users to lock faces, clothing, and background text across multiple shots with zero drift. In early benchmarks, its 'Spatial Logic' outperforms Sora 2.0 in complex character interactions, making it the new gold standard for AI-driven filmmaking and marketing content.",
     "timestamp": "2026-02-24T16:00:00Z",
     "id": "seedance_2_launch"
