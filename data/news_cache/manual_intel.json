@@ -1,0 +1,34 @@
+[
+  {
+    "source": "Intelligence Deep-Dive",
+    "title": "Kling 3.0 vs Sora 2 Pro: The 2026 Video Wars",
+    "url": "https://theaiupdate.org",
+    "summary": "The landscape of AI video has shifted. Kling 3.0 now offers full cinematic control with its 'Director Mode,' while Sora 2 Pro has introduced 'Temporal Lock' for perfect consistency across 60-second shots. Seedance 1.5 Pro is emerging as the dark horse for high-speed creative workflows.",
+    "timestamp": "2026-02-24T12:00:00Z",
+    "id": "v2026_video"
+  },
+  {
+    "source": "Agent Watch",
+    "title": "Claude Code: New 'Plan Mode' Redefines Autonomy",
+    "url": "https://theaiupdate.org",
+    "summary": "Anthropic has officially launched 'Plan Mode' for Claude Code. The agent can now draft multi-file architectural changes and simulate their impact before writing a single line of code, significantly reducing hallucination in complex software projects.",
+    "timestamp": "2026-02-24T13:00:00Z",
+    "id": "a2026_claude"
+  },
+  {
+    "source": "Framework Update",
+    "title": "Agent Zero: The OS for AI Agents reaches v2.5",
+    "url": "https://theaiupdate.org",
+    "summary": "Agent Zero has become the standard for general-purpose computer assistants. Its new 'Sub-Agent Swarm' allows a single instance to delegate thousands of micro-tasks across a virtual Linux cluster, making it the most powerful open-source agentic framework available.",
+    "timestamp": "2026-02-24T14:00:00Z",
+    "id": "a2026_azero"
+  },
+  {
+    "source": "Audio Intelligence",
+    "title": "Suno vs Udio: The 2026 Music Generation Benchmark",
+    "url": "https://theaiupdate.org",
+    "summary": "Suno v4 has introduced 'Multi-Track Separation' directly in the generation phase, while Udio 2.0 has focused on 'Pro-Vocal' fidelity that is now indistinguishable from studio recordings. Both models have added MIDI export capabilities for professional producers.",
+    "timestamp": "2026-02-24T11:00:00Z",
+    "id": "m2026_music"
+  }
+]
