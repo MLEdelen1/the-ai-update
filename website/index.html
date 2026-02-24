@@ -112,6 +112,42 @@
             <h2 class="text-3xl font-black tracking-tight mb-10">Latest Intelligence Briefs</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">techcrunch_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">OpenAI COO says ‘we have not yet really seen AI penetrate enterprise business processes’</h4>
+                <p class="text-slate-500 text-sm mb-6">Earlier this month, OpenAI launched a new platform called OpenAI Frontier for enterprises to build and manage agents, but OpenAI COO Brad Li...</p>
+                <a href="https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">techcrunch_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">Music generator ProducerAI joins Google Labs</h4>
+                <p class="text-slate-500 text-sm mb-6">Wyclef Jean used Google's AI music tools on his new song "Back in Abu Dhabi."...</p>
+                <a href="https://techcrunch.com/2026/02/24/music-generator-producerai-joins-google-labs/" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">verge_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">Anthropic&#8217;s Claude Cowork is plugging AI into more boring enterprise stuff</h4>
+                <p class="text-slate-500 text-sm mb-6">On Tuesday, Anthropic announced updates to its Claude Cowork platform that allow the AI to help with a wider range of office tasks. Claude C...</p>
+                <a href="https://www.theverge.com/ai-artificial-intelligence/883707/anthropic-claude-cowork-updates" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">techcrunch_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">Meta strikes up to $100B AMD chip deal as it chases ‘personal superintelligence’</h4>
+                <p class="text-slate-500 text-sm mb-6">Meta is buying billions of dollars in AMD AI chips in a multiyear deal tied to a 160 million-share warrant, deepening its push to diversify ...</p>
+                <a href="https://techcrunch.com/2026/02/24/meta-strikes-up-to-100b-amd-chip-deal-as-it-chases-personal-superintelligence/" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">techcrunch_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">Oura launches a proprietary AI model focused on women’s health</h4>
+                <p class="text-slate-500 text-sm mb-6">The model supports questions spanning the full reproductive health spectrum, from early menstrual cycles through menopause....</p>
+                <a href="https://techcrunch.com/2026/02/24/oura-launches-a-proprietary-ai-model-focused-on-womens-health/" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-slate-400 uppercase">techcrunch_ai</span>
+                <h4 class="text-xl font-bold mt-2 mb-4">Final 4 days to save up to $680 on your TechCrunch Disrupt 2026 pass</h4>
+                <p class="text-slate-500 text-sm mb-6">Just 4 days left before savings of up to $680 on your TechCrunch Disrupt 2026 pass end on February 27 at 11:59 p.m. PT. Register to save at ...</p>
+                <a href="https://techcrunch.com/2026/02/24/final-4-days-to-save-up-to-680-on-your-techcrunch-disrupt-2026-pass/" target="_blank" class="text-blue-600 font-bold hover:underline">Full Intelligence &rarr;</a>
+            </div>
             </div>
         </section>
 
@@ -159,7 +195,7 @@ document.querySelectorAll(".signup-container").forEach(container => {
         btn.disabled = true;
 
         try {
-            const resp = await fetch("https://f4d0b33214f1c5f3-99-146-50-4.serveousercontent.com/subscribe", {
+            const resp = await fetch("/subscribe", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
