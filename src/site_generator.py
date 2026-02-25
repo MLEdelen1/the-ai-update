@@ -104,8 +104,17 @@ def generate_site():
                         summary = clean_text(cl)
                         break
 
-        display_summary = summary[:160] + "..." if len(summary) > 160 else summary
         content = generate_content(title, summary, i, aid)
+        display_summary = ''
+        for m_line in content.split('\n'):
+            c_line = m_line.strip()
+            if c_line and not c_line.startswith(('#', '>', '!', '|', '-', '<', '[', '*')):
+                display_summary += c_line + ' '
+                if len(display_summary) > 130: break
+        display_summary = display_summary.strip()
+        if len(display_summary) > 120: display_summary = display_summary[:117] + '...'
+        if not display_summary: display_summary = summary[:160] + '...' if len(summary) > 160 else summary
+        if not display_summary: display_summary = 'Read the full technical breakdown and implementation guide inside...'
         source_clean = clean_text(s.get('source', 'WEB')).upper()
         if not source_clean: source_clean = "INTEL"
         img_url = get_contextual_img(title, i)
@@ -135,6 +144,7 @@ def generate_site():
             n_html += f"""<a href="{url_local}" class="latest-item">
                 <div class="latest-meta"><span class="latest-cat">{source_clean}</span><span>{time_ago}</span></div>
                 <h3>{title}</h3>
+                <p>{display_summary}</p>
                 
             </a>"""
         elif 7 <= i <= 12:
@@ -142,6 +152,7 @@ def generate_site():
             a_html += f"""<a href="{url_local}" class="analysis-card" data-num="{num_str}">
                 <div class="analysis-meta">{source_clean}</div>
                 <h3>{title}</h3>
+                <p>{display_summary}</p>
                 
                 <div class="analysis-read">14 MIN READ</div>
             </a>"""
