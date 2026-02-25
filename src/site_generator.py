@@ -61,73 +61,29 @@ def format_title(title):
     if "/" in title: title = title.split("/")[1]
     return title.replace('-', ' ').replace('_', ' ').title()
 
-def generate_content(title, summary, index):
-    img1 = get_contextual_img(title, index, 1)
-    img2 = get_contextual_img(title, index, 2)
 
-    # Heading variations
-    h1_variants = [f"Technical Deep Dive: {title}", f"How {title} Works Under the Hood", f"The Inner Workings of {title}", f"Understanding the Core of {title}"]
-    h2_variants = ["Benchmarks & Real-World Stats", f"Testing {title} Against the Competition", "Speed and Cost Analysis", f"How {title} Performs in the Lab"]
+def generate_content(title, summary, index, aid):
+    import markdown
+    md_path = DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md"
+    if md_path.exists():
+        md_text = md_path.read_text()
+        # Convert markdown to html
+        html_content = markdown.markdown(md_text, extensions=['tables'])
+        # Add a bit of styling to tables and blockquotes
+        html_content = html_content.replace('<table>', '<table class="min-w-full my-8 bg-white shadow-sm rounded-xl overflow-hidden">')
+        html_content = html_content.replace('<thead>', '<thead class="bg-slate-50">')
+        html_content = html_content.replace('<th>', '<th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-slate-500">')
+        html_content = html_content.replace('<td>', '<td class="px-6 py-4 border-t border-slate-100">')
+        html_content = html_content.replace('<blockquote>', '<blockquote class="border-l-4 border-blue-500 pl-4 py-2 my-6 bg-blue-50 text-slate-700 italic rounded-r-lg">')
+        html_content = html_content.replace('<h1>', '<h1 class="text-4xl font-black mb-6">')
+        html_content = html_content.replace('<h2>', '<h2 class="text-2xl font-bold mt-10 mb-4 text-blue-900">')
+        html_content = html_content.replace('<h3>', '<h3 class="text-xl font-bold mt-8 mb-3">')
+        html_content = html_content.replace('<p>', '<p class="mb-6 text-lg text-slate-700 leading-relaxed">')
+        html_content = html_content.replace('<ul>', '<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">')
+        return html_content
+    else:
+        return f"<p class='text-lg'>Content currently being compiled for {title}. Please check back shortly.</p>"
 
-    h1 = h1_variants[index % len(h1_variants)]
-    h2 = h2_variants[index % len(h2_variants)]
-
-    return f"""
-    <h2>{h1}</h2>
-    <p>Let's look at {title} from a technical side. Most people see the result, but they don't see the complex math happening behind the screen. This tool takes the core summary of a project—like: <i>'{summary[:80]}...'</i>—and processes it through a layer of smart logic called a transformer.</p>
-    <p>Think of it like a very fast sorting machine. It looks at every piece of data and finds where it fits best. It uses 'Weights' to decide what is important. If you ask for a high-quality video or a piece of code, it knows which weights to turn up and which to turn down. This is why it gets better the more you use it; it is learning your preferences through a loop of constant checks.</p>
-    <img src="{img1}" alt="Visualizing {title}" class="w-full h-80 object-cover rounded-[2.5rem] my-10 shadow-xl">
-    <p>The speed comes from its use of GPU clusters. Instead of doing one task at a time, it breaks your project into a thousand pieces and does them all at once. This 'parallel processing' is the secret to why {title} is so much faster than the old way of doing things manually.</p>
-
-    <h2>{h2}</h2>
-    <p>We ran a full test to see how {title} wins against other tools on the market. We looked at how much money it saves and how much faster it is for a normal person to learn. The numbers show a clear gap between the new tech and the old legacy software.</p>
-    <div class="overflow-x-auto my-8">
-        <table class="min-w-full">
-            <thead class="bg-slate-50">
-                <tr>
-                    <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-slate-500">Metric</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-blue-600">{title}</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-slate-500">Competitor A</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-slate-500">Legacy System</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-                <tr>
-                    <td class="px-6 py-4 font-bold">Processing Time</td>
-                    <td class="px-6 py-4 font-bold text-green-600">Under 2 Seconds</td>
-                    <td class="px-6 py-4">12.5 Seconds</td>
-                    <td class="px-6 py-4 text-red-400">5+ Hours</td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 font-bold">Operating Cost</td>
-                    <td class="px-6 py-4 text-green-600">$0.05</td>
-                    <td class="px-6 py-4">$4.20</td>
-                    <td class="px-6 py-4">$250.00</td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 font-bold">Reliability</td>
-                    <td class="px-6 py-4">99.9%</td>
-                    <td class="px-6 py-4">94.2%</td>
-                    <td class="px-6 py-4">82.0%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h2>Making Money and Saving Time</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
-        <div class="bg-blue-50 p-8 rounded-3xl">
-            <h4 class="text-blue-600 font-black uppercase text-xs mb-4">The Business View</h4>
-            <p class="text-slate-700">Companies use {title} to cut their tech debt and labor costs instantly. By using this tool to handle repetitive logic, you can move your best people to harder problems. This has been shown to save a typical 10-person team over $15,000 every month in wasted hours.</p>
-        </div>
-        <div class="bg-slate-50 p-8 rounded-3xl">
-            <h4 class="text-slate-400 font-black uppercase text-xs mb-4">The Average Joe</h4>
-            <p class="text-slate-700">If you are on a budget of under $300, you can use {title} to build a side hustle. Whether it is making content for small brands or fixing code for others, this tool allows you to charge professional rates for work that only takes you a few minutes to finish.</p>
-        </div>
-    </div>
-    <img src="{img2}" alt="Monetization of {title}" class="w-full h-80 object-cover rounded-[2.5rem] my-10 shadow-xl">
-    <p>In short, {title} is more than just another app. It is a fundamental shift in how we work. By explaining exactly how it works and what it costs, we hope you see why this is the definitive resource for your growth.</p>
-    """
 
 def generate_site():
     print("REBUILDING: Contextual Image & Human-Divergence Engine...")
@@ -146,7 +102,7 @@ def generate_site():
         if aid == 'unknown': continue
         title = format_title(s.get('title', ''))
         summary = clean_text(s.get('summary', s.get('description', '')))
-        content = generate_content(title, summary, i)
+        content = generate_content(title, summary, i, aid)
 
         art_page = article_temp.replace("{{title}}", f"{title}: The Definitive Resource")
         art_page = art_page.replace("{{access_type}}", "Technical Brief")
