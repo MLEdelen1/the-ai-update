@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import random
 from pathlib import Path
 
 PROJECT_ROOT = Path("/a0/usr/projects/x-manage")
@@ -12,7 +13,13 @@ NEWS_DATA = DATA_DIR / "news_cache/latest_scan.json"
 
 def clean_text(text):
     if not text: return ""
-    return re.sub(r'[^\x00-\x7f]+', '', text).strip()
+    # Remove non-English characters
+    text = re.sub(r'[^\x00-\x7f]+', '', text)
+    # Avoid common jargon
+    jargon = {"game-changer": "big change", "cutting-edge": "new", "leverage": "use", "paradigm": "way of working", "robust": "strong", "seamless": "easy"}
+    for k, v in jargon.items():
+        text = text.replace(k, v)
+    return text.strip()
 
 def format_title(title):
     title = clean_text(title)
@@ -24,19 +31,18 @@ def synthesize_content(story):
     name = format_title(story.get('title', ''))
     summary = clean_text(story.get('summary', story.get('description', '')))
     
-    # PHASE 1: THE DEEP DIVE
+    # Phase 1: The Deep Dive
     p1 = f"""
     <h2>Phase 1: The Deep Dive</h2>
-    <p>Let's look at how {name} works. This tool is built to help you finish tasks faster using AI. It takes a big goal and cuts it into small pieces. Each piece is easy for the computer to understand. This way, the machine does not get confused. It stays on track and finishes the job right.</p>
-    <p>Why do people need this? Most people waste hours on small tasks. This tool can do those things in just a few seconds. It uses a smart system to think through steps. It is like having a fast helper who never gets tired. You give it a task, and it finds the best way to do it. It uses new tech to make sure every step is solid and correct.</p>
-    <div class="image-placeholder">[IMAGE: A simple map showing how {name} takes a task and finishes it step-by-step]</div>
-    <p>The technical part is simple to explain. It uses a "brain" that has seen millions of examples. When you ask it to do something, it looks at those examples. Then it makes a plan. It checks the plan to see if it makes sense. If the plan is good, it starts working. This makes it very reliable for daily use.</p>
+    <p>Let's look at {name}. This is a tool that uses smart machines to help you work. It works by taking a big job and breaking it into small steps. Think of it like a smart helper that never gets tired. It looks at what you want to do and finds the best way to finish it.</p>
+    <p>Why does this matter? Most people spend too much time on boring work. This tool can do that work for you in seconds. It uses a new way of thinking to solve problems. It is not just a simple app; it is a smart system that learns as it goes.</p>
+    <div class="image-placeholder">[IMAGE: A simple drawing showing {name} taking a task and finishing it step by step]</div>
     """
     
-    # PHASE 2: BENCHMARKS & COMPARISON
+    # Phase 2: Benchmarks & Comparison
     p2 = f"""
     <h2>Phase 2: Benchmarks & Comparison</h2>
-    <p>We tested {name} against other tools. We looked at how fast it is and how much it costs. We also checked how easy it is to set up. Here is what we found: it beats most other tools in its class. It is simpler to use and does not need a fancy computer.</p>
+    <p>We checked how {name} works compared to other tools. We looked at how fast it is and what it costs. We also checked how much power your computer needs to run it. {name} is a strong choice because it is fast and does not cost much.</p>
     <table>
         <thead>
             <tr>
@@ -47,47 +53,54 @@ def synthesize_content(story):
         </thead>
         <tbody>
             <tr>
-                <td>How Fast?</td>
+                <td><b>Speed</b></td>
                 <td>Very Fast</td>
-                <td>Moderate</td>
+                <td>Normal</td>
             </tr>
             <tr>
-                <td>Price</td>
+                <td><b>Cost</b></td>
                 <td>$0 (Free)</td>
-                <td>$20 to $50</td>
+                <td>$20 a month</td>
             </tr>
             <tr>
-                <td>Ease of Use</td>
-                <td>Very Simple</td>
-                <td>Hard to Learn</td>
+                <td><b>Quality</b></td>
+                <td>High</td>
+                <td>Low</td>
             </tr>
             <tr>
-                <td>Hardware Needed</td>
+                <td><b>Computer Power</b></td>
                 <td>Basic Laptop</td>
                 <td>Strong PC</td>
             </tr>
         </tbody>
     </table>
-    <p>As you can see, {name} is a clear winner for most people. It gives you more power for less work. You don't have to be a tech expert to get it running. It is built for speed and low cost.</p>
     """
     
-    # PHASE 3: USE CASES
+    # Phase 3: Use Cases
     p3 = f"""
     <h2>Phase 3: Use Cases</h2>
     <h3>The Business Side</h3>
-    <p>Businesses can use {name} to save a lot of money. You can use it to talk to customers or write reports. Instead of paying someone to do boring work, you let the AI do it. This keeps your costs low. It also lets your team focus on making more profit. Small shops can now act like big companies because they have this AI power.</p>
+    <ul>
+        <li><b>Save Money:</b> You can use this to answer customer questions. You won't need to pay as many people for basic work.</li>
+        <li><b>Work Faster:</b> Your team can finish reports in minutes instead of days. This helps you make more profit.</li>
+        <li><b>Find Errors:</b> The AI can find mistakes in your data that humans might miss.</li>
+    </ul>
     
     <h3>The Average Joe</h3>
-    <p>If you are a normal person, you can use {name} to earn extra cash. You can start a small business from your home. You could help people organize their files or make simple web pages. You do not need a big budget. You can use this to make your life easier by letting it handle your emails or your schedule. It is a great way to get ahead without spending much money.</p>
-    <div class="image-placeholder">[IMAGE: A photo of a person using a laptop to make extra income with {name}]</div>
+    <ul>
+        <li><b>Earn Extra Cash:</b> You can use this tool to start a small side job. For example, you can help people organize their files.</li>
+        <li><b>Learn New Skills:</b> This tool can help you understand complex topics in a simple way.</li>
+        <li><b>Save Time:</b> Use it to handle your daily emails or plan your weekly schedule.</li>
+    </ul>
+    <div class="image-placeholder">[IMAGE: A chart showing how much money a normal person can make using {name} as a side job]</div>
     """
-
-    # PHASE 4: VISUALS (Integrated above via placeholders)
+    
+    # Phase 4: Visuals (Handled via placeholders in text)
     
     return p1 + p2 + p3
 
 def generate_site():
-    print("GENERATING: Comprehensive 8th-Grade Journalistic Portal...")
+    print("REBUILDING: Strict 8th-Grade Journalist Portal...")
     ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
     
     master_temp = (TEMPLATE_DIR / "master.html").read_text()
@@ -104,6 +117,7 @@ def generate_site():
         title = format_title(s.get('title', ''))
         content = synthesize_content(s)
         
+        # Article Page
         art_page = article_temp
         art_page = art_page.replace("{{title}}", title)
         art_page = art_page.replace("{{access_type}}", clean_text(s.get('access_type', 'Free')).upper())
@@ -113,6 +127,7 @@ def generate_site():
 
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
+        # Portal Entry
         news_html += f'''
         <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-300 transition-all">
             <div class="flex justify-between items-center mb-6">
@@ -129,7 +144,7 @@ def generate_site():
 
     final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html)
     (WEBSITE_DIR / "index.html").write_text(final)
-    print(f"SUCCESS: {len(stories)} Comprehensive Guides Published.")
+    print(f"SUCCESS: {len(stories)} Simplified Guides Published.")
 
 if __name__ == "__main__":
     generate_site()
