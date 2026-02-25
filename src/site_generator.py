@@ -106,13 +106,29 @@ def generate_site():
 
         content = generate_content(title, summary, i, aid)
         import re as _re
-        hook = summary.split('|')[0].strip() if summary else ''
-        hook = _re.sub(r'(?i)Based on.*?(video|channel)\.?', '', hook).strip()
-        if hook.lower().startswith('discuss'): hook = hook[7:].strip()
-        if len(hook) < 15:
-            display_summary = f'Explore the technical breakdown, business ROI, and practical use cases for {title}.'
-        else:
-            display_summary = hook[:130] + '...' if len(hook) > 130 else hook
+        _hook = ''
+        # 1. Try to grab the first bullet point (usually a punchy feature/benefit)
+        _li = _re.search(r'<li>(.*?)</li>', content, _re.DOTALL | _re.IGNORECASE)
+        if _li:
+            _hook = _re.sub(r'<[^>]+>', '', _li.group(1)).strip()
+
+        # 2. If no bullet, grab the SECOND paragraph (skipping the boring intro)
+        if len(_hook) < 20:
+            _p_matches = _re.findall(r'<p>(.*?)</p>', content, _re.DOTALL | _re.IGNORECASE)
+            if len(_p_matches) > 1:
+                _hook = _re.sub(r'<[^>]+>', '', _p_matches[1]).strip()
+            elif len(_p_matches) > 0:
+                _hook = _re.sub(r'<[^>]+>', '', _p_matches[0]).strip()
+
+        # 3. Clean up the hook (remove weird spaces, markdown asterisks that leaked, etc)
+        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').strip()
+        if _hook.lower().startswith('based on'):
+            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook)
+
+        display_summary = _hook[:130] + '...' if len(_hook) > 130 else _hook
+
+        if len(display_summary) < 15:
+            display_summary = f"Discover the technical breakdown and use cases for {title}."
         source_clean = clean_text(s.get('source', 'WEB')).upper()
         if not source_clean: source_clean = "INTEL"
         img_url = get_contextual_img(title, i)
