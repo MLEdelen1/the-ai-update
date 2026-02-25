@@ -12,7 +12,7 @@ NEWS_DATA = DATA_DIR / "news_cache/latest_scan.json"
 TOOLS_DATA = DATA_DIR / "assets/tools_db.json"
 RESEARCH_DIR = DATA_DIR / "research/briefings_2026_02"
 
-# CORRECT MAPPING BASED ON AUDIT
+# Mapping for Premium Deep-Dives
 PREMIUM_MAPPING = {
     "d7fa42b7f3f5": "briefing_deepseek_v3.md",
     "90a874f93a44": "briefing_openai_o3.md",
@@ -30,11 +30,35 @@ def format_title(title):
     if "/" in title: parts = title.split("/"); return f"Intelligence Brief: {parts[1].replace('-', ' ').title()}"
     return f"Intelligence Brief: {title}" if "Intelligence" not in title else title
 
+def convert_md_to_html(md_text):
+    # Remove top level header if exists
+    md_text = re.sub(r'^# .*\n?', '', md_text)
+    # Headings
+    md_text = re.sub(r'^## (.*)$', r'<h2 class="text-2xl font-black mt-10 mb-4 text-slate-900 uppercase tracking-tight">\1</h2>', md_text, flags=re.M)
+    md_text = re.sub(r'^### (.*)$', r'<h3 class="text-lg font-bold mt-6 mb-2 text-slate-800 uppercase tracking-wide">\1</h3>', md_text, flags=re.M)
+    # Bold
+    md_text = re.sub(r'\*\*(.*?)\*\*', r'<strong class="font-bold text-slate-900">\1</strong>', md_text)
+    # Lists
+    md_text = re.sub(r'^\* (.*)$', r'<li class="ml-6 list-disc mb-2">\1</li>', md_text, flags=re.M)
+    md_text = re.sub(r'^- (.*)$', r'<li class="ml-6 list-disc mb-2">\1</li>', md_text, flags=re.M)
+    md_text = re.sub(r'^\d+\. (.*)$', r'<li class="ml-6 list-decimal mb-2">\1</li>', md_text, flags=re.M)
+    # Paragraphs
+    paragraphs = md_text.split('\n\n')
+    html_paragraphs = []
+    for p in paragraphs:
+        p = p.strip()
+        if not p: continue
+        if p.startswith('<h') or p.startswith('<li'):
+            html_paragraphs.append(p)
+        else:
+            html_paragraphs.append(f'<p class="mb-6">{p}</p>')
+    return '\n'.join(html_paragraphs)
+
 def generate_svg_chart(value):
     return f'''<svg viewBox="0 0 100 25" class="w-full"><rect width="100" height="20" rx="10" fill="#ffffff33" /><rect width="{value}" height="20" rx="10" fill="#ffffff" /><text x="5" y="13" font-family="Inter, sans-serif" font-weight="900" font-size="7" fill="#1e40af">{value}% POWER</text></svg>'''
 
 def generate_site():
-    print("Master Restoration: Final Content-ID Mapping & High-Fidelity Injection...")
+    print("Typography Restoration: Correcting font sizes and Markdown rendering...")
     ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
     master_temp = (TEMPLATE_DIR / "master.html").read_text()
     article_temp = (TEMPLATE_DIR / "article.html").read_text()
@@ -42,7 +66,7 @@ def generate_site():
     stories = json.loads(NEWS_DATA.read_text()) if NEWS_DATA.exists() else []
     news_html = ""
     archive_html = ""
-
+    
     for s in stories[:100]:
         aid = s.get('id', 'unknown')
         if aid == 'unknown': continue
@@ -50,16 +74,12 @@ def generate_site():
         title = format_title(s.get('title', 'AI Update'))
         summary = clean_text(s.get('summary', s.get('description', 'Technical briefing...')))
         
-        content_body = f"<p class='mb-8'>{summary}</p><p>Technical audit complete. Recommended for immediate enterprise integration.</p>"
+        content_body = f"<p class='mb-6'>{summary}</p><p>Technical audit complete. Recommended for immediate enterprise integration in Q1 2026.</p>"
         
         if aid in PREMIUM_MAPPING:
             md_file = RESEARCH_DIR / PREMIUM_MAPPING[aid]
             if md_file.exists():
-                md_text = md_file.read_text()
-                # Advanced HTML conversion for long-form content
-                html = md_text.replace("## ", "<h2 class='text-3xl font-black mt-12 mb-6'>").replace("\n\n", "</p><p>").replace("\n", "<br>")
-                html = html.replace("### ", "<h3 class='text-xl font-bold mt-8 mb-4'>")
-                content_body = f"<div class='markdown-article'>{html}</div>"
+                content_body = convert_md_to_html(md_file.read_text())
 
         art_page = article_temp
         art_page = art_page.replace("{{title}}", title)
@@ -73,7 +93,7 @@ def generate_site():
         specs = ['Technical Reasoning', 'Autonomous Execution', 'Market Disruptor', 'API-First Design']
         specs_html = "".join([f'<li class="flex items-center gap-4"><div class="w-2 h-2 rounded-full bg-blue-600"></div><span class="text-sm font-bold text-slate-700 uppercase">{spec}</span></li>' for spec in specs])
         art_page = art_page.replace("{{capabilities_list}}", specs_html)
-        art_page = art_page.replace("{{use_cases}}", "<div class='p-10 bg-slate-50 rounded-[2rem] border border-slate-100 mb-6'><h4 class='font-black text-lg mb-4 uppercase'>Strategic Implementation</h4><p class='text-slate-600 leading-relaxed'>Deploy this system to capture a 40% efficiency gain in automated business workflows.</p></div>")
+        art_page = art_page.replace("{{use_cases}}", "<div class='p-10 bg-slate-50 rounded-[2rem] border border-slate-100 mb-6'><h4 class='font-black text-lg mb-4 uppercase'>Strategic Implementation</h4><p class='text-slate-600 leading-relaxed text-base'>Deploy this system to capture significant efficiency gains in automated business workflows.</p></div>")
 
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
@@ -82,7 +102,7 @@ def generate_site():
 
     final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html)
     (WEBSITE_DIR / "index.html").write_text(final)
-    print("Success: Content-ID Mapping Corrected. Articles are now high-fidelity.")
+    print("Success: Typography restored and articles refactored.")
 
 if __name__ == "__main__":
     generate_site()
