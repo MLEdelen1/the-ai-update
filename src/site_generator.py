@@ -57,10 +57,17 @@ def clean_text(text):
     return re.sub(r'[^\x00-\x7F]+', '', text).strip()
 
 def format_title(title):
-    title = clean_text(title)
-    if "/" in title: title = title.split("/")[1]
-    return title.replace('-', ' ').replace('_', ' ').title()
-
+    import re
+    title = str(title).replace('-', ' ').replace('_', ' ')
+    title = re.sub(r'^[a-zA-Z0-9.-]+/', '', title) # clean repo prefixes
+    title = re.sub(r'[^a-zA-Z0-9 ]', ' ', title)   # remove weird chars
+    title = re.sub(r' +', ' ', title).strip().title() # remove double spaces
+    words = title.split()
+    if len(words) == 1:
+        return f"Understanding {title}: A Technical Overview"
+    elif len(words) > 8:
+        return " ".join(words[:8]) + "..."
+    return title
 
 def generate_content(title, summary, index, aid):
     import markdown
