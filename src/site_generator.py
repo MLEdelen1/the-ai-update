@@ -106,12 +106,18 @@ def generate_site():
 
         content = generate_content(title, summary, i, aid)
         import re as _re
-        _match = _re.search(r'<p>(.*?)</p>', content, _re.DOTALL | _re.IGNORECASE)
-        if _match:
-            _clean = _re.sub(r'<[^>]+>', '', _match.group(1)).strip()
-            display_summary = _clean[:120] + '...' if len(_clean) > 120 else _clean
+        # Use original source summary as a hook
+        hook = summary.split('|')[0].strip()
+        # Clean up prompt context if it was a YouTube video
+        hook = _re.sub(r'Based on.*?(video|channel)\.?', '', hook, flags=_re.IGNORECASE).strip()
+        if hook.lower().startswith('discuss'):
+            hook = hook[7:].strip()
+
+        # Fallback if the summary is empty or useless
+        if len(hook) < 15:
+            display_summary = f"Dive into the technical breakdown, business ROI, and practical use cases for {title}."
         else:
-            display_summary = 'Read the full technical breakdown and implementation guide inside...'
+            display_summary = hook[:130] + '...' if len(hook) > 130 else hook
 
         display_summary = ''
         for m_line in content.split('\n'):
