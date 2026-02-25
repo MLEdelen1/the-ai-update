@@ -143,7 +143,6 @@ def generate_site():
     tools_html = ""
     if TOOLS_DATA.exists():
         try:
-            import json
             tools = json.loads(TOOLS_DATA.read_text())
             for t in tools:
                 t_name = t.get("name", "")
