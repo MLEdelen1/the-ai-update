@@ -79,27 +79,142 @@ def get_static_mocks():
     return stats, models, os_grid
 
 
-def generate_archive_page():
-    print("Building Archive Page...")
+
+def generate_site():
+    print("REBUILDING: Verified UI Layout (Source of Truth = Markdown Files)...")
+    ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
+    master_temp = (TEMPLATE_DIR / "master.html").read_text(encoding='utf-8')
+    article_temp = (TEMPLATE_DIR / "article.html").read_text(encoding='utf-8')
+
+    # 1. Gather all valid articles from MD files
     md_files = list(DATA_DIR.glob("research/briefings_2026_02/briefing_*.md"))
     md_files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
 
-    archive_items = ""
+    valid_articles = []
     for md_path in md_files:
+        content_raw = md_path.read_text(encoding='utf-8')
         aid = md_path.stem.replace('briefing_', '')
-        content = md_path.read_text(encoding='utf-8')
-        lines = content.splitlines()
+
+        lines = content_raw.splitlines()
         title = "Untitled"
+        summary = ""
         for line in lines:
             if line.strip().startswith('# '):
                 title = line.strip().replace('# ', '').strip()
                 break
 
-        hook = ""
         for line in lines:
-            if line.strip() and not line.startswith('#') and len(line) > 40:
-                hook = clean_text(line)[:120] + "..."
+            cl = line.strip()
+            if cl and not cl.startswith('#') and len(cl) > 40:
+                summary = clean_text(cl)
                 break
+
+        valid_articles.append({
+            'id': aid,
+            'title': title,
+            'summary': summary,
+            'content_raw': content_raw
+        })
+
+    # 2. Generate HTML for ALL valid articles
+    import markdown
+    import re as _re
+
+    for i, art in enumerate(valid_articles):
+        aid = art['id']
+        title = art['title']
+        html_content = markdown.markdown(art['content_raw'], extensions=['tables'])
+
+        _no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', html_content, flags=_re.IGNORECASE|_re.DOTALL)
+        _lis = _re.findall(r'<li>(.*?)</li>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
+        _ps = _re.findall(r'<p>(.*?)</p>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
+
+        _hook = ''
+        for _li in _lis:
+            _clean_li = _re.sub(r'<[^>]+>', '', _li).strip()
+            if len(_clean_li) > 30:
+                _hook = _clean_li
+                break
+        if len(_hook) < 20:
+            if len(_ps) > 1: _hook = _re.sub(r'<[^>]+>', '', _ps[1]).strip()
+            elif len(_ps) > 0: _hook = _re.sub(r'<[^>]+>', '', _ps[0]).strip()
+        if len(_hook) < 20 and art['summary']:
+            _hook = art['summary'].split('|')[0]
+
+        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').replace('`', '').strip()
+        if _hook.lower().startswith('based on'):
+            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook).strip()
+
+        display_summary = _hook[:127] + '...' if len(_hook) > 130 else _hook
+        if len(display_summary) < 15:
+            display_summary = f"Discover the technical breakdown and use cases for {title}."
+
+        art['display_summary'] = display_summary
+
+        source_clean = "INTEL"
+        img_url = get_contextual_img(title, i)
+        art['img_url'] = img_url
+        art['source_clean'] = source_clean
+
+        art_page = article_temp.replace("{{title}}", title)                               .replace("{{source}}", source_clean)                               .replace("{{url}}", f"https://theaiupdate.org/articles/{aid}.html")                               .replace("{{content}}", html_content)                               .replace("{{description}}", display_summary.replace('"', '&quot;'))                               .replace("{{image_url}}", img_url)
+
+        (ARTICLE_DIR / f"{aid}.html").write_text(enforce_english(art_page), encoding='utf-8')
+
+    # 3. Build Homepage
+    f_html = ""; n_html = ""; a_html = ""
+    stats, models, os_grid = get_static_mocks()
+
+    for i, art in enumerate(valid_articles[:13]):
+        aid = art['id']
+        title = art['title']
+        display_summary = art['display_summary']
+        source_clean = art['source_clean']
+        img_url = art['img_url']
+        url_local = f"/articles/{aid}.html"
+
+        if i == 0:
+            f_html = f'''<div class="featured">
+                <a href="{url_local}"><img src="{img_url}" class="featured-img" alt="{title}"></a>
+                <div class="featured-meta"><span class="featured-cat">{source_clean}</span><span>6 MIN READ &bull; RESEARCH</span></div>
+                <a href="{url_local}"><h2>{title}</h2></a>
+                <a href="{url_local}">Read the full brief &rarr;</a>
+            </div>'''
+        elif 1 <= i <= 6:
+            time_ago = f"{i*2} HRS AGO"
+            n_html += f'''<a href="{url_local}" class="latest-item">
+                <div class="latest-meta"><span class="latest-cat">{source_clean}</span><span>{time_ago}</span></div>
+                <h3>{title}</h3>
+                <p>{display_summary}</p>
+            </a>'''
+        elif 7 <= i <= 12:
+            num_str = f"0{i-6}"
+            a_html += f'''<a href="{url_local}" class="analysis-card" data-num="{num_str}">
+                <div class="analysis-meta">{source_clean}</div>
+                <h3>{title}</h3>
+                <p>{display_summary}</p>
+                <div class="analysis-read">14 MIN READ</div>
+            </a>'''
+
+    t_html = ""
+    if TOOLS_DATA.exists():
+        try:
+            for t in json.loads(TOOLS_DATA.read_text()):
+                t_html += f'''<a href="{t.get('url','#')}" target="_blank" class="tool-card">
+                    <div class="model-head"><h3>{t.get('name','')}</h3><span>{t.get('category','')}</span></div>
+                    <p style="font-size:13px; color:var(--text-muted);">{t.get('description','')}</p>
+                </a>'''
+        except: pass
+
+    final = master_temp.replace("{{STATS_HTML}}", stats)                       .replace("{{FEATURED_HTML}}", f_html)                       .replace("{{NEWS_HTML}}", n_html)                       .replace("{{ANALYSIS_HTML}}", a_html)                       .replace("{{MODELS_HTML}}", models)                       .replace("{{OPENSOURCE_HTML}}", os_grid)                       .replace("{{TOOLS_HTML}}", t_html)
+    (WEBSITE_DIR / "index.html").write_text(enforce_english(final))
+
+    # 4. Build Archive Page
+    print("Building Archive Page...")
+    archive_items = ""
+    for art in valid_articles:
+        aid = art['id']
+        title = art['title']
+        hook = art['display_summary']
 
         archive_items += f'''<a href="/articles/{aid}.html" class="analysis-card" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <div class="analysis-meta">INTEL &bull; ARCHIVE</div>
@@ -108,9 +223,6 @@ def generate_archive_page():
             <div style="margin-top: auto; font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;">READ FULL &rarr;</div>
         </a>'''
 
-    master_temp = (TEMPLATE_DIR / "master.html").read_text(encoding='utf-8')
-
-    import re as _re
     parts = _re.split(r'<main[^>]*>', master_temp)
     if len(parts) > 1:
         header_part = parts[0]
@@ -126,148 +238,6 @@ def generate_archive_page():
     archive_html += '</div></main>' + footer_part
 
     (WEBSITE_DIR / "archive.html").write_text(enforce_english(archive_html), encoding='utf-8')
-
-
-def generate_site():
-    print("REBUILDING: Verified UI Layout (Signal/Neon Green)...")
-    ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
-    master_temp = (TEMPLATE_DIR / "master.html").read_text()
-    article_temp = (TEMPLATE_DIR / "article.html").read_text()
-
-    
-    raw_stories = json.loads(NEWS_DATA.read_text()) if NEWS_DATA.exists() else []
-
-    # STRICT RULE: Only use stories that have a fully compiled Markdown file
-    stories = []
-    for s in raw_stories:
-        aid = s.get('id', 'unknown')
-        if aid != 'unknown' and (DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md").exists():
-            stories.append(s)
-
-    f_html = ""; n_html = ""; a_html = ""
-    stats, models, os_grid = get_static_mocks()
-
-    for i, s in enumerate(stories[:30]):
-        aid = s.get('id', 'unknown')
-        if aid == 'unknown': continue
-
-        title = format_title(s.get('title', ''))
-        summary = clean_text(s.get('summary', s.get('description', '')))
-
-        # Override with exact markdown data
-        md_path = DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md"
-        if md_path.exists():
-            lines = md_path.read_text().splitlines()
-            for line in lines:
-                if line.strip().startswith('# '):
-                    title = line.strip().replace('# ', '').strip()
-                    break
-            if len(summary) < 20:
-                for line in lines:
-                    cl = line.strip()
-                    if cl and not cl.startswith('#') and len(cl) > 40:
-                        summary = clean_text(cl)
-                        break
-
-        content = generate_content(title, summary, i, aid)
-        import re as _re
-        _hook = ''
-
-        # 1. Remove all headers from the HTML so we don't accidentally grab them
-        _no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', content, flags=_re.IGNORECASE|_re.DOTALL)
-
-        # 2. Extract bullets and paragraphs
-        _lis = _re.findall(r'<li>(.*?)</li>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
-        _ps = _re.findall(r'<p>(.*?)</p>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
-
-        # 3. Try to get a high-signal bullet point (pros/features)
-        for _li in _lis:
-            _clean_li = _re.sub(r'<[^>]+>', '', _li).strip()
-            if len(_clean_li) > 30:
-                _hook = _clean_li
-                break
-
-        # 4. If no bullet, grab the SECOND paragraph (skipping the intro)
-        if len(_hook) < 20:
-            if len(_ps) > 1:
-                _hook = _re.sub(r'<[^>]+>', '', _ps[1]).strip()
-            elif len(_ps) > 0:
-                _hook = _re.sub(r'<[^>]+>', '', _ps[0]).strip()
-
-        # 5. Fallback to the original news scan summary if HTML fails
-        if len(_hook) < 20 and summary:
-            _hook = summary.split('|')[0]
-
-        # 6. Clean and truncate
-        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').replace('`', '').strip()
-        if _hook.lower().startswith('based on'):
-            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook).strip()
-
-        display_summary = _hook[:127] + '...' if len(_hook) > 130 else _hook
-
-        if len(display_summary) < 15:
-            display_summary = f"Discover the technical breakdown and use cases for {title}."
-        source_clean = clean_text(s.get('source', 'WEB')).upper()
-        if not source_clean: source_clean = "INTEL"
-        img_url = get_contextual_img(title, i)
-
-        # Build Article Page
-        art_page = article_temp.replace("{{title}}", title)
-        art_page = art_page.replace("{{source}}", source_clean)
-        art_page = art_page.replace("{{url}}", s.get('url', '#'))
-        art_page = art_page.replace("{{content}}", content)
-        art_page = art_page.replace("{{description}}", display_summary.replace('"', '&quot;'))
-        art_page = art_page.replace("{{image_url}}", img_url)
-        (ARTICLE_DIR / f"{aid}.html").write_text(enforce_english(art_page))
-
-        url_local = f"/articles/{aid}.html"
-
-        # Build Homepage Grids
-        if i == 0:
-            f_html = f"""<div class="featured">
-                <a href="{url_local}"><img src="{img_url}" class="featured-img" alt="{title}"></a>
-                <div class="featured-meta"><span class="featured-cat">{source_clean}</span><span>6 MIN READ &bull; RESEARCH</span></div>
-                <a href="{url_local}"><h2>{title}</h2></a>
-                
-                <a href="{url_local}">Read the full brief &rarr;</a>
-            </div>"""
-        elif 1 <= i <= 6:
-            time_ago = f"{i*2} HRS AGO"
-            n_html += f"""<a href="{url_local}" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">{source_clean}</span><span>{time_ago}</span></div>
-                <h3>{title}</h3>
-                <p>{display_summary}</p>
-                
-            </a>"""
-        elif 7 <= i <= 12:
-            num_str = f"0{i-6}"
-            a_html += f"""<a href="{url_local}" class="analysis-card" data-num="{num_str}">
-                <div class="analysis-meta">{source_clean}</div>
-                <h3>{title}</h3>
-                <p>{display_summary}</p>
-                
-                <div class="analysis-read">14 MIN READ</div>
-            </a>"""
-
-    t_html = ""
-    if TOOLS_DATA.exists():
-        try:
-            for t in json.loads(TOOLS_DATA.read_text()):
-                t_html += f"""<a href="{t.get('url','#')}" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>{t.get('name','')}</h3><span>{t.get('category','')}</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);">{t.get('description','')}</p>
-                </a>"""
-        except: pass
-
-    final = master_temp.replace("{{STATS_HTML}}", stats)\
-                       .replace("{{FEATURED_HTML}}", f_html)\
-                       .replace("{{NEWS_HTML}}", n_html)\
-                       .replace("{{ANALYSIS_HTML}}", a_html)\
-                       .replace("{{MODELS_HTML}}", models)\
-                       .replace("{{OPENSOURCE_HTML}}", os_grid)\
-                       .replace("{{TOOLS_HTML}}", t_html)
-    (WEBSITE_DIR / "index.html").write_text(final)
-    generate_archive_page()
 
 if __name__ == "__main__":
     generate_site()
