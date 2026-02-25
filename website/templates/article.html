@@ -8,92 +8,93 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .article-content p { margin-bottom: 1.5rem; line-height: 1.75; }
-        .article-content h2 { margin-top: 2.5rem; margin-bottom: 1.25rem; font-weight: 800; font-size: 1.875rem; color: #0f172a; }
-        .article-content h3 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; font-size: 1.5rem; color: #1e293b; }
-        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        .article-content li { margin-bottom: 0.5rem; }
+        .article-content p { margin-bottom: 1.5rem; line-height: 1.8; font-weight: 400; font-size: 1.125rem; color: #334155; }
+        .article-content h2 { margin-top: 3rem; margin-bottom: 1.5rem; font-weight: 800; font-size: 2rem; color: #0f172a; letter-spacing: -0.025em; }
+        .article-content h3 { margin-top: 2.5rem; margin-bottom: 1.25rem; font-weight: 700; font-size: 1.5rem; color: #1e293b; }
+        .article-content ul, .article-content ol { margin-bottom: 2rem; padding-left: 1.5rem; list-style-type: disc; }
+        .article-content li { margin-bottom: 0.75rem; color: #334155; line-height: 1.6; }
+        .article-content strong { font-weight: 700; color: #0f172a; }
     </style>
 </head>
 <body class="bg-white text-slate-800 selection:bg-blue-100">
 
     <!-- Navigation -->
-    <nav class="py-6 px-6 max-w-7xl mx-auto flex justify-between items-center border-b border-slate-100">
-        <a href="/" class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-200">
-                <span class="text-white font-black text-lg italic">A</span>
+    <nav class="py-8 px-6 max-w-7xl mx-auto flex justify-between items-center border-b border-slate-100">
+        <a href="/" class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-xl shadow-blue-100">
+                <span class="text-white font-black text-xl italic">A</span>
             </div>
-            <span class="font-black text-xl tracking-tighter uppercase">The AI Update</span>
+            <span class="font-black text-2xl tracking-tighter uppercase">The AI Update</span>
         </a>
-        <div class="hidden md:flex gap-8 font-bold text-[10px] text-slate-400 uppercase tracking-widest">
-            <a href="/index.html" class="hover:text-blue-600 transition">Portal</a>
-            <a href="/toolkit.html" class="hover:text-blue-600 transition">Tools</a>
-            <a href="/sponsors.html" class="hover:text-blue-600 transition">Agency</a>
+        <div class="hidden md:flex gap-10 font-bold text-[11px] text-slate-400 uppercase tracking-[0.2em]">
+            <a href="/index.html" class="hover:text-blue-600 transition">Intelligence Portal</a>
+            <a href="/toolkit.html" class="hover:text-blue-600 transition">Technical Toolkit</a>
+            <a href="/sponsors.html" class="hover:text-blue-600 transition">Agency Services</a>
         </div>
     </nav>
 
     <!-- Article Header -->
-    <header class="pt-20 pb-16 px-6 max-w-4xl mx-auto text-center">
-        <div class="flex justify-center items-center gap-3 mb-8">
-            <span class="py-1 px-4 bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-blue-100">Verified Intelligence</span>
-            <span class="py-1 px-4 bg-slate-50 text-slate-500 text-[10px] font-black uppercase tracking-widest rounded-full border border-slate-100">{{access_type}}</span>
+    <header class="pt-24 pb-20 px-6 max-w-4xl mx-auto text-center">
+        <div class="flex justify-center items-center gap-4 mb-10">
+            <span class="py-1.5 px-5 bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-blue-100">Verified Research</span>
+            <span class="py-1.5 px-5 bg-slate-50 text-slate-500 text-[10px] font-black uppercase tracking-widest rounded-full border border-slate-100">{{access_type}}</span>
         </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 leading-tight text-slate-900 italic">{{title}}</h1>
-        <div class="flex justify-center items-center gap-6 text-slate-400 text-xs font-bold">
-            <span>BY THE AI UPDATE RESEARCH DESK</span>
-            <span class="w-1 h-1 rounded-full bg-slate-200"></span>
+        <h1 class="text-5xl md:text-6xl font-black tracking-tighter mb-10 leading-[1.1] text-slate-900">{{title}}</h1>
+        <div class="flex justify-center items-center gap-8 text-slate-400 text-xs font-bold tracking-widest uppercase">
+            <span>BY RESEARCH DESK</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-200"></span>
             <span>FEB 2026</span>
-            <span class="w-1 h-1 rounded-full bg-slate-200"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-200"></span>
             <span>SOURCE: {{source}}</span>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-3xl mx-auto px-6 pb-32">
-        <div class="article-content text-lg text-slate-600 font-normal">
+    <main class="max-w-3xl mx-auto px-6 pb-40">
+        <div class="article-content">
             {{content}}
         </div>
 
-        <!-- Tech Specs & Visualization -->
-        <section class="my-20 p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100">
-            <div class="grid md:grid-cols-2 gap-12">
+        <!-- Tech Visualization -->
+        <section class="my-24 p-12 bg-slate-50 rounded-[3rem] border border-slate-100">
+            <div class="grid md:grid-cols-2 gap-16">
                 <div>
-                    <h3 class="font-black text-xs uppercase tracking-widest mb-6 text-slate-400 mt-0">Technical Scoring</h3>
-                    <div class="bg-blue-600 rounded-3xl p-8 shadow-xl shadow-blue-100">
+                    <h3 class="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-slate-400 mt-0">Efficiency Analysis</h3>
+                    <div class="bg-blue-600 rounded-[2rem] p-10 shadow-2xl shadow-blue-200/50">
                         {{chart_svg}}
-                        <p class="mt-4 text-[10px] font-bold text-blue-100 uppercase tracking-widest text-center">Intelligence Power Score</p>
+                        <p class="mt-6 text-[10px] font-black text-blue-100 uppercase tracking-[0.2em] text-center">Intelligence Power Quotient</p>
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-black text-xs uppercase tracking-widest mb-6 text-slate-400 mt-0">Capabilities Analysis</h3>
-                    <ul class="space-y-3 text-sm font-bold text-slate-500 uppercase">
+                    <h3 class="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-slate-400 mt-0">Capability Matrix</h3>
+                    <ul class="space-y-4 text-[11px] font-black text-slate-500 uppercase tracking-widest list-none p-0">
                         {{capabilities_list}}
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Use Cases -->
-        <section class="mb-20">
-            <h2 class="text-2xl font-black mb-10 text-slate-900 tracking-tight">Professional Implementation</h2>
-            <div class="grid gap-6">
+        <!-- Use Case Grid -->
+        <section class="mb-24">
+            <h2 class="text-3xl font-black mb-12 text-slate-900 tracking-tighter">Implementation Roadmap</h2>
+            <div class="grid gap-8">
                 {{use_cases}}
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="p-12 bg-slate-900 rounded-[3rem] text-white text-center">
-            <h3 class="text-3xl font-extrabold mb-6">Verify This Intelligence</h3>
-            <p class="text-slate-400 mb-10">Deep-dive into the raw technical documentation to verify our synthesis.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{url}}" target="_blank" class="py-4 px-10 bg-blue-600 rounded-full font-bold text-sm hover:bg-blue-500 transition shadow-lg shadow-blue-900/40">Access Original Source &rarr;</a>
-                <a href="/index.html" class="py-4 px-10 bg-white/10 rounded-full font-bold text-sm hover:bg-white/20 transition border border-white/10">Return to Portal</a>
+        <!-- Bottom CTA -->
+        <section class="p-16 bg-slate-900 rounded-[4rem] text-white text-center shadow-2xl shadow-slate-200">
+            <h3 class="text-4xl font-black mb-8 tracking-tighter">Strategic Handoff</h3>
+            <p class="text-slate-400 text-lg mb-12 font-medium">We have synthesized the core intelligence. Access the raw technical documentation to begin enterprise integration.</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="{{url}}" target="_blank" class="py-5 px-12 bg-blue-600 rounded-full font-black text-sm hover:bg-blue-500 transition-all hover:scale-105 shadow-xl shadow-blue-900/40 uppercase tracking-widest">Access Source &rarr;</a>
+                <a href="/index.html" class="py-5 px-12 bg-white/5 rounded-full font-black text-sm hover:bg-white/10 transition-all border border-white/10 uppercase tracking-widest">Return to Hub</a>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 bg-slate-50 border-t border-slate-100 text-center">
-        <p class="text-slate-400 text-[10px] font-bold tracking-widest uppercase">The AI Update &copy; 2026. High-Authority Autonomous Media.</p>
+    <footer class="py-20 bg-slate-50 border-t border-slate-100 text-center">
+        <p class="text-slate-400 text-[10px] font-black tracking-[0.4em] uppercase">The AI Update &copy; 2026. High-Authority Autonomous Intelligence.</p>
     </footer>
 </body>
 </html>
