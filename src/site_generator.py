@@ -72,22 +72,22 @@ def generate_content(title, summary, index, aid):
     md_path = DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md"
     if md_path.exists():
         md_text = md_path.read_text()
-        # Convert markdown to html
         html_content = markdown.markdown(md_text, extensions=['tables'])
-        # Add a bit of styling to tables and blockquotes
-        html_content = html_content.replace('<table>', '<table class="min-w-full my-8 bg-white shadow-sm rounded-xl overflow-hidden">')
-        html_content = html_content.replace('<thead>', '<thead class="bg-slate-50">')
-        html_content = html_content.replace('<th>', '<th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest text-slate-500">')
-        html_content = html_content.replace('<td>', '<td class="px-6 py-4 border-t border-slate-100">')
-        html_content = html_content.replace('<blockquote>', '<blockquote class="border-l-4 border-blue-500 pl-4 py-2 my-6 bg-blue-50 text-slate-700 italic rounded-r-lg">')
-        html_content = html_content.replace('<h1>', '<h1 class="text-4xl font-black mb-6">')
-        html_content = html_content.replace('<h2>', '<h2 class="text-2xl font-bold mt-10 mb-4 text-blue-900">')
-        html_content = html_content.replace('<h3>', '<h3 class="text-xl font-bold mt-8 mb-3">')
-        html_content = html_content.replace('<p>', '<p class="mb-6 text-lg text-slate-700 leading-relaxed">')
-        html_content = html_content.replace('<ul>', '<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">')
+        html_content = html_content.replace('<table>', '<div class="overflow-x-auto my-12"><table class="min-w-full bg-slate-900 shadow-xl rounded-xl overflow-hidden border border-slate-800">')
+        html_content = html_content.replace('</table>', '</table></div>')
+        html_content = html_content.replace('<thead>', '<thead class="bg-slate-950 border-b border-slate-800">')
+        html_content = html_content.replace('<th>', '<th class="px-6 py-5 text-left text-xs font-black uppercase tracking-widest text-cyan-500">')
+        html_content = html_content.replace('<td>', '<td class="px-6 py-4 border-t border-slate-800 text-slate-300 font-light">')
+        html_content = html_content.replace('<blockquote>', '<blockquote class="border-l-4 border-cyan-500 pl-6 py-4 my-8 bg-cyan-900/10 text-cyan-100 italic rounded-r-lg shadow-inner">')
+        html_content = html_content.replace('<h1>', '<h1 class="text-4xl md:text-5xl font-black mb-8 text-white tracking-tight">')
+        html_content = html_content.replace('<h2>', '<h2 class="text-2xl md:text-3xl font-bold mt-16 mb-6 text-cyan-400 flex items-center tracking-tight"><span class="mr-4 text-cyan-500/30">//</span>')
+        html_content = html_content.replace('<h3>', '<h3 class="text-xl font-bold mt-10 mb-4 text-white">')
+        html_content = html_content.replace('<p>', '<p class="mb-8 text-lg text-slate-300 leading-relaxed font-light">')
+        html_content = html_content.replace('<ul>', '<ul class="list-disc pl-6 mb-8 space-y-3 text-lg text-slate-300 font-light marker:text-cyan-500">')
+        html_content = html_content.replace('<strong>', '<strong class="text-white font-bold">')
         return html_content
     else:
-        return f"<p class='text-lg'>Content currently being compiled for {title}. Please check back shortly.</p>"
+        return f"<p class='text-lg text-slate-400'>Content currently being compiled for {title}. Please check back shortly.</p>"
 
 
 def generate_site():
@@ -136,7 +136,7 @@ def generate_site():
         art_page = art_page.replace("{{content}}", content)
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
         
-        news_html += f'<div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all"><div class="flex justify-between items-center mb-6"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{clean_text(s.get("source","")).upper()}</span><span class="px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-full uppercase">DEEP DIVE</span></div><h4 class="text-2xl font-black mb-4 leading-none">{title}</h4><p class="text-slate-500 text-sm mb-10 font-medium">{display_summary}</p><div class="mt-auto"><a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-widest border-b-2 border-blue-50">Read Comprehensive Resource &rarr;</a></div></div>'
+        news_html += f'<div class=\"bg-slate-900/50 p-8 rounded-[2rem] border border-slate-800 shadow-lg backdrop-blur-sm flex flex-col hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all group\"><div class=\"flex justify-between items-center mb-6\"><span class=\"text-[10px] font-bold text-slate-500 uppercase tracking-widest\">{clean_text(s.get(\"source\",\"\")).upper()}</span><span class=\"px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[8px] font-black rounded-full uppercase\">DEEP DIVE</span></div><h4 class=\"text-2xl font-black mb-4 leading-tight text-white group-hover:text-cyan-300 transition-colors\">{title}</h4><p class=\"text-slate-400 text-sm mb-8 font-light leading-relaxed\">{display_summary}</p><div class=\"mt-auto pt-5 border-t border-slate-800/50\"><a href=\"/articles/{aid}.html\" class=\"text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center group-hover:text-cyan-300\">Read Briefing <i class=\"fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform\"></i></a></div></div>'
         
         archive_html += f'<li><a href="/articles/{aid}.html" class="text-slate-500 hover:text-blue-600 transition-colors">{title}</a></li>'
 
@@ -149,7 +149,7 @@ def generate_site():
                 t_cat = t.get("category", "AI")
                 t_desc = t.get("description", "")
                 t_url = t.get("url", "#")
-                tools_html += f'<div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 flex flex-col"><div class="flex justify-between items-center mb-4"><h4 class="text-xl font-bold text-white">{t_name}</h4><span class="px-2 py-1 bg-blue-600/20 text-blue-400 text-[10px] font-black rounded uppercase">{t_cat}</span></div><p class="text-slate-400 text-sm mb-6">{t_desc}</p><a href="{t_url}" target="_blank" class="mt-auto text-blue-400 font-bold text-xs uppercase tracking-widest hover:text-white transition-colors">Try Now &rarr;</a></div>'
+                tools_html += f'<div class=\"bg-slate-900/80 p-8 rounded-2xl border border-slate-800 flex flex-col hover:border-cyan-500 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all\"><div class=\"flex justify-between items-center mb-5\"><h4 class=\"text-xl font-bold text-white\">{t_name}</h4><span class=\"px-2 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-black rounded uppercase\">{t_cat}</span></div><p class=\"text-slate-400 text-sm mb-8 font-light\">{t_desc}</p><a href=\"{t_url}\" target=\"_blank\" class=\"mt-auto text-cyan-400 font-bold text-xs uppercase tracking-widest hover:text-cyan-300 transition-colors\">Launch Tool &rarr;</a></div>'
         except Exception as e:
             print(f"Error loading tools: {e}")
 
