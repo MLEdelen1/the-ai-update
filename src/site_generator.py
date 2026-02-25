@@ -10,6 +10,7 @@ ARTICLE_DIR = WEBSITE_DIR / "articles"
 TEMPLATE_DIR = WEBSITE_DIR / "templates"
 DATA_DIR = PROJECT_ROOT / "data"
 NEWS_DATA = DATA_DIR / "news_cache/latest_scan.json"
+TOOLS_DATA = DATA_DIR / "assets/tools_db.json"
 
 # Image categories for better relevance
 IMAGES = {
@@ -42,10 +43,7 @@ def get_topic_image(title):
     return random.choice(list(IMAGES.values()))
 
 def explain_tech(name, summary):
-    # This function builds a detailed explainer following the 4-phase framework
     img_url = get_topic_image(name)
-    
-    # Phase 1: Deep Dive (What everything means)
     p1 = f"""
     <h2>Phase 1: What is {name} and How It Works</h2>
     <p>{name} is a new tool. It uses smart math to help you finish tasks. This math is often called an AI brain. It works by looking at millions of examples from the web. Then it learns how to solve problems on its own. You don't have to tell it every single move.</p>
@@ -53,8 +51,6 @@ def explain_tech(name, summary):
     <img src="{img_url}" alt="{name} Technology" class="w-full h-80 object-cover rounded-3xl my-10 shadow-lg">
     <p>The system also uses something called a neural network. This is just a web of smart points. These points work together like the nerves in your head. One point finds words. Another point finds colors. Together, they build the whole result. This is why the tool seems so smart when you use it.</p>
     """
-
-    # Phase 2: Benchmarks & Comparison
     p2 = f"""
     <h2>Phase 2: Speed and Cost Comparison</h2>
     <p>We tested {name} against three other tools. We wanted to see if it is worth your time. We checked how fast it runs. We also checked how much money it costs to start. Here is what we found in our test lab.</p>
@@ -90,8 +86,6 @@ def explain_tech(name, summary):
     </table>
     <p>The results show that {name} is the best choice. It is faster and costs less. Most people can set it up in five minutes. Other tools can take a whole day to learn. This makes it a great pick for small teams.</p>
     """
-
-    # Phase 3: Use Cases
     p3 = f"""
     <h2>Phase 3: How to Use This to Earn Money</h2>
     <h3>The Business Side</h3>
@@ -101,37 +95,32 @@ def explain_tech(name, summary):
     <p>If you are a normal person, you can make extra cash. You can use {name} to offer services online. For example, you can help small shops with their video ads. You don't need a big budget. You can do this on a basic laptop for under $300. It is a simple way to make $500 to $1,000 extra every month.</p>
     <img src="{IMAGES['MONEY']}" alt="Earning Money with AI" class="w-full h-80 object-cover rounded-3xl my-10 shadow-lg">
     """
-    
     return p1 + p2 + p3
 
 def generate_site():
-    print("REBUILDING: The High-Fidelity Detailed Explainer Portal...")
+    print("REBUILDING: The High-Fidelity Detailed Explainer Portal with Tools Fix...")
     ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
     
     master_temp = (TEMPLATE_DIR / "master.html").read_text()
     article_temp = (TEMPLATE_DIR / "article.html").read_text()
     
+    # Generate News Section
     stories = json.loads(NEWS_DATA.read_text()) if NEWS_DATA.exists() else []
     news_html = ""
-    
+    archive_html = ""
     for s in stories[:100]:
         aid = s.get('id', 'unknown')
         if aid == 'unknown': continue
-        
         title = format_title(s.get('title', ''))
         content = explain_tech(title, clean_text(s.get('summary', '')))
         
-        # Article Page
-        art_page = article_temp
-        art_page = art_page.replace("{{title}}", f"{title}: The Definitive Guide")
+        art_page = article_temp.replace("{{title}}", f"{title}: The Definitive Guide")
         art_page = art_page.replace("{{access_type}}", "Technical Briefing")
         art_page = art_page.replace("{{source}}", clean_text(s.get('source', 'WEB')).upper())
         art_page = art_page.replace("{{url}}", s.get('url', '#'))
         art_page = art_page.replace("{{content}}", content)
-
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
-        # Portal Entry
         news_html += f'''
         <div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all">
             <div class="flex justify-between items-center mb-6">
@@ -144,10 +133,29 @@ def generate_site():
                 <a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-widest border-b-2 border-blue-50">Read The Guide &rarr;</a>
             </div>
         </div>'''
+        archive_html += f'<li><a href="/articles/{aid}.html" class="text-slate-400 hover:text-blue-600 text-[10px] font-bold uppercase tracking-widest transition">{title}</a></li>'
 
-    final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", "")
+    # Generate Tools Section
+    tools = json.loads(TOOLS_DATA.read_text()) if TOOLS_DATA.exists() else []
+    tools_html = ""
+    for t in tools:
+        tools_html += f'''
+        <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{t.get('category','').upper()}</span>
+                <span class="px-2 py-1 bg-slate-100 text-slate-400 text-[8px] font-black rounded uppercase">FREE</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">{t.get('name','')}</h3>
+            <p class="text-slate-500 text-sm mb-6">{t.get('use_case','')}</p>
+            <a href="{t.get('url','#')}" target="_blank" class="mt-auto text-blue-600 font-bold text-xs uppercase tracking-widest">Visit Tool &rarr;</a>
+        </div>'''
+
+    # Generate Job Tracker Placeholder
+    job_html = ""
+
+    final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html).replace("{{TOOLS_HTML}}", tools_html).replace("{{JOB_TRACKER_HTML}}", job_html)
     (WEBSITE_DIR / "index.html").write_text(final)
-    print(f"SUCCESS: {len(stories)} Visual Explainer Guides Published.")
+    print(f"SUCCESS: {len(stories)} Guides and {len(tools)} Tools Published.")
 
 if __name__ == "__main__":
     generate_site()
