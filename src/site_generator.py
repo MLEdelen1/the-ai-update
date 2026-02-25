@@ -127,7 +127,7 @@ def generate_site():
                 <a href="{url_local}"><img src="{img_url}" class="featured-img" alt="{title}"></a>
                 <div class="featured-meta"><span class="featured-cat">{source_clean}</span><span>6 MIN READ &bull; RESEARCH</span></div>
                 <a href="{url_local}"><h2>{title}</h2></a>
-                <p>{display_summary}</p>
+                
                 <a href="{url_local}">Read the full brief &rarr;</a>
             </div>"""
         elif 1 <= i <= 6:
@@ -135,14 +135,14 @@ def generate_site():
             n_html += f"""<a href="{url_local}" class="latest-item">
                 <div class="latest-meta"><span class="latest-cat">{source_clean}</span><span>{time_ago}</span></div>
                 <h3>{title}</h3>
-                <p>{display_summary}</p>
+                
             </a>"""
         elif 7 <= i <= 12:
             num_str = f"0{i-6}"
             a_html += f"""<a href="{url_local}" class="analysis-card" data-num="{num_str}">
                 <div class="analysis-meta">{source_clean}</div>
                 <h3>{title}</h3>
-                <p>{display_summary}</p>
+                
                 <div class="analysis-read">14 MIN READ</div>
             </a>"""
 
