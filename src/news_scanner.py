@@ -87,3 +87,10 @@ def run_full_scan():
 
 if __name__ == "__main__":
     run_full_scan()
+
+
+# Inject new YouTube source
+try:
+    YOUTUBE_SOURCES.append('Julian Goldie SEO')
+except NameError:
+    YOUTUBE_SOURCES = ['NetworkChuck', 'AI Search', 'AI Revolution', 'Julian Goldie SEO']
