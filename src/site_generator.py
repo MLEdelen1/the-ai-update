@@ -78,6 +78,56 @@ def get_static_mocks():
     """
     return stats, models, os_grid
 
+
+def generate_archive_page():
+    print("Building Archive Page...")
+    md_files = list(DATA_DIR.glob("research/briefings_2026_02/briefing_*.md"))
+    md_files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+
+    archive_items = ""
+    for md_path in md_files:
+        aid = md_path.stem.replace('briefing_', '')
+        content = md_path.read_text(encoding='utf-8')
+        lines = content.splitlines()
+        title = "Untitled"
+        for line in lines:
+            if line.strip().startswith('# '):
+                title = line.strip().replace('# ', '').strip()
+                break
+
+        hook = ""
+        for line in lines:
+            if line.strip() and not line.startswith('#') and len(line) > 40:
+                hook = clean_text(line)[:120] + "..."
+                break
+
+        archive_items += f'''<a href="/articles/{aid}.html" class="analysis-card" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div class="analysis-meta">INTEL &bull; ARCHIVE</div>
+            <h3 style="margin: 0; font-size: 1.2rem; line-height: 1.3;">{title}</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem;">{hook}</p>
+            <div style="margin-top: auto; font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;">READ FULL &rarr;</div>
+        </a>'''
+
+    master_temp = (TEMPLATE_DIR / "master.html").read_text(encoding='utf-8')
+
+    import re as _re
+    parts = _re.split(r'<main[^>]*>', master_temp)
+    if len(parts) > 1:
+        header_part = parts[0]
+        footer_part = _re.split(r'</main>', parts[1])[1]
+    else:
+        header_part = master_temp
+        footer_part = ""
+
+    archive_html = header_part + '<main style="padding-top: 120px; padding-bottom: 100px; max-width: 1200px; margin: 0 auto; width: 100%; padding-left: 1rem; padding-right: 1rem;">'
+    archive_html += '<div class="section-header" style="margin-bottom: 3rem; text-align: center; justify-content: center;"><h2 class="section-title">ALL <span>ARTICLES</span></h2><p style="color: var(--text-muted);">The complete intelligence archive.</p></div>'
+    archive_html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">'
+    archive_html += archive_items
+    archive_html += '</div></main>' + footer_part
+
+    (WEBSITE_DIR / "archive.html").write_text(enforce_english(archive_html), encoding='utf-8')
+
+
 def generate_site():
     print("REBUILDING: Verified UI Layout (Signal/Neon Green)...")
     ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
@@ -208,6 +258,7 @@ def generate_site():
                        .replace("{{OPENSOURCE_HTML}}", os_grid)\
                        .replace("{{TOOLS_HTML}}", t_html)
     (WEBSITE_DIR / "index.html").write_text(final)
+    generate_archive_page()
 
 if __name__ == "__main__":
     generate_site()

@@ -72,7 +72,7 @@ def post_with_cookies():
 
         print('[DEBUG] Clicking Post Button...')
         post_btn = '[data-testid="tweetButton"], [data-testid="tweetButtonInline"]'
-        page.click(post_btn)
+        page.click(post_btn, force=True)
 
         time.sleep(5)
         print(f'[DEBUG] Final URL: {page.url}')
