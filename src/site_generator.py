@@ -55,7 +55,7 @@ def generate_content(title, summary, index, aid):
     if md_path.exists():
         md_text = md_path.read_text()
         return markdown.markdown(md_text, extensions=['tables'])
-    return f"<p>Content currently being compiled for {title}. Please check back shortly.</p>"
+    return None
 
 def get_static_mocks():
     stats = """
@@ -134,7 +134,16 @@ def generate_site():
     master_temp = (TEMPLATE_DIR / "master.html").read_text()
     article_temp = (TEMPLATE_DIR / "article.html").read_text()
 
-    stories = json.loads(NEWS_DATA.read_text()) if NEWS_DATA.exists() else []
+    
+    raw_stories = json.loads(NEWS_DATA.read_text()) if NEWS_DATA.exists() else []
+
+    # STRICT RULE: Only use stories that have a fully compiled Markdown file
+    stories = []
+    for s in raw_stories:
+        aid = s.get('id', 'unknown')
+        if aid != 'unknown' and (DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md").exists():
+            stories.append(s)
+
     f_html = ""; n_html = ""; a_html = ""
     stats, models, os_grid = get_static_mocks()
 
