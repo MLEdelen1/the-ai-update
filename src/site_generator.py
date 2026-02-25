@@ -107,25 +107,38 @@ def generate_site():
         content = generate_content(title, summary, i, aid)
         import re as _re
         _hook = ''
-        # 1. Try to grab the first bullet point (usually a punchy feature/benefit)
-        _li = _re.search(r'<li>(.*?)</li>', content, _re.DOTALL | _re.IGNORECASE)
-        if _li:
-            _hook = _re.sub(r'<[^>]+>', '', _li.group(1)).strip()
 
-        # 2. If no bullet, grab the SECOND paragraph (skipping the boring intro)
+        # 1. Remove all headers from the HTML so we don't accidentally grab them
+        _no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', content, flags=_re.IGNORECASE|_re.DOTALL)
+
+        # 2. Extract bullets and paragraphs
+        _lis = _re.findall(r'<li>(.*?)</li>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
+        _ps = _re.findall(r'<p>(.*?)</p>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
+
+        # 3. Try to get a high-signal bullet point (pros/features)
+        for _li in _lis:
+            _clean_li = _re.sub(r'<[^>]+>', '', _li).strip()
+            if len(_clean_li) > 30:
+                _hook = _clean_li
+                break
+
+        # 4. If no bullet, grab the SECOND paragraph (skipping the intro)
         if len(_hook) < 20:
-            _p_matches = _re.findall(r'<p>(.*?)</p>', content, _re.DOTALL | _re.IGNORECASE)
-            if len(_p_matches) > 1:
-                _hook = _re.sub(r'<[^>]+>', '', _p_matches[1]).strip()
-            elif len(_p_matches) > 0:
-                _hook = _re.sub(r'<[^>]+>', '', _p_matches[0]).strip()
+            if len(_ps) > 1:
+                _hook = _re.sub(r'<[^>]+>', '', _ps[1]).strip()
+            elif len(_ps) > 0:
+                _hook = _re.sub(r'<[^>]+>', '', _ps[0]).strip()
 
-        # 3. Clean up the hook (remove weird spaces, markdown asterisks that leaked, etc)
-        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').strip()
+        # 5. Fallback to the original news scan summary if HTML fails
+        if len(_hook) < 20 and summary:
+            _hook = summary.split('|')[0]
+
+        # 6. Clean and truncate
+        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').replace('`', '').strip()
         if _hook.lower().startswith('based on'):
-            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook)
+            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook).strip()
 
-        display_summary = _hook[:130] + '...' if len(_hook) > 130 else _hook
+        display_summary = _hook[:127] + '...' if len(_hook) > 130 else _hook
 
         if len(display_summary) < 15:
             display_summary = f"Discover the technical breakdown and use cases for {title}."
