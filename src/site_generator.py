@@ -1,3 +1,9 @@
+
+import re as _re
+def enforce_english(text):
+    if not isinstance(text, str): return text
+    # Aggressively remove CJK characters
+    return _re.sub(r'[一-鿿㐀-䶿豈-﫿぀-ゟ゠-ヿ]+', '', text)
 import json
 import os
 import re
@@ -153,7 +159,7 @@ def generate_site():
         art_page = art_page.replace("{{content}}", content)
         art_page = art_page.replace("{{description}}", display_summary.replace('"', '&quot;'))
         art_page = art_page.replace("{{image_url}}", img_url)
-        (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
+        (ARTICLE_DIR / f"{aid}.html").write_text(enforce_english(art_page))
 
         url_local = f"/articles/{aid}.html"
 
