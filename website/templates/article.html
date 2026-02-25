@@ -3,6 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{description}}">
+    <link rel="canonical" href="{{url_full}}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="{{title}} | The AI Update">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{url_full}}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://theaiupdate.org/img/banner.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@The_AIUpdate">
+    <meta name="twitter:title" content="{{title}} | The AI Update">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="https://theaiupdate.org/img/banner.png">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{title}}",
+      "description": "{{description}}",
+      "image": "https://theaiupdate.org/img/banner.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "The AI Update",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://theaiupdate.org/img/logo.png"
+        }
+      }
+    }
+    </script>
     <title>{{title}} | The AI Update</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

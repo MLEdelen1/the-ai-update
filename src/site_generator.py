@@ -134,6 +134,9 @@ def generate_site():
         art_page = art_page.replace("{{source}}", clean_text(s.get('source', 'WEB')).upper())
         art_page = art_page.replace("{{url}}", s.get('url', '#'))
         art_page = art_page.replace("{{content}}", content)
+        safe_desc = display_summary.replace("\"", "&quot;")
+        art_page = art_page.replace("{{description}}", safe_desc)
+        art_page = art_page.replace("{{url_full}}", f"https://theaiupdate.org/articles/{aid}.html")
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
         
         news_html += f'<div class="bg-slate-900/50 p-8 rounded-[2rem] border border-slate-800 shadow-lg backdrop-blur-sm flex flex-col hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all group"><div class="flex justify-between items-center mb-6"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{clean_text(s.get("source","")).upper()}</span><span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[8px] font-black rounded-full uppercase">DEEP DIVE</span></div><h4 class="text-2xl font-black mb-4 leading-tight text-white group-hover:text-cyan-300 transition-colors">{title}</h4><p class="text-slate-400 text-sm mb-8 font-light leading-relaxed">{display_summary}</p><div class="mt-auto pt-5 border-t border-slate-800/50"><a href="/articles/{aid}.html" class="text-cyan-400 font-bold text-xs uppercase tracking-widest flex items-center group-hover:text-cyan-300">Read Briefing &rarr;</a></div></div>'
@@ -153,6 +156,30 @@ def generate_site():
         except Exception as e:
             print(f"Error loading tools: {e}")
 
+
+    # Generate Sitemap and robots.txt
+    sm = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+'
+    sm += '  <url>
+    <loc>https://theaiupdate.org/</loc>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+  </url>
+'
+    for s in DATA:
+        if s.get("id"):
+            sm += f'  <url>
+    <loc>https://theaiupdate.org/articles/{s.get("id")}.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+'
+    sm += '</urlset>'
+    (WEBSITE_DIR / "sitemap.xml").write_text(sm)
+    (WEBSITE_DIR / "robots.txt").write_text("User-agent: *
+Allow: /
+Sitemap: https://theaiupdate.org/sitemap.xml")
     final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html).replace("{{TOOLS_HTML}}", tools_html).replace("{{JOB_TRACKER_HTML}}", "")
     (WEBSITE_DIR / "index.html").write_text(final)
 
