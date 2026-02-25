@@ -105,6 +105,14 @@ def generate_site():
                         break
 
         content = generate_content(title, summary, i, aid)
+        import re as _re
+        _match = _re.search(r'<p>(.*?)</p>', content, _re.DOTALL | _re.IGNORECASE)
+        if _match:
+            _clean = _re.sub(r'<[^>]+>', '', _match.group(1)).strip()
+            display_summary = _clean[:120] + '...' if len(_clean) > 120 else _clean
+        else:
+            display_summary = 'Read the full technical breakdown and implementation guide inside...'
+
         display_summary = ''
         for m_line in content.split('\n'):
             c_line = m_line.strip()
