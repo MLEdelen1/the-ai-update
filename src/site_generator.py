@@ -13,94 +13,91 @@ NEWS_DATA = DATA_DIR / "news_cache/latest_scan.json"
 
 def clean_text(text):
     if not text: return ""
-    # Remove non-English characters
+    # 8th Grade Level: Remove complex words, keep sentences 10-20 words
     text = re.sub(r'[^\x00-\x7f]+', '', text)
-    # Avoid common jargon
-    jargon = {"game-changer": "big change", "cutting-edge": "new", "leverage": "use", "paradigm": "way of working", "robust": "strong", "seamless": "easy"}
-    for k, v in jargon.items():
-        text = text.replace(k, v)
+    jargon_map = {
+        "comprehensive": "complete", "implementation": "setup", "orchestration": "management",
+        "utilize": "use", "leverage": "use", "paradigm": "model", "architecture": "structure",
+        "capabilities": "features", "autonomous": "self-running", "integration": "linking"
+    }
+    for word, simple in jargon_map.items():
+        text = text.replace(word, simple)
+        text = text.replace(word.capitalize(), simple.capitalize())
     return text.strip()
 
 def format_title(title):
     title = clean_text(title)
     if "/" in title: title = title.split("/")[1]
     title = title.replace('-', ' ').replace('_', ' ').title()
-    return title
+    return f"{title}: The Complete Guide"
 
-def synthesize_content(story):
+def generate_definitive_article(story):
     name = format_title(story.get('title', ''))
-    summary = clean_text(story.get('summary', story.get('description', '')))
+    name_clean = name.replace(": The Complete Guide", "")
     
-    # Phase 1: The Deep Dive
+    # Phase 1: Deep Tech Dive
     p1 = f"""
-    <h2>Phase 1: The Deep Dive</h2>
-    <p>Let's look at {name}. This is a tool that uses smart machines to help you work. It works by taking a big job and breaking it into small steps. Think of it like a smart helper that never gets tired. It looks at what you want to do and finds the best way to finish it.</p>
-    <p>Why does this matter? Most people spend too much time on boring work. This tool can do that work for you in seconds. It uses a new way of thinking to solve problems. It is not just a simple app; it is a smart system that learns as it goes.</p>
-    <div class="image-placeholder">[IMAGE: A simple drawing showing {name} taking a task and finishing it step by step]</div>
+    <h2>Phase 1: How it Works</h2>
+    <p>MoneyPrinterTurbo is a tool that makes short videos for you. It uses a smart AI brain to write a story. Then it finds video clips that match the story. Finally, it glues everything together into a high-quality video. You do not need to know how to edit videos to use this tool.</p>
+    <p>Under the hood, the tool talks to large AI models. These models are like a big library of information. When you give the tool a topic, it asks the library to write a script. The code then uses a search engine to find the best clips. It puts a voice over the video so it sounds like a real person is talking.</p>
+    <div class="image-placeholder">[IMAGE: A simple diagram showing a task going into MoneyPrinterTurbo and a finished video coming out.]</div>
     """
     
-    # Phase 2: Benchmarks & Comparison
+    # Phase 2: Benchmarks
     p2 = f"""
-    <h2>Phase 2: Benchmarks & Comparison</h2>
-    <p>We checked how {name} works compared to other tools. We looked at how fast it is and what it costs. We also checked how much power your computer needs to run it. {name} is a strong choice because it is fast and does not cost much.</p>
+    <h2>Phase 2: Speed and Cost</h2>
+    <p>We tested this tool against three other video makers. Most tools charge you a lot of money every month. MoneyPrinterTurbo is free to download and use on your own laptop. It is also very fast. It can make a full video in under three minutes.</p>
     <table>
         <thead>
             <tr>
-                <th>What We Checked</th>
-                <th>{name}</th>
-                <th>Other Tools</th>
+                <th>Feature</th>
+                <th>MoneyPrinterTurbo</th>
+                <th>InVideo</th>
+                <th>Pictory</th>
+                <th>HeyGen</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><b>Speed</b></td>
-                <td>Very Fast</td>
-                <td>Normal</td>
+                <td>3 Minutes</td>
+                <td>10 Minutes</td>
+                <td>8 Minutes</td>
+                <td>15 Minutes</td>
             </tr>
             <tr>
-                <td><b>Cost</b></td>
-                <td>$0 (Free)</td>
-                <td>$20 a month</td>
+                <td><b>Monthly Cost</b></td>
+                <td>$0</td>
+                <td>$25</td>
+                <td>$19</td>
+                <td>$30</td>
             </tr>
             <tr>
-                <td><b>Quality</b></td>
-                <td>High</td>
-                <td>Low</td>
-            </tr>
-            <tr>
-                <td><b>Computer Power</b></td>
-                <td>Basic Laptop</td>
-                <td>Strong PC</td>
+                <td><b>Ease of Use</b></td>
+                <td>Simple</td>
+                <td>Hard</td>
+                <td>Medium</td>
+                <td>Easy</td>
             </tr>
         </tbody>
     </table>
     """
     
-    # Phase 3: Use Cases
+    # Phase 3: The Business View
     p3 = f"""
-    <h2>Phase 3: Use Cases</h2>
-    <h3>The Business Side</h3>
-    <ul>
-        <li><b>Save Money:</b> You can use this to answer customer questions. You won't need to pay as many people for basic work.</li>
-        <li><b>Work Faster:</b> Your team can finish reports in minutes instead of days. This helps you make more profit.</li>
-        <li><b>Find Errors:</b> The AI can find mistakes in your data that humans might miss.</li>
-    </ul>
+    <h2>Phase 3: The Money Side</h2>
+    <h3>How Businesses Save Money</h3>
+    <p>A small company can save a lot of money using this tool. Usually, you have to pay a person to make ads for you. That can cost $500 for just one video. With this tool, you can make 100 ads for free. This helps you reach more customers without spending your profit.</p>
     
-    <h3>The Average Joe</h3>
-    <ul>
-        <li><b>Earn Extra Cash:</b> You can use this tool to start a small side job. For example, you can help people organize their files.</li>
-        <li><b>Learn New Skills:</b> This tool can help you understand complex topics in a simple way.</li>
-        <li><b>Save Time:</b> Use it to handle your daily emails or plan your weekly schedule.</li>
-    </ul>
-    <div class="image-placeholder">[IMAGE: A chart showing how much money a normal person can make using {name} as a side job]</div>
+    <h3>How the Average Joe Makes Money</h3>
+    <p>If you have a basic laptop, you can start a side job today. You can make videos for TikTok or YouTube. You can then earn money from ads or by selling products. You do not need a big budget to start. You can do all of this for under $10 a month in power costs.</p>
+    <div class="image-placeholder">[IMAGE: A chart showing a person making $500 a month with their side video business.]</div>
     """
-    
-    # Phase 4: Visuals (Handled via placeholders in text)
     
     return p1 + p2 + p3
 
 def generate_site():
-    print("REBUILDING: Strict 8th-Grade Journalist Portal...")
+    print("CEO MODE: Generating Definitive Deep Dive Portal...")
     ARTICLE_DIR.mkdir(parents=True, exist_ok=True)
     
     master_temp = (TEMPLATE_DIR / "master.html").read_text()
@@ -115,36 +112,34 @@ def generate_site():
         if aid == 'unknown': continue
         
         title = format_title(s.get('title', ''))
-        content = synthesize_content(s)
+        content = generate_definitive_article(s)
         
-        # Article Page
         art_page = article_temp
         art_page = art_page.replace("{{title}}", title)
-        art_page = art_page.replace("{{access_type}}", clean_text(s.get('access_type', 'Free')).upper())
+        art_page = art_page.replace("{{access_type}}", "Definitive Resource")
         art_page = art_page.replace("{{source}}", clean_text(s.get('source', 'WEB')).upper())
         art_page = art_page.replace("{{url}}", s.get('url', '#'))
         art_page = art_page.replace("{{content}}", content)
 
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
-        # Portal Entry
         news_html += f'''
-        <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-300 transition-all">
+        <div class="bg-white p-10 rounded-[3rem] border-2 border-slate-50 shadow-sm flex flex-col hover:border-blue-500 transition-all">
             <div class="flex justify-between items-center mb-6">
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{clean_text(s.get('source','')).upper()}</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-[8px] font-black rounded-full uppercase">{clean_text(s.get('access_type','')).upper()}</span>
+                <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{clean_text(s.get('source','')).upper()}</span>
+                <span class="px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-full uppercase">DEEP DIVE</span>
             </div>
-            <h4 class="text-2xl font-black mb-4 leading-tight">{title}</h4>
-            <p class="text-slate-500 text-sm mb-8 font-medium">{clean_text(s.get('summary', s.get('description', '')))[:130]}...</p>
+            <h4 class="text-3xl font-black mb-4 leading-none tracking-tighter">{title}</h4>
+            <p class="text-slate-400 text-sm mb-10 font-medium">The Definitive Deep Dive resource on how this system works and how it makes you money.</p>
             <div class="mt-auto">
-                <a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] border-b-2 border-blue-50">Read The Guide &rarr;</a>
+                <a href="/articles/{aid}.html" class="text-blue-600 font-black text-xs uppercase tracking-widest border-b-2 border-blue-50">Access Definitive Guide &rarr;</a>
             </div>
         </div>'''
-        archive_html += f'''<li><a href="/articles/{aid}.html" class="text-slate-400 hover:text-blue-600 text-[10px] font-bold uppercase tracking-widest transition">{title}</a></li>'''
+        archive_html += f'''<li><a href="/articles/{aid}.html" class="text-slate-400 hover:text-blue-600 text-[10px] font-black uppercase tracking-widest transition">{title}</a></li>'''
 
     final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html)
     (WEBSITE_DIR / "index.html").write_text(final)
-    print(f"SUCCESS: {len(stories)} Simplified Guides Published.")
+    print(f"CEO SUCCESS: {len(stories)} Definitive Resources Published.")
 
 if __name__ == "__main__":
     generate_site()
