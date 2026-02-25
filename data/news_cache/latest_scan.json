@@ -34,17 +34,6 @@
     },
     {
         "source": "github_trending",
-        "title": "Modern Software Dev Assignments",
-        "description": "Assignments for CS146S: The Modern Software Dev (Stanford University Fall 2025)",
-        "url": "https://github.com/mihail911/modern-software-dev-assignments",
-        "summary": "Assignments for CS146S: The Modern Software Dev (Stanford University Fall 2025) | 60 stars today",
-        "stars_today": "60 stars today",
-        "timestamp": "2026-02-24T02:34:22.553789+00:00",
-        "id": "11b10449f276",
-        "image": "https://source.unsplash.com/1600x900/?Modern,Software,Dev,Assignments,technology"
-    },
-    {
-        "source": "github_trending",
         "title": "Metaflow",
         "description": "Build, Manage and Deploy AI/ML Systems",
         "url": "https://github.com/Netflix/metaflow",
@@ -174,17 +163,6 @@
         "timestamp": "2026-02-24T02:34:20.819992+00:00",
         "id": "7fa660488fba",
         "image": "https://source.unsplash.com/1600x900/?Open,Bb,technology"
-    },
-    {
-        "source": "github_trending",
-        "title": "Skills",
-        "description": "",
-        "url": "https://github.com/huggingface/skills",
-        "summary": " | 1,451 stars today",
-        "stars_today": "1,451 stars today",
-        "timestamp": "2026-02-24T02:34:20.819863+00:00",
-        "id": "4c994db18dba",
-        "image": "https://source.unsplash.com/1600x900/?Skills,technology"
     },
     {
         "source": "github_trending",
@@ -340,7 +318,7 @@
     },
     {
         "source": "techcrunch_ai",
-        "title": "Spotify Rolls Out AI Powered  Prompted Playlists To The Uk And Other Markets",
+        "title": "Spotify Rolls Out AI Powered Prompted Playlists To The Uk And Other Markets",
         "url": "https://techcrunch.com/2026/02/23/spotify-ai-prompted-playlists-uk-markets/",
         "summary": "Spotify continues to test its AI-powered \u201cPrompted Playlist\u201d feature, now rolling out the tool to Premium subscribers in the U.K., Ireland, Australia, and Sweden.",
         "timestamp": "2026-02-23T16:50:36+00:00",
@@ -364,26 +342,6 @@
         "timestamp": "2026-02-23T16:00:00+00:00",
         "id": "5622b04b2c0c",
         "image": "https://source.unsplash.com/1600x900/?Does,Big,Tech,Actually,Care,About,Fighting,AI,Slop?,technology"
-    },
-    {
-        "source": "hackernews",
-        "title": "Show Hn: Sowbot \u2013 Open Hardware Agricultural Robot (Ros2, Rtk Gps)",
-        "url": "https://sowbot.co.uk/",
-        "score": 127,
-        "comments": 40,
-        "summary": "HN Score: 127 | 40 comments",
-        "timestamp": "2026-02-23T15:48:33+00:00",
-        "id": "112e89dcf4b4",
-        "image": "https://source.unsplash.com/1600x900/?Show,Hn:,Sowbot,\u2013,Open,Hardware,Agricultural,Robot,(Ros2,,Rtk,Gps),technology"
-    },
-    {
-        "source": "techcrunch_ai",
-        "title": "5\u00a0Days Left To Lock In The Lowest Tech Crunch Disrupt 2026 Ticket Rates",
-        "url": "https://techcrunch.com/2026/02/23/5-days-left-to-lock-in-the-lowest-techcrunch-disrupt-2026-ticket-rates/",
-        "summary": "Five days to save up to $680 on your\u00a0TechCrunch Disrupt 2026\u00a0ticket. These lowest rates of the year disappear on February 27 at 11:59 p.m. PT.",
-        "timestamp": "2026-02-23T15:00:00+00:00",
-        "id": "5d048aabd4a1",
-        "image": "https://source.unsplash.com/1600x900/?5\u00a0Days,Left,To,Lock,In,The,Lowest,Tech,Crunch,Disrupt,2026,Ticket,Rates,technology"
     },
     {
         "source": "techcrunch_ai",
@@ -432,7 +390,7 @@
     },
     {
         "source": "hackernews",
-        "title": "Show Hn: AI Timeline \u2013 171 LLMs From Transformer (2017) To Gpt 5.3 (2026)",
+        "title": "Show Hn: AI Timeline \u2013 LLMs From Transformer () To GPT 5.3 ()",
         "url": "https://llm-timeline.com/",
         "score": 141,
         "comments": 52,
@@ -597,7 +555,7 @@
     },
     {
         "source": "HeyGen Product Keynote / Vidmetoo",
-        "title": "Hey Gen 2026: The Live Agent Interface",
+        "title": "Hey Gen : The Live Agent Interface",
         "url": "https://www.heygen.com/blog",
         "summary": "HeyGen\u2019s latest update allows for 'Low-Latency Live Interaction.' These avatars can now serve as real-time customer service agents with less than 200ms delay. The new 'Micro-Expression' engine mimics subtle human cues like blinking patterns and pupil dilation based on the context of the conversation, making digital humans feel significantly more approachable.",
         "timestamp": "2026-02-24T15:30:00Z",
@@ -606,7 +564,7 @@
     },
     {
         "source": "Synthesia Corporate Blog / Tavus Research",
-        "title": "Synthesia 2026: Enterprise Digital Twins",
+        "title": "Synthesia : Enterprise Digital Twins",
         "url": "https://www.synthesia.io/blog",
         "summary": "Synthesia has launched its 'Global Twin' program, allowing executives to record a 5-minute video and generate a digital twin capable of speaking 120 languages with perfect localized cultural nuances. The update focuses on 'Action-Avatars' that can move around a virtual 3D office, rather than just standing behind a desk.",
         "timestamp": "2026-02-24T15:30:00Z",
@@ -660,7 +618,7 @@
     },
     {
         "source": "Intelligence Deep-Dive",
-        "title": "Kling 3.0 Vs Sora 2 Pro: The 2026 Video Wars",
+        "title": "Kling 3.0 Vs Sora 2 Pro: The Video Wars",
         "url": "https://theaiupdate.org",
         "summary": "The landscape of AI video has shifted. Kling 3.0 now offers full cinematic control with its 'Director Mode,' while Sora 2 Pro has introduced 'Temporal Lock' for perfect consistency across 60-second shots. Seedance 1.5 Pro is emerging as the dark horse for high-speed creative workflows.",
         "timestamp": "2026-02-24T12:00:00Z",
@@ -687,7 +645,7 @@
     },
     {
         "source": "Audio Intelligence",
-        "title": "Suno Vs Udio: The 2026 Music Generation Benchmark",
+        "title": "Suno Vs Udio: The Music Generation Benchmark",
         "url": "https://theaiupdate.org",
         "summary": "Suno v4 has introduced 'Multi-Track Separation' directly in the generation phase, while Udio 2.0 has focused on 'Pro-Vocal' fidelity that is now indistinguishable from studio recordings. Both models have added MIDI export capabilities for professional producers.",
         "timestamp": "2026-02-24T11:00:00Z",
