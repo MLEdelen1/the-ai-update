@@ -1,33 +1,7 @@
 {
-  "generated_at": "2026-02-24T23:13:00.999011+00:00",
   "tweets": [
     {
-      "story": {
-        "source": "techcrunch_ai",
-        "title": "Uber engineers built an AI version of their boss",
-        "url": "https://techcrunch.com/2026/02/24/uber-engineers-built-ai-version-of-boss-dara-khosrowshahi/",
-        "summary": "Uber CEO Dara Khosrowshahi said the company\u2019s employees have gone all in on AI, going so far as to build a chatbot of him that they use to practice their pitches.",
-        "timestamp": "2026-02-24T23:09:28+00:00",
-        "id": "20c16cbeadaf",
-        "access_type": "Enterprise",
-        "capabilities": [
-          "Persona-Tuned LLM (Fine-tuned on CEO speech patterns and public transcripts)",
-          "RAG-Enhanced Strategy Retrieval (Integrated with internal Uber strategic documents)",
-          "Real-time Pitch Simulation & Scoring",
-          "Dynamic Adversarial Feedback Loops"
-        ],
-        "practical_use_cases": [
-          "Internal Team Training: Employees can stress-test high-stakes presentations against a simulated version of executive scrutiny.",
-          "Culture Scaling: Mid-level managers can use persona-bots to align projects with the CEO's specific priorities and communication style.",
-          "Developer Template: Curious developers can replicate this architecture using OpenAI's System Prompts + RAG to build 'Boss-Bots' for their own organizations."
-        ],
-        "benchmark_data": 72,
-        "executive_summary": "Uber's development of a digital twin for Dara Khosrowshahi marks a significant shift from generic productivity AI to specialized **Corporate Persona Agents**. Architecturally, this likely involves a base model (such as GPT-4o or an internal Llama-3 derivative) fine-tuned on the CEO\u2019s public earnings calls, interviews, and internal memos. By utilizing Retrieval-Augmented Generation (RAG), the bot doesn't just mimic his voice; it references specific Uber metrics and strategic pillars to provide contextually accurate feedback.<br><br>From a technical standpoint, the 'velocity gain' Dara mentions stems from reducing the 'feedback latency' for engineers. Instead of waiting for a quarterly review or a 15-minute sync, teams can iterate hourly against a simulated executive gatekeeper. This project highlights the ROI of **Internal LLM Utility**: by lowering the friction of alignment, Uber effectively increases its operational bandwidth without adding headcount. For the 'Curious Developer,' this is a blueprint for the next wave of B2B SaaS\u2014customized executive agents that act as a bridge between high-level strategy and ground-level execution."
-      },
-      "prompt": "You are @The_AIUpdate. Categorize and draft a tweet for this AI news:\n\nTITLE: Uber engineers built an AI version of their boss\nSUMMARY: Uber CEO Dara Khosrowshahi said the company\u2019s employees have gone all in on AI, going so far as to build a chatbot of him that they use to practice their pitches.\nURL: https://techcrunch.com/2026/02/24/uber-engineers-built-ai-version-of-boss-dara-khosrowshahi/\n\nREQUIRED CATEGORIES:\n1. AI in the Workplace and Businesses: Focus on productivity, ROI, enterprise shifts, and B2B tools.\n2. AI for Regular People: Focus on practical use for day-to-day life. Target people who CANNOT afford high-end GPUs or thousands of dollars in subscriptions. Explain what they can do, which models to use (free/low-cost), and how it solves their problems.\n\nTASK:\n- Identify which category this belongs to.\n- Draft an engaging tweet (<280 chars).\n- For Category 2: Emphasize accessibility and practical 'daily life' impact.\n- Include the URL at the end.\n- Format: CATEGORY: [Name] | TWEET: [Text]",
-      "status": "drafted",
-      "category": "AI in the Workplace and Businesses",
-      "draft": "Uber engineers just built a 'Boss-Bot' to practice pitches. \ud83e\udd16\n\nUsing persona-tuned LLMs + RAG, they\u2019ve created a high-fidelity sim of CEO Dara Khosrowshahi to reduce feedback latency and scale executive alignment. This is the blueprint for the next wave of B2B SaaS. \n\nFull Technical Briefing: https://techcrunch.com/2026/02/24/uber-engineers-built-ai-version-of-boss-dara-khosrowshahi/"
+      "draft": "\"Money Printer Turbo\" is disrupting video creation.\n- AI LLMs deliver one-click HD short videos.\n- Exponentially boost content output.\nAct fast to integrate this game-changer.\nhttps://theaiupdate.org/articles/d7fa2b7f3f5.html\n\nhttps://theaiupdate.org/articles/d7fa42b7f3f5.html"
     }
   ]
 }
