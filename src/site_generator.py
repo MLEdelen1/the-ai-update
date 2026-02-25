@@ -105,42 +105,43 @@ def generate_site():
     for i, s in enumerate(stories[:100]):
         aid = s.get('id', 'unknown')
         if aid == 'unknown': continue
+
+        # Exact title mapping
         title = format_title(s.get('title', ''))
+
         summary = clean_text(s.get('summary', s.get('description', '')))
 
-        # If summary is empty or too short, extract from the actual markdown file
+        # Dynamic overview extraction if summary is missing/short
         md_path = DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md"
-        if len(summary) < 15 and md_path.exists():
+        if len(summary) < 20 and md_path.exists():
             md_text = md_path.read_text()
-            # Grab the first real paragraph of text, avoiding headers
-            paragraphs = [p.strip() for p in md_text.split('
-
-') if p.strip() and not p.strip().startswith('#') and len(p.strip()) > 20]
-            if paragraphs:
-                summary = clean_text(paragraphs[0])
+            # Safely split by lines and find the first real paragraph
+            for line in md_text.split('
+'):
+                line = line.strip()
+                if line and not line.startswith('#') and len(line) > 30:
+                    summary = clean_text(line)
+                    break
 
         display_summary = summary[:130] + "..." if len(summary) > 130 else summary
+
         content = generate_content(title, summary, i, aid)
 
-        art_page = article_temp.replace("{{title}}", f"{title}")
+        # Article page uses EXACT title
+        art_page = article_temp.replace("{{title}}", title)
         art_page = art_page.replace("{{access_type}}", "Technical Brief")
         art_page = art_page.replace("{{source}}", clean_text(s.get('source', 'WEB')).upper())
         art_page = art_page.replace("{{url}}", s.get('url', '#'))
         art_page = art_page.replace("{{content}}", content)
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
+        # Homepage Card uses EXACT title
         news_html += f'<div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all"><div class="flex justify-between items-center mb-6"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{clean_text(s.get("source","")).upper()}</span><span class="px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-full uppercase">DEEP DIVE</span></div><h4 class="text-2xl font-black mb-4 leading-none">{title}</h4><p class="text-slate-500 text-sm mb-10 font-medium">{display_summary}</p><div class="mt-auto"><a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-widest border-b-2 border-blue-50">Read Comprehensive Resource &rarr;</a></div></div>'
-        archive_html += f'<li><a href="/articles/{aid}.html" class="text-slate-400 hover:text-blue-600 text-[10px] font-bold uppercase tracking-widest transition">{title}</a></li>'
 
-    # Tools Section
-    tools = json.loads(TOOLS_DATA.read_text()) if TOOLS_DATA.exists() else []
-    tools_html = ""
-    for t in tools:
-        tools_html += f'<div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all"><div class="flex justify-between items-center mb-4"><span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{t.get("category","").upper()}</span><span class="px-2 py-1 bg-slate-100 text-slate-400 text-[8px] font-black rounded uppercase">FREE</span></div><h3 class="text-xl font-bold mb-3">{t.get("name","")}</h3><p class="text-slate-500 text-sm mb-6">{t.get("use_case","")}</p><a href="{t.get("url","#")}" target="_blank" class="mt-auto text-blue-600 font-bold text-xs uppercase tracking-widest">Try Now &rarr;</a></div>'
+        archive_html += f'<li><a href="/articles/{aid}.html" class="text-slate-500 hover:text-blue-600 transition-colors">{title}</a></li>'
 
-    final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html).replace("{{TOOLS_HTML}}", tools_html).replace("{{JOB_TRACKER_HTML}}", "")
+    final = master_temp.replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html)
     (WEBSITE_DIR / "index.html").write_text(final)
-    print(f"SUCCESS: {len(stories)} Contextual Articles and {len(tools)} Tools Generated.")
 
 if __name__ == "__main__":
     generate_site()
