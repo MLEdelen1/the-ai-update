@@ -63,10 +63,8 @@ def format_title(title):
     title = re.sub(r'[^a-zA-Z0-9 ]', ' ', title)   # remove weird chars
     title = re.sub(r' +', ' ', title).strip().title() # remove double spaces
     words = title.split()
-    if len(words) == 1:
-        return f"Understanding {title}: A Technical Overview"
-    elif len(words) > 8:
-        return " ".join(words[:8]) + "..."
+    if len(words) > 10:
+        return " ".join(words[:10]) + "..."
     return title
 
 def generate_content(title, summary, index, aid):
@@ -109,16 +107,29 @@ def generate_site():
         if aid == 'unknown': continue
         title = format_title(s.get('title', ''))
         summary = clean_text(s.get('summary', s.get('description', '')))
+
+        # If summary is empty or too short, extract from the actual markdown file
+        md_path = DATA_DIR / f"research/briefings_2026_02/briefing_{aid}.md"
+        if len(summary) < 15 and md_path.exists():
+            md_text = md_path.read_text()
+            # Grab the first real paragraph of text, avoiding headers
+            paragraphs = [p.strip() for p in md_text.split('
+
+') if p.strip() and not p.strip().startswith('#') and len(p.strip()) > 20]
+            if paragraphs:
+                summary = clean_text(paragraphs[0])
+
+        display_summary = summary[:130] + "..." if len(summary) > 130 else summary
         content = generate_content(title, summary, i, aid)
 
-        art_page = article_temp.replace("{{title}}", f"{title}: The Definitive Resource")
+        art_page = article_temp.replace("{{title}}", f"{title}")
         art_page = art_page.replace("{{access_type}}", "Technical Brief")
         art_page = art_page.replace("{{source}}", clean_text(s.get('source', 'WEB')).upper())
         art_page = art_page.replace("{{url}}", s.get('url', '#'))
         art_page = art_page.replace("{{content}}", content)
         (ARTICLE_DIR / f"{aid}.html").write_text(art_page)
 
-        news_html += f'<div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all"><div class="flex justify-between items-center mb-6"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{clean_text(s.get("source","")).upper()}</span><span class="px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-full uppercase">DEEP DIVE</span></div><h4 class="text-2xl font-black mb-4 leading-none">{title}</h4><p class="text-slate-500 text-sm mb-10 font-medium">{summary[:130]}...</p><div class="mt-auto"><a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-widest border-b-2 border-blue-50">Read Comprehensive Resource &rarr;</a></div></div>'
+        news_html += f'<div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col hover:border-blue-400 transition-all"><div class="flex justify-between items-center mb-6"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{clean_text(s.get("source","")).upper()}</span><span class="px-3 py-1 bg-blue-600 text-white text-[8px] font-black rounded-full uppercase">DEEP DIVE</span></div><h4 class="text-2xl font-black mb-4 leading-none">{title}</h4><p class="text-slate-500 text-sm mb-10 font-medium">{display_summary}</p><div class="mt-auto"><a href="/articles/{aid}.html" class="text-blue-600 font-bold text-xs uppercase tracking-widest border-b-2 border-blue-50">Read Comprehensive Resource &rarr;</a></div></div>'
         archive_html += f'<li><a href="/articles/{aid}.html" class="text-slate-400 hover:text-blue-600 text-[10px] font-bold uppercase tracking-widest transition">{title}</a></li>'
 
     # Tools Section
