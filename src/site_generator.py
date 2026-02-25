@@ -106,29 +106,13 @@ def generate_site():
 
         content = generate_content(title, summary, i, aid)
         import re as _re
-        # Use original source summary as a hook
-        hook = summary.split('|')[0].strip()
-        # Clean up prompt context if it was a YouTube video
-        hook = _re.sub(r'Based on.*?(video|channel)\.?', '', hook, flags=_re.IGNORECASE).strip()
-        if hook.lower().startswith('discuss'):
-            hook = hook[7:].strip()
-
-        # Fallback if the summary is empty or useless
+        hook = summary.split('|')[0].strip() if summary else ''
+        hook = _re.sub(r'(?i)Based on.*?(video|channel)\.?', '', hook).strip()
+        if hook.lower().startswith('discuss'): hook = hook[7:].strip()
         if len(hook) < 15:
-            display_summary = f"Dive into the technical breakdown, business ROI, and practical use cases for {title}."
+            display_summary = f'Explore the technical breakdown, business ROI, and practical use cases for {title}.'
         else:
             display_summary = hook[:130] + '...' if len(hook) > 130 else hook
-
-        display_summary = ''
-        for m_line in content.split('\n'):
-            c_line = m_line.strip()
-            if c_line and not c_line.startswith(('#', '>', '!', '|', '-', '<', '[', '*')):
-                display_summary += c_line + ' '
-                if len(display_summary) > 130: break
-        display_summary = display_summary.strip()
-        if len(display_summary) > 120: display_summary = display_summary[:117] + '...'
-        if not display_summary: display_summary = summary[:160] + '...' if len(summary) > 160 else summary
-        if not display_summary: display_summary = 'Read the full technical breakdown and implementation guide inside...'
         source_clean = clean_text(s.get('source', 'WEB')).upper()
         if not source_clean: source_clean = "INTEL"
         img_url = get_contextual_img(title, i)
