@@ -1,96 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why We No Longer Evaluate Swe Bench Verified | The AI Update</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #020617; color: #f8fafc; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="----">
+<link rel="canonical" href="https://theaiupdate.org/articles/9766539adc49.html">
+<meta property="og:title" content="Why We No Longer Evaluate Swe Bench Verified | The AI Update">
+<meta property="og:description" content="----">
+<meta property="og:url" content="https://theaiupdate.org/articles/9766539adc49.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://theaiupdate.org/img/banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@The_AIUpdate">
+<meta name="twitter:title" content="Why We No Longer Evaluate Swe Bench Verified | The AI Update">
+<meta name="twitter:description" content="----">
+<meta name="twitter:image" content="https://theaiupdate.org/img/banner.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why We No Longer Evaluate Swe Bench Verified",
+  "description": "----",
+  "image": "https://theaiupdate.org/img/banner.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The AI Update",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theaiupdate.org/img/logo.png"
+    }
+  }
+}
+</script>
+<title>Why We No Longer Evaluate Swe Bench Verified | The AI Update</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:#06060a; --panel:#0c0c12; --panel-edge:#13131b; --raised:#161620;
+  --text-1:#eae8e4; --text-2:#8e8b86; --text-3:#4e4b47;
+  --green:#4ade80; --green-dim:rgba(74,222,128,0.08); --green-border:rgba(74,222,128,0.15);
+  --amber:#fbbf24; --amber-dim:rgba(251,191,36,0.08);
+  --red:#f87171; --red-dim:rgba(248,113,113,0.08);
+  --blue:#60a5fa; --blue-dim:rgba(96,165,250,0.08);
+  --rule:#1a1a24; --mono:'JetBrains Mono',monospace; --sans:'Space Grotesk',system-ui,sans-serif;
+}
+body { font-family:var(--sans); background:var(--bg); color:var(--text-1); -webkit-font-smoothing:antialiased; line-height:1.55; }
+a { color:inherit; text-decoration:none; }
+::selection { background:rgba(74,222,128,0.2); }
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--rule); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--text-3); }
+
+/* ═══ TOPBAR ═══ */
+.topbar { border-bottom:1px solid var(--rule); font-family:var(--mono); font-size:11px; color:var(--text-3); letter-spacing:0.3px; }
+.topbar-inner { max-width:1200px; margin:0 auto; padding:8px 32px; display:flex; justify-content:space-between; align-items:center; }
+.live { color:var(--green); display:flex; align-items:center; gap:6px; }
+.live::before { content:''; width:5px; height:5px; background:var(--green); border-radius:50%; box-shadow:0 0 6px var(--green); animation:blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ═══ NAV ═══ */
+header { position:sticky; top:0; z-index:50; background:rgba(6,6,10,.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--rule); }
+.nav { max-width:1200px; margin:0 auto; padding:0 32px; height:60px; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; letter-spacing:-.5px; cursor:pointer; }
+.brand-mark { width:32px; height:28px; border:2px solid var(--green); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11px; font-weight:700; color:var(--green); letter-spacing:-0.5px; }
+.nav-mid { display:flex; gap:0; list-style:none; }
+.nav-mid li a { display:block; padding:8px 16px; font-size:13px; font-weight:500; color:var(--text-2); letter-spacing:.2px; transition:all .15s; border-radius:6px; }
+.nav-mid li a:hover { color:var(--text-1); background:rgba(255,255,255,.03); }
+.nav-mid li a.active { color:var(--green); background:var(--green-dim); }
+.nav-right { display:flex; gap:10px; align-items:center; }
+.nav-search { width:200px; padding:8px 12px 8px 32px; background:var(--panel); border:1px solid var(--rule); border-radius:6px; color:var(--text-1); font-family:var(--sans); font-size:12px; outline:none; transition:border-color .15s; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%234e4b47' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:10px center; }
+.nav-search::placeholder { color:var(--text-3); }
+.nav-search:focus { border-color:var(--green); }
+.btn-sub { padding:8px 18px; background:var(--green); color:#06060a; border:none; border-radius:6px; font-family:var(--sans); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:.3px; transition:background .15s; }
+.btn-sub:hover { background:#86efac; }
+
+/* ═══ UTILITIES ═══ */
+.container { max-width:1200px; margin:0 auto; padding:0 32px; }
+.section-label { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--text-3); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+.section-label a { color:var(--green); font-size:11px; cursor:pointer; }
+.page { display:none; }
+.page.visible { display:block; }
+.fade-in { animation:fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ═══ TICKER ═══ */
+.ticker { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding-top:40px; padding-bottom:8px; }
+.tick { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:16px 18px; transition:border-color .15s; }
+.tick:hover { border-color:var(--green-border); }
+.tick-label { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--text-3); margin-bottom:8px; }
+.tick-val { font-size:26px; font-weight:700; letter-spacing:-1px; display:flex; align-items:baseline; gap:8px; }
+.tick-delta { font-size:12px; font-weight:600; padding:2px 7px; border-radius:4px; font-family:var(--mono); }
+.up { color:var(--green); background:var(--green-dim); }
+.down { color:var(--red); background:var(--red-dim); }
+.flat { color:var(--amber); background:var(--amber-dim); }
+
+/* ═══ MAIN GRID ═══ */
+.main-grid { display:grid; grid-template-columns:1fr 380px; gap:32px; padding:40px 0; }
+
+/* ─── LEAD ─── */
+.lead { background:var(--panel); border:1px solid var(--rule); border-radius:10px; overflow:hidden; cursor:pointer; transition:border-color .2s; }
+.lead:hover { border-color:var(--green-border); }
+.lead-visual { height:280px; background:linear-gradient(160deg,#06060a 0%,#0a1a12 40%,#0c2618 80%,#06060a 100%); position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.lead-visual::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,transparent 50%,var(--panel)); }
+.grid-bg { position:absolute; inset:0; font-family:var(--mono); font-size:11px; line-height:1.4; color:rgba(74,222,128,.05); overflow:hidden; padding:12px; white-space:pre; pointer-events:none; }
+.lead-cat { position:absolute; top:18px; left:18px; font-family:var(--mono); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--green); background:var(--green-dim); border:1px solid var(--green-border); padding:4px 10px; border-radius:4px; z-index:2; }
+.lead-big { position:relative; z-index:2; font-size:56px; font-weight:700; letter-spacing:-2px; color:rgba(74,222,128,.08); font-family:var(--mono); }
+.lead-body { padding:28px 28px 32px; }
+.meta-line { font-family:var(--mono); font-size:11px; color:var(--text-3); margin-bottom:12px; display:flex; gap:16px; }
+.lead-body h2 { font-size:26px; font-weight:700; letter-spacing:-.8px; line-height:1.25; margin-bottom:12px; }
+.lead-body>p { font-size:15px; color:var(--text-2); line-height:1.65; max-width:560px; }
+.read-link { display:inline-flex; align-items:center; gap:6px; margin-top:20px; font-size:13px; font-weight:600; color:var(--green); transition:gap .15s; }
+.read-link:hover { gap:10px; }
+
+/* ─── FEED LIST ─── */
+.feed-list { display:flex; flex-direction:column; }
+.feed-header { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--text-3); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:2px; }
+.feed-item { padding:16px 0; border-bottom:1px solid var(--rule); cursor:pointer; transition:all .15s; }
+.feed-item:hover { padding-left:6px; }
+.feed-item .meta-line { margin-bottom:8px; }
+.feed-item .cat { color:var(--green); font-weight:600; }
+.feed-item h3 { font-size:15px; font-weight:600; line-height:1.35; letter-spacing:-.2px; margin-bottom:6px; }
+.feed-item p { font-size:13px; color:var(--text-2); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* ═══ ANALYSIS CARDS ═══ */
+.analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.a-card { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:24px; cursor:pointer; transition:all .2s; position:relative; overflow:hidden; }
+.a-card:hover { border-color:var(--green-border); background:var(--panel-edge); }
+.a-card .ghost { font-family:var(--mono); font-size:48px; font-weight:700; color:rgba(74,222,128,.06); position:absolute; top:14px; right:20px; line-height:1; }
+.a-card .tag { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.8px; color:var(--text-3); margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+.dot { width:5px; height:5px; border-radius:50%; display:inline-block; }
+.dot-g { background:var(--green); } .dot-a { background:var(--amber); } .dot-r { background:var(--red); } .dot-b { background:var(--blue); }
+.a-card h4 { font-size:16px; font-weight:600; letter-spacing:-.3px; line-height:1.35; margin-bottom:10px; max-width:85%; }
+.a-card>p { font-size:13px; color:var(--text-2); line-height:1.55; }
+.a-card .time { margin-top:16px; font-family:var(--mono); font-size:10px; color:var(--text-3); }
+
+/* ═══ CTA ═══ */
+.cta-bar { margin:48px 0; border:1px solid var(--rule); border-radius:10px; padding:48px; display:flex; align-items:center; justify-content:space-between; gap:40px; background:radial-gradient(ellipse at 15% 50%,rgba(74,222,128,.04) 0%,transparent 50%),var(--panel); }
+.cta-bar h2 { font-size:22px; font-weight:700; letter-spacing:-.5px; margin-bottom:6px; }
+.cta-bar>div p { font-size:14px; color:var(--text-2); }
+.cta-form { display:flex; gap:8px; flex-shrink:0; }
+.cta-form input { width:260px; padding:11px 14px; background:rgba(255,255,255,.03); border:1px solid var(--rule); border-radius:6px; color:var(--text-1); font-family:var(--sans); font-size:13px; outline:none; transition:border-color .15s; }
+.cta-form input:focus { border-color:var(--green); }
+.cta-form input::placeholder { color:var(--text-3); }
+.cta-form button { padding:11px 22px; background:var(--green); color:#06060a; border:none; border-radius:6px; font-family:var(--sans); font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; transition:background .15s; }
+.cta-form button:hover { background:#86efac; }
+
+/* ═══ FOOTER ═══ */
+footer { border-top:1px solid var(--rule); padding:28px 0; display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:11px; color:var(--text-3); }
+.foot-links { display:flex; gap:20px; list-style:none; }
+.foot-links a:hover { color:var(--green); }
+
+/* ═══ ARTICLE VIEW ═══ */
+.article-view { max-width:720px; margin:0 auto; padding:48px 32px 80px; }
+.back-btn { display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px; color:var(--text-3); cursor:pointer; margin-bottom:32px; transition:color .15s; padding:6px 12px; border-radius:6px; border:1px solid var(--rule); background:var(--panel); }
+.back-btn:hover { color:var(--green); border-color:var(--green-border); }
+.article-meta { font-family:var(--mono); font-size:11px; color:var(--text-3); display:flex; gap:16px; margin-bottom:16px; flex-wrap:wrap; }
+.article-meta .cat-pill { color:var(--green); background:var(--green-dim); padding:2px 8px; border-radius:3px; }
+.article-view h1 { font-size:36px; font-weight:700; letter-spacing:-1.2px; line-height:1.2; margin-bottom:20px; }
+.article-view .lede { font-size:18px; color:var(--text-2); line-height:1.7; margin-bottom:32px; padding-bottom:32px; border-bottom:1px solid var(--rule); }
+.article-body h2 { font-size:20px; font-weight:700; letter-spacing:-.4px; margin:32px 0 14px; }
+.article-body h3 { font-size:16px; font-weight:600; margin:24px 0 10px; color:var(--text-1); }
+.article-body p { font-size:15px; color:var(--text-2); line-height:1.75; margin-bottom:16px; }
+.article-body ul { margin:0 0 16px 20px; }
+.article-body li { font-size:14px; color:var(--text-2); line-height:1.7; margin-bottom:6px; }
+.article-body blockquote { border-left:3px solid var(--green); padding:12px 20px; margin:20px 0; background:var(--panel); border-radius:0 6px 6px 0; }
+.article-body blockquote p { color:var(--text-2); margin:0; font-style:italic; }
+.article-body code { font-family:var(--mono); font-size:13px; background:var(--panel); padding:2px 6px; border-radius:3px; color:var(--green); }
+.article-body pre { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:20px; margin:20px 0; overflow-x:auto; }
+.article-body pre code { background:none; padding:0; font-size:12px; line-height:1.6; color:var(--text-2); }
+.data-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
+.data-table th { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.8px; color:var(--text-3); text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule); }
+.data-table td { padding:10px 12px; border-bottom:1px solid var(--rule); color:var(--text-2); }
+.data-table tr:hover td { background:var(--panel); }
+.stat-bar { display:flex; align-items:center; gap:8px; }
+.bar { height:6px; border-radius:3px; background:var(--green); }
+.article-tags { margin-top:40px; padding-top:24px; border-top:1px solid var(--rule); display:flex; gap:8px; flex-wrap:wrap; }
+.article-tags span { font-family:var(--mono); font-size:10px; font-weight:600; color:var(--text-3); background:var(--panel); border:1px solid var(--rule); padding:4px 10px; border-radius:4px; }
+
+/* ═══ MODELS PAGE ═══ */
+.models-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:20px; }
+.model-card { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:24px; cursor:pointer; transition:all .2s; }
+.model-card:hover { border-color:var(--green-border); }
+.model-card .model-name { font-size:18px; font-weight:700; letter-spacing:-.4px; margin-bottom:4px; }
+.model-card .model-org { font-family:var(--mono); font-size:11px; color:var(--text-3); text-transform:uppercase; letter-spacing:.5px; margin-bottom:14px; }
+.model-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.model-stat { text-align:center; }
+.model-stat .val { font-size:20px; font-weight:700; letter-spacing:-.5px; }
+.model-stat .label { font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:.6px; color:var(--text-3); margin-top:2px; }
+
+/* ═══ RESEARCH PAGE ═══ */
+.paper-item { padding:20px 0; border-bottom:1px solid var(--rule); cursor:pointer; transition:all .15s; }
+.paper-item:hover { padding-left:6px; }
+.paper-item h3 { font-size:16px; font-weight:600; margin-bottom:6px; letter-spacing:-.2px; }
+.paper-item .authors { font-family:var(--mono); font-size:11px; color:var(--text-3); margin-bottom:8px; }
+.paper-item p { font-size:13px; color:var(--text-2); line-height:1.55; }
+.paper-item .paper-tags { margin-top:10px; display:flex; gap:6px; }
+.paper-item .ptag { font-family:var(--mono); font-size:10px; color:var(--text-3); background:var(--panel); padding:3px 8px; border-radius:3px; }
+
+/* ═══ OS PAGE ═══ */
+.repo-card { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:22px; cursor:pointer; transition:all .2s; }
+.repo-card:hover { border-color:var(--green-border); }
+.repo-card h3 { font-size:15px; font-weight:600; margin-bottom:4px; }
+.repo-card .repo-desc { font-size:13px; color:var(--text-2); margin-bottom:12px; line-height:1.5; }
+.repo-meta { display:flex; gap:16px; font-family:var(--mono); font-size:11px; color:var(--text-3); }
+.repo-meta span { display:flex; align-items:center; gap:4px; }
+.repo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+
+/* ═══ SEARCH OVERLAY ═══ */
+.search-overlay { position:fixed; inset:0; background:rgba(6,6,10,.95); z-index:200; display:none; backdrop-filter:blur(8px); }
+.search-overlay.open { display:flex; align-items:flex-start; justify-content:center; padding-top:120px; }
+.search-box { width:600px; }
+.search-box input { width:100%; padding:16px 20px; background:var(--panel); border:1px solid var(--green-border); border-radius:10px; color:var(--text-1); font-family:var(--sans); font-size:18px; outline:none; }
+.search-box input::placeholder { color:var(--text-3); }
+.search-results { margin-top:16px; background:var(--panel); border:1px solid var(--rule); border-radius:10px; max-height:400px; overflow-y:auto; }
+.search-results .sr-item { padding:14px 20px; border-bottom:1px solid var(--rule); cursor:pointer; transition:background .1s; }
+.search-results .sr-item:last-child { border-bottom:none; }
+.search-results .sr-item:hover { background:var(--panel-edge); }
+.search-results .sr-item h4 { font-size:14px; font-weight:600; margin-bottom:3px; }
+.search-results .sr-item p { font-size:12px; color:var(--text-2); }
+.search-results .sr-item .sr-cat { font-family:var(--mono); font-size:10px; color:var(--green); }
+.search-hint { text-align:center; padding:16px; font-size:12px; color:var(--text-3); font-family:var(--mono); }
+
+/* ═══ TOAST ═══ */
+.toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--green); color:#06060a; padding:12px 24px; border-radius:8px; font-size:13px; font-weight:700; z-index:300; transition:transform .3s ease; pointer-events:none; }
+.toast.show { transform:translateX(-50%) translateY(0); }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:960px) {
+  .ticker { grid-template-columns:repeat(2,1fr); }
+  .main-grid { grid-template-columns:1fr; }
+  .analysis-grid { grid-template-columns:1fr; }
+  .models-grid { grid-template-columns:1fr; }
+  .repo-grid { grid-template-columns:1fr; }
+  .cta-bar { flex-direction:column; text-align:center; padding:36px 24px; }
+  .cta-form { width:100%; }
+  .cta-form input { flex:1; }
+}
+@media(max-width:640px) {
+  .ticker { grid-template-columns:1fr; }
+  .nav-mid { display:none; }
+  .nav-search { display:none; }
+  .lead-body h2 { font-size:20px; }
+  .lead-visual { height:180px; }
+  .article-view h1 { font-size:26px; }
+  .container { padding:0 16px; }
+}
+
+.article-container { max-width: 800px; margin: 40px auto; padding: 0 32px; }
+.article-meta { font-family:var(--mono); font-size:11px; color:var(--text-3); margin-bottom:24px; display:flex; gap:16px; align-items:center; }
+.cat-pill { color:var(--green); background:var(--green-dim); border:1px solid var(--green-border); padding:4px 10px; border-radius:4px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px;}
+.article-title { font-size:42px; font-weight:700; letter-spacing:-1.5px; line-height:1.1; margin-bottom:24px; color:var(--text-1); }
+.article-lede { font-size:18px; color:var(--text-2); line-height:1.6; margin-bottom:40px; padding-bottom:40px; border-bottom:1px solid var(--rule); }
+.article-body { font-size:16px; line-height:1.7; color:var(--text-1); }
+.article-body h1 { font-size:32px; font-weight:700; margin:40px 0 20px; color:var(--text-1); letter-spacing:-1px; }
+.article-body h2 { font-size:24px; font-weight:600; margin:40px 0 16px; color:var(--green); font-family:var(--mono); letter-spacing:-0.5px; }
+.article-body h3 { font-size:18px; font-weight:600; margin:32px 0 16px; color:var(--text-1); }
+.article-body p { margin-bottom:24px; color:var(--text-2); }
+.article-body a { color:var(--blue); text-decoration:none; border-bottom:1px dashed var(--blue); }
+.article-body ul { margin-bottom:24px; padding-left:24px; color:var(--text-2); }
+.article-body li { margin-bottom:8px; }
+.article-body blockquote { border-left:3px solid var(--green); padding:20px; font-style:italic; color:var(--text-3); margin:32px 0; background:var(--panel); border-radius: 0 8px 8px 0; }
+.article-body table { width:100%; border-collapse:collapse; margin:32px 0; font-size:14px; background:var(--panel); }
+.article-body th, .article-body td { border:1px solid var(--rule); padding:12px 16px; text-align:left; }
+.article-body th { color:var(--green); font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+.tool-item { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:20px; margin-bottom:16px; transition:border-color .15s; display:block; }
+.tool-item:hover { border-color:var(--blue); }
+.tool-item h4 { font-size:16px; font-weight:600; margin-bottom:8px; color:var(--text-1); }
+.tool-item p { font-size:13px; color:var(--text-2); line-height:1.5; margin-bottom:16px; }
+.tool-cat { font-family:var(--mono); font-size:10px; color:var(--blue); background:var(--blue-dim); padding:2px 6px; border-radius:4px; text-transform:uppercase; letter-spacing:1px; border:1px solid rgba(96,165,250,0.15); }
+.btn-launch { display:inline-block; font-family:var(--mono); font-size:11px; color:var(--blue); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+footer { text-align:center; padding:40px; border-top:1px solid var(--rule); font-family:var(--mono); font-size:11px; color:var(--text-3); margin-top:40px; }
+@media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } .article-title { font-size: 32px; } }
+
+</style>
 </head>
-<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-900">
-    <nav class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/50">
-        <a href="/"><img src="../img/logo.png" alt="The AI Update" class="h-10 object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]"></a>
-        <a href="/" class="text-sm font-bold text-cyan-400 hover:text-cyan-300 tracking-widest uppercase transition-colors"><i class="fas fa-arrow-left mr-2"></i> Back to Hub</a>
-    </nav>
-
-    <article class="max-w-4xl mx-auto px-6 py-20">
-        <header class="mb-16 border-b border-slate-800 pb-12">
-            <div class="flex items-center space-x-4 mb-8">
-                <span class="px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-black rounded-full uppercase shadow-[0_0_10px_rgba(34,211,238,0.15)]">Technical Brief</span>
-                <span class="text-xs font-bold text-slate-500 uppercase tracking-widest"><i class="fas fa-satellite-dish mr-1 text-cyan-500/50"></i> OPENAI_BLOG</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-white leading-tight">Why We No Longer Evaluate Swe Bench Verified</h1>
-        </header>
-
-        <div class="prose prose-invert prose-cyan max-w-none text-lg text-slate-300 leading-relaxed font-light">
-            <h1 class="text-4xl font-black mb-6">Why We No Longer Evaluate Swe Bench Verified</h1>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, <strong>SWE-bench Verified</strong> stood as a prominent contender, aiming to provide a realistic assessment of an LLM's ability to identify and fix real-world software bugs. However, the landscape of AI evaluation is dynamic, and even the most well-intentioned benchmarks can succumb to unforeseen challenges. Recent analysis has revealed significant issues, leading many to conclude that SWE-bench Verified no longer serves as a reliable measure of frontier coding progress.</p>
+<body>
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="live">LIVE SYSTEM TICKER</div>
+        <div id="utcTime">LAST UPDATED ...</div>
+    </div>
+</div>
+<header>
+    <div class="nav">
+        <a href="/" class="brand">
+            <div class="brand-mark">AI</div>
+            THE AI UPDATE
+        </a>
+        <ul class="nav-mid">
+            <li><a href="/" style="color:var(--text-2)">&larr; Back to Hub</a></li>
+        </ul>
+    </div>
+</header>
+<div class="article-container">
+    <div class="article-meta">
+        <span class="cat-pill">INTEL</span>
+        <span>DEEP DIVE</span>
+        <a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified" target="_blank" style="margin-left:auto; color:var(--blue); text-decoration:none; border-bottom:1px dashed var(--blue);">Verify Source &nearr;</a>
+    </div>
+    <h1 class="article-title">Why We No Longer Evaluate Swe Bench Verified</h1>
+    <div class="article-lede">----</div>
+    <div class="article-body">
+        <h1>Why We No Longer Evaluate Swe Bench Verified</h1>
+<p>When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, <strong>SWE-bench Verified</strong> stood as a prominent contender, aiming to provide a realistic assessment of an LLM's ability to identify and fix real-world software bugs. However, the landscape of AI evaluation is dynamic, and even the most well-intentioned benchmarks can succumb to unforeseen challenges. Recent analysis has revealed significant issues, leading many to conclude that SWE-bench Verified no longer serves as a reliable measure of frontier coding progress.</p>
 <hr />
-<h2 class="text-2xl font-bold mt-10 mb-4 text-blue-900">Unpacking SWE-bench Verified: A Deep Dive into its Design</h2>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">At its core, <strong>SWE-bench Verified</strong> emerged as a critical effort to move beyond synthetic coding tasks and test LLMs against the messy reality of open-source software development.</p>
-<h3 class="text-xl font-bold mt-8 mb-3">What It Is and How It Works:</h3>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">SWE-bench Verified is a benchmark dataset designed to evaluate the code generation and bug-fixing abilities of AI models. It distinguishes itself by focusing on <strong>real-world software issues</strong> sourced directly from popular open-source repositories on GitHub.</p>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">Here’s a breakdown of its key components and operational methodology:</p>
-<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">
+<h2>Unpacking SWE-bench Verified: A Deep Dive into its Design</h2>
+<p>At its core, <strong>SWE-bench Verified</strong> emerged as a critical effort to move beyond synthetic coding tasks and test LLMs against the messy reality of open-source software development.</p>
+<h3>What It Is and How It Works:</h3>
+<p>SWE-bench Verified is a benchmark dataset designed to evaluate the code generation and bug-fixing abilities of AI models. It distinguishes itself by focusing on <strong>real-world software issues</strong> sourced directly from popular open-source repositories on GitHub.</p>
+<p>Here’s a breakdown of its key components and operational methodology:</p>
+<ul>
 <li><strong>Real-world Problems:</strong> Unlike many benchmarks that create simplified or hypothetical coding challenges, SWE-bench Verified curates issues (often bug reports or feature requests) from actual project repositories. This provides a rich, complex context that mimics the challenges faced by human developers.</li>
 <li><strong>Ground Truth Patches:</strong> For each issue, the benchmark includes a human-written "gold standard" patch that successfully resolves the problem. This patch serves as the reference solution.</li>
 <li><strong>Test-Driven Evaluation:</strong> The crucial "Verified" aspect comes from its reliance on existing, project-specific unit and integration tests. When an LLM proposes a fix for an issue, its generated patch is applied to the codebase. The success or failure of the model is determined by whether the original failing tests now pass, and crucially, that no new tests have regressed (i.e., existing passing tests still pass).</li>
 <li><strong>Automated Scoring:</strong> The evaluation process is largely automated. Models are given the issue description, relevant files, and often a test suite. Their generated code is then automatically tested against the project's verification suite to determine correctness.</li>
 <li><strong>Focus on Full Resolution:</strong> The goal isn't just to generate <em>any</em> code, but to generate a <em>working, verified patch</em> that integrates seamlessly and passes all associated tests. This implies understanding the problem, identifying the problematic code, generating a fix, and ensuring it doesn't break other parts of the system.</li>
 </ul>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">This design aimed to create a robust and objective measure, pushing LLMs towards more holistic software engineering capabilities rather than just isolated code snippets.</p>
+<p>This design aimed to create a robust and objective measure, pushing LLMs towards more holistic software engineering capabilities rather than just isolated code snippets.</p>
 <hr />
-<h2 class="text-2xl font-bold mt-10 mb-4 text-blue-900">The Initial Lure: Why SWE-bench Verified Was a Milestone</h2>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">When it first appeared, SWE-bench Verified was hailed as a significant step forward for several compelling reasons:</p>
-<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">
+<h2>The Initial Lure: Why SWE-bench Verified Was a Milestone</h2>
+<p>When it first appeared, SWE-bench Verified was hailed as a significant step forward for several compelling reasons:</p>
+<ul>
 <li><strong>Authentic Real-World Challenges:</strong> Its greatest strength was its commitment to realism. By using actual GitHub issues and codebases, it provided a far more authentic evaluation of an LLM's problem-solving skills than synthetic benchmarks. This moved the needle from "can it write a function?" to "can it fix a real bug in a complex system?".</li>
 <li><strong>Objective and Reproducible Evaluation:</strong> The reliance on existing test suites offered a seemingly objective and automated way to score model performance. A patch either passed the tests or it didn't, reducing human subjectivity in evaluation and facilitating reproducible comparisons across different models.</li>
 <li><strong>Driving Frontier Research:</strong> The sheer difficulty and realism of the tasks incentivized researchers to develop more sophisticated LLM architectures and training methodologies. It became a challenging target, pushing models to improve their contextual understanding, code generation quality, and integration abilities.</li>
 <li><strong>Broader Scope of Software Engineering:</strong> Beyond just code generation, successful performance on SWE-bench Verified implied capabilities in code understanding, debugging, patch generation, and system-level reasoning—a much broader spectrum of software engineering skills.</li>
 <li><strong>Transparency:</strong> The open-source nature of the issues and the methodology meant that researchers could inspect and understand the tasks, fostering community engagement and shared understanding.</li>
 </ul>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">For a period, SWE-bench Verified was instrumental in showcasing genuine progress in AI's ability to tackle practical software development tasks, setting a high bar for what LLMs could achieve.</p>
+<p>For a period, SWE-bench Verified was instrumental in showcasing genuine progress in AI's ability to tackle practical software development tasks, setting a high bar for what LLMs could achieve.</p>
 <hr />
-<h2 class="text-2xl font-bold mt-10 mb-4 text-blue-900">The Erosion of Trust: Why SWE-bench Verified Is No Longer Credible</h2>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">Despite its initial promise, SWE-bench Verified has unfortunately revealed fundamental flaws that undermine its ability to accurately measure true progress. The very elements that made it powerful also exposed it to vulnerabilities, leading to its current state of unreliability.</p>
-<h3 class="text-xl font-bold mt-8 mb-3">Critical Limitations and Drawbacks:</h3>
+<h2>The Erosion of Trust: Why SWE-bench Verified Is No Longer Credible</h2>
+<p>Despite its initial promise, SWE-bench Verified has unfortunately revealed fundamental flaws that undermine its ability to accurately measure true progress. The very elements that made it powerful also exposed it to vulnerabilities, leading to its current state of unreliability.</p>
+<h3>Critical Limitations and Drawbacks:</h3>
 <ol>
 <li>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed"><strong>Data Contamination and Training Leakage:</strong> This is arguably the most significant issue. As LLMs become increasingly powerful and trained on vast swathes of the internet, there's a high probability that the public codebases and issues within SWE-bench Verified have been inadvertently included in the training data of many frontier models.</p>
-<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">
+<p><strong>Data Contamination and Training Leakage:</strong> This is arguably the most significant issue. As LLMs become increasingly powerful and trained on vast swathes of the internet, there's a high probability that the public codebases and issues within SWE-bench Verified have been inadvertently included in the training data of many frontier models.</p>
+<ul>
 <li><strong>The Problem:</strong> If a model has seen the problem description, the codebase, and even the "ground truth" patch during its training, its "performance" on the benchmark isn't a reflection of its true problem-solving ability, but rather its capacity for memorization or retrieval.</li>
 <li><strong>The Impact:</strong> This leakage leads to artificially inflated scores that do not represent genuine understanding or generalization to unseen problems. It creates a false sense of progress, making it impossible to discern if a model is truly "solving" the problem or merely regurgitating a learned solution.</li>
 </ul>
 </li>
 <li>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed"><strong>Flawed and Insufficient Test Cases:</strong> While relying on existing test suites seemed robust, real-world project tests aren't always perfect or comprehensive.</p>
-<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">
+<p><strong>Flawed and Insufficient Test Cases:</strong> While relying on existing test suites seemed robust, real-world project tests aren't always perfect or comprehensive.</p>
+<ul>
 <li><strong>The Problem:</strong> Some test cases in the benchmark might be too weak or specific, allowing a model to generate a superficial fix that passes the tests without truly addressing the underlying architectural issue or potential edge cases.</li>
 <li><strong>The Impact:</strong> A model might "pass" a task not because it truly understood and fixed the bug in a robust way, but because it found a minimal change that satisfied the existing, potentially inadequate, test suite. This misrepresents the quality of the generated solution.</li>
 </ul>
 </li>
 <li>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed"><strong>Mismeasurement of Frontier Progress:</strong> The combination of contamination and flawed tests means SWE-bench Verified no longer provides an accurate gauge of the bleeding edge of AI's coding capabilities.</p>
-<ul class="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">
+<p><strong>Mismeasurement of Frontier Progress:</strong> The combination of contamination and flawed tests means SWE-bench Verified no longer provides an accurate gauge of the bleeding edge of AI's coding capabilities.</p>
+<ul>
 <li><strong>The Problem:</strong> Researchers cannot trust high scores on the benchmark to indicate a breakthrough in a model's intelligence or coding prowess. It obscures the actual state of AI development.</li>
 <li><strong>The Impact:</strong> This can mislead the research community, misdirecting efforts towards optimizing for a flawed metric rather than genuinely advancing the field.</li>
 </ul>
 </li>
 <li>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed"><strong>Lack of Adaptation to Model Capabilities:</strong> As models grow more capable, benchmarks need to evolve to remain challenging. The static nature of SWE-bench Verified's core dataset, once exposed to widespread training, makes it less effective as a long-term evaluation tool.</p>
+<p><strong>Lack of Adaptation to Model Capabilities:</strong> As models grow more capable, benchmarks need to evolve to remain challenging. The static nature of SWE-bench Verified's core dataset, once exposed to widespread training, makes it less effective as a long-term evaluation tool.</p>
 </li>
 </ol>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">The conclusion is clear: SWE-bench Verified, while pioneering in its time, has been compromised. The very factors that made it realistic—its reliance on public, real-world data and existing tests—ultimately became its Achilles' heel. It no longer offers a reliable signal for distinguishing truly capable models from those that have simply ingested the test data.</p>
-<p class="mb-6 text-lg text-slate-700 leading-relaxed">This critical situation necessitates a move towards more robust, leakage-resistant, and dynamically challenging evaluation methodologies, such as the proposed <strong>SWE-bench Pro</strong>, to ensure that the progress we measure in AI's software engineering capabilities is both genuine and meaningful.</p>
-        </div>
-        
-        <div class="mt-24 pt-12 border-t border-slate-800 text-center">
-            <a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified" target="_blank" class="inline-block px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] uppercase tracking-widest">Verify Original Source <i class="fas fa-external-link-alt ml-2"></i></a>
-        </div>
-    </article>
+<p>The conclusion is clear: SWE-bench Verified, while pioneering in its time, has been compromised. The very factors that made it realistic—its reliance on public, real-world data and existing tests—ultimately became its Achilles' heel. It no longer offers a reliable signal for distinguishing truly capable models from those that have simply ingested the test data.</p>
+<p>This critical situation necessitates a move towards more robust, leakage-resistant, and dynamically challenging evaluation methodologies, such as the proposed <strong>SWE-bench Pro</strong>, to ensure that the progress we measure in AI's software engineering capabilities is both genuine and meaningful.</p>
+    </div>
+</div>
+<footer>&copy; 2026 The AI Update. Automated Intelligence.</footer>
+<script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getUTCHours()).padStart(2,'0');
+      const m = String(now.getUTCMinutes()).padStart(2,'0');
+      document.getElementById('utcTime').textContent = 'LAST UPDATED ' + h + ':' + m + ' UTC';
+    }
+    setInterval(updateClock, 30000); updateClock();
+</script>
 </body>
 </html>

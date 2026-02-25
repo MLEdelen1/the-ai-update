@@ -125,31 +125,17 @@ def generate_site():
         except Exception as e:
             print(f"Error loading tools: {e}")
 
-    sm = '<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-'
-    sm += '  <url>
-    <loc>https://theaiupdate.org/</loc>
-    <changefreq>hourly</changefreq>
-    <priority>1.0</priority>
-  </url>
-'
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sm += '  <url>\n    <loc>https://theaiupdate.org/</loc>\n    <changefreq>hourly</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
     try:
         for s in json.loads(NEWS_DATA.read_text()):
             if s.get("id"):
-                sm += f'  <url>
-    <loc>https://theaiupdate.org/articles/{s.get("id")}.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-'
+                sm += f'  <url>\n    <loc>https://theaiupdate.org/articles/{s.get("id")}.html</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
     except:
         pass
     sm += '</urlset>'
     (WEBSITE_DIR / "sitemap.xml").write_text(sm)
-    (WEBSITE_DIR / "robots.txt").write_text("User-agent: *
-Allow: /
-Sitemap: https://theaiupdate.org/sitemap.xml")
+    (WEBSITE_DIR / "robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://theaiupdate.org/sitemap.xml")
 
     final = master_temp.replace("{{FEATURED_HTML}}", featured_html).replace("{{NEWS_HTML}}", news_html).replace("{{ARCHIVE_HTML}}", archive_html).replace("{{TOOLS_HTML}}", tools_html)
     (WEBSITE_DIR / "index.html").write_text(final)
