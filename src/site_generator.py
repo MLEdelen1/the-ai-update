@@ -65,10 +65,10 @@ def get_static_mocks():
     <div class="model-card"><div class="model-head"><h3>Claude 3.5 Opus</h3><span>ANTHROPIC &bull; LATE 2025</span></div><div class="model-metrics"><div class="metric"><div class="metric-val">95.4</div><div class="metric-label">MMLU</div></div><div class="metric"><div class="metric-val">92.0</div><div class="metric-label">MATH</div></div><div class="metric"><div class="metric-val">$15.00</div><div class="metric-label">/1M TOK</div></div></div></div>
     """
     os_grid = """
-    <a href="#" class="os-card"><div class="os-title">deepseek-ai/DeepSeek-R1</div><div class="os-desc">Open-weight reasoning model matching OpenAI o1/o3 performance. Apache 2.0.</div><div class="os-meta">110k &bull; Python &bull; Updated 2h ago</div></a>
-    <a href="#" class="os-card"><div class="os-title">Qwen/Qwen2.5-Max</div><div class="os-desc">Alibaba's flagship open LLM. Massive context, top-tier coding and math.</div><div class="os-meta">45.2k &bull; Python &bull; Updated 5h ago</div></a>
-    <a href="#" class="os-card"><div class="os-title">meta-llama/Llama-3.3-70B-Instruct</div><div class="os-desc">State-of-the-art 70B model matching Llama 3 400B performance.</div><div class="os-meta">89.4k &bull; Python &bull; Updated 1d ago</div></a>
-    <a href="#" class="os-card"><div class="os-title">anthropics/claude-code</div><div class="os-desc">Agentic coding tool for the terminal. Understands your codebase deeply.</div><div class="os-meta">38.7k &bull; TypeScript &bull; Updated 8h ago</div></a>
+    <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" class="os-card"><div class="os-title">deepseek-ai/DeepSeek-R1</div><div class="os-desc">Open-weight reasoning model matching OpenAI o1/o3 performance. Apache 2.0.</div><div class="os-meta">110k &bull; Python &bull; Updated 2h ago</div></a>
+    <a href="https://huggingface.co/Qwen/Qwen2.5-Max" target="_blank" class="os-card"><div class="os-title">Qwen/Qwen2.5-Max</div><div class="os-desc">Alibaba's flagship open LLM. Massive context, top-tier coding and math.</div><div class="os-meta">45.2k &bull; Python &bull; Updated 5h ago</div></a>
+    <a href="https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct" target="_blank" class="os-card"><div class="os-title">meta-llama/Llama-3.3-70B-Instruct</div><div class="os-desc">State-of-the-art 70B model matching Llama 3 400B performance.</div><div class="os-meta">89.4k &bull; Python &bull; Updated 1d ago</div></a>
+    <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank" class="os-card"><div class="os-title">anthropics/claude-code</div><div class="os-desc">Agentic coding tool for the terminal. Understands your codebase deeply.</div><div class="os-meta">38.7k &bull; TypeScript &bull; Updated 8h ago</div></a>
     """
     return stats, models, os_grid
 
