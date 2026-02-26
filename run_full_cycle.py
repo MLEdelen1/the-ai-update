@@ -43,6 +43,8 @@ def generate(prompt):
 
 article_content = enforce_english(generate(article_prompt))
 tweet_content = enforce_english(generate(tweet_prompt))
+if tweet_content:
+    tweet_content += "\n\nRead the full Deep Dive: https://theaiupdate.org"
 
 if not article_content or not tweet_content:
     print("Content generation failed!")

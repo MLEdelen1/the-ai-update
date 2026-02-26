@@ -52,6 +52,7 @@ tweet_content = generate(tweet_prompt)
 if article_content and tweet_content:
     article_content = enforce_english(article_content)
     tweet_content = enforce_english(tweet_content)
+        tweet_content += "\n\nRead the full Deep Dive: https://theaiupdate.org"
     top_story['deep_dive'] = article_content
     with open('/a0/usr/projects/x-manage/data/news_cache/latest_scan.json', 'w') as f:
         json.dump(news_data, f, indent=2)
