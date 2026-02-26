@@ -3,36 +3,50 @@ import os, sys, json, requests, re, subprocess
 print("\n=== [1] Scanning News ===")
 subprocess.run(['python3', 'src/news_scanner.py'], check=True)
 
-print("\n=== [2 & 5] Generating Article & Tweet (Gemini 2.5 Flash) ===")
+print("\n=== [2 & 5] Generating Article & Tweet (Gemini 3.1 Pro) ===")
 def enforce_english(text):
     if not isinstance(text, str): return text
-    # Strict English-only firewall (No CJK)
     return re.sub(r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\u30a0-\u30ff\u31f0-\u31ff\uac00-\ud7af]+', '', text)
 
 with open('config/gemini_keys.json', 'r') as f:
     API_KEY = json.load(f)['gemini_api_key']
 
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
+url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={API_KEY}"
 
-with open('data/news_cache/latest_scan.json', 'r') as f:
-    news_data = json.load(f)
+try:
+    with open('data/news_cache/latest_scan.json', 'r') as f:
+        news_data = json.load(f)
+except Exception:
+    news_data = []
 
+if not news_data:
+    print("No new stories found. Exiting gracefully.")
+    sys.exit(0)
+
+import random
+existing = os.listdir('data/research/briefings_2026_02') if os.path.exists('data/research/briefings_2026_02') else []
 top_story = news_data[0]
-title = top_story.get('title')
-summary = top_story.get('summary')
+for s in news_data:
+    tslug = re.sub(r'[^a-z0-9]+', '_', s.get('title', '').lower().strip())[:40]
+    if not any(tslug in ex for ex in existing):
+        top_story = s
+        break
 
-article_prompt = f"""Write a technical, 8th-grade reading level Deep Dive article based on this story:
+title = top_story.get('title', 'Unknown Title')
+summary = top_story.get('summary', 'No summary available.')
+
+article_prompt = f""""Write a technical, 8th-grade reading level Deep Dive article based on this story:
 Title: {title}
 Summary: {summary}
 
 The article should be in Markdown format, with headers, bullet points, and practical takeaways.
-No CJK characters allowed."""
+No CJK characters allowed. Do not write about physical robotics."""
 
-tweet_prompt = f"""Draft a high-signal, punchy tweet about this new article:
+tweet_prompt = f""""Draft a high-signal, punchy tweet about this new article:
 Title: {title}
 
 Include engaging emojis and relevant hashtags. No CJK characters allowed.
-Keep it under 280 characters."""
+Keep it under 150 characters to leave room for the link."""
 
 def generate(prompt):
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
@@ -54,10 +68,20 @@ top_story['deep_dive'] = article_content
 with open('data/news_cache/latest_scan.json', 'w') as f:
     json.dump(news_data, f, indent=2)
 
+slug = re.sub(r'[^a-z0-9]+', '_', title.lower().strip())[:40]
+if not slug: slug = 'auto_article'
+md_filename = f'data/research/briefings_2026_02/briefing_{slug}.md'
+os.makedirs('data/research/briefings_2026_02', exist_ok=True)
+final_md = article_content
+if not final_md.strip().startswith('#'):
+    final_md = f"# {title}\n\n" + final_md
+with open(md_filename, 'w') as f:
+    f.write(final_md)
+print(f'Saved Markdown to {md_filename}')
+
 with open('data/drafts/latest_tweet.txt', 'w') as f:
     f.write(tweet_content)
 
-# Formatting for the X Poster script which expects latest_batch.json
 with open('data/drafts/latest_batch.json', 'w') as f:
     json.dump({"tweets": [{"draft": tweet_content}]}, f)
 
