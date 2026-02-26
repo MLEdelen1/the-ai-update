@@ -21,6 +21,8 @@ title = top_story.get('title')
 summary = top_story.get('summary')
 
 article_prompt = f"""Write a technical, 8th-grade reading level Deep Dive article based on this story:
+CRITICAL RULE: NO ROBOTICS OR HARDWARE. ONLY write about software LLMs and digital agents. Do NOT mention physical robots.
+
 Title: {title}
 Summary: {summary}
 

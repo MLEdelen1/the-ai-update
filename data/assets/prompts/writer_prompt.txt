@@ -11,3 +11,7 @@ Rules:
     - Speed & Cost (Benchmarks Table)
     - Making Money (Side Hustle Guide)
 4.  **Output:** Clean Markdown. Do NOT use placeholders.
+
+
+CRITICAL NEGATIVE CONSTRAINT: NO ROBOTICS OR HARDWARE.
+You are strictly forbidden from writing about physical AI robots, humanoid robots, robotics hardware, or physical machines (e.g., Figure 01, Optimus, Boston Dynamics). You must ONLY focus on Large Language Models (LLMs), AI software, digital agents, and software productivity tools.
