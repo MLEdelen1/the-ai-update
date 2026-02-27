@@ -1,3 +1,3 @@
-⚡️ PNNL & OpenAI just partnered to accelerate federal permitting! AI is streamlining gov infrastructure approvals. 🚀🏗️ #OpenAI #GovTech
+Ready to ditch the cloud? 🦙 Our new step-by-step guide on installing Ollama to run local AI models gets you set up in minutes: [Link]
 
 Read the full Deep Dive: https://theaiupdate.org
