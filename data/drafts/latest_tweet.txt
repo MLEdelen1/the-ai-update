@@ -1,3 +1,7 @@
-Ready to ditch the cloud? 🦙 Our new step-by-step guide on installing Ollama to run local AI models gets you set up in minutes: [Link]
+Run 70B LLMs locally with massive context! 🧠🚀
+
+"Completed my 64GB VRAM rig - dual MI50 build + custom shroud" 👇
+
+#LLMs #LocalAI
 
 Read the full Deep Dive: https://theaiupdate.org

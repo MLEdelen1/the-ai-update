@@ -27,7 +27,7 @@ import random
 existing = os.listdir('data/research/briefings_2026_02') if os.path.exists('data/research/briefings_2026_02') else []
 
 # --- STRICT TOPIC FILTERING ---
-allowed_terms = ['llm', 'open source', 'model', 'api', 'agentic', 'workflow', 'n8n', 'ollama', 'openclaw', 'ai', 'software', 'startup', 'consumer', 'guide', 'tutorial']
+allowed_terms = ['llm', 'open source', 'model', 'api', 'agentic', 'workflow', 'n8n', 'ollama', 'openclaw', 'ai', 'software', 'startup', 'consumer', 'guide', 'tutorial', 'gemini', 'nano banana', 'sora', 'music', 'image', 'video', 'generator', 'editor', 'multimodal', 'kling', 'midjourney', 'suno']
 banned_terms = ['government', 'federal', 'politics', 'policy', 'permit', 'biden', 'trump', 'senate', 'congress', 'laboratory', 'pnnl', 'draftnepabench', 'president', 'court']
 
 valid_story = None
@@ -59,7 +59,7 @@ Summary: {summary}
 
 The article should be in Markdown format, with headers, bullet points, and practical takeaways.
 No CJK characters allowed. Do not write about physical robotics. 
-STRICT TOPIC RULE: Focus ONLY on AI software, LLMs (ALL models for consumers and startups), open-source tools, and step-by-step guides (e.g., n8n workflows, Ollama, OpenClaw). NEVER write about government, politics, federal policies, or physical robotics."""
+STRICT TOPIC RULE: Focus ONLY on AI software, LLMs (ALL models like Gemini, Claude, etc), AI music/image/video generators and editors (like Sora, Nano Banana, Kling, Suno), open-source tools, and step-by-step guides. NEVER write about government, politics, federal policies, or physical robotics."""
 
 tweet_prompt = f""""Draft a high-signal, punchy tweet about this new article focusing purely on LLMs/software models:
 Title: {title}

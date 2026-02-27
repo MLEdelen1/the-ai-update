@@ -15,6 +15,16 @@ CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 RSS_FEEDS = {
     # LLMs & Reasoning
+    
+    # New Consumer & Startup Sources
+    "huggingface": "https://huggingface.co/blog/feed.xml",
+    "meta_ai": "https://ai.meta.com/blog/rss/",
+    "mistral": "https://mistral.ai/news/index.xml",
+    "stability": "https://stability.ai/blog?format=rss",
+    "reddit_localllama": "https://www.reddit.com/r/LocalLLaMA/top.rss?t=day",
+    "n8n_blog": "https://blog.n8n.io/rss/",
+    "venturebeat_ai": "https://venturebeat.com/category/ai/feed/",
+
     "openai": "https://openai.com/blog/rss.xml",
     "anthropic": "https://www.anthropic.com/rss.xml",
     "google_ai": "https://blog.google/technology/ai/rss/",
