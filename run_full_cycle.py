@@ -25,28 +25,46 @@ if not news_data:
 
 import random
 existing = os.listdir('data/research/briefings_2026_02') if os.path.exists('data/research/briefings_2026_02') else []
-top_story = news_data[0]
+
+# --- STRICT TOPIC FILTERING ---
+allowed_terms = ['llm', 'open source', 'openai', 'claude', 'qwen', 'deepseek', 'llama', 'model', 'api', 'weights', 'huggingface', 'agentic', 'gpu']
+banned_terms = ['government', 'federal', 'politics', 'policy', 'permit', 'biden', 'trump', 'senate', 'congress', 'laboratory', 'pnnl', 'draftnepabench', 'president', 'court']
+
+valid_story = None
 for s in news_data:
-    tslug = re.sub(r'[^a-z0-9]+', '_', s.get('title', '').lower().strip())[:40]
-    if not any(tslug in ex for ex in existing):
-        top_story = s
-        break
+    t = s.get('title', '').lower()
+    sm = s.get('summary', '').lower()
+    text = t + ' ' + sm
 
-title = top_story.get('title', 'Unknown Title')
-summary = top_story.get('summary', 'No summary available.')
+    if any(b in text for b in banned_terms):
+        continue
 
+    if any(a in text for a in allowed_terms):
+        tslug = re.sub(r'[^a-z0-9]+', '_', t.strip())[:40]
+        if not any(tslug in ex for ex in existing):
+            valid_story = s
+            break
+
+if not valid_story:
+    print("No valid LLM/OpenSource stories found. Exiting gracefully without posting junk.")
+    sys.exit(0)
+
+title = valid_story.get('title', 'Unknown Title')
+summary = valid_story.get('summary', 'No summary available.')
+
+# --- STRICT PROMPT CONSTRAINTS ---
 article_prompt = f""""Write a technical, 8th-grade reading level Deep Dive article based on this story:
 Title: {title}
 Summary: {summary}
 
 The article should be in Markdown format, with headers, bullet points, and practical takeaways.
-No CJK characters allowed. Do not write about physical robotics."""
+No CJK characters allowed. Do not write about physical robotics. 
+STRICT TOPIC RULE: Focus ONLY on LLMs (Large Language Models), software tools, and open-source models (like Qwen, Claude, OpenAI). NEVER write about government, politics, federal policies, or regulatory benchmarks."""
 
-tweet_prompt = f""""Draft a high-signal, punchy tweet about this new article:
+tweet_prompt = f""""Draft a high-signal, punchy tweet about this new article focusing purely on LLMs/software models:
 Title: {title}
 
-Include engaging emojis and relevant hashtags. No CJK characters allowed.
-Keep it under 150 characters to leave room for the link."""
+Include engaging emojis and relevant hashtags. No CJK characters allowed. Keep it under 150 characters."""
 
 def generate(prompt):
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
@@ -64,7 +82,7 @@ if not article_content or not tweet_content:
     print("Content generation failed!")
     sys.exit(1)
 
-top_story['deep_dive'] = article_content
+valid_story['deep_dive'] = article_content
 with open('data/news_cache/latest_scan.json', 'w') as f:
     json.dump(news_data, f, indent=2)
 
@@ -85,12 +103,10 @@ with open('data/drafts/latest_tweet.txt', 'w') as f:
 with open('data/drafts/latest_batch.json', 'w') as f:
     json.dump({"tweets": [{"draft": tweet_content}]}, f)
 
-print("Content generated and strict English-only firewall applied.")
-
 print("\n=== [3] Rebuilding Website ===")
 subprocess.run(['python3', 'src/site_generator.py'], check=True)
 
 print("\n=== [4] Deploying to GitHub (Cloudflare) ===")
 subprocess.run(['git', 'add', '.'], check=True)
-subprocess.run(['git', 'commit', '-m', 'Auto-Deploy: Daily Business Cycle'], check=False)
+subprocess.run(['git', 'commit', '-m', 'Purge political article & strictly enforce LLM only topics'], check=False)
 subprocess.run(['git', 'push', 'origin', 'main'], check=True)
