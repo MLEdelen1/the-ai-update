@@ -1,7 +1,3 @@
-Run 70B LLMs locally with massive context! 🧠🚀
-
-"Completed my 64GB VRAM rig - dual MI50 build + custom shroud" 👇
-
-#LLMs #LocalAI
+🍌 Nanobanana 2 is here! The new article drops pure signal on this next-gen LLM: architecture, weights & software benchmarks. 🚀 #LLM #AI
 
 Read the full Deep Dive: https://theaiupdate.org
