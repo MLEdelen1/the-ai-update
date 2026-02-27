@@ -231,11 +231,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
         <p class="article-lede">VRAM is King: The amount of Video RAM you have dictates how smart and how large of an AI model your local software can run. 64G...</p>
     </div>
 
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
 
     <div class="article-body">
         <h1>Deep Dive: Unleashing Open-Source AI Software on a 64GB VRAM Local Rig</h1>
-<p>Recently, an ambitious tech builder shared their custom local AI server setup. The rig features a Threadripper 2990WX CPU, 64GB of system RAM, and the star of the show: dual AMD Instinct MI50 GPUs giving a massive total of 64GB of Video RAM (VRAM). </p>
+<p>Recently, an ambitious tech builder shared their custom local AI server setup. The rig features a Threadripper 2990WX CPU, 64GB of system RAM, and the star of the show: four AMD Instinct MI50 GPUs (which each feature 16GB of VRAM and 64 ROPs) giving a massive total of 64GB of Video RAM (VRAM). </p>
 <p>While the hardware is impressive, the real magic is the <strong>AI software</strong> this machine can run. Building a massive local AI server is all about one thing: breaking free from cloud-based AI tools and running powerful Large Language Models (LLMs) and AI generators right at home. </p>
 <p>In this technical deep dive, we will explore the open-source software, LLMs, and AI generators you can run when you have 64GB of VRAM at your fingertips.</p>
 <hr />
@@ -243,11 +243,11 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
 <p>When you use online AI models like Gemini or Claude, massive data centers are doing the heavy lifting. To run similar models on your own computer, you need VRAM. VRAM is the ultra-fast memory inside a graphics card (GPU). AI models must load completely into this memory to generate text, images, or code quickly.</p>
 <p>Here is what 64GB of VRAM allows your software to do:
 *   <strong>Run Huge LLMs:</strong> You can easily load 70-billion-parameter models (like Meta's Llama 3 70B). These models are incredibly smart and can rival paid cloud software.
-*   <strong>Fast Text Generation:</strong> Because the entire model fits in the VRAM of the dual MI50s, the AI software can generate dozens of words per second.
+*   <strong>Fast Text Generation:</strong> Because the entire model fits in the VRAM of the GPU cluster, the AI software can generate dozens of words per second.
 *   <strong>Multitasking:</strong> You can run an LLM to write a story in the background while running an AI image generator to create the illustrations at the same time.</p>
 <hr />
 <h2>The Open-Source Software Stack</h2>
-<p>To make two AMD MI50 GPUs talk to open-source AI models, you need the right software stack. Here are the tools that make a massive local rig work.</p>
+<p>To make multiple AMD MI50 GPUs talk to open-source AI models, you need the right software stack. Here are the tools that make a massive local rig work.</p>
 <h3>1. ROCm (Radeon Open Compute)</h3>
 <p>Because this rig uses AMD GPUs instead of NVIDIA, it relies on AMD's ROCm software. ROCm is an open-source platform that allows AI models to use the processing power of AMD graphics cards. It is the invisible bridge between your hardware and your AI applications.</p>
 <h3>2. Ollama and LM Studio</h3>
@@ -260,7 +260,7 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
 <h2>How AI Software Fits Big Models into Your Rig</h2>
 <p>Even with 64GB of VRAM, the biggest open-source models (which can be over 100GB in size) need a trick to fit. This software trick is called <strong>Quantization</strong>.</p>
 <p>Quantization compresses the AI model by reducing the precision of its math. Think of it like resizing a giant, high-resolution photograph into a smaller JPEG file. The picture still looks almost exactly the same, but the file size is cut in half. </p>
-<p>Using a software format called <strong>GGUF</strong>, developers compress large LLMs. Thanks to quantization, an 80GB model can be shrunk down to 40GB, allowing it to fit perfectly inside the 64GB VRAM of the dual MI50 setup.</p>
+<p>Using a software format called <strong>GGUF</strong>, developers compress large LLMs. Thanks to quantization, an 80GB model can be shrunk down to 40GB, allowing it to fit perfectly inside the 64GB VRAM of the multi-GPU setup.</p>
 <hr />
 <h2>Step-by-Step Guide: Setting Up a Local LLM</h2>
 <p>If you build a local AI rig, here is the basic step-by-step process to get your AI software running:</p>
