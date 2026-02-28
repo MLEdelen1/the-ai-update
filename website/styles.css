@@ -47,7 +47,7 @@ body {
 .sect-alt { background: rgba(17, 24, 39, .35); }
 
 /* ===== SCROLL ANIMATIONS ===== */
-.anim { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.anim { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
 .anim.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== TEXT STYLES ===== */
