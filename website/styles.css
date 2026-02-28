@@ -374,8 +374,22 @@ footer {
 .article-body ul{padding-left:18px;color:var(--gray);} 
 
 /* Homepage centering */
+.home-centered .contain,
+.home-centered .sect-head,
+.home-centered .hero-inner,
+.home-centered .hero-content,
+.home-centered .footer,
+.home-centered .foot-inner { text-align: center; }
+
+.home-centered h1,
+.home-centered h2,
+.home-centered h3,
+.home-centered p,
+.home-centered .tag,
+.home-centered .overline,
 .home-centered .hero-desc,
 .home-centered .sect-sub,
+.home-centered .proof-text,
 .home-centered .intel-card,
 .home-centered .tool,
 .home-centered .q,
@@ -383,9 +397,7 @@ footer {
 .home-centered .kit-left,
 .home-centered .kit-right,
 .home-centered .wf-card,
-.home-centered .faq,
-.home-centered .proof-text,
-.home-centered .foot-inner { text-align: center; }
+.home-centered .faq { text-align: center; }
 
 .home-centered .hero-btns,
 .home-centered .hero-metrics,
@@ -394,4 +406,7 @@ footer {
 .home-centered .steps,
 .home-centered .wf-grid,
 .home-centered .kit-checks,
-.home-centered .faq-list { margin-left: auto; margin-right: auto; }
+.home-centered .faq-list,
+.home-centered .sect-head,
+.home-centered .hero-inner,
+.home-centered .kit-box { margin-left: auto; margin-right: auto; justify-content: center; }
