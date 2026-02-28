@@ -42,6 +42,11 @@ body {
 
 /* ===== LAYOUT ===== */
 .contain { max-width: 1100px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+main.contain:not(.article-body) { max-width: 1100px; margin-left: auto; margin-right: auto; text-align: center; }
+main.contain:not(.article-body) .wf-card,
+main.contain:not(.article-body) .tool,
+main.contain:not(.article-body) .intel-card,
+main.contain:not(.article-body) .step-card { text-align: left; }
 .narrow { max-width: 780px; }
 .sect { padding: 100px 0; position: relative; }
 .sect-alt { background: rgba(17, 24, 39, .35); }
