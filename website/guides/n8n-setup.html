@@ -1,53 +1,35 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>n8n Setup Guide</title>
-  <link rel="stylesheet" href="../styles.css?v=9" />
+  <link rel="stylesheet" href="../styles.css?v=11" />
 </head>
 <body>
   <canvas id="particles"></canvas><div class="top-glow"></div>
-  <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/local-ai-stack.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
+  <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
   <main class="contain article-body" style="padding-top:100px">
-    <div class="sect-head"><p class="tag">GUIDE • N8N</p><h1>n8n setup for reliable AI automations</h1><p class="sect-sub">Stand up n8n, create a production-safe workflow, verify schedule and webhook triggers, and troubleshoot execution errors.</p></div>
+    <div class="sect-head"><p class="tag">INSTALL GUIDE • N8N</p><h1>Install n8n with official npm docs and OS-specific commands</h1><p class="sect-sub">Exact install commands, expected output, and fail-fix blocks.</p></div>
     
-<section class="intel-grid">
-<article class="intel-card"><div class="intel-source">STEP 1</div><h3>Install n8n and start local server</h3><h4>Windows PowerShell</h4><pre><code>npm install -g n8n
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">BEGINNER GLOSSARY</div><h3>Quick words</h3><p><strong>Model:</strong> the AI brain version. <strong>Local:</strong> runs on your own computer. <strong>API:</strong> a way apps send messages to each other. <strong>Workflow:</strong> repeatable steps that do one job. <strong>Token:</strong> small pieces of text a model reads and writes.</p></article>
+<article class="intel-card"><div class="intel-source">OFFICIAL DOC</div><h3>Where this install comes from</h3><p>Open <a href="https://docs.n8n.io/hosting/installation/npm/">https://docs.n8n.io/hosting/installation/npm/</a>. This page confirms npm install and localhost:5678 default.</p></article>
+<article class="intel-card"><div class="intel-source">PREREQUISITE CHECK</div><h3>Check Node.js first</h3><pre><code>node -v
+npm -v</code></pre><p><strong>Expected result:</strong> Node and npm versions print. n8n docs require Node between 20.19 and 24.x.</p><div class="intel-action"><strong>If this fails, do this:</strong> Install Node LTS from <a href="https://nodejs.org/en/download">nodejs.org/download</a> then rerun checks.</div></article>
+<article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Windows install path</h3><pre><code>npm install n8n -g
 n8n --version
-n8n start</code></pre><h4>macOS/Linux (optional)</h4><pre><code>npm install -g n8n
+n8n start</code></pre><p>Then open browser and go to <code>http://localhost:5678</code>.</p><p><strong>Expected result:</strong> n8n editor opens.</p><div class="intel-action"><strong>If this fails, do this:</strong> Run <code>Test-NetConnection -ComputerName localhost -Port 5678</code>. If false, restart n8n with <code>n8n start</code>.</div></article>
+<article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path</h3><pre><code>npm install n8n -g
 n8n --version
-n8n start</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 2</div><h3>Create first workflow with trigger</h3><p>Use Schedule Trigger for deterministic tests before webhooks.</p><pre><code># no shell command required in UI step
-# in browser: open http://localhost:5678
-# create workflow: Schedule Trigger -> Set -> Respond to Webhook (or Email node)</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 3</div><h3>Add AI node using local Ollama</h3><p>Set endpoint to <code>http://localhost:11434</code> and select your tested model.</p><pre><code>curl http://localhost:11434/api/tags
-n8n start</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 4</div><h3>Enable persistence and secure auth</h3><pre><code>$env:N8N_BASIC_AUTH_ACTIVE="true"
-$env:N8N_BASIC_AUTH_USER="admin"
-$env:N8N_BASIC_AUTH_PASSWORD="change-this-now"
-$env:N8N_HOST="localhost"
-$env:N8N_PORT="5678"
-n8n start</code></pre></article>
-<article class="intel-card"><div class="intel-source">VERIFY</div><h3>Verification commands</h3><pre><code>n8n --version
-Test-NetConnection -ComputerName localhost -Port 5678
-curl http://localhost:11434/api/tags
-Get-Process n8n -ErrorAction SilentlyContinue</code></pre></article>
-<article class="intel-card"><div class="intel-source">TROUBLESHOOT</div><h3>Troubleshooting commands</h3><pre><code># port conflict on 5678
-Get-NetTCPConnection -LocalPort 5678 | Select-Object -First 5
-
-# clean reinstall
-npm uninstall -g n8n
-npm cache verify
-npm install -g n8n
-
-# test with different port
-$env:N8N_PORT="5680"
-n8n start</code></pre></article>
+n8n start</code></pre><p>Open <code>http://localhost:5678</code>.</p><p><strong>Expected result:</strong> n8n loads in browser.</p><div class="intel-action"><strong>If this fails, do this:</strong> Run <code>which n8n</code>. If empty, open a new terminal and retry.</div></article>
+<article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path</h3><pre><code>npm install n8n -g
+n8n --version
+n8n start</code></pre><p>Open <code>http://localhost:5678</code>.</p><p><strong>Expected result:</strong> n8n editor appears.</p><div class="intel-action"><strong>If this fails, do this:</strong> Try one-time run with <code>npx n8n</code> to confirm command works.</div></article>
 </section>
-<p style="margin:28px 0"><a class="btn-main" href="local-ai-stack.html">Continue to full stack roadmap</a></p>
-  </main>
-  <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="../guides/local-ai-stack.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
+<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>n8n usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="n8n-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>  </main>
+  <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
   <script src="../site.js"></script>
 </body>
 </html>
+
+

@@ -1,0 +1,20 @@
+﻿<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Use n8n Guide</title><link rel="stylesheet" href="../styles.css?v=11" /></head>
+<body>
+<canvas id="particles"></canvas><div class="top-glow"></div>
+<nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
+<main class="contain article-body" style="padding-top:100px">
+<div class="sect-head"><p class="tag">USE GUIDE â€¢ N8N</p><h1>Use n8n after install</h1><p class="sect-sub">Build one simple workflow so you understand how triggers and nodes work.</p></div>
+<section class="intel-grid">
+<article class="intel-card"><div class="intel-source">STEP 0</div><h3>Confirm n8n is running</h3><pre><code>n8n --version
+http://localhost:5678</code></pre><p><strong>Expected result:</strong> Version appears and editor opens.</p></article>
+<article class="intel-card"><div class="intel-source">STEP 1</div><h3>Create first workflow</h3><p>In n8n, click New Workflow, add Manual Trigger, then add Set node.</p><p><strong>Expected result:</strong> You see two connected nodes.</p></article>
+<article class="intel-card"><div class="intel-source">STEP 2</div><h3>Add sample output</h3><p>In Set node, create a field named message with value: Hello from n8n.</p><p><strong>Expected result:</strong> Output data appears when you run manually.</p></article>
+<article class="intel-card"><div class="intel-source">STEP 3</div><h3>Run and save</h3><p>Click Execute Workflow, confirm output, then Save and name it First Workflow.</p><p><strong>Expected result:</strong> You now have a reusable automation base.</p></article>
+</section>
+<section class="tools-row"><article class="tool"><div class="tool-cat">IF NEEDED</div><h3>Install n8n first</h3><p>Go back if localhost:5678 is unavailable.</p><a class="tool-link" href="n8n-setup.html">Open install guide â†’</a></article><article class="tool"><div class="tool-cat">NEXT</div><h3>Combine with OpenClaw + Ollama</h3><p>Connect workflow logic to local AI output.</p><a class="tool-link" href="local-ai-stack.html">Open combine guide â†’</a></article></section>
+</main>
+<footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer><script src="../site.js"></script>
+</body></html>
+

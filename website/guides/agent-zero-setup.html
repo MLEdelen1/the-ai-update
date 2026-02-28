@@ -1,58 +1,30 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agent Zero Setup Guide</title>
-  <link rel="stylesheet" href="../styles.css?v=9" />
+  <link rel="stylesheet" href="../styles.css?v=11" />
 </head>
 <body>
   <canvas id="particles"></canvas><div class="top-glow"></div>
-  <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/local-ai-stack.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
+  <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
   <main class="contain article-body" style="padding-top:100px">
-    <div class="sect-head"><p class="tag">GUIDE • AGENT ZERO</p><h1>Agent Zero setup for safe autonomous task runs</h1><p class="sect-sub">Set up Agent Zero with controlled permissions, test in a sandbox, verify tool boundaries, and recover quickly if runs drift.</p></div>
+    <div class="sect-head"><p class="tag">INSTALL GUIDE • AGENT ZERO</p><h1>Install Agent Zero with Docker prerequisite checks on every OS</h1><p class="sect-sub">Official quick-start commands plus beginner troubleshooting.</p></div>
     
-<section class="intel-grid">
-<article class="intel-card"><div class="intel-source">STEP 1</div><h3>Create isolated project folder</h3><p>Never test autonomous behavior in a production repository first.</p><h4>Windows PowerShell</h4><pre><code>mkdir $env:USERPROFILE\agent-zero-lab -Force
-Set-Location $env:USERPROFILE\agent-zero-lab
-git init</code></pre><h4>macOS/Linux (optional)</h4><pre><code>mkdir -p ~/agent-zero-lab && cd ~/agent-zero-lab
-git init</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 2</div><h3>Install runtime + dependencies</h3><p>Use Python 3.11+ and pip tooling, then install Agent Zero in a dedicated venv.</p><h4>Windows PowerShell</h4><pre><code>winget install Python.Python.3.11
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install agent-zero</code></pre><h4>macOS/Linux (optional)</h4><pre><code>python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install agent-zero</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 3</div><h3>Set strict environment variables</h3><p>Define model endpoint and hard limits before first run.</p><pre><code>$env:AGENT_ZERO_MAX_STEPS="10"
-$env:AGENT_ZERO_ALLOW_SHELL="false"
-$env:AGENT_ZERO_LOG_LEVEL="info"
-agent-zero --help</code></pre></article>
-<article class="intel-card"><div class="intel-source">STEP 4</div><h3>Run safe pilot task</h3><p>Start with a read-only task. Confirm output quality and boundaries.</p><pre><code>agent-zero run "Summarize this folder and suggest one cleanup plan. Do not delete files."
-agent-zero run "Draft release notes from git history only."</code></pre></article>
-<article class="intel-card"><div class="intel-source">VERIFY</div><h3>Verification commands</h3><pre><code>python --version
-pip show agent-zero
-agent-zero --help
-agent-zero config show
-git status</code></pre></article>
-<article class="intel-card"><div class="intel-source">TROUBLESHOOT</div><h3>Troubleshooting commands</h3><pre><code># reset virtual environment
-Deactivate
-Remove-Item -Recurse -Force .venv
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install agent-zero
-
-# if model calls fail, print environment
-Get-ChildItem Env:AGENT_ZERO*
-
-# if permissions are too open, enforce safer defaults
-$env:AGENT_ZERO_ALLOW_SHELL="false"
-$env:AGENT_ZERO_MAX_STEPS="8"</code></pre></article>
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">BEGINNER GLOSSARY</div><h3>Quick words</h3><p><strong>Model:</strong> the AI brain version. <strong>Local:</strong> runs on your own computer. <strong>API:</strong> a way apps send messages to each other. <strong>Workflow:</strong> repeatable steps that do one job. <strong>Token:</strong> small pieces of text a model reads and writes.</p></article>
+<article class="intel-card"><div class="intel-source">OFFICIAL SOURCE</div><h3>Where commands come from</h3><p>Commands below come from the Agent Zero official README quick start: <a href="https://github.com/frdel/agent-zero">https://github.com/frdel/agent-zero</a>.</p></article>
+<article class="intel-card"><div class="intel-source">PREREQUISITE</div><h3>Install Docker first</h3><p>Windows/macOS: open <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop download</a>, install, then open Docker Desktop and wait until it says running. Linux: install Docker Engine from your distro docs.</p><pre><code>docker --version</code></pre><p><strong>Expected result:</strong> Docker version prints.</p><div class="intel-action"><strong>If this fails, do this:</strong> Restart machine after Docker install and run version command again.</div></article>
+<article class="intel-card"><div class="intel-source">WINDOWS + MACOS + LINUX</div><h3>Run Agent Zero container</h3><pre><code>docker pull agent0ai/agent-zero
+docker run -p 50001:80 agent0ai/agent-zero</code></pre><p>Open browser to <code>http://localhost:50001</code>.</p><p><strong>Expected result:</strong> Agent Zero web UI opens.</p><div class="intel-action"><strong>If this fails, do this:</strong> Run <code>docker ps</code>. If no container is running, run docker run again. If port is busy, use <code>docker run -p 50002:80 agent0ai/agent-zero</code> and open port 50002.</div></article>
+<article class="intel-card"><div class="intel-source">POST-INSTALL CHECK</div><h3>Verification</h3><pre><code>docker ps
+docker images | findstr agent-zero</code></pre><p><strong>Expected result:</strong> You see running container and downloaded image.</p></article>
 </section>
-<p style="margin:28px 0"><a class="btn-main" href="local-ai-stack.html">Continue to full stack roadmap</a></p>
-  </main>
-  <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="../guides/local-ai-stack.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
+<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>Agent Zero usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="agent-zero-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>  </main>
+  <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
   <script src="../site.js"></script>
 </body>
 </html>
+
+
+
