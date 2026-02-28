@@ -363,3 +363,12 @@ footer {
   .hm strong { font-size: 1.1rem; }
   .btn-main, .btn-outline { padding: 12px 18px; font-size: .88rem; }
 }
+
+
+/* Added for guides/articles long-form content */
+.article-body h1{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:10px;}
+.article-body section{margin-bottom:28px;}
+.article-body pre{background:rgba(6,9,17,.9);border:1px solid var(--border);padding:14px 16px;border-radius:10px;overflow:auto;margin-top:10px;}
+.article-body code{font-family:var(--mono);font-size:.85rem;color:#c7f9ff;}
+.article-body h4{margin-top:12px;margin-bottom:8px;color:var(--cyan);font-size:.9rem;}
+.article-body ul{padding-left:18px;color:var(--gray);}
