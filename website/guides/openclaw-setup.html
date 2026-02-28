@@ -22,14 +22,14 @@ git --version
 npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Version numbers print, then help text prints, then gateway status shows running.</p><div class="intel-action"><strong>If this fails, do this:</strong> Close PowerShell, open it again as Administrator, run <code>npm cache verify</code>, then run <code>npm install -g openclaw</code> again.</div></article>
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Version numbers print, then help text prints, then gateway status shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Close PowerShell, open it again as Administrator, run <code>npm cache verify</code>, then run <code>npm install -g openclaw</code> again.</div></article>
 <article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path (Terminal)</h3><p>Open Safari, go to <a href="https://nodejs.org/en/download">Node.js download</a>, install LTS package. Then open Terminal and run:</p><pre><code>node -v
 npm -v
 git --version
 npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Same as Windows: versions, help screen, running gateway status.</p><div class="intel-action"><strong>If this fails, do this:</strong> Run <code>which node</code> and <code>which npm</code>. If empty, restart Mac and reopen Terminal.</div></article>
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Same as Windows: versions, help screen, running gateway status.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>which node</code> and <code>which npm</code>. If empty, restart Mac and reopen Terminal.</div></article>
 <article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path (Ubuntu/Debian style)</h3><p>Open Terminal and run:</p><pre><code>sudo apt update
 sudo apt install -y nodejs npm git
 node -v
@@ -38,7 +38,7 @@ git --version
 sudo npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Commands are found and gateway shows running.</p><div class="intel-action"><strong>If this fails, do this:</strong> Run <code>sudo npm cache verify</code> and retry install. If <code>openclaw</code> is not found, open a new terminal window.</div></article>
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Commands are found and gateway shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>sudo npm cache verify</code> and retry install. If <code>openclaw</code> is not found, open a new terminal window.</div></article>
 <article class="intel-card"><div class="intel-source">POST-INSTALL CHECK</div><h3>Verification commands</h3><pre><code>openclaw help
 openclaw gateway status
 openclaw gateway restart

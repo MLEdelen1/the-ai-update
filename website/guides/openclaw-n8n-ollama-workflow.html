@@ -1,33 +1,9 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Combine Guide: OpenClaw + n8n + Ollama</title>
-  <link rel="stylesheet" href="../styles.css?v=11" />
-</head>
-<body>
-  <canvas id="particles"></canvas><div class="top-glow"></div>
-  <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
-
-  <main class="contain article-body" style="padding-top:100px">
-    <div class="sect-head"><p class="tag">COMBINE GUIDE</p><h1>Build a daily capture-to-summary workflow</h1><p class="sect-sub">Stack: OpenClaw handles commands, n8n handles flow logic, Ollama handles local text generation.</p></div>
-
-    <section class="intel-grid">
-      <article class="intel-card"><div class="intel-source">PREREQUISITES</div><h3>Before you combine tools</h3><p>Complete install and use guides for OpenClaw, n8n, and Ollama first.</p></article>
-      <article class="intel-card"><div class="intel-source">STEP 1</div><h3>Start all three services</h3><pre><code>openclaw gateway start
-ollama serve
-n8n start</code></pre><p><strong>Expected result:</strong> All services are running locally.</p></article>
-      <article class="intel-card"><div class="intel-source">STEP 2</div><h3>Create n8n workflow shell</h3><p>In n8n, create New Workflow, add Manual Trigger, HTTP Request node, and Set node.</p><p><strong>Expected result:</strong> You have a 3-node pipeline.</p></article>
-      <article class="intel-card"><div class="intel-source">STEP 3</div><h3>Call Ollama from n8n</h3><p>Set HTTP Request to POST <code>http://localhost:11434/api/generate</code> with JSON body containing model, prompt, and <code>stream:false</code>.</p><p><strong>Expected result:</strong> n8n receives local AI response JSON.</p></article>
-      <article class="intel-card"><div class="intel-source">STEP 4</div><h3>Format output in Set node</h3><p>Map the generated text into clean fields like summary, next_action, and priority.</p><p><strong>Expected result:</strong> Structured output you can pass to other tools.</p></article>
-      <article class="intel-card"><div class="intel-source">STEP 5</div><h3>Run workflow from OpenClaw session</h3><p>Use OpenClaw while workflow runs to capture notes, then paste notes into n8n manual trigger input for summarization.</p><p><strong>Expected result:</strong> One repeatable loop from raw notes to ready actions.</p></article>
-    </section>
-
-    <section class="tools-row"><article class="tool"><div class="tool-cat">BACK TO ORDER</div><h3>Guides Hub</h3><p>Install first, use second, combine third.</p><a class="tool-link" href="index.html">Open guides hub â†’</a></article><article class="tool"><div class="tool-cat">SECOND COMBINE GUIDE</div><h3>Full local stack roadmap</h3><p>Add Agent Zero and complete the four-tool stack.</p><a class="tool-link" href="local-ai-stack.html">Open full stack guide â†’</a></article></section>
-  </main>
-
-  <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
-  <script src="../site.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Combine Guide: OpenClaw + n8n + Ollama</title><link rel="stylesheet" href="../styles.css?v=11" /></head><body><canvas id="particles"></canvas><div class="top-glow"></div><nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav><main class="contain article-body" style="padding-top:100px"><div class="sect-head"><p class="tag">COMBINE GUIDE</p><h1>Main takeaway: connect three local tools in this order?Ollama, OpenClaw, then n8n</h1><p class="sect-sub">Local means the services run on your own machine, not a cloud server.</p></div><section class="intel-grid"><article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Start services in three terminals</h3><pre><code>ollama serve
+openclaw gateway start
+n8n start</code></pre><p><strong>Expected result:</strong> all three services stay active without errors.</p></article><article class="intel-card"><div class="intel-source">macOS</div><h3>Start services in three terminals</h3><pre><code>ollama serve
+openclaw gateway start
+n8n start</code></pre><p><strong>Expected result:</strong> same output pattern as Windows.</p></article><article class="intel-card"><div class="intel-source">Linux</div><h3>Start services in three terminals</h3><pre><code>ollama serve
+openclaw gateway start
+n8n start</code></pre><p><strong>Expected result:</strong> all services run and ports are reachable.</p></article><article class="intel-card"><div class="intel-source">N8N TO OLLAMA</div><h3>HTTP Request node config</h3><p>In n8n, POST to <code>http://localhost:11434/api/generate</code> with JSON body containing model, prompt, and <code>stream:false</code>.</p><p><strong>Expected result:</strong> n8n receives JSON text from Ollama.</p></article><article class="intel-card"><div class="intel-source">VALIDATION</div><h3>Check health quickly</h3><pre><code>openclaw gateway status
+ollama list
+n8n --version</code></pre><p><strong>Expected result:</strong> each command returns a normal response.</p></article><article class="intel-card"><div class="intel-source">TROUBLESHOOTING</div><h3>Common fixes</h3><p>If n8n cannot reach Ollama, confirm Ollama is on port 11434.</p><p>If OpenClaw is down, run <code>openclaw gateway restart</code>.</p><p>If n8n editor is blocked, check for a port conflict on 5678.</p></article></section><section class="tools-row"><article class="tool"><div class="tool-cat">BACK</div><h3>Guides hub</h3><p>Review setup and use pages if needed.</p><a class="tool-link" href="index.html">Open guides hub &rarr;</a></article><article class="tool"><div class="tool-cat">NEXT</div><h3>Full local stack</h3><p>Add Agent Zero as the fourth layer.</p><a class="tool-link" href="local-ai-stack.html">Open full stack guide &rarr;</a></article></section></main><footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer><script src="../site.js"></script></body></html>
