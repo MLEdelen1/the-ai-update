@@ -123,3 +123,47 @@ if (form) {
 }
 
 renderDashboard();
+
+/* --- OS Tabs (Guides) --- */
+(function(){
+  const tabGroups = document.querySelectorAll('[data-os-tabs]');
+  if (!tabGroups.length) return;
+
+  tabGroups.forEach(group => {
+    const tabs = Array.from(group.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(group.querySelectorAll('[role="tabpanel"]'));
+    if (!tabs.length || !panels.length) return;
+
+    const activate = (tab) => {
+      const target = tab.getAttribute('aria-controls');
+      tabs.forEach(t => {
+        const isSelected = t === tab;
+        t.setAttribute('aria-selected', String(isSelected));
+        t.setAttribute('tabindex', isSelected ? '0' : '-1');
+      });
+      panels.forEach(panel => {
+        panel.hidden = panel.id !== target;
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => {
+        const key = event.key;
+        let next = idx;
+        if (key === 'ArrowRight') next = (idx + 1) % tabs.length;
+        if (key === 'ArrowLeft') next = (idx - 1 + tabs.length) % tabs.length;
+        if (key === 'Home') next = 0;
+        if (key === 'End') next = tabs.length - 1;
+        if (next !== idx) {
+          event.preventDefault();
+          tabs[next].focus();
+          activate(tabs[next]);
+        }
+      });
+    });
+
+    const selected = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
+    activate(selected);
+  });
+})();

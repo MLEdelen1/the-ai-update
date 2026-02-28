@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,28 +11,42 @@
   <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
   <main class="contain article-body" style="padding-top:100px">
     <div class="sect-head"><p class="tag">INSTALL GUIDE • OLLAMA</p><h1>Install Ollama with official URL and OS-specific steps</h1><p class="sect-sub">Beginner-safe install flow for Windows, macOS, Linux, plus Docker prerequisite checks.</p></div>
-    
-<section class="intel-grid"><article class="intel-card"><div class="intel-source">BEGINNER GLOSSARY</div><h3>Quick words</h3><p><strong>Model:</strong> the AI brain version. <strong>Local:</strong> runs on your own computer. <strong>API:</strong> a way apps send messages to each other. <strong>Workflow:</strong> repeatable steps that do one job. <strong>Token:</strong> small pieces of text a model reads and writes.</p></article>
-<article class="intel-card"><div class="intel-source">GET OLLAMA</div><h3>Official URL and Docker option</h3><p>Open browser to <a href="https://ollama.com/download">https://ollama.com/download</a>. That is the official installer page. Docker option is available for users who already run Docker.</p></article>
-<article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Windows install path</h3><p>Click Start, open PowerShell, then run:</p><pre><code>winget install Ollama.Ollama
+
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">GET OLLAMA</div><h3>Official URL and Docker option</h3><p>Open browser to <a href="https://ollama.com/download">https://ollama.com/download</a>. That is the official installer page. Docker option is available for users who already run Docker.</p></article></section>
+
+<section class="os-tabs" data-os-tabs>
+  <div class="os-tablist" role="tablist" aria-label="Choose your operating system">
+    <button class="os-tab" role="tab" id="ollama-tab-win" aria-selected="true" aria-controls="ollama-panel-win" tabindex="0">Windows</button>
+    <button class="os-tab" role="tab" id="ollama-tab-mac" aria-selected="false" aria-controls="ollama-panel-mac" tabindex="-1">macOS</button>
+    <button class="os-tab" role="tab" id="ollama-tab-linux" aria-selected="false" aria-controls="ollama-panel-linux" tabindex="-1">Linux</button>
+  </div>
+
+  <div id="ollama-panel-win" class="os-panel" role="tabpanel" aria-labelledby="ollama-tab-win">
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Windows install path</h3><p>Click Start, open PowerShell, then run:</p><pre><code>winget install Ollama.Ollama
 ollama --version
 ollama serve</code></pre><p>Leave that window open. Open a second PowerShell window and run:</p><pre><code>ollama pull llama3.2:3b
 ollama list
-ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Version prints, model appears in list, model replies with one sentence.</p><div class="intel-action"><strong>Troubleshooting:</strong> Close both windows, reopen one window, run <code>ollama serve</code> again, then retry pull in second window.</div></article>
-<article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path</h3><p>Open <a href="https://ollama.com/download">ollama.com/download</a>, click macOS download, install app, then open Terminal:</p><pre><code>ollama --version
+ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Version prints, model appears in list, model replies with one sentence.</p><div class="intel-action"><strong>Troubleshooting:</strong> Close both windows, reopen one window, run <code>ollama serve</code> again, then retry pull in second window.</div></article></section>
+  </div>
+
+  <div id="ollama-panel-mac" class="os-panel" role="tabpanel" aria-labelledby="ollama-tab-mac" hidden>
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path</h3><p>Open <a href="https://ollama.com/download">ollama.com/download</a>, click macOS download, install app, then open Terminal:</p><pre><code>ollama --version
 ollama serve</code></pre><p>Open second Terminal tab and run:</p><pre><code>ollama pull llama3.2:3b
-ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Same as Windows.</p><div class="intel-action"><strong>Troubleshooting:</strong> Quit Ollama app, reopen it, then rerun commands.</div></article>
-<article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path</h3><p>Open Terminal and run official install script:</p><pre><code>curl -fsSL https://ollama.com/install.sh | sh
+ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Same as Windows.</p><div class="intel-action"><strong>Troubleshooting:</strong> Quit Ollama app, reopen it, then rerun commands.</div></article></section>
+  </div>
+
+  <div id="ollama-panel-linux" class="os-panel" role="tabpanel" aria-labelledby="ollama-tab-linux" hidden>
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path</h3><p>Open Terminal and run official install script:</p><pre><code>curl -fsSL https://ollama.com/install.sh | sh
 ollama --version
 ollama serve</code></pre><p>Open second terminal and run:</p><pre><code>ollama pull llama3.2:3b
-ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Model downloads and replies.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run the install script again, then retry.</div></article>
-<article class="intel-card"><div class="intel-source">DOCKER OPTION</div><h3>Docker path (all OS with Docker)</h3><pre><code>docker --version</code></pre><p><strong>Expected result:</strong> Docker version prints. If it does not, install Docker first from <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> or your Linux package manager.</p></article>
+ollama run llama3.2:3b "Say hello in one sentence."</code></pre><p><strong>Expected result:</strong> Model downloads and replies.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run the install script again, then retry.</div></article></section>
+  </div>
 </section>
-<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>Ollama usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="ollama-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>  </main>
+
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">DOCKER OPTION</div><h3>Docker path (all OS with Docker)</h3><pre><code>docker --version</code></pre><p><strong>Expected result:</strong> Docker version prints. If it does not, install Docker first from <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> or your Linux package manager.</p></article></section>
+<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>Ollama usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="ollama-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>
+  </main>
   <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
   <script src="../site.js"></script>
 </body>
 </html>
-
-
-

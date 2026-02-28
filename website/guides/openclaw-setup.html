@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,10 +11,18 @@
   <nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
   <main class="contain article-body" style="padding-top:100px">
     <div class="sect-head"><p class="tag">INSTALL GUIDE • OPENCLAW</p><h1>Install OpenClaw with Windows, macOS, and Linux paths</h1><p class="sect-sub">Exact install paths, prerequisite checks, expected output, and failure recovery.</p></div>
-    
-<section class="intel-grid"><article class="intel-card"><div class="intel-source">BEGINNER GLOSSARY</div><h3>Quick words</h3><p><strong>Model:</strong> the AI brain version. <strong>Local:</strong> runs on your own computer. <strong>API:</strong> a way apps send messages to each other. <strong>Workflow:</strong> repeatable steps that do one job. <strong>Token:</strong> small pieces of text a model reads and writes.</p></article>
-<article class="intel-card"><div class="intel-source">GET PREREQUISITES</div><h3>Where to download first</h3><p>Open your browser and go to <a href="https://nodejs.org/en/download">https://nodejs.org/en/download</a> for Node.js LTS and <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> for Git. On Windows, you can also use winget commands below.</p><div class="intel-action"><strong>Expected result:</strong> Node.js and Git are installed before OpenClaw install starts.</div></article>
-<article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Windows install path (PowerShell)</h3><p>Click Start, type <strong>PowerShell</strong>, click <strong>Windows PowerShell</strong>, then paste this block.</p><pre><code>winget install OpenJS.NodeJS.LTS
+
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">GET PREREQUISITES</div><h3>Where to download first</h3><p>Open your browser and go to <a href="https://nodejs.org/en/download">https://nodejs.org/en/download</a> for Node.js LTS and <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> for Git. On Windows, you can also use winget commands below.</p><div class="intel-action"><strong>Expected result:</strong> Node.js and Git are installed before OpenClaw install starts.</div></article></section>
+
+<section class="os-tabs" data-os-tabs>
+  <div class="os-tablist" role="tablist" aria-label="Choose your operating system">
+    <button class="os-tab" role="tab" id="openclaw-tab-win" aria-selected="true" aria-controls="openclaw-panel-win" tabindex="0">Windows</button>
+    <button class="os-tab" role="tab" id="openclaw-tab-mac" aria-selected="false" aria-controls="openclaw-panel-mac" tabindex="-1">macOS</button>
+    <button class="os-tab" role="tab" id="openclaw-tab-linux" aria-selected="false" aria-controls="openclaw-panel-linux" tabindex="-1">Linux</button>
+  </div>
+
+  <div id="openclaw-panel-win" class="os-panel" role="tabpanel" aria-labelledby="openclaw-tab-win">
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">WINDOWS</div><h3>Windows install path (PowerShell)</h3><p>Click Start, type <strong>PowerShell</strong>, click <strong>Windows PowerShell</strong>, then paste this block.</p><pre><code>winget install OpenJS.NodeJS.LTS
 winget install Git.Git
 node -v
 npm -v
@@ -22,15 +30,21 @@ git --version
 npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Version numbers print, then help text prints, then gateway status shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Close PowerShell, open it again as Administrator, run <code>npm cache verify</code>, then run <code>npm install -g openclaw</code> again.</div></article>
-<article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path (Terminal)</h3><p>Open Safari, go to <a href="https://nodejs.org/en/download">Node.js download</a>, install LTS package. Then open Terminal and run:</p><pre><code>node -v
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Version numbers print, then help text prints, then gateway status shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Close PowerShell, open it again as Administrator, run <code>npm cache verify</code>, then run <code>npm install -g openclaw</code> again.</div></article></section>
+  </div>
+
+  <div id="openclaw-panel-mac" class="os-panel" role="tabpanel" aria-labelledby="openclaw-tab-mac" hidden>
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">MACOS</div><h3>macOS install path (Terminal)</h3><p>Open Safari, go to <a href="https://nodejs.org/en/download">Node.js download</a>, install LTS package. Then open Terminal and run:</p><pre><code>node -v
 npm -v
 git --version
 npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Same as Windows: versions, help screen, running gateway status.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>which node</code> and <code>which npm</code>. If empty, restart Mac and reopen Terminal.</div></article>
-<article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path (Ubuntu/Debian style)</h3><p>Open Terminal and run:</p><pre><code>sudo apt update
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Same as Windows: versions, help screen, running gateway status.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>which node</code> and <code>which npm</code>. If empty, restart Mac and reopen Terminal.</div></article></section>
+  </div>
+
+  <div id="openclaw-panel-linux" class="os-panel" role="tabpanel" aria-labelledby="openclaw-tab-linux" hidden>
+    <section class="intel-grid"><article class="intel-card"><div class="intel-source">LINUX</div><h3>Linux install path (Ubuntu/Debian style)</h3><p>Open Terminal and run:</p><pre><code>sudo apt update
 sudo apt install -y nodejs npm git
 node -v
 npm -v
@@ -38,16 +52,17 @@ git --version
 sudo npm install -g openclaw
 openclaw help
 openclaw gateway start
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Commands are found and gateway shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>sudo npm cache verify</code> and retry install. If <code>openclaw</code> is not found, open a new terminal window.</div></article>
-<article class="intel-card"><div class="intel-source">POST-INSTALL CHECK</div><h3>Verification commands</h3><pre><code>openclaw help
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Commands are found and gateway shows running.</p><div class="intel-action"><strong>Troubleshooting:</strong> Run <code>sudo npm cache verify</code> and retry install. If <code>openclaw</code> is not found, open a new terminal window.</div></article></section>
+  </div>
+</section>
+
+<section class="intel-grid"><article class="intel-card"><div class="intel-source">POST-INSTALL CHECK</div><h3>Verification commands</h3><pre><code>openclaw help
 openclaw gateway status
 openclaw gateway restart
-openclaw gateway status</code></pre><p><strong>Expected result:</strong> Help works, restart works, status stays healthy.</p></article>
-</section>
-<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>OpenClaw usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="openclaw-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>  </main>
+openclaw gateway status</code></pre><p><strong>Expected result:</strong> Help works, restart works, status stays healthy.</p></article></section>
+<section class="tools-row"><article class="tool"><div class="tool-cat">NEXT</div><h3>OpenClaw usage guide</h3><p>After install, complete the use guide for real day-to-day tasks.</p><a class="tool-link" href="openclaw-use.html">Open usage guide →</a></article><article class="tool"><div class="tool-cat">SEQUENCE</div><h3>Guides hub</h3><p>See the full Install → Use → Combine path.</p><a class="tool-link" href="index.html">Open guides hub →</a></article></section>
+  </main>
   <footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="index.html">Guides</a><a href="../articles.html">Articles</a><a href="../tools.html">Tools</a><a href="../resources.html">Resources</a><a href="../starter-kit.html">Starter Kit</a></div></div></footer>
   <script src="../site.js"></script>
 </body>
 </html>
-
-
