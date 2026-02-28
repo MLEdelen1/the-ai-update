@@ -385,7 +385,7 @@ footer {
 .article-body .btn-main{margin-top:10px;}
 
 .article-ref{margin:18px 0 22px;border:1px solid rgba(125,211,252,.35);border-radius:14px;overflow:hidden;background:rgba(8,14,26,.7);}
-.article-ref img{display:block;width:100%;height:auto;}
+.article-ref img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center;}
 .article-ref figcaption{font-size:.9rem;line-height:1.5;color:#bcd0ee;padding:10px 14px;border-top:1px solid rgba(125,211,252,.2);}
 .article-photo{margin-top:14px;}
 @media (max-width:700px){
