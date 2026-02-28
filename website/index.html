@@ -1,384 +1,344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The AI Update — AI Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-
-:root {
-    --bg: #09090b; --surface: #121214; --surface-hover: #18181b; --border: #27272a;
-    --accent: #4ade80; --accent-dim: rgba(74, 222, 128, 0.1); --text: #f4f4f5; --text-muted: #a1a1aa;
-    --font-main: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-
-/* Topbar */
-.topbar { border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
-.topbar .container { display: flex; justify-content: space-between; align-items: center; }
-.live-indicator { color: var(--accent); display: flex; align-items: center; gap: 6px; }
-.live-indicator::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-/* Nav */
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; letter-spacing: -0.5px; }
-.brand img { height: 28px; }
-.nav-links { display: flex; gap: 32px; list-style: none; font-size: 14px; font-weight: 500; color: var(--text-muted); }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
-.nav-actions { display: flex; gap: 16px; align-items: center; }
-.search-box { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 16px; font-family: var(--font-main); font-size: 13px; color: var(--text); outline: none; width: 200px; }
-.search-box:focus { border-color: var(--accent); }
-.btn-sub { background: var(--accent); color: #000; font-weight: 700; font-size: 13px; padding: 8px 20px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
-.btn-sub:hover { background: #22c55e; }
-
-/* Stats Row */
-.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
-.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-.stat-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;}
-.stat-val { font-size: 28px; font-weight: 700; display: flex; align-items: baseline; gap: 12px; }
-.stat-delta { font-size: 12px; font-family: var(--font-mono); font-weight: 600; padding: 2px 6px; border-radius: 4px; }
-.delta-up { background: var(--accent-dim); color: var(--accent); }
-.delta-down { background: rgba(248, 113, 113, 0.1); color: #f87171; }
-.delta-flat { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
-
-/* Main Split Feed */
-.feed-split { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; margin-bottom: 64px; }
-.featured { display: flex; flex-direction: column; gap: 24px; }
-.featured-img { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); transition: border-color 0.2s; }
-.featured-img:hover { border-color: var(--accent); }
-.featured-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; display: flex; gap: 16px; }
-.featured-cat { color: var(--accent); font-weight: 600; padding: 2px 8px; border-radius: 4px; background: var(--accent-dim); }
-.featured h2 { font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; transition: color 0.2s; }
-.featured:hover h2 { color: var(--accent); }
-.featured p { font-size: 16px; color: var(--text-muted); max-width: 600px; }
-.featured a { color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 8px; }
-
-.latest-list { display: flex; flex-direction: column; }
-.section-title { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
-.latest-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
-.latest-item:last-child { border-bottom: none; }
-.latest-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: flex; gap: 12px; }
-.latest-cat { color: var(--accent); font-weight: 700; }
-.latest-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; transition: color 0.2s; }
-.latest-item:hover h3 { color: var(--accent); }
-.latest-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-/* Section Grids */
-.grid-section { margin-bottom: 64px; }
-.analysis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.analysis-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; position: relative; transition: border-color 0.2s; overflow: hidden;}
-.analysis-card:hover { border-color: var(--accent); }
-.analysis-card::before { content: attr(data-num); position: absolute; top: 16px; right: 20px; font-family: var(--font-mono); font-size: 64px; font-weight: 700; color: rgba(255,255,255,0.02); z-index: 0; pointer-events: none; }
-.analysis-card > * { position: relative; z-index: 1; }
-.analysis-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
-.analysis-meta::before { content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
-.analysis-card h3 { font-size: 18px; font-weight: 600; line-height: 1.3; margin-bottom: 12px; }
-.analysis-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.analysis-read { font-family: var(--font-mono); font-size: 10px; color: var(--border); }
-
-.models-grid, .os-grid, .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.model-card, .os-card, .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: border-color 0.2s; }
-.model-card:hover, .os-card:hover, .tool-card:hover { border-color: var(--accent); }
-.model-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-.model-head h3 { font-size: 18px; font-weight: 600; }
-.model-head span { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
-.model-metrics { display: flex; justify-content: space-between; }
-.metric { text-align: center; }
-.metric-val { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-.metric-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
-
-.os-title { font-family: var(--font-mono); font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-.os-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-.os-meta { font-family: var(--font-mono); font-size: 10px; color: #52525b; }
-
-/* Footer Subscribe */
-.subscribe-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px; display: flex; justify-content: space-between; align-items: center; margin: 64px 0; }
-.subscribe-text h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-.subscribe-text p { font-size: 14px; color: var(--text-muted); }
-.subscribe-form { display: flex; gap: 12px; }
-.sub-input { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; width: 300px; color: var(--text); font-family: var(--font-main); outline: none; }
-.sub-input:focus { border-color: var(--accent); }
-
-/* Article Specific */
-.article-wrap { max-width: 800px; margin: 0 auto 80px; }
-.btn-back { display: inline-block; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 32px; border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px; transition: all 0.2s; }
-.btn-back:hover { color: var(--text); border-color: var(--text); }
-.article-header { margin-bottom: 48px; }
-.article-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; display: flex; gap: 16px; margin-bottom: 24px; align-items: center;}
-.cat-pill { color: var(--accent); border: 1px solid var(--accent); padding: 4px 10px; border-radius: 4px; background: var(--accent-dim); font-weight: 700;}
-.article-title { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; }
-.article-lede { font-size: 20px; color: var(--text-muted); line-height: 1.6; }
-.article-hero { width: 100%; height: auto; max-height: 500px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); margin: 0 0 48px 0; }
-
-.article-body { font-size: 17px; line-height: 1.8; color: #d4d4d8; }
-.article-body h1 { font-size: 32px; font-weight: 700; color: #fff; margin: 48px 0 24px; }
-.article-body h2 { font-size: 24px; font-weight: 700; color: #fff; margin: 48px 0 24px; }
-.article-body h3 { font-size: 20px; font-weight: 600; color: #fff; margin: 32px 0 16px; }
-.article-body p { margin-bottom: 24px; }
-.article-body blockquote { border-left: 3px solid var(--accent); padding-left: 20px; color: var(--text-muted); font-style: italic; margin: 32px 0; }
-.article-body table { width: 100%; border-collapse: collapse; margin: 32px 0; font-family: var(--font-mono); font-size: 13px; }
-.article-body th, .article-body td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-.article-body th { color: var(--text-muted); font-weight: 500; text-transform: uppercase; }
-.article-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
-.article-body ul { margin-bottom: 24px; padding-left: 20px; }
-.article-body li { margin-bottom: 8px; }
-
-footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
-
-
-    /* Mobile Responsiveness */
-    @media (max-width: 1024px) {
-        .tracker-container, .feed-grid, .analysis-grid, .tools-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem;
-        }
-        .featured {
-            grid-column: 1 / -1 !important;
-        }
-    }
-    @media (max-width: 768px) {
-        nav { padding: 1rem; }
-        .nav-content { 
-            flex-direction: column; 
-            gap: 1rem; 
-        }
-        .nav-links { 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 0.75rem; 
-        }
-        .hero { 
-            padding: 3rem 1rem; 
-            text-align: left; 
-        }
-        .hero h1 { 
-            font-size: 2.2rem; 
-            line-height: 1.2;
-        }
-        .section-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        .tracker-box, .analysis-card, .latest-item {
-            padding: 1.5rem;
-        }
-        .footer-content {
-            flex-direction: column;
-            text-align: center;
-            gap: 2rem;
-        }
-        .footer-links {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .article-hero {
-            padding: 3rem 1rem;
-        }
-        .article-hero h1 {
-            font-size: 2rem;
-        }
-        .article-content {
-            padding: 0 1rem;
-        }
-        .featured-img {
-            height: 250px;
-        }
-    }
-    @media (max-width: 480px) {
-        .hero h1 { font-size: 1.8rem; }
-        .article-hero h1 { font-size: 1.6rem; }
-        .nav-logo img { height: 28px; }
-    }
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The AI Update — Practical AI Systems for Real Workers</title>
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="topbar">
-    <div class="container">
-        <div class="live-indicator">LIVE FEED — SYSTEM ACTIVE</div>
-        <div id="utcTime">LAST UPDATED ...</div>
-    </div>
-</div>
 
-<header class="nav container">
-    <a href="/" class="brand">
-        <img src="/img/logo.png" alt="Logo" onerror="this.style.display='none'">
-        THE AI UPDATE
-    </a>
-    <ul class="nav-links">
-        <li><a href="/" class="active">Feed</a></li>
-        <li><a href="/archive.html">Archive</a></li>
-        <li><a href="/#analysis">Analysis</a></li>
-        <li><a href="/#models">Models</a></li>
-        <li><a href="/#opensource">Open Source</a></li>
-        <li><a href="/#tools">Tools</a></li>
-    </ul>
-    <div class="nav-actions">
-        <button class="btn-sub" onclick="window.location.href='/sponsors.html'">Subscribe</button>
-    </div>
-</header>
+  <!-- Particle canvas background -->
+  <canvas id="particles"></canvas>
 
-<main class="container">
-    <div class="stats-row">
-        
-    <div class="stat-card"><div class="stat-label">O3-MINI API / 1M TOKENS</div><div class="stat-val">$1.10 <span class="stat-delta delta-down">&darr; 45%</span></div></div>
-    <div class="stat-card"><div class="stat-label">MODELS ON HUGGINGFACE</div><div class="stat-val">1.6M <span class="stat-delta delta-up">&uarr; 12%</span></div></div>
-    <div class="stat-card"><div class="stat-label">AI STARTUP FUNDING Q1</div><div class="stat-val">$22.4B <span class="stat-delta delta-up">&uarr; 15%</span></div></div>
-    <div class="stat-card"><div class="stat-label">AVG AGENT LATENCY</div><div class="stat-val">0.9s <span class="stat-delta delta-flat">&rarr; 0%</span></div></div>
-    
-    </div>
+  <!-- Top glow line -->
+  <div class="top-glow"></div>
 
-    <div class="feed-split">
-        <div class="featured">
-                <a href="/articles/nanobanana_2_is_here_.html"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" class="featured-img" alt="Deep Dive: Inside Nanobanana 2 and Its Powerful New AI Features"></a>
-                <div class="featured-meta"><span class="featured-cat">INTEL</span><span>6 MIN READ &bull; RESEARCH</span></div>
-                <a href="/articles/nanobanana_2_is_here_.html"><h2>Deep Dive: Inside Nanobanana 2 and Its Powerful New AI Features</h2></a>
-                <a href="/articles/nanobanana_2_is_here_.html">Read the full brief &rarr;</a>
-            </div>
-        <div class="latest-list">
-            <div class="section-title"><span>LATEST UPDATES</span></div>
-            <a href="/articles/guide_ollama_local.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>2 HRS AGO</span></div>
-                <h3>Step-by-Step Guide: How to Install Ollama and Run Local LLMs for Free</h3>
-                <p>Free AI Power: You now know how to run powerful AI models completely free using Ollama.</p>
-            </a><a href="/articles/auto_agentic_llms_2026.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>4 HRS AGO</span></div>
-                <h3>The Evolution of Agentic LLMs in 2026: Moving from Chat to Full Business Automation</h3>
-                <p>Massive Cost Savings on Routine Digital Work: Companies spend billions paying humans to copy data from one screen to another. A...</p>
-            </a><a href="/articles/yt_networkchuck.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>6 HRS AGO</span></div>
-                <h3>How to Run Your Own Private AI Locally</h3>
-                <p>Graphics Processing Unit (GPU): This is the single most critical component. NVIDIA GPUs (RTX 30-series, 40-series, or better) a...</p>
-            </a><a href="/articles/45df0ab67e6d.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>8 HRS AGO</span></div>
-                <h3>The Zero-Budget AI Business: How to Build Passive Income Without Expensive GPUs</h3>
-                <p>Free Cloud Compute: Stop trying to buy an expensive GPU. Use Google Colab or Kaggle to host your code for free.</p>
-            </a><a href="/articles/d7fa42b7f3f5.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>10 HRS AGO</span></div>
-                <h3>Money Printer Turbo</h3>
-                <p>Input &amp; Intent: Users provide a prompt, typically text-based, outlining the desired video content, theme, or topic. This is...</p>
-            </a><a href="/articles/yt_airevolution.html" class="latest-item">
-                <div class="latest-meta"><span class="latest-cat">INTEL</span><span>12 HRS AGO</span></div>
-                <h3>Why We're Underestimating the AI Revolution: A Deeper Look into Eric Schmidt's Call to Action</h3>
-                <p>Exponential Productivity Gains: AI automates routine tasks, leading to significant reductions in operational costs and allowing...</p>
-            </a>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-wrap">
+      <a href="#" class="logo-group">
+        <img src="assets/logo.png" alt="The AI Update" class="logo-img" onerror="this.style.display='none'" />
+        <div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#intel">Latest Intel</a>
+        <a href="#how">How It Works</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#tools">Tools</a>
+        <a href="#kit" class="nav-btn">Get Free Kit</a>
+      </div>
+      <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero">
+    <div class="hero-visual">
+      <img src="assets/banner.jpg" alt="" class="hero-img" onerror="this.parentElement.classList.add('no-img')" />
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="contain hero-inner">
+      <p class="overline anim" data-delay="0">AI WORKFLOWS • AUTOMATION • SYSTEMS</p>
+      <h1 class="anim" data-delay="100">
+        Work smarter.<br>
+        <span class="glow-text">Not harder.</span>
+      </h1>
+      <p class="hero-desc anim" data-delay="200">Plug-and-play AI workflows that save 3+ hours a week. Built for real workers, not developers. Copy, paste, done.</p>
+      <div class="hero-btns anim" data-delay="300">
+        <a href="#kit" class="btn-main">Get the Free Starter Kit <span class="arrow">→</span></a>
+        <a href="#how" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-metrics anim" data-delay="400">
+        <div class="hm"><strong data-count="5">0</strong><span>Workflows</span></div>
+        <div class="hm-line"></div>
+        <div class="hm"><strong data-count="10">0</strong><span>Min Setup</span></div>
+        <div class="hm-line"></div>
+        <div class="hm"><strong>3hrs+</strong><span>Saved / Week</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TICKER ========== -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>✦ Built for helpdesk agents</span>
+      <span>✦ Office workers</span>
+      <span>✦ Freelancers</span>
+      <span>✦ Side hustlers</span>
+      <span>✦ Anyone tired of busywork</span>
+      <span>✦ Built for helpdesk agents</span>
+      <span>✦ Office workers</span>
+      <span>✦ Freelancers</span>
+      <span>✦ Side hustlers</span>
+      <span>✦ Anyone tired of busywork</span>
+    </div>
+  </div>
+
+  <!-- ========== LATEST AI INTEL ========== -->
+  <section id="intel" class="sect">
+    <div class="contain">
+      <div class="sect-head anim">
+        <p class="tag">THIS WEEK IN AI — FEB 27, 2026</p>
+        <h2>The intel that <span class="glow-text">actually matters</span></h2>
+        <p class="sect-sub">We monitor the top AI labs and creators so you don't have to. Here's what changed this week and what you should do about it.</p>
+      </div>
+      <div class="intel-grid">
+
+        <article class="intel-card anim">
+          <div class="intel-source">OpenAI</div>
+          <h3>OpenAI Raised $110B — And Built Persistent AI Agents for Amazon</h3>
+          <p>OpenAI just closed the largest AI funding round in history: $110B from SoftBank, NVIDIA, and Amazon at a $730B valuation. But the real news is the "Stateful Runtime" launching inside Amazon's cloud — AI agents that remember context across dozens of steps, manage tools automatically, and run complex workflows without crashing.</p>
+          <div class="intel-action">
+            <strong>What to do:</strong> AI tools are shifting from "ask one question" to "give it a task and walk away." If you're already using AI workflows, you're ahead. If not, start now — the tools are about to get dramatically more reliable.
+          </div>
+        </article>
+
+        <article class="intel-card anim">
+          <div class="intel-source">Google</div>
+          <h3>Nanobanana 2: Free Image AI That Reads, Translates, and Analyzes Any Photo</h3>
+          <p>Google dropped Nanobanana 2, a multimodal model with insane image understanding — it identifies celebrities in group photos, translates manga panels, solves math from screenshots, colorizes old images, and describes scenes with scary accuracy. Completely free through Gemini and Google AI Studio.</p>
+          <div class="intel-action">
+            <strong>What to do:</strong> Open Google AI Studio (free, no subscription). Upload a work document, screenshot, or photo. Ask it to describe, extract, or translate what it sees. You'll immediately find uses for this in your daily workflow.
+          </div>
+        </article>
+
+        <article class="intel-card anim">
+          <div class="intel-source">Hugging Face</div>
+          <h3>llama.cpp Joined Hugging Face — Running AI Locally Is About to Get Dead Simple</h3>
+          <p>The creator of llama.cpp — the tool that lets you run AI models on your own laptop with zero subscriptions — officially joined Hugging Face. They're now building toward one-click local AI setup and seamless model deployment from the transformers library.</p>
+          <div class="intel-action">
+            <strong>What to do:</strong> If you care about privacy or want to stop paying monthly AI subscriptions, bookmark this. Within months, running a capable AI model on your own machine will be as easy as installing an app.
+          </div>
+        </article>
+
+        <article class="intel-card anim">
+          <div class="intel-source">Hugging Face + Unsloth</div>
+          <h3>Train Your Own AI Model for $0</h3>
+          <p>Hugging Face and Unsloth launched free GPU credits for fine-tuning small AI models. You can customize a 1.2B parameter model to be an expert at YOUR specific tasks — your email style, your meeting format, your company's tone. The trained model runs on phones, laptops, and CPUs.</p>
+          <div class="intel-action">
+            <strong>What to do:</strong> Fine-tuning used to cost thousands. Now it's free for small models. Instead of using generic prompts, you could train a tiny model that knows your exact workflows. The gap between "using AI" and "owning AI" just closed.
+          </div>
+        </article>
+
+        <article class="intel-card anim">
+          <div class="intel-source">Google</div>
+          <h3>Google Is Giving Away Free AI Professional Certificates</h3>
+          <p>Google partnered with Massachusetts to offer free AI professional certificates and career training through Grow with Google. This follows similar programs already live in Arkansas, Connecticut, Oklahoma, and Virginia.</p>
+          <div class="intel-action">
+            <strong>What to do:</strong> Check if your state is included. If so, enroll today — it's a real credential on your resume for zero cost. Even if your state isn't listed yet, the training materials teach practical AI skills you can use at work immediately.
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section id="how" class="sect">
+    <div class="contain">
+      <div class="sect-head anim">
+        <p class="tag">THE METHOD</p>
+        <h2>Three steps to <span class="glow-text">AI autopilot</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step-card anim">
+          <div class="step-n">01</div>
+          <div class="step-bar"></div>
+          <h3>Pick one workflow</h3>
+          <p>Choose the workflow that matches your biggest daily time drain. Email? Meetings? Planning? Start there.</p>
         </div>
-    </div>
-
-    <div class="grid-section" id="analysis">
-        <div class="section-title"><span>DEEP ANALYSIS</span><span>LONG-FORM TECHNICAL BREAKDOWNS</span></div>
-        <div class="analysis-grid">
-            <a href="/articles/yt_aisearch.html" class="analysis-card" data-num="01">
-                <div class="analysis-meta">INTEL</div>
-                <h3>The AI Productivity Revolution: Top Tools for 2026 Driving Extreme ROI</h3>
-                <p>Cognitive Augmentation: Tools that extend human mental capabilities, providing instant access to synthesized knowledge, acceler...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a><a href="/articles/79c4a3c481cf.html" class="analysis-card" data-num="02">
-                <div class="analysis-meta">INTEL</div>
-                <h3>How To Train Your Program Verifier</h3>
-                <p>Crafting Precise Specifications: This is arguably the most critical aspect. A program verifier can only prove what it is told t...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a><a href="/articles/7b26d2f7cf0c.html" class="analysis-card" data-num="03">
-                <div class="analysis-meta">INTEL</div>
-                <h3>How To Hide Google’S AI Overviews From Your Search Results</h3>
-                <p>Instant Gratification: For straightforward, factual questions (e.g., "What is the capital of France?", "How many ounces in a cu...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a><a href="/articles/f372a6484d67.html" class="analysis-card" data-num="04">
-                <div class="analysis-meta">INTEL</div>
-                <h3>Man Accidentally Gains Control Of 7 K Robot Vacuums</h3>
-                <p>Cloud-Centric Architecture: When you set up a smart vacuum, it connects to your Wi-Fi and then registers itself with the manufa...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a><a href="/articles/1008c7d7b88c.html" class="analysis-card" data-num="05">
-                <div class="analysis-meta">INTEL</div>
-                <h3>Samsung Is Adding Perplexity To Galaxy AI</h3>
-                <p>Sourced, Summarized Answers: Perplexity's primary strength lies in its ability to provide direct, concise answers to complex qu...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a><a href="/articles/24e93e1af936.html" class="analysis-card" data-num="06">
-                <div class="analysis-meta">INTEL</div>
-                <h3>Aqua: A Cli Message Tool For AI Agents</h3>
-                <p>Structured Messages: Aqua expects and emits messages in a structured format, commonly JSON or YAML, which AI agents are adept a...</p>
-                <div class="analysis-read">14 MIN READ</div>
-            </a>
+        <div class="step-card anim">
+          <div class="step-n">02</div>
+          <div class="step-bar"></div>
+          <h3>Run it for 7 days</h3>
+          <p>Copy the prompt, paste it into any AI tool, run it on real tasks. Same workflow, every single day.</p>
         </div>
-    </div>
-
-    <div class="grid-section" id="models">
-        <div class="section-title"><span>MODEL TRACKER</span><span>LIVE SPECS AND BENCHMARKS</span></div>
-        <div class="models-grid">
-            
-    <div class="model-card"><div class="model-head"><h3>OpenAI o3</h3><span>OPENAI &bull; JAN 2026</span></div><div class="model-metrics"><div class="metric"><div class="metric-val">98.1</div><div class="metric-label">MMLU</div></div><div class="metric"><div class="metric-val">96.4</div><div class="metric-label">MATH</div></div><div class="metric"><div class="metric-val">$4.00</div><div class="metric-label">/1M TOK</div></div></div></div>
-    <div class="model-card"><div class="model-head"><h3>DeepSeek R1</h3><span>DEEPSEEK &bull; JAN 2026</span></div><div class="model-metrics"><div class="metric"><div class="metric-val">97.3</div><div class="metric-label">MMLU</div></div><div class="metric"><div class="metric-val">97.0</div><div class="metric-label">MATH</div></div><div class="metric"><div class="metric-val">$0.55</div><div class="metric-label">/1M TOK</div></div></div></div>
-    <div class="model-card"><div class="model-head"><h3>Gemini 3.1 Pro</h3><span>GOOGLE &bull; FEB 2026</span></div><div class="model-metrics"><div class="metric"><div class="metric-val">95.0</div><div class="metric-label">MMLU</div></div><div class="metric"><div class="metric-val">92.1</div><div class="metric-label">MATH</div></div><div class="metric"><div class="metric-val">$2.50</div><div class="metric-label">/1M TOK</div></div></div></div>
-    <div class="model-card"><div class="model-head"><h3>Claude 3.5 Opus</h3><span>ANTHROPIC &bull; LATE 2025</span></div><div class="model-metrics"><div class="metric"><div class="metric-val">95.4</div><div class="metric-label">MMLU</div></div><div class="metric"><div class="metric-val">92.0</div><div class="metric-label">MATH</div></div><div class="metric"><div class="metric-val">$15.00</div><div class="metric-label">/1M TOK</div></div></div></div>
-    
+        <div class="step-card anim">
+          <div class="step-n">03</div>
+          <div class="step-bar"></div>
+          <h3>Stack &amp; compound</h3>
+          <p>Once it's a habit, add the next one. In 30 days you'll have a system that runs half your workday.</p>
         </div>
+      </div>
     </div>
+  </section>
 
-    <div class="grid-section" id="opensource">
-        <div class="section-title"><span>OPEN SOURCE TRACKER</span><span>TRENDING REPOS THIS WEEK</span></div>
-        <div class="os-grid">
-            
-    <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" class="os-card"><div class="os-title">deepseek-ai/DeepSeek-R1</div><div class="os-desc">Open-weight reasoning model matching OpenAI o1/o3 performance. Apache 2.0.</div><div class="os-meta">110k &bull; Python &bull; Updated 2h ago</div></a>
-    <a href="https://huggingface.co/Qwen/Qwen2.5-Max" target="_blank" class="os-card"><div class="os-title">Qwen/Qwen2.5-Max</div><div class="os-desc">Alibaba's flagship open LLM. Massive context, top-tier coding and math.</div><div class="os-meta">45.2k &bull; Python &bull; Updated 5h ago</div></a>
-    <a href="https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct" target="_blank" class="os-card"><div class="os-title">meta-llama/Llama-3.3-70B-Instruct</div><div class="os-desc">State-of-the-art 70B model matching Llama 3 400B performance.</div><div class="os-meta">89.4k &bull; Python &bull; Updated 1d ago</div></a>
-    <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank" class="os-card"><div class="os-title">anthropics/claude-code</div><div class="os-desc">Agentic coding tool for the terminal. Understands your codebase deeply.</div><div class="os-meta">38.7k &bull; TypeScript &bull; Updated 8h ago</div></a>
-    
+  <!-- ========== WORKFLOWS ========== -->
+  <section id="workflows" class="sect sect-alt">
+    <div class="contain">
+      <div class="sect-head anim">
+        <p class="tag">WHAT YOU GET</p>
+        <h2>Workflows that <span class="glow-text">actually work</span></h2>
+        <p class="sect-sub">No jargon. No 47-step tutorials. Just copy, paste, and save time.</p>
+      </div>
+      <div class="wf-grid">
+        <div class="wf-card anim">
+          <div class="wf-icon">⚡</div>
+          <h3>Email Draft Accelerator</h3>
+          <p>Turn rough thoughts into polished, professional emails in seconds. Clear, concise, with a call to action built in.</p>
+          <div class="wf-badge">Save 25 min/day</div>
         </div>
-    </div>
-
-    <div class="grid-section" id="tools">
-        <div class="section-title"><span>TOP FREE AI TOOLS</span><span>PRACTICAL IMPLEMENTATION</span></div>
-        <div class="tools-grid">
-            <a href="https://chat.deepseek.com/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>DeepSeek V3</h3><span>Regular People</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a><a href="https://notebooklm.google.com/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>NotebookLM</h3><span>Workplace</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a><a href="https://designer.microsoft.com/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>Microsoft Designer</h3><span>Regular People</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a><a href="https://huggingface.co/chat/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>HuggingFace Chat</h3><span>Regular People</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a><a href="https://www.perplexity.ai/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>Perplexity</h3><span>Workplace</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a><a href="https://claude.ai/" target="_blank" class="tool-card">
-                    <div class="model-head"><h3>Claude.ai</h3><span>Regular People</span></div>
-                    <p style="font-size:13px; color:var(--text-muted);"></p>
-                </a>
+        <div class="wf-card anim">
+          <div class="wf-icon">📋</div>
+          <h3>Meeting Notes → Actions</h3>
+          <p>Paste messy notes, get key decisions, action items with owners, deadlines, and risks. Never leave a meeting confused.</p>
+          <div class="wf-badge">Save 15 min/meeting</div>
         </div>
-    </div>
-
-    <div class="subscribe-box">
-        <div class="subscribe-text">
-            <h3>Get the update. Skip the noise.</h3>
-            <p>One brief every morning. No fluff, no hype, just what happened and why it matters.</p>
+        <div class="wf-card anim">
+          <div class="wf-icon">🎯</div>
+          <h3>Daily Priority Planner</h3>
+          <p>Dump your task list, get your top 3 priorities and a 90-minute execution block. Beat overwhelm every morning.</p>
+          <div class="wf-badge">Save 20 min/day</div>
         </div>
-        <form action="/subscribe" method="POST" class="subscribe-form">
-            <input type="email" class="sub-input" placeholder="you@email.com" required>
-            <button type="submit" class="btn-sub">Subscribe free</button>
-        </form>
+        <div class="wf-card anim">
+          <div class="wf-icon">🔄</div>
+          <h3>Follow-Up Generator</h3>
+          <p>Write warm, direct follow-ups that don't sound robotic. One clear next step included. Never ghost a thread.</p>
+          <div class="wf-badge">Save 10 min/thread</div>
+        </div>
+        <div class="wf-card anim">
+          <div class="wf-icon">📊</div>
+          <h3>Weekly Review System</h3>
+          <p>Turn your work log into wins, bottlenecks, lessons, and next week's top 3 goals. Compound your improvement.</p>
+          <div class="wf-badge">Save 30 min/week</div>
+        </div>
+        <div class="wf-card anim">
+          <div class="wf-icon">💰</div>
+          <h3>Side Income Playbooks</h3>
+          <p>Step-by-step systems for turning AI skills into real revenue. Templates, prompts, and automation recipes.</p>
+          <div class="wf-badge soon">Coming Soon</div>
+        </div>
+      </div>
     </div>
-</main>
+  </section>
 
-<footer>&copy; 2026 THE AI UPDATE &nbsp;|&nbsp; TWITTER &nbsp;|&nbsp; GITHUB &nbsp;|&nbsp; PRIVACY</footer>
-<script>
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getUTCHours()).padStart(2,'0');
-      const m = String(now.getUTCMinutes()).padStart(2,'0');
-      document.getElementById('utcTime').textContent = 'LAST UPDATED ' + h + ':' + m + ' UTC';
-    }
-    setInterval(updateClock, 30000); updateClock();
-</script>
+  <!-- ========== TOOLS ========== -->
+  <section id="tools" class="sect">
+    <div class="contain">
+      <div class="sect-head anim">
+        <p class="tag">RECOMMENDED STACK</p>
+        <h2>The <span class="glow-text">exact tools</span> we use</h2>
+        <p class="sect-sub">Lean, reliable, no fluff. These power the entire AI Update system.</p>
+      </div>
+      <div class="tools-row">
+        <div class="tool anim">
+          <div class="tool-cat">WRITING</div>
+          <h3>AI Writing Assistant</h3>
+          <p>For email drafts, follow-ups, and content generation. The backbone of every text-based workflow.</p>
+          <a href="#" class="tool-link" onclick="track('offer_click')">Explore →</a>
+        </div>
+        <div class="tool anim">
+          <div class="tool-cat">AUTOMATION</div>
+          <h3>Workflow Engine</h3>
+          <p>Connect your apps and automate repetitive sequences. Set it once, let it run forever.</p>
+          <a href="#" class="tool-link" onclick="track('offer_click')">Explore →</a>
+        </div>
+        <div class="tool anim">
+          <div class="tool-cat">PUBLISHING</div>
+          <h3>Content Scheduler</h3>
+          <p>Queue posts, schedule distribution, track engagement. One dashboard for all your channels.</p>
+          <a href="#" class="tool-link" onclick="track('offer_click')">Explore →</a>
+        </div>
+      </div>
+      <p class="fine anim">Some links may be affiliate links. We only recommend tools we actually use.</p>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS ========== -->
+  <section id="results" class="sect sect-alt">
+    <div class="contain">
+      <div class="sect-head anim">
+        <p class="tag">REAL RESULTS</p>
+        <h2>What happens when you <span class="glow-text">stop winging it</span></h2>
+      </div>
+      <div class="quotes">
+        <blockquote class="q anim">
+          <p>"I used to spend 45 minutes every morning just sorting through emails. Now I batch-process them in 10 minutes flat."</p>
+          <cite>— Helpdesk professional, 3 weeks in</cite>
+        </blockquote>
+        <blockquote class="q anim">
+          <p>"The meeting notes workflow alone saved my team 2 hours a week. We actually know what to do after meetings now."</p>
+          <cite>— Team lead, IT department</cite>
+        </blockquote>
+        <blockquote class="q anim">
+          <p>"I was skeptical about AI tools but these prompts are dead simple. Copy, paste, done. No learning curve."</p>
+          <cite>— Office administrator, first week</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LEAD CAPTURE ========== -->
+  <section id="kit" class="sect">
+    <div class="contain">
+      <div class="kit-box anim">
+        <div class="kit-left">
+          <p class="tag">FREE DOWNLOAD</p>
+          <h2>The 10-Minute AI<br><span class="glow-text">Workflow Starter Kit</span></h2>
+          <p>5 copy-paste workflows, a 7-day sprint method, and the system to start saving 3+ hours every week.</p>
+          <div class="kit-checks">
+            <div>✅ 5 plug-and-play AI prompts</div>
+            <div>✅ 7-day sprint method</div>
+            <div>✅ Weekly review template</div>
+            <div>✅ Bonus: side income starter guide</div>
+          </div>
+        </div>
+        <div class="kit-right">
+          <form id="leadForm">
+            <label for="name">First name</label>
+            <input id="name" type="text" placeholder="Mark" required />
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@company.com" required />
+            <button type="submit" class="btn-main full">Send Me the Kit <span class="arrow">→</span></button>
+            <p class="fine">Free forever. Unsubscribe anytime. Zero spam.</p>
+          </form>
+          <p id="formMsg"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="sect sect-alt">
+    <div class="contain narrow">
+      <div class="sect-head anim">
+        <p class="tag">FAQ</p>
+        <h2>Questions? <span class="glow-text">Answered.</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq anim"><summary>Do I need to be technical?</summary><p>Not at all. If you can copy and paste, you can use every workflow. Built for regular workers, not developers.</p></details>
+        <details class="faq anim"><summary>What AI tool do I need?</summary><p>Any AI assistant — ChatGPT, Claude, Gemini, Copilot. The prompts are tool-agnostic.</p></details>
+        <details class="faq anim"><summary>How fast will I see results?</summary><p>Most people save 20+ minutes on day one. By end of the 7-day sprint, it's a permanent habit.</p></details>
+        <details class="faq anim"><summary>Is the starter kit really free?</summary><p>100% free. We monetize through recommended tools and premium packs later. The kit is yours forever.</p></details>
+        <details class="faq anim"><summary>Will you spam me?</summary><p>Never. You get the kit, a short 5-email series with tips, then only occasional useful updates. One-click unsubscribe.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="contain foot-inner">
+      <div class="foot-brand">
+        <img src="assets/logo.png" alt="" class="foot-logo" onerror="this.style.display='none'" />
+        <span>THE AI UPDATE</span>
+      </div>
+      <div class="foot-links">
+        <a href="#intel">Latest Intel</a>
+        <a href="#how">How It Works</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#tools">Tools</a>
+        <a href="#faq">FAQ</a>
+        <a href="dashboard.html">Owner Dashboard</a>
+      </div>
+      <p class="foot-copy">© 2026 theaiupdate.org — Built with AI, run by AI, made for humans.</p>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
 </body>
 </html>

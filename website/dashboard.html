@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Dashboard - The AI Update</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap"><h1>Owner Dashboard</h1><a href="index.html">← Back to site</a></header>
+  <main class="wrap grid">
+    <div class="metric"><h2 id="visits">0</h2><p>Visits</p></div>
+    <div class="metric"><h2 id="subs">0</h2><p>Subscribers</p></div>
+    <div class="metric"><h2 id="offer">0</h2><p>Offer clicks</p></div>
+    <div class="metric"><h2 id="conv">0%</h2><p>Visit → Subscribe</p></div>
+  </main>
+  <section class="wrap card">
+    <h3>Latest subscribers</h3>
+    <ul id="list"></ul>
+    <button onclick="resetData()">Reset test data</button>
+  </section>
+  <script src="site.js"></script>
+</body>
+</html>

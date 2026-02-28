@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In — The AI Update</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .ty-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; position: relative; z-index: 2; }
+    .ty-check { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; margin: 0 auto 24px; box-shadow: 0 0 60px rgba(34,211,238,.25); animation: pop .5s ease; }
+    @keyframes pop { 0% { transform: scale(0); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .ty-wrap h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 12px; }
+    .ty-wrap .sub { color: var(--gray); font-size: 1.05rem; max-width: 540px; margin: 0 auto 32px; }
+    .ty-steps { text-align: left; max-width: 520px; margin: 0 auto 40px; }
+    .ty-step { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .ty-num { width: 36px; height: 36px; border-radius: 10px; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--cyan); font-family: var(--mono); flex-shrink: 0; }
+    .ty-step-text h3 { font-size: 1rem; margin-bottom: 2px; }
+    .ty-step-text p { color: var(--gray); font-size: .9rem; }
+    .ty-kit-box { max-width: 520px; margin: 0 auto 32px; padding: 28px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); text-align: left; }
+    .ty-kit-box h3 { margin-bottom: 12px; }
+    .ty-kit-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: .92rem; }
+    .ty-kit-item:last-child { border-bottom: none; }
+    .ty-kit-item .icon { font-size: 1.2rem; }
+    .ty-download { margin-top: 20px; }
+    .ty-social { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .ty-social a { padding: 10px 20px; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: var(--white); text-decoration: none; font-weight: 600; font-size: .9rem; transition: background .2s; }
+    .ty-social a:hover { background: rgba(255,255,255,.12); }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="top-glow"></div>
+
+  <div class="ty-wrap">
+    <div class="ty-check">✓</div>
+    <h1>You're in, <span class="glow-text" id="userName">friend</span>!</h1>
+    <p class="sub">Your AI Workflow Starter Kit is ready. Here's exactly what happens next.</p>
+
+    <div class="ty-steps">
+      <div class="ty-step">
+        <div class="ty-num">1</div>
+        <div class="ty-step-text">
+          <h3>Check your inbox</h3>
+          <p>You'll get an email from The AI Update within 2 minutes with your download link.</p>
+        </div>
+      </div>
+      <div class="ty-step">
+        <div class="ty-num">2</div>
+        <div class="ty-step-text">
+          <h3>Pick one workflow</h3>
+          <p>Open the kit and choose the workflow that matches your biggest daily time drain.</p>
+        </div>
+      </div>
+      <div class="ty-step">
+        <div class="ty-num">3</div>
+        <div class="ty-step-text">
+          <h3>Use it today</h3>
+          <p>Copy the prompt, paste it into any AI tool, and run it on a real task right now.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ty-kit-box">
+      <h3>📦 What's inside your kit</h3>
+      <div class="ty-kit-item"><span class="icon">⚡</span> Email Draft Accelerator prompt</div>
+      <div class="ty-kit-item"><span class="icon">📋</span> Meeting Notes → Action Plan prompt</div>
+      <div class="ty-kit-item"><span class="icon">🎯</span> Daily Priority Planner prompt</div>
+      <div class="ty-kit-item"><span class="icon">🔄</span> Follow-Up Generator prompt</div>
+      <div class="ty-kit-item"><span class="icon">📊</span> Weekly Review System prompt</div>
+      <div class="ty-kit-item"><span class="icon">🗓️</span> 7-Day Sprint Method guide</div>
+      <div class="ty-kit-item"><span class="icon">🎁</span> Bonus: Side Income Starter Guide</div>
+      <div class="ty-download">
+        <a href="#" class="btn-main full" onclick="alert('In live mode this downloads the PDF kit.')">Download Kit Now →</a>
+      </div>
+    </div>
+
+    <p class="sub">While you wait for email #1, follow us for daily AI workflow tips:</p>
+    <div class="ty-social">
+      <a href="#">𝕏 Follow on X</a>
+      <a href="#">📧 Share with a friend</a>
+    </div>
+
+    <p style="margin-top:40px;"><a href="index.html" style="color:var(--cyan);">← Back to The AI Update</a></p>
+  </div>
+
+  <script src="site.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    if (name) document.getElementById('userName').textContent = name;
+  </script>
+</body>
+</html>
