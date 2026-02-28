@@ -114,7 +114,7 @@ body {
 }
 .hero-inner { position: relative; z-index: 3; padding-top: 200px; }
 .hero-inner h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 700; line-height: 1.05; margin: 16px 0 20px; }
-.hero-desc { font-size: 1.1rem; color: var(--gray); max-width: 600px; margin-bottom: 32px; }
+.hero-desc { font-size: 1.1rem; color: var(--gray); max-width: 600px; margin: 0 auto 32px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
 .hero-metrics {
   display: inline-flex; align-items: center; gap: 28px;
