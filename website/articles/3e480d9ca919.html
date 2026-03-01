@@ -225,74 +225,64 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
         <div class="article-meta">
             <span class="cat-pill">INTEL</span>
             <span>DEEP DIVE</span>
-            <a href="https://theaiupdate.org/articles/3e480d9ca919.html" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
+            <a href="https://huggingface.co/blog/nvidia/cosmos-on-jetson" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
         </div>
         <h1 class="article-title">Deploying Open Source Vision Language Models (Vlm) On Jetson</h1>
-        <p class="article-lede">Model Selection &amp; Training/Fine-tuning: Choosing an appropriate open-source VLM and potentially fine-tuning it for specific...</p>
+        <p class="article-lede">In an increasingly connected world, the demand for intelligent systems capable of understanding and interacting with their environment is skyrocketing. Vision Language Models (VLMs), which bridge the gap between visual...</p>
     </div>
 
     <img src="https://images.unsplash.com/photo-1558491947-0763d78a906e?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
 
     <div class="article-body">
-        <p><strong>Main takeaway:</strong> Model Selection &amp; Training/Fine-tuning: Choosing an appropriate open-source VLM and potentially fine-tuning it for specific... In this page, <strong>LLM</strong> means a large language model (an AI system that writes and reasons with text). If image, video, or music models are mentioned, they are AI tools trained to generate that specific media.</p>
-<h1>Deploying Open Source Vision Language Models (Vlm) On Jetson</h1>
-<h1>Bringing Multimodal Intelligence to the Edge: Deploying Open Source VLMs on NVIDIA Jetson</h1>
-<p>In an increasingly connected world, the demand for intelligent systems capable of understanding and interacting with their environment is skyrocketing. Vision Language Models (VLMs), which bridge the gap between visual and textual data, represent a monumental leap in AI capabilities. However, running these often-large, compute-intensive models has traditionally been confined to powerful cloud servers or high-end workstations. Enter NVIDIA Jetson – a series of embedded computing boards designed for AI at the edge. This article explores the exciting synergy of deploying open-source VLMs on Jetson, delving into what this entails, its significant benefits, and the inherent challenges.</p>
-<h2>Understanding the Fusion: Open Source VLMs on NVIDIA Jetson</h2>
-<p>At its core, deploying open-source VLMs on NVIDIA Jetson involves taking sophisticated AI models that understand both images and text and running them locally on a compact, power-efficient embedded device.</p>
-<h3>What are Vision Language Models (VLMs)?</h3>
-<p>Vision Language Models are a class of AI that processes and generates content based on both visual inputs (images, video frames) and textual inputs (prompts, questions). Unlike traditional computer vision models that might only identify objects, or large language models (LLMs) that only handle text, VLMs can perform tasks such as:
-*   <strong>Visual Question Answering (VQA):</strong> Answering text questions about an image ("What color is the car?").
-*   <strong>Image Captioning:</strong> Generating a descriptive text caption for an image ("A dog chasing a ball in a park.").
-*   <strong>Visual Grounding:</strong> Locating specific objects in an image based on a textual description.
-*   <strong>Multimodal Instruction Following:</strong> Executing complex instructions that combine visual observations with textual commands.</p>
-<p>Popular open-source VLMs include models like LLaVA, MiniGPT-4, and various extensions of foundational LLMs with visual encoders.</p>
-<h3>The NVIDIA Jetson Advantage: Edge Computing Powerhouse</h3>
-<p>NVIDIA Jetson platforms (e.g., Jetson Nano, Xavier NX, Orin Nano, Orin NX) are purpose-built for AI and deep learning at the edge. They feature NVIDIA GPUs, ARM CPUs, and unified memory, all packed into a small, power-efficient form factor. This makes them ideal for applications where real-time processing, low latency, data privacy, and operation independent of cloud connectivity are critical.</p>
-<h3>The Deployment Process: From Cloud to Corner</h3>
-<p>Bringing an open-source VLM from its development environment (often a powerful server) to a Jetson device involves several key steps:</p>
-<ol>
-<li><strong>Model Selection &amp; Training/Fine-tuning:</strong> Choosing an appropriate open-source VLM and potentially fine-tuning it for specific tasks or datasets.</li>
-<li><strong>Quantization &amp; Pruning:</strong> VLMs can be very large. To fit on resource-constrained edge devices and run efficiently, models are often quantized (reducing the precision of weights, e.g., from FP32 to FP16 or INT8) and pruned (removing redundant connections). This reduces model size and speeds up inference, often with a minimal impact on accuracy.</li>
-<li><strong>Framework Conversion:</strong> Converting the trained model (e.g., from PyTorch or TensorFlow) into an optimized inference format suitable for Jetson's hardware accelerators. NVIDIA's <strong>TensorRT</strong> is crucial here, as it optimizes neural networks for maximum performance on NVIDIA GPUs by applying graph optimizations, kernel fusion, and efficient memory management.</li>
-<li><strong>Deployment &amp; Inference:</strong> Loading the optimized model onto the Jetson device and integrating it with an application that handles input from cameras or other sensors and processes text prompts to generate VLM outputs. This often leverages the <strong>JetPack SDK</strong>, which includes CUDA, cuDNN, and TensorRT.</li>
-</ol>
-<h2>Why Go Local? The Advantages of Edge VLM Deployment</h2>
-<p>Deploying VLMs directly on Jetson devices unlocks a powerful array of benefits, fundamentally transforming how multimodal AI can be utilized in the real world.</p>
-<h3>Real-Time Responsiveness &amp; Autonomy</h3>
-<p>By processing data locally, Jetson-powered VLMs eliminate the latency associated with sending data to and from the cloud. This enables near real-time inference, which is vital for applications like autonomous robotics, smart surveillance, industrial automation, and interactive AI assistants where immediate decisions are critical. Devices can operate autonomously, even without internet connectivity.</p>
-<h3>Enhanced Privacy &amp; Security</h3>
-<p>Processing sensitive visual and textual data on the device itself significantly improves privacy. Data does not leave the local network or device for cloud processing, reducing exposure to breaches and complying more easily with data protection regulations (e.g., GDPR, CCPA). This is particularly important for applications in healthcare, personal security, and defense.</p>
-<h3>Cost Efficiency &amp; Scalability</h3>
-<p>While there's an initial hardware investment, running inference on edge devices can dramatically reduce recurring cloud computing costs, especially for applications requiring continuous or high-volume processing. For large-scale deployments, managing thousands of edge devices performing local inference is often more economically scalable than routing all data through central cloud servers.</p>
-<h3>Leveraging the Open Source Ecosystem</h3>
-<p>The open-source nature of many VLMs fosters a vibrant community, allowing for greater transparency, customizability, and rapid iteration. Developers can adapt models to specific niche requirements, integrate them deeply into existing systems, and benefit from collective improvements and debugging efforts, all without licensing fees for the core model.</p>
-<h3>Robustness for Challenging Environments</h3>
-<p>Edge deployments are inherently more robust to intermittent connectivity or complete network outages. Devices can continue to operate and make intelligent decisions even in remote locations or harsh environments where reliable internet access is not guaranteed, making them suitable for agriculture, field operations, and disaster response.</p>
-<h2>Navigating the Hurdles: Challenges and Trade-offs</h2>
-<p>Despite the compelling advantages, deploying sophisticated VLMs on resource-constrained Jetson devices comes with its own set of challenges and necessary trade-offs.</p>
-<h3>Computational &amp; Memory Constraints</h3>
-<p>Even the most powerful Jetson Orin devices have significantly less compute power and memory (RAM/VRAM) than datacenter GPUs. VLMs, especially the larger ones, can demand hundreds of billions of parameters and vast amounts of memory. Running them efficiently often necessitates aggressive quantization (e.g., to INT8) or pruning, which can sometimes lead to a <strong>performance-accuracy trade-off</strong>. Achieving high accuracy might require a larger model that struggles to run in real-time or fit into memory.</p>
-<h3>The Complexity of Optimization</h3>
-<p>Optimizing a VLM for edge deployment is a non-trivial task. The process of quantization, pruning, and conversion to TensorRT requires deep expertise in deep learning frameworks, model architectures, and NVIDIA's tooling. Debugging performance bottlenecks or accuracy drops post-optimization can be time-consuming and challenging, requiring careful tuning of quantization parameters and understanding of model-specific sensitivities.</p>
-<h3>Software Ecosystem &amp; Debugging</h3>
-<p>Setting up the entire software stack on a Jetson device can be intricate. This includes installing JetPack (with CUDA, cuDNN, TensorRT), configuring Python environments, installing PyTorch or TensorFlow with GPU support, and integrating the VLM's specific libraries. Compatibility issues between different versions of these components are common, and debugging errors across this complex stack requires patience and detailed knowledge.</p>
-<h3>Thermal Management Considerations</h3>
-<p>Running computationally intensive VLMs can generate significant heat. While Jetson devices are designed for edge AI, sustained high-load inference can lead to thermal throttling, reducing performance to prevent overheating. Proper thermal management, including appropriate heatsinks, fans, or enclosure designs, is crucial for maintaining consistent peak performance, especially in compact or enclosed spaces.</p>
-<h3>Initial Development Investment</h3>
-<p>Compared to simply calling a cloud API, setting up and optimizing an edge VLM deployment demands a higher initial investment in developer time, expertise, and potentially specialized tooling. This includes learning the intricacies of edge optimization, managing embedded Linux systems, and handling hardware-software integration, which might be a barrier for smaller teams or those new to edge AI.</p>
-<h3>Limited VLM Availability for Edge-Native Design</h3>
-<p>While there are many open-source VLMs, not all are designed with edge deployment in mind from the ground up. Many state-of-the-art models are still too large to run effectively on edge devices without substantial modification, limiting the immediate access to the very latest advancements for edge-specific applications. The community is evolving, but finding a perfect balance of performance, accuracy, and edge-friendliness can be a search.</p>
-<h2>Conclusion</h2>
-<p>Deploying open-source Vision Language Models on NVIDIA Jetson represents a pivotal step towards decentralizing advanced AI capabilities. It promises real-time, private, and autonomous multimodal intelligence in a compact form factor, suitable for a myriad of applications from intelligent robotics to smart infrastructure. While the journey involves navigating computational constraints, optimization complexities, and software integration hurdles, the continuous advancements in both VLM architectures and NVIDIA's edge hardware are rapidly making this powerful combination more accessible and impactful. The future of intelligent edge devices is undoubtedly multimodal, and Jetson-powered open-source VLMs are at the forefront of this exciting revolution.</p>
-    <h2>Common Questions</h2>
-<h3>Who should read this update?</h3>
-<p>Anyone tracking practical AI changes in language, image, video, or music models. You do not need a deep technical background to use this summary.</p>
-<h3>What should I do with this information?</h3>
-<p>Use it to decide what to test next in your workflow. Start small, measure output quality, and keep what gives clear time or quality gains.</p>
-<h3>How do I verify claims in this article?</h3>
-<p>Use the source links in this page, then compare results in your own environment before rolling changes into production.</p>
-
+        <p><strong>Main takeaway:</strong> In an increasingly connected world, the demand for intelligent systems capable of understanding and interacting with their environment is skyrocketing. Vision Language Models (VLMs), which bridge the gap between visual and textual data, represent a monumental leap in AI...</p>
+        <h1>Bringing Multimodal Intelligence to the Edge: Deploying Open Source VLMs on NVIDIA Jetson</h1>
+        <p>In an increasingly connected world, the demand for intelligent systems capable of understanding and interacting with their environment is skyrocketing. Vision Language Models (VLMs), which bridge the gap between visual and textual data, represent a monumental leap in AI capabilities. However, running these often-large, compute-intensive models has traditionally been confined to powerful cloud servers or high-end workstations. Enter NVIDIA Jetson – a series of embedded computing boards designed for AI at the edge. This article explores the exciting synergy of deploying open-source VLMs on Jetson, delving into what this entails, its significant benefits, and the inherent challenges.</p>
+        <h2>Understanding the Fusion: Open Source VLMs on NVIDIA Jetson</h2>
+        <p>At its core, deploying open-source VLMs on NVIDIA Jetson involves taking sophisticated AI models that understand both images and text and running them locally on a compact, power-efficient embedded device.</p>
+        <h3>What are Vision Language Models (VLMs)?</h3>
+        <p>Vision Language Models are a class of AI that processes and generates content based on both visual inputs (images, video frames) and textual inputs (prompts, questions). Unlike traditional computer vision models that might only identify objects, or large language models (LLMs) that only handle text, VLMs can perform tasks such as:</p>
+        <ul>
+        <li><strong>Visual Question Answering (VQA):</strong> Answering text questions about an image (&quot;What color is the car?&quot;).</li>
+        <li><strong>Image Captioning:</strong> Generating a descriptive text caption for an image (&quot;A dog chasing a ball in a park.&quot;).</li>
+        <li><strong>Visual Grounding:</strong> Locating specific objects in an image based on a textual description.</li>
+        <li><strong>Multimodal Instruction Following:</strong> Executing complex instructions that combine visual observations with textual commands.</li>
+        </ul>
+        <p>Popular open-source VLMs include models like LLaVA, MiniGPT-4, and various extensions of foundational LLMs with visual encoders.</p>
+        <h3>The NVIDIA Jetson Advantage: Edge Computing Powerhouse</h3>
+        <p>NVIDIA Jetson platforms (e.g., Jetson Nano, Xavier NX, Orin Nano, Orin NX) are purpose-built for AI and deep learning at the edge. They feature NVIDIA GPUs, ARM CPUs, and unified memory, all packed into a small, power-efficient form factor. This makes them ideal for applications where real-time processing, low latency, data privacy, and operation independent of cloud connectivity are critical.</p>
+        <h3>The Deployment Process: From Cloud to Corner</h3>
+        <p>Bringing an open-source VLM from its development environment (often a powerful server) to a Jetson device involves several key steps:</p>
+        <p>1.  <strong>Model Selection &amp; Training/Fine-tuning:</strong> Choosing an appropriate open-source VLM and potentially fine-tuning it for specific tasks or datasets. 2.  <strong>Quantization &amp; Pruning:</strong> VLMs can be very large. To fit on resource-constrained edge devices and run efficiently, models are often quantized (reducing the precision of weights, e.g., from FP32 to FP16 or INT8) and pruned (removing redundant connections). This reduces model size and speeds up inference, often with a minimal impact on accuracy. 3.  <strong>Framework Conversion:</strong> Converting the trained model (e.g., from PyTorch or TensorFlow) into an optimized inference format suitable for Jetson&#x27;s hardware accelerators. NVIDIA&#x27;s <strong>TensorRT</strong> is crucial here, as it optimizes neural networks for maximum performance on NVIDIA GPUs by applying graph optimizations, kernel fusion, and efficient memory management. 4.  <strong>Deployment &amp; Inference:</strong> Loading the optimized model onto the Jetson device and integrating it with an application that handles input from cameras or other sensors and processes text prompts to generate VLM outputs. This often leverages the <strong>JetPack SDK</strong>, which includes CUDA, cuDNN, and TensorRT.</p>
+        <h2>Why Go Local? The Advantages of Edge VLM Deployment</h2>
+        <p>Deploying VLMs directly on Jetson devices unlocks a powerful array of benefits, fundamentally transforming how multimodal AI can be utilized in the real world.</p>
+        <h3>Real-Time Responsiveness &amp; Autonomy</h3>
+        <p>By processing data locally, Jetson-powered VLMs eliminate the latency associated with sending data to and from the cloud. This enables near real-time inference, which is vital for applications like autonomous robotics, smart surveillance, industrial automation, and interactive AI assistants where immediate decisions are critical. Devices can operate autonomously, even without internet connectivity.</p>
+        <h3>Enhanced Privacy &amp; Security</h3>
+        <p>Processing sensitive visual and textual data on the device itself significantly improves privacy. Data does not leave the local network or device for cloud processing, reducing exposure to breaches and complying more easily with data protection regulations (e.g., GDPR, CCPA). This is particularly important for applications in healthcare, personal security, and defense.</p>
+        <h3>Cost Efficiency &amp; Scalability</h3>
+        <p>While there&#x27;s an initial hardware investment, running inference on edge devices can dramatically reduce recurring cloud computing costs, especially for applications requiring continuous or high-volume processing. For large-scale deployments, managing thousands of edge devices performing local inference is often more economically scalable than routing all data through central cloud servers.</p>
+        <h3>Leveraging the Open Source Ecosystem</h3>
+        <p>The open-source nature of many VLMs fosters a vibrant community, allowing for greater transparency, customizability, and rapid iteration. Developers can adapt models to specific niche requirements, integrate them deeply into existing systems, and benefit from collective improvements and debugging efforts, all without licensing fees for the core model.</p>
+        <h3>Robustness for Challenging Environments</h3>
+        <p>Edge deployments are inherently more robust to intermittent connectivity or complete network outages. Devices can continue to operate and make intelligent decisions even in remote locations or harsh environments where reliable internet access is not guaranteed, making them suitable for agriculture, field operations, and disaster response.</p>
+        <h2>Navigating the Hurdles: Challenges and Trade-offs</h2>
+        <p>Despite the compelling advantages, deploying sophisticated VLMs on resource-constrained Jetson devices comes with its own set of challenges and necessary trade-offs.</p>
+        <h3>Computational &amp; Memory Constraints</h3>
+        <p>Even the most powerful Jetson Orin devices have significantly less compute power and memory (RAM/VRAM) than datacenter GPUs. VLMs, especially the larger ones, can demand hundreds of billions of parameters and vast amounts of memory. Running them efficiently often necessitates aggressive quantization (e.g., to INT8) or pruning, which can sometimes lead to a <strong>performance-accuracy trade-off</strong>. Achieving high accuracy might require a larger model that struggles to run in real-time or fit into memory.</p>
+        <h3>The Complexity of Optimization</h3>
+        <p>Optimizing a VLM for edge deployment is a non-trivial task. The process of quantization, pruning, and conversion to TensorRT requires deep expertise in deep learning frameworks, model architectures, and NVIDIA&#x27;s tooling. Debugging performance bottlenecks or accuracy drops post-optimization can be time-consuming and challenging, requiring careful tuning of quantization parameters and understanding of model-specific sensitivities.</p>
+        <h3>Software Ecosystem &amp; Debugging</h3>
+        <p>Setting up the entire software stack on a Jetson device can be intricate. This includes installing JetPack (with CUDA, cuDNN, TensorRT), configuring Python environments, installing PyTorch or TensorFlow with GPU support, and integrating the VLM&#x27;s specific libraries. Compatibility issues between different versions of these components are common, and debugging errors across this complex stack requires patience and detailed knowledge.</p>
+        <h3>Thermal Management Considerations</h3>
+        <p>Running computationally intensive VLMs can generate significant heat. While Jetson devices are designed for edge AI, sustained high-load inference can lead to thermal throttling, reducing performance to prevent overheating. Proper thermal management, including appropriate heatsinks, fans, or enclosure designs, is crucial for maintaining consistent peak performance, especially in compact or enclosed spaces.</p>
+        <h3>Initial Development Investment</h3>
+        <p>Compared to simply calling a cloud API, setting up and optimizing an edge VLM deployment demands a higher initial investment in developer time, expertise, and potentially specialized tooling. This includes learning the intricacies of edge optimization, managing embedded Linux systems, and handling hardware-software integration, which might be a barrier for smaller teams or those new to edge AI.</p>
+        <h3>Limited VLM Availability for Edge-Native Design</h3>
+        <p>While there are many open-source VLMs, not all are designed with edge deployment in mind from the ground up. Many state-of-the-art models are still too large to run effectively on edge devices without substantial modification, limiting the immediate access to the very latest advancements for edge-specific applications. The community is evolving, but finding a perfect balance of performance, accuracy, and edge-friendliness can be a search.</p>
+        <h2>Conclusion</h2>
+        <p>Deploying open-source Vision Language Models on NVIDIA Jetson represents a pivotal step towards decentralizing advanced AI capabilities. It promises real-time, private, and autonomous multimodal intelligence in a compact form factor, suitable for a myriad of applications from intelligent robotics to smart infrastructure. While the journey involves navigating computational constraints, optimization complexities, and software integration hurdles, the continuous advancements in both VLM architectures and NVIDIA&#x27;s edge hardware are rapidly making this powerful combination more accessible and impactful. The future of intelligent edge devices is undoubtedly multimodal, and Jetson-powered open-source VLMs are at the forefront of this exciting revolution.</p>
+            <h2>What to test next</h2>
+        <p>Open the original source linked above and validate the key claims against your own workflow, then run a small pilot before broad rollout.</p>
     </div>
 
     <div class="subscribe-box" style="margin-top: 80px;">

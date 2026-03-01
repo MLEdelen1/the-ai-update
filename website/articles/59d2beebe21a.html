@@ -225,106 +225,66 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
         <div class="article-meta">
             <span class="cat-pill">INTEL</span>
             <span>DEEP DIVE</span>
-            <a href="https://theaiupdate.org/articles/59d2beebe21a.html" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
+            <a href="https://github.com/cloudflare/agents" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
         </div>
         <h1 class="article-title">Agents</h1>
-        <p class="article-lede">AI Closer to You: This is a big deal. The AI thinking happens very near where you are. Cloudflare’s global network makes agent ...</p>
+        <p class="article-lede">Imagine you need a super-smart assistant. Not just any assistant, but one that can learn new skills, use different tools, remember what you told it, and then instantly show up wherever your customers are in the world....</p>
     </div>
 
     <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
 
     <div class="article-body">
-        <p><strong>Main takeaway:</strong> AI Closer to You: This is a big deal. The AI thinking happens very near where you are. Cloudflare’s global network makes agent ... In this page, <strong>LLM</strong> means a large language model (an AI system that writes and reasons with text). If image, video, or music models are mentioned, they are AI tools trained to generate that specific media.</p>
-<h1>Agents</h1>
-<p>Imagine you need a super-smart assistant. Not just any assistant, but one that can learn new skills, use different tools, remember what you told it, and then instantly show up wherever your customers are in the world. That’s Cloudflare Agents.</p>
-<p>It's a special set of tools. Developers use it to build AI apps. These apps can plan what to do. They use tools like searching the web or checking a database. They also remember past talks. Cloudflare’s huge global network runs them super fast, close to your users.</p>
-<h2>What Is Cloudflare Agents?</h2>
-<p>Cloudflare Agents is like hiring a super-smart, always-on helper. This helper can do many jobs. It can talk to different tools, like web searches or databases. It remembers what happened before. Most importantly, you can put this helper anywhere in the world. It works instantly and very close to your users. It's a special set of tools for building these smart AI apps.</p>
-<h2>How It Works (Under the Hood)</h2>
-<p>Cloudflare Agents is not a huge AI brain itself. Think of it as the smart conductor of an orchestra. It directs different powerful AI brains, called Large Language Models (LLMs). These LLMs do the actual thinking. The research points out options like Llama-2-7b or Mixtral-8x7b-instruct.</p>
-<p>You get to pick the AI brain you need. Its "memory" (how much it remembers) changes based on that choice. For example, Llama-2-7b remembers up to 4,000 "tokens" (pieces of words). Mixtral can recall 32,000 tokens.</p>
-<p>The Agent framework itself doesn't learn new things. Instead, it gives builders ways to set up the agent's "personality." You give it "tools" to use. These tools could be looking something up on the internet or getting data from a special database called D1. It also remembers things using D1 or KV, which are Cloudflare's storage systems. The LLMs it uses are already trained and ready to go.</p>
-<p>Here are some smart ideas behind it:</p>
-<ul>
-<li><strong>AI Closer to You:</strong> This is a big deal. The AI thinking happens very near where you are. Cloudflare’s global network makes agent answers super fast. This cuts down waiting time.</li>
-<li><strong>Building Blocks:</strong> You build agents using clear, separate parts. This makes them easier to manage and grow.</li>
-<li><strong>No Server Worries:</strong> Your agent runs on Cloudflare Workers. This means no setting up or managing big computers. It scales up or down automatically. You pay only for what you use, making it very cheap.</li>
-<li><strong>See What's Happening:</strong> It has built-in ways to watch your agent work. You can see its steps, logs, and fix problems easily.</li>
-</ul>
-<h2>Speed &amp; Cost (Benchmark Table)</h2>
-<p>Cloudflare Agents itself doesn't have speed tests like other AI brains. Instead, we look at how fast and cheap it is to run the AI brains it uses. The research focuses on the speed and cost of the AI thinking and using its tools on Cloudflare's system.</p>
-<p>AI thinking on Cloudflare Workers AI is very fast. Most of the time, it responds in less than 100 milliseconds across the globe. This is for models like Llama-2-7b.</p>
-<p>Cloudflare Workers AI offers very good prices. Especially for the words or pieces of words the AI generates (output tokens). This is where most of an agent's cost comes from.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Metric (per 1 Million output tokens)</th>
-<th style="text-align: left;">Cloudflare Workers AI (Llama-2-7b-chat)</th>
-<th style="text-align: left;">OpenAI GPT-3.5-Turbo (0125, 16k context)</th>
-<th style="text-align: left;">Replicate (Mixtral 8x7b-instruct-v0.1)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>AI Thinking Cost</strong></td>
-<td style="text-align: left;">~$100.00</td>
-<td style="text-align: left;">~$1500.00</td>
-<td style="text-align: left;">Variable, often higher for quick needs</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Typical Response Time</strong></td>
-<td style="text-align: left;">Less than 100ms (most times)</td>
-<td style="text-align: left;">Often 500ms or more</td>
-<td style="text-align: left;">Often 500ms or more</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Input Cost (what you tell AI)</strong></td>
-<td style="text-align: left;">Free (up to model's memory limit)</td>
-<td style="text-align: left;">~$500.00</td>
-<td style="text-align: left;">Part of compute cost</td>
-</tr>
-</tbody>
-</table>
-<p><em>Note: Cloudflare Workers AI also offers the powerful Mixtral 8x7b-instruct-v0.1. It costs about $500.00 for 1 million output tokens. This makes it much cheaper for this model compared to many other services, as the research shows.</em></p>
-<h2>Business &amp; Career Impact</h2>
-<ul>
-<li><strong>Save Money:</strong> Businesses can save a lot of money. Cloudflare Workers AI has great prices. It also offers free input tokens. This means companies can cut AI thinking costs by <strong>thousands or even tens of thousands of dollars each month</strong>. This is compared to bigger cloud services, according to the research.</li>
-<li><strong>Happy Users:</strong> Because AI runs so close to users, answers come back super fast. This makes customers happier. It means fewer people leave websites. It can also <strong>boost sales by several percentage points</strong> for AI tools that talk directly to customers.</li>
-<li><strong>Build Faster:</strong> This system makes building complex AI tools easier. It has ready-made parts for memory and monitoring. Teams can build, test, and launch new AI features much faster.</li>
-<li><strong>Who Wins:</strong> New companies and big businesses gain the most. Especially those building AI tools for customers. Think chatbots, personalized content, or smart work helpers. These need fast responses, grow easily, and must be cheap. Companies wanting to use open-source AI brains without managing complex computer systems will find it super helpful.</li>
-</ul>
-<h2>How to Make Money With This</h2>
-<p>Want to use Cloudflare Agents to earn extra cash? Here’s how:</p>
-<ol>
-<li><strong>Find a Problem to Solve:</strong> Look for a task that people or small businesses do often. Maybe it's boring or takes a lot of brainpower. Examples are writing personalized party invites, summarizing daily news for a specific job, or creating social media ideas from a blog post.</li>
-<li><strong>Build a Smart Little Helper (Micro-Agent):</strong> Use Cloudflare Agents to build a small AI tool just for that one task.<ul>
-<li><strong>Give it Tools:</strong> Make sure your agent can do what it needs. For example, it could <code>fetch</code> (get) info from the web. It could store user details in a D1 database. Or save generated images in R2 storage.</li>
-<li><strong>Pick the Right AI Brain:</strong> Choose an AI brain from Cloudflare Workers AI. Pick one that's cheap but smart enough. Llama-2-7b works for simple tasks. Mixtral is better for harder thinking.</li>
-<li><strong>Be Super Clear:</strong> Write very exact instructions (prompts) for your agent. This makes sure it gives great, specific results every time.</li>
-</ul>
-</li>
-<li><strong>Offer it as a Service:</strong> Put your agent online as an API (a way for other computer programs to talk to it). Cloudflare Workers has a generous free plan to start. You can even build a simple website for it using Cloudflare Pages. Or link it to tools like Zapier.</li>
-<li><strong>Charge for It:</strong> Set up a way for people to pay. You can charge a small fee each time someone uses it. Or offer a low monthly subscription. Sell it through a simple website or platforms like Gumroad. Imagine an agent that quickly writes perfect product descriptions for online stores, just from a product title!</li>
-</ol>
-<h2>What It Can't Do</h2>
-<p>While Cloudflare Agents is powerful, it has limits. Knowing these builds trust:</p>
-<ul>
-<li><strong>It Can Make Mistakes (Hallucinations):</strong> Like all AI brains, agents can sometimes "hallucinate." This means they make up information or give wrong answers. This happens more with complex tasks or when using data from many places. You can try to fix this with good instructions. But you can't get rid of the risk completely.</li>
-<li><strong>Building It Can Be Tricky:</strong> Designing a smart, reliable agent takes a lot of work. You need to give very clear instructions. You also need to test how it uses its tools and memory. Fixing problems when an agent takes many steps can be hard.</li>
-<li><strong>Tied to Cloudflare:</strong> This system works best with Cloudflare's own network and tools. If you later want to move your agent to a different company or your own computers, it will take a lot of redesigning.</li>
-<li><strong>Occasional Slow Starts:</strong> Cloudflare Workers are super fast. But if an agent is used very rarely, it might take a tiny bit longer to start up for the first time. This is called a "cold start."</li>
-<li><strong>Tool Security:</strong> Giving an agent access to other tools (like websites or databases) needs care. You must make sure it only has access to what it needs. This protects your data and prevents problems.</li>
-</ul>
-<h2>The Verdict</h2>
-<p>Cloudflare Agents offers a cost-effective, high-performance way to deploy smart AI assistants globally.</p>
-    <h2>Common Questions</h2>
-<h3>Who should read this update?</h3>
-<p>Anyone tracking practical AI changes in language, image, video, or music models. You do not need a deep technical background to use this summary.</p>
-<h3>What should I do with this information?</h3>
-<p>Use it to decide what to test next in your workflow. Start small, measure output quality, and keep what gives clear time or quality gains.</p>
-<h3>How do I verify claims in this article?</h3>
-<p>Use the source links in this page, then compare results in your own environment before rolling changes into production.</p>
-
+        <p><strong>Main takeaway:</strong> Imagine you need a super-smart assistant. Not just any assistant, but one that can learn new skills, use different tools, remember what you told it, and then instantly show up wherever your customers are in the world. That’s Cloudflare Agents.</p>
+        <p>Imagine you need a super-smart assistant. Not just any assistant, but one that can learn new skills, use different tools, remember what you told it, and then instantly show up wherever your customers are in the world. That’s Cloudflare Agents.</p>
+        <p>It&#x27;s a special set of tools. Developers use it to build AI apps. These apps can plan what to do. They use tools like searching the web or checking a database. They also remember past talks. Cloudflare’s huge global network runs them super fast, close to your users.</p>
+        <h2>What Is Cloudflare Agents?</h2>
+        <p>Cloudflare Agents is like hiring a super-smart, always-on helper. This helper can do many jobs. It can talk to different tools, like web searches or databases. It remembers what happened before. Most importantly, you can put this helper anywhere in the world. It works instantly and very close to your users. It&#x27;s a special set of tools for building these smart AI apps.</p>
+        <h2>How It Works (Under the Hood)</h2>
+        <p>Cloudflare Agents is not a huge AI brain itself. Think of it as the smart conductor of an orchestra. It directs different powerful AI brains, called Large Language Models (LLMs). These LLMs do the actual thinking. The research points out options like Llama-2-7b or Mixtral-8x7b-instruct.</p>
+        <p>You get to pick the AI brain you need. Its &quot;memory&quot; (how much it remembers) changes based on that choice. For example, Llama-2-7b remembers up to 4,000 &quot;tokens&quot; (pieces of words). Mixtral can recall 32,000 tokens.</p>
+        <p>The Agent framework itself doesn&#x27;t learn new things. Instead, it gives builders ways to set up the agent&#x27;s &quot;personality.&quot; You give it &quot;tools&quot; to use. These tools could be looking something up on the internet or getting data from a special database called D1. It also remembers things using D1 or KV, which are Cloudflare&#x27;s storage systems. The LLMs it uses are already trained and ready to go.</p>
+        <p>Here are some smart ideas behind it:</p>
+        <ul>
+        <li><strong>AI Closer to You:</strong> This is a big deal. The AI thinking happens very near where you are. Cloudflare’s global network makes agent answers super fast. This cuts down waiting time.</li>
+        <li><strong>Building Blocks:</strong> You build agents using clear, separate parts. This makes them easier to manage and grow.</li>
+        <li><strong>No Server Worries:</strong> Your agent runs on Cloudflare Workers. This means no setting up or managing big computers. It scales up or down automatically. You pay only for what you use, making it very cheap.</li>
+        <li><strong>See What&#x27;s Happening:</strong> It has built-in ways to watch your agent work. You can see its steps, logs, and fix problems easily.</li>
+        </ul>
+        <h2>Speed &amp; Cost (Benchmark Table)</h2>
+        <p>Cloudflare Agents itself doesn&#x27;t have speed tests like other AI brains. Instead, we look at how fast and cheap it is to run the AI brains it uses. The research focuses on the speed and cost of the AI thinking and using its tools on Cloudflare&#x27;s system.</p>
+        <p>AI thinking on Cloudflare Workers AI is very fast. Most of the time, it responds in less than 100 milliseconds across the globe. This is for models like Llama-2-7b.</p>
+        <p>Cloudflare Workers AI offers very good prices. Especially for the words or pieces of words the AI generates (output tokens). This is where most of an agent&#x27;s cost comes from.</p>
+        <p>| Metric (per 1 Million output tokens) | Cloudflare Workers AI (Llama-2-7b-chat) | OpenAI GPT-3.5-Turbo (0125, 16k context) | Replicate (Mixtral 8x7b-instruct-v0.1) | | :----------------------------------- | :--------------------------------------- | :---------------------------------------- | :-------------------------------------- | | <strong>AI Thinking Cost</strong>                 | ~$100.00                                 | ~$1500.00                                 | Variable, often higher for quick needs | | <strong>Typical Response Time</strong>            | Less than 100ms (most times)             | Often 500ms or more                      | Often 500ms or more                    | | <strong>Input Cost (what you tell AI)</strong>    | Free (up to model&#x27;s memory limit)        | ~$500.00                                  | Part of compute cost                   |</p>
+        <p><em>Note: Cloudflare Workers AI also offers the powerful Mixtral 8x7b-instruct-v0.1. It costs about $500.00 for 1 million output tokens. This makes it much cheaper for this model compared to many other services, as the research shows.</em></p>
+        <h2>Business &amp; Career Impact</h2>
+        <ul>
+        <li><strong>Save Money:</strong> Businesses can save a lot of money. Cloudflare Workers AI has great prices. It also offers free input tokens. This means companies can cut AI thinking costs by <strong>thousands or even tens of thousands of dollars each month</strong>. This is compared to bigger cloud services, according to the research.</li>
+        <li><strong>Happy Users:</strong> Because AI runs so close to users, answers come back super fast. This makes customers happier. It means fewer people leave websites. It can also <strong>boost sales by several percentage points</strong> for AI tools that talk directly to customers.</li>
+        <li><strong>Build Faster:</strong> This system makes building complex AI tools easier. It has ready-made parts for memory and monitoring. Teams can build, test, and launch new AI features much faster.</li>
+        <li><strong>Who Wins:</strong> New companies and big businesses gain the most. Especially those building AI tools for customers. Think chatbots, personalized content, or smart work helpers. These need fast responses, grow easily, and must be cheap. Companies wanting to use open-source AI brains without managing complex computer systems will find it super helpful.</li>
+        </ul>
+        <h2>How to Make Money With This</h2>
+        <p>Want to use Cloudflare Agents to earn extra cash? Here’s how:</p>
+        <p>1.  <strong>Find a Problem to Solve:</strong> Look for a task that people or small businesses do often. Maybe it&#x27;s boring or takes a lot of brainpower. Examples are writing personalized party invites, summarizing daily news for a specific job, or creating social media ideas from a blog post. 2.  <strong>Build a Smart Little Helper (Micro-Agent):</strong> Use Cloudflare Agents to build a small AI tool just for that one task.</p>
+        <ul>
+        <li><strong>Give it Tools:</strong> Make sure your agent can do what it needs. For example, it could <code>fetch</code> (get) info from the web. It could store user details in a D1 database. Or save generated images in R2 storage.</li>
+        <li><strong>Pick the Right AI Brain:</strong> Choose an AI brain from Cloudflare Workers AI. Pick one that&#x27;s cheap but smart enough. Llama-2-7b works for simple tasks. Mixtral is better for harder thinking.</li>
+        <li><strong>Be Super Clear:</strong> Write very exact instructions (prompts) for your agent. This makes sure it gives great, specific results every time.</li>
+        <p>3.  <strong>Offer it as a Service:</strong> Put your agent online as an API (a way for other computer programs to talk to it). Cloudflare Workers has a generous free plan to start. You can even build a simple website for it using Cloudflare Pages. Or link it to tools like Zapier. 4.  <strong>Charge for It:</strong> Set up a way for people to pay. You can charge a small fee each time someone uses it. Or offer a low monthly subscription. Sell it through a simple website or platforms like Gumroad. Imagine an agent that quickly writes perfect product descriptions for online stores, just from a product title!</p>
+        </ul>
+        <h2>What It Can&#x27;t Do</h2>
+        <p>While Cloudflare Agents is powerful, it has limits. Knowing these builds trust:</p>
+        <ul>
+        <li><strong>It Can Make Mistakes (Hallucinations):</strong> Like all AI brains, agents can sometimes &quot;hallucinate.&quot; This means they make up information or give wrong answers. This happens more with complex tasks or when using data from many places. You can try to fix this with good instructions. But you can&#x27;t get rid of the risk completely.</li>
+        <li><strong>Building It Can Be Tricky:</strong> Designing a smart, reliable agent takes a lot of work. You need to give very clear instructions. You also need to test how it uses its tools and memory. Fixing problems when an agent takes many steps can be hard.</li>
+        <li><strong>Tied to Cloudflare:</strong> This system works best with Cloudflare&#x27;s own network and tools. If you later want to move your agent to a different company or your own computers, it will take a lot of redesigning.</li>
+        <li><strong>Occasional Slow Starts:</strong> Cloudflare Workers are super fast. But if an agent is used very rarely, it might take a tiny bit longer to start up for the first time. This is called a &quot;cold start.&quot;</li>
+        <li><strong>Tool Security:</strong> Giving an agent access to other tools (like websites or databases) needs care. You must make sure it only has access to what it needs. This protects your data and prevents problems.</li>
+        </ul>
+        <h2>The Verdict</h2>
+        <p>Cloudflare Agents offers a cost-effective, high-performance way to deploy smart AI assistants globally.</p>
+            <h2>What to test next</h2>
+        <p>Open the original source linked above and validate the key claims against your own workflow, then run a small pilot before broad rollout.</p>
     </div>
 
     <div class="subscribe-box" style="margin-top: 80px;">

@@ -225,83 +225,66 @@ footer { text-align: center; padding: 40px; border-top: 1px solid var(--border);
         <div class="article-meta">
             <span class="cat-pill">INTEL</span>
             <span>DEEP DIVE</span>
-            <a href="https://theaiupdate.org/articles/9766539adc49.html" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
+            <a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
         </div>
         <h1 class="article-title">Why We No Longer Evaluate Swe Bench Verified</h1>
-        <p class="article-lede">Real-world Problems: Unlike many benchmarks that create simplified or hypothetical coding challenges, SWE-bench Verified curate...</p>
+        <p class="article-lede">When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, SWE-bench Verified stood as a prominent contender, aiming...</p>
     </div>
 
     <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
 
     <div class="article-body">
-        <p><strong>Main takeaway:</strong> Real-world Problems: Unlike many benchmarks that create simplified or hypothetical coding challenges, SWE-bench Verified curate... In this page, <strong>LLM</strong> means a large language model (an AI system that writes and reasons with text). If image, video, or music models are mentioned, they are AI tools trained to generate that specific media.</p>
-<h1>Why We No Longer Evaluate Swe Bench Verified</h1>
-<p>When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, <strong>SWE-bench Verified</strong> stood as a prominent contender, aiming to provide a realistic assessment of an LLM's ability to identify and fix real-world software bugs. However, the landscape of AI evaluation is dynamic, and even the most well-intentioned benchmarks can succumb to unforeseen challenges. Recent analysis has revealed significant issues, leading many to conclude that SWE-bench Verified no longer serves as a reliable measure of frontier coding progress.</p>
-<hr />
-<h2>Unpacking SWE-bench Verified: A Deep Dive into its Design</h2>
-<p>At its core, <strong>SWE-bench Verified</strong> emerged as a critical effort to move beyond synthetic coding tasks and test LLMs against the messy reality of open-source software development.</p>
-<h3>What It Is and How It Works:</h3>
-<p>SWE-bench Verified is a benchmark dataset designed to evaluate the code generation and bug-fixing abilities of AI models. It distinguishes itself by focusing on <strong>real-world software issues</strong> sourced directly from popular open-source repositories on GitHub.</p>
-<p>Here’s a breakdown of its key components and operational methodology:</p>
-<ul>
-<li><strong>Real-world Problems:</strong> Unlike many benchmarks that create simplified or hypothetical coding challenges, SWE-bench Verified curates issues (often bug reports or feature requests) from actual project repositories. This provides a rich, complex context that mimics the challenges faced by human developers.</li>
-<li><strong>Ground Truth Patches:</strong> For each issue, the benchmark includes a human-written "gold standard" patch that successfully resolves the problem. This patch serves as the reference solution.</li>
-<li><strong>Test-Driven Evaluation:</strong> The crucial "Verified" aspect comes from its reliance on existing, project-specific unit and integration tests. When an LLM proposes a fix for an issue, its generated patch is applied to the codebase. The success or failure of the model is determined by whether the original failing tests now pass, and crucially, that no new tests have regressed (i.e., existing passing tests still pass).</li>
-<li><strong>Automated Scoring:</strong> The evaluation process is largely automated. Models are given the issue description, relevant files, and often a test suite. Their generated code is then automatically tested against the project's verification suite to determine correctness.</li>
-<li><strong>Focus on Full Resolution:</strong> The goal isn't just to generate <em>any</em> code, but to generate a <em>working, verified patch</em> that integrates seamlessly and passes all associated tests. This implies understanding the problem, identifying the problematic code, generating a fix, and ensuring it doesn't break other parts of the system.</li>
-</ul>
-<p>This design aimed to create a robust and objective measure, pushing LLMs towards more holistic software engineering capabilities rather than just isolated code snippets.</p>
-<hr />
-<h2>The Initial Lure: Why SWE-bench Verified Was a Milestone</h2>
-<p>When it first appeared, SWE-bench Verified was hailed as a significant step forward for several compelling reasons:</p>
-<ul>
-<li><strong>Authentic Real-World Challenges:</strong> Its greatest strength was its commitment to realism. By using actual GitHub issues and codebases, it provided a far more authentic evaluation of an LLM's problem-solving skills than synthetic benchmarks. This moved the needle from "can it write a function?" to "can it fix a real bug in a complex system?".</li>
-<li><strong>Objective and Reproducible Evaluation:</strong> The reliance on existing test suites offered a seemingly objective and automated way to score model performance. A patch either passed the tests or it didn't, reducing human subjectivity in evaluation and facilitating reproducible comparisons across different models.</li>
-<li><strong>Driving Frontier Research:</strong> The sheer difficulty and realism of the tasks incentivized researchers to develop more sophisticated LLM architectures and training methodologies. It became a challenging target, pushing models to improve their contextual understanding, code generation quality, and integration abilities.</li>
-<li><strong>Broader Scope of Software Engineering:</strong> Beyond just code generation, successful performance on SWE-bench Verified implied capabilities in code understanding, debugging, patch generation, and system-level reasoning—a much broader spectrum of software engineering skills.</li>
-<li><strong>Transparency:</strong> The open-source nature of the issues and the methodology meant that researchers could inspect and understand the tasks, fostering community engagement and shared understanding.</li>
-</ul>
-<p>For a period, SWE-bench Verified was instrumental in showcasing genuine progress in AI's ability to tackle practical software development tasks, setting a high bar for what LLMs could achieve.</p>
-<hr />
-<h2>The Erosion of Trust: Why SWE-bench Verified Is No Longer Credible</h2>
-<p>Despite its initial promise, SWE-bench Verified has unfortunately revealed fundamental flaws that undermine its ability to accurately measure true progress. The very elements that made it powerful also exposed it to vulnerabilities, leading to its current state of unreliability.</p>
-<h3>Critical Limitations and Drawbacks:</h3>
-<ol>
-<li>
-<p><strong>Data Contamination and Training Leakage:</strong> This is arguably the most significant issue. As LLMs become increasingly powerful and trained on vast swathes of the internet, there's a high probability that the public codebases and issues within SWE-bench Verified have been inadvertently included in the training data of many frontier models.</p>
-<ul>
-<li><strong>The Problem:</strong> If a model has seen the problem description, the codebase, and even the "ground truth" patch during its training, its "performance" on the benchmark isn't a reflection of its true problem-solving ability, but rather its capacity for memorization or retrieval.</li>
-<li><strong>The Impact:</strong> This leakage leads to artificially inflated scores that do not represent genuine understanding or generalization to unseen problems. It creates a false sense of progress, making it impossible to discern if a model is truly "solving" the problem or merely regurgitating a learned solution.</li>
-</ul>
-</li>
-<li>
-<p><strong>Flawed and Insufficient Test Cases:</strong> While relying on existing test suites seemed robust, real-world project tests aren't always perfect or comprehensive.</p>
-<ul>
-<li><strong>The Problem:</strong> Some test cases in the benchmark might be too weak or specific, allowing a model to generate a superficial fix that passes the tests without truly addressing the underlying architectural issue or potential edge cases.</li>
-<li><strong>The Impact:</strong> A model might "pass" a task not because it truly understood and fixed the bug in a robust way, but because it found a minimal change that satisfied the existing, potentially inadequate, test suite. This misrepresents the quality of the generated solution.</li>
-</ul>
-</li>
-<li>
-<p><strong>Mismeasurement of Frontier Progress:</strong> The combination of contamination and flawed tests means SWE-bench Verified no longer provides an accurate gauge of the bleeding edge of AI's coding capabilities.</p>
-<ul>
-<li><strong>The Problem:</strong> Researchers cannot trust high scores on the benchmark to indicate a breakthrough in a model's intelligence or coding prowess. It obscures the actual state of AI development.</li>
-<li><strong>The Impact:</strong> This can mislead the research community, misdirecting efforts towards optimizing for a flawed metric rather than genuinely advancing the field.</li>
-</ul>
-</li>
-<li>
-<p><strong>Lack of Adaptation to Model Capabilities:</strong> As models grow more capable, benchmarks need to evolve to remain challenging. The static nature of SWE-bench Verified's core dataset, once exposed to widespread training, makes it less effective as a long-term evaluation tool.</p>
-</li>
-</ol>
-<p>The conclusion is clear: SWE-bench Verified, while pioneering in its time, has been compromised. The very factors that made it realistic—its reliance on public, real-world data and existing tests—ultimately became its Achilles' heel. It no longer offers a reliable signal for distinguishing truly capable models from those that have simply ingested the test data.</p>
-<p>This critical situation necessitates a move towards more robust, leakage-resistant, and dynamically challenging evaluation methodologies, such as the proposed <strong>SWE-bench Pro</strong>, to ensure that the progress we measure in AI's software engineering capabilities is both genuine and meaningful.</p>
-    <h2>Common Questions</h2>
-<h3>Who should read this update?</h3>
-<p>Anyone tracking practical AI changes in language, image, video, or music models. You do not need a deep technical background to use this summary.</p>
-<h3>What should I do with this information?</h3>
-<p>Use it to decide what to test next in your workflow. Start small, measure output quality, and keep what gives clear time or quality gains.</p>
-<h3>How do I verify claims in this article?</h3>
-<p>Use the source links in this page, then compare results in your own environment before rolling changes into production.</p>
-
+        <p><strong>Main takeaway:</strong> When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, SWE-bench Verified stood as a prominent contender, aiming to provide a realistic assessment of an LLM&#x27;s ability to...</p>
+        <p>When it comes to evaluating the rapidly advancing capabilities of large language models (LLMs) in software engineering, benchmarks are crucial. For a time, <strong>SWE-bench Verified</strong> stood as a prominent contender, aiming to provide a realistic assessment of an LLM&#x27;s ability to identify and fix real-world software bugs. However, the landscape of AI evaluation is dynamic, and even the most well-intentioned benchmarks can succumb to unforeseen challenges. Recent analysis has revealed significant issues, leading many to conclude that SWE-bench Verified no longer serves as a reliable measure of frontier coding progress.</p>
+        <hr />
+        <h2>Unpacking SWE-bench Verified: A Deep Dive into its Design</h2>
+        <p>At its core, <strong>SWE-bench Verified</strong> emerged as a critical effort to move beyond synthetic coding tasks and test LLMs against the messy reality of open-source software development.</p>
+        <h3>What It Is and How It Works:</h3>
+        <p>SWE-bench Verified is a benchmark dataset designed to evaluate the code generation and bug-fixing abilities of AI models. It distinguishes itself by focusing on <strong>real-world software issues</strong> sourced directly from popular open-source repositories on GitHub.</p>
+        <p>Here’s a breakdown of its key components and operational methodology:</p>
+        <ul>
+        <li><strong>Real-world Problems:</strong> Unlike many benchmarks that create simplified or hypothetical coding challenges, SWE-bench Verified curates issues (often bug reports or feature requests) from actual project repositories. This provides a rich, complex context that mimics the challenges faced by human developers.</li>
+        <li><strong>Ground Truth Patches:</strong> For each issue, the benchmark includes a human-written &quot;gold standard&quot; patch that successfully resolves the problem. This patch serves as the reference solution.</li>
+        <li><strong>Test-Driven Evaluation:</strong> The crucial &quot;Verified&quot; aspect comes from its reliance on existing, project-specific unit and integration tests. When an LLM proposes a fix for an issue, its generated patch is applied to the codebase. The success or failure of the model is determined by whether the original failing tests now pass, and crucially, that no new tests have regressed (i.e., existing passing tests still pass).</li>
+        <li><strong>Automated Scoring:</strong> The evaluation process is largely automated. Models are given the issue description, relevant files, and often a test suite. Their generated code is then automatically tested against the project&#x27;s verification suite to determine correctness.</li>
+        <li><strong>Focus on Full Resolution:</strong> The goal isn&#x27;t just to generate <em>any</em> code, but to generate a <em>working, verified patch</em> that integrates seamlessly and passes all associated tests. This implies understanding the problem, identifying the problematic code, generating a fix, and ensuring it doesn&#x27;t break other parts of the system.</li>
+        </ul>
+        <p>This design aimed to create a robust and objective measure, pushing LLMs towards more holistic software engineering capabilities rather than just isolated code snippets.</p>
+        <hr />
+        <h2>The Initial Lure: Why SWE-bench Verified Was a Milestone</h2>
+        <p>When it first appeared, SWE-bench Verified was hailed as a significant step forward for several compelling reasons:</p>
+        <ul>
+        <li><strong>Authentic Real-World Challenges:</strong> Its greatest strength was its commitment to realism. By using actual GitHub issues and codebases, it provided a far more authentic evaluation of an LLM&#x27;s problem-solving skills than synthetic benchmarks. This moved the needle from &quot;can it write a function?&quot; to &quot;can it fix a real bug in a complex system?&quot;.</li>
+        <li><strong>Objective and Reproducible Evaluation:</strong> The reliance on existing test suites offered a seemingly objective and automated way to score model performance. A patch either passed the tests or it didn&#x27;t, reducing human subjectivity in evaluation and facilitating reproducible comparisons across different models.</li>
+        <li><strong>Driving Frontier Research:</strong> The sheer difficulty and realism of the tasks incentivized researchers to develop more sophisticated LLM architectures and training methodologies. It became a challenging target, pushing models to improve their contextual understanding, code generation quality, and integration abilities.</li>
+        <li><strong>Broader Scope of Software Engineering:</strong> Beyond just code generation, successful performance on SWE-bench Verified implied capabilities in code understanding, debugging, patch generation, and system-level reasoning—a much broader spectrum of software engineering skills.</li>
+        <li><strong>Transparency:</strong> The open-source nature of the issues and the methodology meant that researchers could inspect and understand the tasks, fostering community engagement and shared understanding.</li>
+        </ul>
+        <p>For a period, SWE-bench Verified was instrumental in showcasing genuine progress in AI&#x27;s ability to tackle practical software development tasks, setting a high bar for what LLMs could achieve.</p>
+        <hr />
+        <h2>The Erosion of Trust: Why SWE-bench Verified Is No Longer Credible</h2>
+        <p>Despite its initial promise, SWE-bench Verified has unfortunately revealed fundamental flaws that undermine its ability to accurately measure true progress. The very elements that made it powerful also exposed it to vulnerabilities, leading to its current state of unreliability.</p>
+        <h3>Critical Limitations and Drawbacks:</h3>
+        <p>1.  <strong>Data Contamination and Training Leakage:</strong> This is arguably the most significant issue. As LLMs become increasingly powerful and trained on vast swathes of the internet, there&#x27;s a high probability that the public codebases and issues within SWE-bench Verified have been inadvertently included in the training data of many frontier models.</p>
+        <ul>
+        <li><strong>The Problem:</strong> If a model has seen the problem description, the codebase, and even the &quot;ground truth&quot; patch during its training, its &quot;performance&quot; on the benchmark isn&#x27;t a reflection of its true problem-solving ability, but rather its capacity for memorization or retrieval.</li>
+        <li><strong>The Impact:</strong> This leakage leads to artificially inflated scores that do not represent genuine understanding or generalization to unseen problems. It creates a false sense of progress, making it impossible to discern if a model is truly &quot;solving&quot; the problem or merely regurgitating a learned solution.</li>
+        </ul>
+        <p>2.  <strong>Flawed and Insufficient Test Cases:</strong> While relying on existing test suites seemed robust, real-world project tests aren&#x27;t always perfect or comprehensive.</p>
+        <ul>
+        <li><strong>The Problem:</strong> Some test cases in the benchmark might be too weak or specific, allowing a model to generate a superficial fix that passes the tests without truly addressing the underlying architectural issue or potential edge cases.</li>
+        <li><strong>The Impact:</strong> A model might &quot;pass&quot; a task not because it truly understood and fixed the bug in a robust way, but because it found a minimal change that satisfied the existing, potentially inadequate, test suite. This misrepresents the quality of the generated solution.</li>
+        </ul>
+        <p>3.  <strong>Mismeasurement of Frontier Progress:</strong> The combination of contamination and flawed tests means SWE-bench Verified no longer provides an accurate gauge of the bleeding edge of AI&#x27;s coding capabilities.</p>
+        <ul>
+        <li><strong>The Problem:</strong> Researchers cannot trust high scores on the benchmark to indicate a breakthrough in a model&#x27;s intelligence or coding prowess. It obscures the actual state of AI development.</li>
+        <li><strong>The Impact:</strong> This can mislead the research community, misdirecting efforts towards optimizing for a flawed metric rather than genuinely advancing the field.</li>
+        </ul>
+        <p>4.  <strong>Lack of Adaptation to Model Capabilities:</strong> As models grow more capable, benchmarks need to evolve to remain challenging. The static nature of SWE-bench Verified&#x27;s core dataset, once exposed to widespread training, makes it less effective as a long-term evaluation tool.</p>
+        <p>The conclusion is clear: SWE-bench Verified, while pioneering in its time, has been compromised. The very factors that made it realistic—its reliance on public, real-world data and existing tests—ultimately became its Achilles&#x27; heel. It no longer offers a reliable signal for distinguishing truly capable models from those that have simply ingested the test data.</p>
+        <p>This critical situation necessitates a move towards more robust, leakage-resistant, and dynamically challenging evaluation methodologies, such as the proposed <strong>SWE-bench Pro</strong>, to ensure that the progress we measure in AI&#x27;s software engineering capabilities is both genuine and meaningful.</p>
+            <h2>What to test next</h2>
+        <p>Open the original source linked above and validate the key claims against your own workflow, then run a small pilot before broad rollout.</p>
     </div>
 
     <div class="subscribe-box" style="margin-top: 80px;">
