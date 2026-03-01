@@ -5,6 +5,8 @@ Categories: LLMs, Reasoning, Video, Music, Avatars, AI Agents
 """
 import json
 import hashlib
+import re
+import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import feedparser
@@ -62,6 +64,44 @@ def _mark_seen(story_ids):
     seen.extend(story_ids)
     seen_file.write_text(json.dumps(list(set(seen[-10000:]))))
 
+def _youtube_channel_id_from_feed_url(url: str):
+    m = re.search(r"channel_id=([A-Za-z0-9_-]+)", url or "")
+    return m.group(1) if m else None
+
+def _youtube_fallback_entries(channel_id: str, max_items: int = 8):
+    if not channel_id:
+        return []
+    channel_url = f"https://www.youtube.com/channel/{channel_id}/videos"
+    cmd = [
+        "python", "-m", "yt_dlp",
+        "--flat-playlist", "--playlist-end", str(max_items),
+        "--dump-single-json", channel_url,
+    ]
+    try:
+        out = subprocess.check_output(cmd, text=True, stderr=subprocess.DEVNULL)
+        data = json.loads(out)
+        entries = data.get("entries", []) or []
+    except Exception:
+        return []
+
+    parsed = []
+    for e in entries:
+        vid = e.get("id")
+        title = e.get("title") or "No title"
+        if not vid:
+            continue
+        date = e.get("upload_date")
+        ts = datetime.now(timezone.utc)
+        if date and len(date) == 8:
+            ts = datetime.strptime(date, "%Y%m%d").replace(tzinfo=timezone.utc)
+        parsed.append({
+            "title": title,
+            "link": f"https://www.youtube.com/watch?v={vid}",
+            "summary": e.get("description") or "",
+            "published": ts,
+        })
+    return parsed
+
 def run_full_scan():
     print("Starting High-Intensity Global Scan...")
     stories = []
@@ -70,14 +110,17 @@ def run_full_scan():
     for source_name, feed_url in RSS_FEEDS.items():
         try:
             feed = feedparser.parse(feed_url)
+            added_from_feed = 0
+
             for entry in feed.entries[:15]:
                 published = None
                 for df in ["published_parsed", "updated_parsed"]:
                     if getattr(entry, df, None):
                         published = datetime(*getattr(entry, df)[:6], tzinfo=timezone.utc)
                         break
-                if published and published < cutoff: continue
-                
+                if published and published < cutoff:
+                    continue
+
                 stories.append({
                     "source": source_name,
                     "title": entry.get("title", "No title"),
@@ -86,7 +129,26 @@ def run_full_scan():
                     "timestamp": published.isoformat() if published else datetime.now(timezone.utc).isoformat(),
                     "id": _make_id(entry.get("title", "") + entry.get("link", "")),
                 })
-        except Exception as e: print(f"[WARN] Failed {source_name}: {e}")
+                added_from_feed += 1
+
+            # YouTube RSS can return empty/404 in some runtime paths. Fallback to yt-dlp.
+            if source_name.endswith("_yt") and added_from_feed == 0:
+                channel_id = _youtube_channel_id_from_feed_url(feed_url)
+                for item in _youtube_fallback_entries(channel_id, max_items=8):
+                    published = item.get("published")
+                    if published and published < cutoff:
+                        continue
+                    stories.append({
+                        "source": source_name,
+                        "title": item.get("title", "No title"),
+                        "url": item.get("link", ""),
+                        "summary": (item.get("summary") or "")[:1000],
+                        "timestamp": published.isoformat() if published else datetime.now(timezone.utc).isoformat(),
+                        "id": _make_id((item.get("title") or "") + (item.get("link") or "")),
+                    })
+
+        except Exception as e:
+            print(f"[WARN] Failed {source_name}: {e}")
 
     new_stories = [s for s in stories if not _is_duplicate(s['id'])]
     _mark_seen([s['id'] for s in new_stories])
