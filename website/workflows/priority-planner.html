@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Priority Planner Workflow</title><link rel="stylesheet" href="../styles.css?v=15"></head><body><canvas id="particles"></canvas><div class="top-glow"></div><nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav><main class="contain article-body workflow-page" style="padding-top:100px"><p class="tag">WORKFLOW</p><h1>Priority Planner</h1><p>Pick what matters today when everything looks urgent.</p><section><h2>What this solves</h2><p>This workflow ranks tasks by impact, urgency, and effort so you can commit to a short list and stop context-switching all day.</p></section><section class="wf-two-col"><div><h2>When to use / when not to use</h2><ul><li>Use at start of day or before a focused work block.</li><li>Do not use for crisis response where priorities are externally dictated.</li></ul></div><div><h2>Inputs needed</h2><ul><li>Full task list for the day or week</li><li>Time available today</li><li>Hard deadlines and dependencies</li></ul></div></section><section><h2>Copy-ready prompt block</h2><pre class="prompt-block"><code>Act as an execution planner.
+Rank my tasks and produce a realistic plan for today.
+
+Rules:
+- Score each task 1-5 for Impact, Urgency, and Effort
+- Recommend top 3 priorities only
+- Identify tasks to defer, delegate, or drop
+- Build a time-blocked schedule for [X] available hours
+
+Tasks:
+[paste list]
+Constraints:
+[paste deadlines, meetings, limits]</code></pre></section><section><h2>Execution steps</h2><ol><li>Paste your full list, even small tasks.</li><li>Accept only top three priorities for today.</li><li>Schedule those three into calendar blocks.</li><li>Move deferred items into a later queue.</li></ol></section><section><h2>Expected output format</h2><pre><code>Top 3 Priorities
+1) Task — Why now
+2) Task — Why now
+3) Task — Why now
+
+Defer / Delegate / Drop
+- Item | Decision | Reason
+
+Today Schedule
+09:00-10:30 ...
+11:00-12:00 ...</code></pre></section><section><h2>Concrete example</h2><p>Input includes 17 tasks and 4 free hours. Output selects “Client incident response,” “Payroll correction approval,” and “Board update draft” as top three, then defers six medium-value tasks to Thursday.</p></section><section class="wf-two-col"><div><h2>Common mistakes</h2><ul><li>Trying to keep more than three priorities</li><li>Ignoring effort when judging urgency</li><li>Not reserving buffer for interruptions</li></ul></div><div><h2>Quick quality check</h2><ul class="checklist"><li>Top three fit available hours</li><li>Deferred list has clear dates</li><li>High-impact work is front-loaded</li><li>Schedule includes a 30-minute buffer</li></ul></div></section><section class="wf-cta"><h2>Next step</h2><p>Download the Starter Kit for reusable daily planning prompts.</p><a class="btn-main" href="../starter-kit.html">Get the Starter Kit</a></section></main><footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a></div></div></footer><script src="../site.js?v=14"></script></body></html>
