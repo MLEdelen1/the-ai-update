@@ -7,18 +7,34 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="wrap"><h1>Owner Dashboard</h1><a href="index.html">← Back to site</a></header>
+  <header class="wrap">
+    <div>
+      <h1>Owner Dashboard</h1>
+      <p style="margin-top:6px;color:#9aa3b2;max-width:760px;">Use this page as a daily control panel for growth metrics. Check traffic, subscriber growth, and offer performance before editing campaigns or homepage copy.</p>
+    </div>
+    <a href="index.html">← Back to site</a>
+  </header>
+
   <main class="wrap grid">
     <div class="metric"><h2 id="visits">0</h2><p>Visits</p></div>
     <div class="metric"><h2 id="subs">0</h2><p>Subscribers</p></div>
     <div class="metric"><h2 id="offer">0</h2><p>Offer clicks</p></div>
     <div class="metric"><h2 id="conv">0%</h2><p>Visit → Subscribe</p></div>
   </main>
+
+  <section class="wrap card">
+    <h3>How to read these numbers</h3>
+    <p>If visits rise but subscribers stay flat, tighten your lead magnet CTA and simplify forms. If offer clicks are high but conversions are low, revise the sponsor package copy or reduce friction in booking steps.</p>
+    <p>A practical daily workflow is: check top metric changes, review latest subscribers, then make one focused content or offer adjustment. Avoid changing multiple variables in one day.</p>
+  </section>
+
   <section class="wrap card">
     <h3>Latest subscribers</h3>
     <ul id="list"></ul>
+    <p style="margin-top:12px;color:#9aa3b2;">Tip: tag subscribers by source so you can see what content channels actually convert.</p>
     <button onclick="resetData()">Reset test data</button>
   </section>
+
   <script src="site.js?v=14"></script>
 </body>
 </html>
