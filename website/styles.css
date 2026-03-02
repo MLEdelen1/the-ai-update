@@ -247,7 +247,8 @@ main.contain:not(.article-body) .step-card { text-align: left; }
 }
 .tool:hover { border-color: var(--border-h); }
 .tool-cat { font-size: .7rem; letter-spacing: .12em; color: var(--blue); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-.tool h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.tool h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card-date { font-size: .76rem; color: var(--gray); opacity: .9; margin-bottom: 10px; letter-spacing: .03em; }
 .tool p { color: var(--gray); font-size: .88rem; margin-bottom: 14px; }
 .tool-link { color: var(--cyan); font-weight: 600; font-size: .88rem; text-decoration: none; transition: color .2s; }
 .tool-link:hover { color: var(--white); }
