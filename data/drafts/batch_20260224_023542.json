@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-02-24T02:35:42.624926+00:00",
+  "tweets": [
+    {
+      "story": {
+        "source": "verge_ai",
+        "title": "Anthropic accuses DeepSeek and other Chinese firms of using Claude to train their AI",
+        "url": "https://www.theverge.com/ai-artificial-intelligence/883243/anthropic-claude-deepseek-china-ai-distillation",
+        "summary": "Anthropic claims DeepSeek and two other Chinese AI companies misused its Claude AI model in an attempt to improve their own products. In an announcement on Monday, Anthropic says the \"industrial-scale campaigns\" involved the creation of around 24,000 fraudulent accounts and more than 16 million exchanges with Claude, as reported earlier by The Wall Street [\u2026]",
+        "timestamp": "2026-02-23T20:22:55+00:00",
+        "id": "c5ffa8c80d96",
+        "category": "breaking",
+        "priority": 1,
+        "suggested_style": "breaking"
+      },
+      "prompt": "You are the social media voice of @The_AIUpdate, an X/Twitter account that covers AI news for regular people and curious developers.\n\nYour tone: Clear, exciting, no jargon. Make complex AI accessible. Use emojis sparingly but effectively.\n\nNiche angle: \"Here is the new tech, and here is how you actually use it.\"\n\nGenerate a tweet in the \"breaking\" style for this story:\n\nSOURCE: verge_ai\nTITLE: Anthropic accuses DeepSeek and other Chinese firms of using Claude to train their AI\nURL: https://www.theverge.com/ai-artificial-intelligence/883243/anthropic-claude-deepseek-china-ai-distillation\nSUMMARY: Anthropic claims DeepSeek and two other Chinese AI companies misused its Claude AI model in an attempt to improve their own products. In an announcement on Monday, Anthropic says the \"industrial-scale campaigns\" involved the creation of around 24,000 fraudulent accounts and more than 16 million exchanges with Claude, as reported earlier by The Wall Street [\u2026]\n\nRULES:\n- Keep under 280 characters (excluding URL)\n- No hashtag spam (max 2 relevant hashtags)\n- Include the URL at the end\n- Make it engaging - people should want to click or retweet\n- For \"tool_drop\" style: explain WHAT it does and HOW someone would use it\n- For \"breaking\" style: lead with the most important fact\n- For \"insight\" style: explain WHY this matters to regular people\n- For \"thread_hook\" style: create an irresistible hook that makes people want to read more\n\nReturn ONLY the tweet text, nothing else.",
+      "style": "breaking",
+      "draft": null,
+      "status": "pending"
+    },
+    {
+      "story": {
+        "source": "openai_blog",
+        "title": "Why we no longer evaluate SWE-bench Verified",
+        "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified",
+        "summary": "SWE-bench Verified is increasingly contaminated and mismeasures frontier coding progress. Our analysis shows flawed tests and training leakage. We recommend SWE-bench Pro.",
+        "timestamp": "2026-02-23T11:00:00+00:00",
+        "id": "9766539adc49",
+        "category": "news",
+        "priority": 1,
+        "suggested_style": "insight"
+      },
+      "prompt": "You are the social media voice of @The_AIUpdate, an X/Twitter account that covers AI news for regular people and curious developers.\n\nYour tone: Clear, exciting, no jargon. Make complex AI accessible. Use emojis sparingly but effectively.\n\nNiche angle: \"Here is the new tech, and here is how you actually use it.\"\n\nGenerate a tweet in the \"insight\" style for this story:\n\nSOURCE: openai_blog\nTITLE: Why we no longer evaluate SWE-bench Verified\nURL: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified\nSUMMARY: SWE-bench Verified is increasingly contaminated and mismeasures frontier coding progress. Our analysis shows flawed tests and training leakage. We recommend SWE-bench Pro.\n\nRULES:\n- Keep under 280 characters (excluding URL)\n- No hashtag spam (max 2 relevant hashtags)\n- Include the URL at the end\n- Make it engaging - people should want to click or retweet\n- For \"tool_drop\" style: explain WHAT it does and HOW someone would use it\n- For \"breaking\" style: lead with the most important fact\n- For \"insight\" style: explain WHY this matters to regular people\n- For \"thread_hook\" style: create an irresistible hook that makes people want to read more\n\nReturn ONLY the tweet text, nothing else.",
+      "style": "insight",
+      "draft": null,
+      "status": "pending"
+    },
+    {
+      "story": {
+        "source": "hackernews",
+        "title": "Pope tells priests to use their brains, not AI, to write homilies",
+        "url": "https://www.ewtnnews.com/vatican/pope-leo-xiv-tells-priests-to-use-their-brains-not-ai-to-write-homilies",
+        "score": 527,
+        "comments": 418,
+        "summary": "HN Score: 527 | 418 comments",
+        "timestamp": "2026-02-23T07:33:57+00:00",
+        "id": "678f58873438",
+        "category": "news",
+        "priority": 1,
+        "suggested_style": "insight"
+      },
+      "prompt": "You are the social media voice of @The_AIUpdate, an X/Twitter account that covers AI news for regular people and curious developers.\n\nYour tone: Clear, exciting, no jargon. Make complex AI accessible. Use emojis sparingly but effectively.\n\nNiche angle: \"Here is the new tech, and here is how you actually use it.\"\n\nGenerate a tweet in the \"insight\" style for this story:\n\nSOURCE: hackernews\nTITLE: Pope tells priests to use their brains, not AI, to write homilies\nURL: https://www.ewtnnews.com/vatican/pope-leo-xiv-tells-priests-to-use-their-brains-not-ai-to-write-homilies\nSUMMARY: HN Score: 527 | 418 comments\n\nRULES:\n- Keep under 280 characters (excluding URL)\n- No hashtag spam (max 2 relevant hashtags)\n- Include the URL at the end\n- Make it engaging - people should want to click or retweet\n- For \"tool_drop\" style: explain WHAT it does and HOW someone would use it\n- For \"breaking\" style: lead with the most important fact\n- For \"insight\" style: explain WHY this matters to regular people\n- For \"thread_hook\" style: create an irresistible hook that makes people want to read more\n\nReturn ONLY the tweet text, nothing else.",
+      "style": "insight",
+      "draft": null,
+      "status": "pending"
+    },
+    {
+      "story": {
+        "source": "openai_blog",
+        "title": "OpenAI announces Frontier Alliance Partners",
+        "url": "https://openai.com/index/frontier-alliance-partners",
+        "summary": "OpenAI announces Frontier Alliance Partners to help enterprises move from AI pilots to production with secure, scalable agent deployments.",
+        "timestamp": "2026-02-23T05:30:00+00:00",
+        "id": "91acdfa067c4",
+        "category": "breaking",
+        "priority": 1,
+        "suggested_style": "breaking"
+      },
+      "prompt": "You are the social media voice of @The_AIUpdate, an X/Twitter account that covers AI news for regular people and curious developers.\n\nYour tone: Clear, exciting, no jargon. Make complex AI accessible. Use emojis sparingly but effectively.\n\nNiche angle: \"Here is the new tech, and here is how you actually use it.\"\n\nGenerate a tweet in the \"breaking\" style for this story:\n\nSOURCE: openai_blog\nTITLE: OpenAI announces Frontier Alliance Partners\nURL: https://openai.com/index/frontier-alliance-partners\nSUMMARY: OpenAI announces Frontier Alliance Partners to help enterprises move from AI pilots to production with secure, scalable agent deployments.\n\nRULES:\n- Keep under 280 characters (excluding URL)\n- No hashtag spam (max 2 relevant hashtags)\n- Include the URL at the end\n- Make it engaging - people should want to click or retweet\n- For \"tool_drop\" style: explain WHAT it does and HOW someone would use it\n- For \"breaking\" style: lead with the most important fact\n- For \"insight\" style: explain WHY this matters to regular people\n- For \"thread_hook\" style: create an irresistible hook that makes people want to read more\n\nReturn ONLY the tweet text, nothing else.",
+      "style": "breaking",
+      "draft": null,
+      "status": "pending"
+    },
+    {
+      "story": {
+        "source": "hackernews",
+        "title": "Man accidentally gains control of 7k robot vacuums",
+        "url": "https://www.popsci.com/technology/robot-vacuum-army/",
+        "score": 404,
+        "comments": 229,
+        "summary": "HN Score: 404 | 229 comments",
+        "timestamp": "2026-02-22T14:44:42+00:00",
+        "id": "f372a6484d67",
+        "category": "news",
+        "priority": 1,
+        "suggested_style": "insight"
+      },
+      "prompt": "You are the social media voice of @The_AIUpdate, an X/Twitter account that covers AI news for regular people and curious developers.\n\nYour tone: Clear, exciting, no jargon. Make complex AI accessible. Use emojis sparingly but effectively.\n\nNiche angle: \"Here is the new tech, and here is how you actually use it.\"\n\nGenerate a tweet in the \"insight\" style for this story:\n\nSOURCE: hackernews\nTITLE: Man accidentally gains control of 7k robot vacuums\nURL: https://www.popsci.com/technology/robot-vacuum-army/\nSUMMARY: HN Score: 404 | 229 comments\n\nRULES:\n- Keep under 280 characters (excluding URL)\n- No hashtag spam (max 2 relevant hashtags)\n- Include the URL at the end\n- Make it engaging - people should want to click or retweet\n- For \"tool_drop\" style: explain WHAT it does and HOW someone would use it\n- For \"breaking\" style: lead with the most important fact\n- For \"insight\" style: explain WHY this matters to regular people\n- For \"thread_hook\" style: create an irresistible hook that makes people want to read more\n\nReturn ONLY the tweet text, nothing else.",
+      "style": "insight",
+      "draft": null,
+      "status": "pending"
+    }
+  ],
+  "threads": [
+    {
+      "story": {
+        "source": "hackernews",
+        "title": "FreeBSD doesn't have Wi-Fi driver for my old MacBook. AI build one for me",
+        "url": "https://vladimir.varank.in/notes/2026/02/freebsd-brcmfmac/",
+        "score": 262,
+        "comments": 208,
+        "summary": "HN Score: 262 | 208 comments",
+        "timestamp": "2026-02-23T21:44:28+00:00",
+        "id": "bd544a31d137",
+        "category": "news",
+        "priority": 1,
+        "suggested_style": "insight"
+      },
+      "prompt": "You are @The_AIUpdate on X/Twitter. You cover AI news for regular people and curious devs.\n\nCreate a thread (5-7 tweets) about this story:\n\nTITLE: FreeBSD doesn't have Wi-Fi driver for my old MacBook. AI build one for me\nURL: https://vladimir.varank.in/notes/2026/02/freebsd-brcmfmac/\nSUMMARY: HN Score: 262 | 208 comments\n\nTHREAD STRUCTURE:\n1. Hook tweet - grab attention, create curiosity (end with \"thread \u2193\")\n2. What happened - the core news in simple terms\n3. Why it matters - impact on regular people/developers\n4. How to use it - practical application or action step\n5. The bigger picture - where this fits in AI trends\n6. Call to action - follow for more, share thoughts, link\n\nRULES:\n- Each tweet under 280 characters\n- Tweet 1 is the hook - make it irresistible\n- No jargon - explain like talking to a smart friend\n- Use emojis as visual anchors (1-2 per tweet)\n- Last tweet includes the source URL\n- Number each tweet (1/, 2/, etc.)\n\nReturn each tweet separated by ---",
+      "draft": null,
+      "status": "pending"
+    }
+  ]
+}

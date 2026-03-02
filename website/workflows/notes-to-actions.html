@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Notes to Actions Workflow</title><link rel="stylesheet" href="../styles.css?v=15"></head><body><canvas id="particles"></canvas><div class="top-glow"></div><nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav><main class="contain article-body workflow-page" style="padding-top:100px"><p class="tag">WORKFLOW</p><h1>Notes to Actions</h1><p>Convert brain dumps, meeting notes, or voice transcripts into a clean execution list.</p><section><h2>What this solves</h2><p>This workflow turns unstructured notes into an action backlog with priorities, owners, and dates so nothing important gets buried.</p></section><section class="wf-two-col"><div><h2>When to use / when not to use</h2><ul><li>Use after meetings, brainstorms, or rapid note taking.</li><li>Do not use when requirements are incomplete and decisions are still open.</li></ul></div><div><h2>Inputs needed</h2><ul><li>Raw notes or transcript text</li><li>Team members or owner names</li><li>Known deadlines and constraints</li></ul></div></section><section><h2>Copy-ready prompt block</h2><pre class="prompt-block"><code>Turn the notes below into an action plan.
+
+Output rules:
+- Group by Project, Operations, and Follow-ups
+- Each task must include Owner, Due Date, Priority (P1/P2/P3), and Next Step
+- Mark unclear items as "Needs Clarification"
+- Keep task titles under 12 words
+
+Notes:
+[paste notes]</code></pre></section><section><h2>Execution steps</h2><ol><li>Paste notes exactly as captured without cleaning first.</li><li>Scan output and assign missing owners immediately.</li><li>Confirm due dates are real calendar dates, not “ASAP.”</li><li>Move the final task list into your project tool.</li></ol></section><section><h2>Expected output format</h2><pre><code>Project
+- Task | Owner | Due | Priority | Next Step
+
+Operations
+- Task | Owner | Due | Priority | Next Step
+
+Follow-ups
+- Task | Owner | Due | Priority | Next Step
+
+Needs Clarification
+- Item | Question to resolve</code></pre></section><section><h2>Concrete example</h2><p>Raw note: “Need claim workflow fix, onboarding doc rewrite, ask Jen about April launch date.” Output task: “Claim workflow bug triage | Mark | 2026-03-03 | P1 | Reproduce issue and log root cause.”</p></section><section class="wf-two-col"><div><h2>Common mistakes</h2><ul><li>Keeping tasks too broad to start</li><li>Missing owners on cross-team items</li><li>Skipping clarification list for ambiguous notes</li></ul></div><div><h2>Quick quality check</h2><ul class="checklist"><li>Every task has one owner</li><li>Every task has a due date</li><li>No task says “misc” or “general”</li><li>Top three P1 tasks are visible first</li></ul></div></section><section class="wf-cta"><h2>Next step</h2><p>Get the free weekly prompt digest and keep your action system tight.</p><a class="btn-main" href="../starter-kit.html">Join the Newsletter</a></section></main><footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a></div></div></footer><script src="../site.js?v=14"></script></body></html>

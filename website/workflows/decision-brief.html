@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Decision Brief Workflow</title><link rel="stylesheet" href="../styles.css?v=15"></head><body><canvas id="particles"></canvas><div class="top-glow"></div><nav id="nav"><div class="nav-wrap"><a href="../index.html" class="logo-group"><img src="../assets/logo.png" class="logo-img" alt=""><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="../intel.html">Latest Intel</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a><a href="../starter-kit.html" class="nav-btn">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav><main class="contain article-body workflow-page" style="padding-top:100px"><p class="tag">WORKFLOW</p><h1>Decision Brief</h1><p>Break deadlocks by comparing options with evidence, tradeoffs, and risk.</p><section><h2>What this solves</h2><p>This workflow replaces indecision and circular debate with a short brief that recommends a path and a reversible next action.</p></section><section class="wf-two-col"><div><h2>When to use / when not to use</h2><ul><li>Use when choosing between two or three strategic options.</li><li>Do not use for decisions that require legal, clinical, or compliance approval.</li></ul></div><div><h2>Inputs needed</h2><ul><li>Decision question and options</li><li>Success criteria and constraints</li><li>Known risks and assumptions</li></ul></div></section><section><h2>Copy-ready prompt block</h2><pre class="prompt-block"><code>Create a one-page decision brief.
+
+Decision: [question]
+Options: [A, B, C]
+Criteria: [cost, speed, risk, upside]
+Constraints: [budget, deadline, team capacity]
+
+Output requirements:
+- Score each option 1-5 by criteria
+- List top risks and mitigations
+- Recommend one option with confidence level
+- Include first 7-day action plan</code></pre></section><section><h2>Execution steps</h2><ol><li>Define the decision in one sentence.</li><li>List only viable options, not wish-list ideas.</li><li>Run the prompt and challenge weak assumptions.</li><li>Choose the recommendation and assign owner for day-one action.</li></ol></section><section><h2>Expected output format</h2><pre><code>Decision Summary
+...
+
+Option Scores
+A: Cost x, Speed x, Risk x, Upside x
+B: ...
+C: ...
+
+Top Risks + Mitigations
+- ...
+
+Recommendation
+Chosen option:
+Confidence:
+Why:
+
+7-Day Action Plan
+Day 1-2:
+Day 3-5:
+Day 6-7:</code></pre></section><section><h2>Concrete example</h2><p>A team choosing between hiring, outsourcing, or automating support selects automation first because it reduces repeat volume fastest with lower fixed cost, while outsourcing becomes the fallback if SLA risk rises.</p></section><section class="wf-two-col"><div><h2>Common mistakes</h2><ul><li>Using vague criteria like “better”</li><li>Ignoring downside scenarios</li><li>Skipping first-week action plan</li></ul></div><div><h2>Quick quality check</h2><ul class="checklist"><li>Options are mutually distinct</li><li>Scores map to stated criteria</li><li>Recommendation names one owner</li><li>First action happens within 48 hours</li></ul></div></section><section class="wf-cta"><h2>Next step</h2><p>Get decision templates and scorecards in the free Starter Kit.</p><a class="btn-main" href="../starter-kit.html">Get the Starter Kit</a></section></main><footer><div class="contain foot-inner"><div class="foot-brand"><img src="../assets/logo.png" class="foot-logo" alt=""><span>THE AI UPDATE</span></div><div class="foot-links"><a href="../index.html">Home</a><a href="../workflows.html">Workflows</a><a href="../tools.html">Tools</a><a href="../guides/index.html">Guides</a><a href="../articles.html">Articles</a><a href="../resources.html">Resources</a></div></div></footer><script src="../site.js?v=14"></script></body></html>

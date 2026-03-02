@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suno Vs Udio: The Music Generation Benchmark | The AI Update</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+    --bg: #09090b; --surface: #121214; --surface-hover: #18181b; --border: #27272a;
+    --accent: #4ade80; --accent-dim: rgba(74, 222, 128, 0.1); --text: #f4f4f5; --text-muted: #a1a1aa;
+    --font-main: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* Topbar */
+.topbar { border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.topbar .container { display: flex; justify-content: space-between; align-items: center; }
+.live-indicator { color: var(--accent); display: flex; align-items: center; gap: 6px; }
+.live-indicator::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+/* Nav */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; letter-spacing: -0.5px; }
+.brand img { height: 28px; }
+.nav-links { display: flex; gap: 32px; list-style: none; font-size: 14px; font-weight: 500; color: var(--text-muted); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-actions { display: flex; gap: 16px; align-items: center; }
+.search-box { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 16px; font-family: var(--font-main); font-size: 13px; color: var(--text); outline: none; width: 200px; }
+.search-box:focus { border-color: var(--accent); }
+.btn-sub { background: var(--accent); color: #000; font-weight: 700; font-size: 13px; padding: 8px 20px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
+.btn-sub:hover { background: #22c55e; }
+
+/* Stats Row */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+.stat-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;}
+.stat-val { font-size: 28px; font-weight: 700; display: flex; align-items: baseline; gap: 12px; }
+.stat-delta { font-size: 12px; font-family: var(--font-mono); font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+.delta-up { background: var(--accent-dim); color: var(--accent); }
+.delta-down { background: rgba(248, 113, 113, 0.1); color: #f87171; }
+.delta-flat { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+
+/* Main Split Feed */
+.feed-split { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; margin-bottom: 64px; }
+.featured { display: flex; flex-direction: column; gap: 24px; }
+.featured-img { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); transition: border-color 0.2s; }
+.featured-img:hover { border-color: var(--accent); }
+.featured-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; display: flex; gap: 16px; }
+.featured-cat { color: var(--accent); font-weight: 600; padding: 2px 8px; border-radius: 4px; background: var(--accent-dim); }
+.featured h2 { font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; transition: color 0.2s; }
+.featured:hover h2 { color: var(--accent); }
+.featured p { font-size: 16px; color: var(--text-muted); max-width: 600px; }
+.featured a { color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 8px; }
+
+.latest-list { display: flex; flex-direction: column; }
+.section-title { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+.latest-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.latest-item:last-child { border-bottom: none; }
+.latest-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: flex; gap: 12px; }
+.latest-cat { color: var(--accent); font-weight: 700; }
+.latest-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; transition: color 0.2s; }
+.latest-item:hover h3 { color: var(--accent); }
+.latest-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Section Grids */
+.grid-section { margin-bottom: 64px; }
+.analysis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.analysis-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; position: relative; transition: border-color 0.2s; overflow: hidden;}
+.analysis-card:hover { border-color: var(--accent); }
+.analysis-card::before { content: attr(data-num); position: absolute; top: 16px; right: 20px; font-family: var(--font-mono); font-size: 64px; font-weight: 700; color: rgba(255,255,255,0.02); z-index: 0; pointer-events: none; }
+.analysis-card > * { position: relative; z-index: 1; }
+.analysis-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+.analysis-meta::before { content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+.analysis-card h3 { font-size: 18px; font-weight: 600; line-height: 1.3; margin-bottom: 12px; }
+.analysis-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.analysis-read { font-family: var(--font-mono); font-size: 10px; color: var(--border); }
+
+.models-grid, .os-grid, .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.model-card, .os-card, .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: border-color 0.2s; }
+.model-card:hover, .os-card:hover, .tool-card:hover { border-color: var(--accent); }
+.model-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.model-head h3 { font-size: 18px; font-weight: 600; }
+.model-head span { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+.model-metrics { display: flex; justify-content: space-between; }
+.metric { text-align: center; }
+.metric-val { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.metric-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+
+.os-title { font-family: var(--font-mono); font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.os-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+.os-meta { font-family: var(--font-mono); font-size: 10px; color: #52525b; }
+
+/* Footer Subscribe */
+.subscribe-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px; display: flex; justify-content: space-between; align-items: center; margin: 64px 0; }
+.subscribe-text h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.subscribe-text p { font-size: 14px; color: var(--text-muted); }
+.subscribe-form { display: flex; gap: 12px; }
+.sub-input { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; width: 300px; color: var(--text); font-family: var(--font-main); outline: none; }
+.sub-input:focus { border-color: var(--accent); }
+
+/* Article Specific */
+.article-wrap { max-width: 800px; margin: 0 auto 80px; }
+.btn-back { display: inline-block; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 32px; border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px; transition: all 0.2s; }
+.btn-back:hover { color: var(--text); border-color: var(--text); }
+.article-header { margin-bottom: 48px; }
+.article-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; display: flex; gap: 16px; margin-bottom: 24px; align-items: center;}
+.cat-pill { color: var(--accent); border: 1px solid var(--accent); padding: 4px 10px; border-radius: 4px; background: var(--accent-dim); font-weight: 700;}
+.article-title { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; }
+.article-lede { font-size: 20px; color: var(--text-muted); line-height: 1.6; }
+.article-hero { width: 100%; height: auto; max-height: 500px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); margin: 0 0 48px 0; }
+
+.article-body { font-size: 17px; line-height: 1.8; color: #d4d4d8; }
+.article-body h1 { font-size: 32px; font-weight: 700; color: #fff; margin: 48px 0 24px; }
+.article-body h2 { font-size: 24px; font-weight: 700; color: #fff; margin: 48px 0 24px; }
+.article-body h3 { font-size: 20px; font-weight: 600; color: #fff; margin: 32px 0 16px; }
+.article-body p { margin-bottom: 24px; }
+.article-body blockquote { border-left: 3px solid var(--accent); padding-left: 20px; color: var(--text-muted); font-style: italic; margin: 32px 0; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 32px 0; font-family: var(--font-mono); font-size: 13px; }
+.article-body th, .article-body td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.article-body th { color: var(--text-muted); font-weight: 500; text-transform: uppercase; }
+.article-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.article-body ul { margin-bottom: 24px; padding-left: 20px; }
+.article-body li { margin-bottom: 8px; }
+
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+
+
+    /* Mobile Responsiveness */
+    @media (max-width: 1024px) {
+        .tracker-container, .feed-grid, .analysis-grid, .tools-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
+        }
+        .featured {
+            grid-column: 1 / -1 !important;
+        }
+    }
+    @media (max-width: 768px) {
+        nav { padding: 1rem; }
+        .nav-content { 
+            flex-direction: column; 
+            gap: 1rem; 
+        }
+        .nav-links { 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 0.75rem; 
+        }
+        .hero { 
+            padding: 3rem 1rem; 
+            text-align: left; 
+        }
+        .hero h1 { 
+            font-size: 2.2rem; 
+            line-height: 1.2;
+        }
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .tracker-box, .analysis-card, .latest-item {
+            padding: 1.5rem;
+        }
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+        .footer-links {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .article-hero {
+            padding: 3rem 1rem;
+        }
+        .article-hero h1 {
+            font-size: 2rem;
+        }
+        .article-content {
+            padding: 0 1rem;
+        }
+        .featured-img {
+            height: 250px;
+        }
+    }
+    @media (max-width: 480px) {
+        .hero h1 { font-size: 1.8rem; }
+        .article-hero h1 { font-size: 1.6rem; }
+        .nav-logo img { height: 28px; }
+    }
+
+</style>
+</head>
+<body>
+<div class="topbar">
+    <div class="container">
+        <div class="live-indicator">LIVE FEED — SYSTEM ACTIVE</div>
+        <div id="utcTime">LAST UPDATED ...</div>
+    </div>
+</div>
+
+<header class="nav container">
+    <a href="/" class="brand">
+        <img src="/img/logo.png" alt="Logo" onerror="this.style.display='none'">
+        THE AI UPDATE
+    </a>
+    <ul class="nav-links">
+        <li><a href="/">&larr; Back to Hub</a></li>
+    </ul>
+    <div class="nav-actions">
+        <button class="btn-sub" onclick="window.location.href='/sponsors.html'">Subscribe</button>
+    </div>
+</header>
+
+<main class="container article-wrap">
+    <div class="article-header">
+        <div class="article-meta">
+            <span class="cat-pill">INTEL</span>
+            <span>DEEP DIVE</span>
+            <a href="https://theaiupdate.org/articles/m2026_music.html" target="_blank" style="margin-left:auto; color:var(--accent); text-decoration:underline;">Verify Source &nearr;</a>
+        </div>
+        <h1 class="article-title">Suno Vs Udio: The Music Generation Benchmark</h1>
+        <p class="article-lede">Suno v4 is clever because it doesn't just make a full song. It also creates each instrument's part separately. This means you c...</p>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Article Header" class="article-hero">
+
+    <div class="article-body">
+        <h1>Suno Vs Udio: The Music Generation Benchmark</h1>
+<p>Imagine you have a magical band in your pocket. You just tell them what kind of song you want – the mood, the instruments, and even the words – and <em>poof</em>, they instantly play a unique, full song just for you. That's what Suno and Udio do! These computer programs are like super-smart musicians. Suno is great at letting you pick apart all the different instrument sounds. Udio is a master at making the singing sound incredibly real, almost like a human.</p>
+<h2>What Is Suno and Udio?</h2>
+<p>Suno and Udio are AI tools that create whole songs from simple text instructions. You type in what you imagine, and they bring it to life with music and voices. They are like your personal, instant music composers. Suno lets you see and use the separate parts of a song, like just the drums or just the guitar. Udio focuses on making the singing sound professional and lifelike, often hard to tell from a human singer.</p>
+<h2>How It Works (Under the Hood)</h2>
+<p>These tools use advanced computer brains that learn from tons of existing music. They understand how different instruments sound, how rhythms work, and how words fit into a song.</p>
+<ul>
+<li><strong>Suno v4</strong> is clever because it doesn't just make a full song. It also creates each instrument's part separately. This means you can get the vocals by themselves, or just the drums, or the bass, and so on. This research shows it can make songs up to about 2 minutes and 10 seconds long. You can also make the songs even longer by adding more parts.</li>
+<li><strong>Udio 2.0</strong> focuses heavily on making the voices sound amazing. The research calls it "Pro-Vocal Fidelity." This means the AI makes singing that sounds studio-quality and very real, almost impossible to tell from a human. Like Suno, it can make long songs, often starting with parts around 30-45 seconds and then extending them.</li>
+</ul>
+<p>Both tools also offer a new trick: they can export <strong>MIDI files</strong>. This means you can take the AI's musical ideas into other music software and tweak them like a pro.</p>
+<h2>Speed &amp; Cost (Benchmark Table)</h2>
+<p>Generating music quickly and affordably is a big deal. The research shows how Suno and Udio stack up against each other and another AI called MusicLM.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature / Metric</th>
+<th style="text-align: left;">Suno v4</th>
+<th style="text-align: left;">Udio 2.0</th>
+<th style="text-align: left;">MusicLM (Google)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Vocal Quality</strong></td>
+<td style="text-align: left;">Very Good, expressive, natural</td>
+<td style="text-align: left;"><strong>Exceptional, "Pro-Vocal" fidelity, studio-grade, often indistinguishable from human.</strong></td>
+<td style="text-align: left;">Good, but can sometimes sound generic or artificial</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Instrumental Quality</strong></td>
+<td style="text-align: left;">Excellent, diverse, well-arranged</td>
+<td style="text-align: left;">Excellent, rich soundscapes</td>
+<td style="text-align: left;">Very Good, good genre adherence</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-Track Output</strong></td>
+<td style="text-align: left;"><strong>Native Multi-Track Separation (stems available).</strong></td>
+<td style="text-align: left;">Not a primary focus for stem separation during generation, but can produce well-layered tracks.</td>
+<td style="text-align: left;">No native multi-track separation reported</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MIDI Export</strong></td>
+<td style="text-align: left;"><strong>Yes (new)</strong></td>
+<td style="text-align: left;"><strong>Yes (new)</strong></td>
+<td style="text-align: left;">No native MIDI export reported</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Control &amp; Coherence</strong></td>
+<td style="text-align: left;">Strong coherence, good style adherence</td>
+<td style="text-align: left;">Strong coherence, excellent melodic structure</td>
+<td style="text-align: left;">Good, but can sometimes struggle with long-form consistency.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Generation Speed</strong></td>
+<td style="text-align: left;">Reported ~30-60 seconds per full track</td>
+<td style="text-align: left;">Reported ~30-60 seconds per full track</td>
+<td style="text-align: left;">Varies, generally fast.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cost per 1M tokens</strong></td>
+<td style="text-align: left;"><strong>Suno Pro:</strong> $8/month (2500 credits), approx. 100 songs; <strong>Suno Premier:</strong> $24/month (10000 credits)</td>
+<td style="text-align: left;"><strong>Udio Pro:</strong> $10/month (1200 songs); <strong>Udio Enterprise:</strong> $30/month (unlimited)</td>
+<td style="text-align: left;">Not commercially available as a direct product.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: The "tokens" mentioned for cost here are not like word counts in text AI. They are a way to count how much AI power you use to make songs.</em></p>
+<h2>Business &amp; Career Impact</h2>
+<p>These AI tools change the game for many people who work with sound. The research highlights several key benefits:</p>
+<ul>
+<li><strong>For Musicians &amp; Producers:</strong><ul>
+<li><strong>Save Time:</strong> You can create ideas for songs, arrangements, and demos much faster. The research suggests saving 80-95% of the time, turning hours or days into minutes.</li>
+<li><strong>Save Money:</strong> You won't always need to hire musicians or singers for every demo. This can save hundreds or even thousands of dollars per project, according to the data.</li>
+<li><strong>Make More Music:</strong> You can quickly create many songs for your portfolio or for websites that sell stock music.</li>
+</ul>
+</li>
+<li><strong>For Content Creators (like YouTubers or Podcasters):</strong><ul>
+<li><strong>Custom Music:</strong> You get unique, royalty-free background music and jingles without paying composers. This saves anywhere from $50-$500 per song, the data shows.</li>
+<li><strong>Stand Out:</strong> Your content gets its own special sound, helping people remember your brand.</li>
+</ul>
+</li>
+<li><strong>For Marketing Agencies &amp; Brands:</strong><ul>
+<li><strong>Fast Changes:</strong> You can quickly make custom jingles and music for ads. This cuts down on production time and costs. The research indicates saving thousands for custom jingles.</li>
+<li><strong>Test Ideas:</strong> It's easy to create many versions of a song to see which one customers like best.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Who benefits most:</strong> Independent artists, small content studios, podcast makers, and marketing firms looking for custom sound without breaking the bank.</p>
+<h2>How to Make Money With This</h2>
+<p>You can turn AI-generated music into a money-making side hustle. Here’s how, based on the research:</p>
+<ol>
+<li><strong>Get a Subscription:</strong> Sign up for Suno Premier or Udio Enterprise. These plans give you more song generations and let you use the music for business.</li>
+<li><strong>Pick Your Niche:</strong> Decide on a specific style of music to create. Think about what's popular on stock music sites, like calm "lo-fi" beats or exciting music for videos.</li>
+<li><strong>Master Your Prompts:</strong> Learn how to write very detailed instructions for the AI. Tell it the mood, instruments, speed, and even hints for lyrics (even for instrumental songs).<ul>
+<li><em>Suno's edge:</em> Use its ability to separate instrument tracks. You can clean up individual sounds in other music programs.</li>
+<li><em>Udio's edge:</em> Use its amazing vocal quality for songs that need singing.</li>
+</ul>
+</li>
+<li><strong>Polish Your Tracks:</strong> Take the AI-made songs (and MIDI files from Suno) into simple music software. Make small adjustments to make them sound even better, like balancing the volume or tweaking sounds.</li>
+<li><strong>Sell Your Music:</strong> Upload your best songs to websites that sell stock music. Think of places like Epidemic Sound or Artlist. You set the rules for how people can use your music.</li>
+<li><strong>Tell Everyone:</strong> Share your music on social media. Contact video makers, podcasters, and small businesses who need custom audio.</li>
+</ol>
+<h2>What It Can't Do</h2>
+<p>While amazing, AI music generators are not perfect. It's important to know their limits, as shown in the research:</p>
+<ul>
+<li><strong>Can Sound a Bit Samey:</strong> Even though the AI makes new music, sometimes it can lack a deep emotional punch. After listening to a lot of AI songs, some might start to sound a bit predictable.</li>
+<li><strong>Fuzzy Copyright Rules:</strong> The laws about who owns AI-created content are still being figured out. It's not always clear who truly owns the music if it's used for business, or if it might accidentally use parts of songs from its training data.</li>
+<li><strong>No Human Feelings:</strong> The AI doesn't truly understand human feelings, culture, or personal experiences. It can't create truly groundbreaking or deeply personal art like a human composer can.</li>
+<li><strong>Hard to Control Perfectly:</strong> You tell the AI what you want with words, but it's tough to describe super complex musical ideas. You can't tell it to play a guitar solo exactly like your favorite rock star.</li>
+<li><strong>Bad Instructions, Bad Music:</strong> If you give the AI vague or bad instructions, it will create generic or unwanted results.</li>
+<li><strong>Ethical Concerns:</strong> Using AI-generated voices brings up questions about deepfakes (fake voices), whether the original voice artists agreed, and if human singers might lose jobs.</li>
+</ul>
+<h2>The Verdict</h2>
+<p>Suno and Udio are powerful AI music tools that offer incredible time and cost savings for creators, making unique, high-quality music creation accessible to everyone, despite ongoing questions about creative depth and ownership.</p>
+    </div>
+
+    <div class="subscribe-box" style="margin-top: 80px;">
+        <div class="subscribe-text">
+            <h3>Get the update. Skip the noise.</h3>
+            <p>One brief every morning. No fluff, no hype.</p>
+        </div>
+        <form action="/subscribe" method="POST" class="subscribe-form">
+            <input type="email" class="sub-input" placeholder="you@email.com" required>
+            <button type="submit" class="btn-sub">Subscribe free</button>
+        </form>
+    </div>
+</main>
+
+<footer>&copy; 2026 THE AI UPDATE</footer>
+<script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getUTCHours()).padStart(2,'0');
+      const m = String(now.getUTCMinutes()).padStart(2,'0');
+      document.getElementById('utcTime').textContent = 'LAST UPDATED ' + h + ':' + m + ' UTC';
+    }
+    setInterval(updateClock, 30000); updateClock();
+</script>
+</body>
+</html>
