@@ -1,4 +1,4 @@
-# Stable Diffusion
+# Stable Diffusion: Practical Guide to Open Image Generation
 
 Stable Diffusion has rapidly emerged as a cornerstone in the generative AI landscape, democratizing the creation of stunning visual content from simple text descriptions. More than just a tool, it represents a significant leap in how we interact with and produce digital art.
 

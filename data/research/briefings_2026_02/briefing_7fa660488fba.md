@@ -1,4 +1,4 @@
-# Open Bb
+# OpenBB: Open-Source Financial Data and Analytics Platform
 
 # Open Bb: Empowering Financial Intelligence with Open Data
 

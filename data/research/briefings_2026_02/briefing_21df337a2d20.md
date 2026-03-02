@@ -1,4 +1,4 @@
-# Strix
+# Strix Application Security Testing Platform Overview
 
 # Strix: Unleashing AI to Guard Your Apps
 

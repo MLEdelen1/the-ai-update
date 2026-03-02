@@ -1,4 +1,4 @@
-# Git Nexus
+# GitNexus: Mapping and Understanding Large Codebases
 
 ## What Is Git Nexus?
 

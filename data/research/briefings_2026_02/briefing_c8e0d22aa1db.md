@@ -1,4 +1,4 @@
-# Claudecodeui
+# ClaudeCodeUI (CloudCLI): Browser Interface for Claude Code
 
 ## CloudCLI (Claudecodeui): Bridging Powerful AI Coding with Remote Accessibility
 

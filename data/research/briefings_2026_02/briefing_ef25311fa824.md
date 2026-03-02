@@ -1,4 +1,4 @@
-# Page Index
+# PageIndex: AI-Native Document Search Beyond Vector Databases
 
 ## What Is PageIndex?
 

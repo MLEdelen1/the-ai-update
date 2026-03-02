@@ -228,7 +228,7 @@ def generate_article(story, api_key=None):
 
     body = None
     if api_key:
-        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={api_key}"
         payload = {"contents": [{"parts": [{"text": prompt}]}]}
         try:
             resp = requests.post(endpoint, json=payload, timeout=90)

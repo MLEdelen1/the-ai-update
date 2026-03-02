@@ -1,3 +1,5 @@
+# Build a Free OpenClaw Setup in 8 Minutes (No Mac Mini)
+
 ## What changed
 build a free open claw in eight minutes. build a free open claw in eight minutes. build a free open claw in eight minutes. So, I found something wild. You can now So, I found something wild. You can now So, I found something wild. You can now build your own AI agent. It runs all day build your own AI agent. It runs all day build your own AI agent. It runs all day and all night. It does tasks for you and all night. It does tasks for you and all night. It does tasks for you while you sleep and you do not need any while you sleep and you do not need any while you sleep and you do not need any fancy gear. No Mac Mini, no special fancy gear. No Mac Mini, no special fancy gear. No Mac Mini, no special computer, just the one you already have. computer, just the one you already have. computer, just the one you already have. And it is completely free. No tricks, no And it is completely free. No t
 

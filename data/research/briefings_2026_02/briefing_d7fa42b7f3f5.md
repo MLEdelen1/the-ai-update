@@ -1,4 +1,4 @@
-# Money Printer Turbo
+# Money Printer Turbo: Automated Short-Form Video Pipeline
 
 ## Money Printer Turbo: Your One-Click Gateway to AI-Powered Short Videos
 

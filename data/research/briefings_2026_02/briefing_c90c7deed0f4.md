@@ -1,3 +1,5 @@
+# Perplexity Computer and NotebookLM: Hands-On Workflow
+
 ## What changed
 New perplexity computer plus notebook LM New perplexity computer plus notebook LM New perplexity computer plus notebook LM is insane. Today I'm going to show you a is insane. Today I'm going to show you a is insane. Today I'm going to show you a combo that changes everything. One AI combo that changes everything. One AI combo that changes everything. One AI thinks, the other one acts. Put them thinks, the other one acts. Put them thinks, the other one acts. Put them together and you get a full business together and you get a full business together and you get a full business workflow built in minutes. This is brand workflow built in minutes. This is brand workflow built in minutes. This is brand new. It is stupidly easy. And by the end new. It is stupidly easy. And by the end new. It is stupidly easy. And by the end of this video, you are going to wonder of this video, you are going to w
 

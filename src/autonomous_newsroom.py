@@ -21,7 +21,7 @@ if not API_KEY and API_KEY_PATH.exists():
 class GeminiClient:
     def __init__(self, key):
         self.key = key
-        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={self.key}"
+        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={self.key}"
 
     def generate(self, prompt, system_instruction=None):
         if not self.key:

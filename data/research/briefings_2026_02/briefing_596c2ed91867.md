@@ -1,4 +1,4 @@
-# Trend Radar
+# Trend Radar: Tracking Public Sentiment and Emerging Topics
 
 Navigating the ever-expanding ocean of digital information can feel like an impossible task, especially when trying to discern genuine public sentiment or emerging trends. Enter **Trend Radar**, an innovative AI-powered solution designed to cut through the noise, offering focused, intelligent monitoring of public opinion and key trends across a multitude of platforms.
 

@@ -1,4 +1,4 @@
-# AI Hedge Fund
+# AI Hedge Funds: How Autonomous Trading Systems Work
 
 ## Beyond Human Bias: Decoding the AI-Driven Hedge Fund
 

@@ -1,4 +1,4 @@
-# Prompts.Chat
+# Prompts.Chat: Prompt Library and Collaboration Workspace
 
 # Prompts.Chat: Your Community Hub for AI Prompts
 

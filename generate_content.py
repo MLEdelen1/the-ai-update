@@ -11,7 +11,7 @@ API_KEY_PATH = '/a0/usr/projects/x-manage/config/gemini_keys.json'
 with open(API_KEY_PATH, 'r') as f:
     API_KEY = json.load(f)['gemini_api_key']
 
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
+url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={API_KEY}"
 
 with open('/a0/usr/projects/x-manage/data/news_cache/latest_scan.json', 'r') as f:
     news_data = json.load(f)
@@ -44,9 +44,9 @@ def generate(prompt):
         print(f"API Error: {resp.text}")
         return None
 
-print("Generating article with gemini-2.5-flash...")
+print("Generating article with gemini-3.1-pro-preview...")
 article_content = generate(article_prompt)
-print("Generating tweet with gemini-2.5-flash...")
+print("Generating tweet with gemini-3.1-pro-preview...")
 tweet_content = generate(tweet_prompt)
 
 if article_content and tweet_content:

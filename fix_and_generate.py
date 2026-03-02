@@ -62,7 +62,7 @@ for s in stories[:100]:
         missing.append(s)
 
 print(f"Generating {len(missing)} missing articles...")
-URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
+URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={API_KEY}"
 SYS_PROMPT = '''You are a highly capable technical AI writer.
 For every article, you MUST cover these three core elements:
 1. A highly descriptive overview of what the model/tool/software is and how it works.

@@ -1,4 +1,4 @@
-# Mem U
+# MemU and OpenClaw: 24/7 Proactive AI Agent Architecture
 
 # Mem U: The Persistent Memory for Always-On AI Agents
 
