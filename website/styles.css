@@ -11,6 +11,8 @@
   --cyan: #22d3ee;
   --blue: #3b82f6;
   --purple: #a78bfa;
+  --link: #67e8f9;
+  --link-hover: #a5f3fc;
   --green: #34d399;
   --font: 'Space Grotesk', system-ui, sans-serif;
   --mono: 'JetBrains Mono', monospace;
@@ -26,6 +28,9 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
+a, a:visited { color: var(--link); }
+a:hover, a:focus-visible { color: var(--link-hover); }
 
 /* ===== PARTICLES ===== */
 #particles {
