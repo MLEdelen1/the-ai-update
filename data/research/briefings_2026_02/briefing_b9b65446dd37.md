@@ -1,4 +1,4 @@
-# Google Gemini Free Upgrades: Six New Features Explained
+# How to Compare AI Platforms Without Wasting Budget
 
 **Why you should care**
 You can use this update right now to improve your AI workflow this week.
@@ -25,7 +25,7 @@ You should treat this as a working playbook, not background noise.
 - Cost per run across your top three prompts.
 
 **Source**
-- [Google Gemini's NEW FREE Upgrades Are INSANE!](https://www.youtube.com/watch?v=pa7U8LPP3oA)
+- [Nanobanana 2 is here! The #1 AI image model](https://www.youtube.com/watch?v=jXxVyW0WCDE)
 
 **Bottom line**
 You should test this now, keep what works, and cut what slows you down.

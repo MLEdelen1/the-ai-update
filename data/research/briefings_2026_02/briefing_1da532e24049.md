@@ -1,12 +1,32 @@
 # Google Gemini Full Course (3 Hours): Build and Automate AI Workflows
 
-## What changed
-Listen up. Google just dropped something Listen up. Google just dropped something Listen up. Google just dropped something that changes everything. Gemini is not that changes everything. Gemini is not that changes everything. Gemini is not just another AI tool. It thinks, it just another AI tool. It thinks, it just another AI tool. It thinks, it codes, it automates, it reads your codes, it automates, it reads your codes, it automates, it reads your files, your emails, your whole business. files, your emails, your whole business. files, your emails, your whole business. And most people have zero idea how And most people have zero idea how And most people have zero idea how powerful this actually is. By the end of powerful this actually is. By the end of powerful this actually is. By the end of this, you'll know exactly how to use it this, you'll know exactly how to use it this, you'll kno
+**Why you should care**
+You can use this update right now to improve your AI workflow this week.
+Most teams delay action, then lose speed and learning momentum.
 
-Source: [Google Gemini FULL COURSE 3 Hours: (Build & Automate Anything)](https://www.youtube.com/watch?v=7kzSln2dUPg)
+**What changed**
+This update focuses on guides & playbooks and practical execution.
+The source was published or reviewed on Mar 4, 2026.
+You should treat this as a working playbook, not background noise.
 
-## Why it matters
-This affects near-term AI workflows, model/tool selection, and practical implementation decisions. It should be validated in a real use case before broad rollout.
+**What this means for you**
+- You can make faster decisions with fewer tool-switching mistakes.
+- You can reduce testing time by running one focused pilot first.
+- You can document wins in seven days and scale with confidence.
 
-## What to do next
-Read the primary source, run a small pilot in one workflow, track quality and speed impact, and only scale if measurable gains hold.
+**Action plan you can run today**
+1. Pick one workflow where output quality matters every single day.
+2. Run a 30-minute test and compare speed, quality, and cost.
+3. Keep the new setup only if results beat your current baseline.
+
+**Proof points to track**
+- Time saved per task after one week.
+- Error rate before and after the change.
+- Cost per run across your top three prompts.
+
+**Source**
+- [Google Gemini FULL COURSE 3 Hours: (Build & Automate Anything)](https://www.youtube.com/watch?v=7kzSln2dUPg)
+
+**Bottom line**
+You should test this now, keep what works, and cut what slows you down.
+If you want help, start with one workflow and ship your result this week.

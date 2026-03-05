@@ -1,14 +1,32 @@
-## What changed
-Want to make money and save time with AI? Join here: https://www.skool.com/ai-profit-lab-7462/about
+# Weekly Model Update Checklist for Better AI Decisions
 
-Get a FREE AI Course + Community + 1,000 AI Agents + video notes + links to the tools 👉 https://www.skool.com/ai-seo-with-julian-goldie-1553/about
+**Why you should care**
+You can use this update right now to improve your AI workflow this week.
+Most teams delay action, then lose speed and learning momentum.
 
-In this livestream, I cover the brand new Gemini 3.1 Flash-Lite update and break down ChatGPT 5.3 Instant. If you want to stay up to date on the latest AI model releases, this is the stream for you.
+**What changed**
+This update focuses on image, video & music gen and practical execution.
+The source was published or reviewed on Mar 4, 2026.
+You should treat this as a working playbook, not background noise.
 
-Source: [NEW Gemini 3.1 Flash-Lite Update + ChatGPT 5.3 Instant](https://www.youtube.com/watch?v=nxH3rd9LqXQ)
+**What this means for you**
+- You can make faster decisions with fewer tool-switching mistakes.
+- You can reduce testing time by running one focused pilot first.
+- You can document wins in seven days and scale with confidence.
 
-## Why it matters
-This affects near-term AI workflows, model/tool selection, and practical implementation decisions. It should be validated in a real use case before broad rollout.
+**Action plan you can run today**
+1. Pick one workflow where output quality matters every single day.
+2. Run a 30-minute test and compare speed, quality, and cost.
+3. Keep the new setup only if results beat your current baseline.
 
-## What to do next
-Read the primary source, run a small pilot in one workflow, track quality and speed impact, and only scale if measurable gains hold.
+**Proof points to track**
+- Time saved per task after one week.
+- Error rate before and after the change.
+- Cost per run across your top three prompts.
+
+**Source**
+- [NEW Gemini 3.1 Flash-Lite Update + ChatGPT 5.3 Instant](https://www.youtube.com/watch?v=nxH3rd9LqXQ)
+
+**Bottom line**
+You should test this now, keep what works, and cut what slows you down.
+If you want help, start with one workflow and ship your result this week.

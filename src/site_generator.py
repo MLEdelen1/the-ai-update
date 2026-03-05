@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from runtime_paths import project_root
+from topic_filter import briefing_is_ai
 
 PROJECT_ROOT = project_root(Path(__file__))
 WEBSITE_DIR = PROJECT_ROOT / "website"
@@ -41,8 +42,51 @@ def get_contextual_img(title, index):
     return f"https://images.unsplash.com/photo-{img_id}?q=80&w=1200&auto=format&fit=crop"
 
 def clean_text(text):
-    if not text: return ""
-    return re.sub(r'[^-]+', '', text).strip()
+    if not text:
+        return ""
+    text = re.sub(r'<[^>]+>', ' ', str(text))
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+
+def classify_article(title: str, content: str = "") -> str:
+    t = (title or "").lower()
+    if any(k in t for k in ["video", "image", "music", "suno", "udio", "runway", "kling", "diffusion", "sora", "lyria", "seedance"]):
+        return "Image, Video & Music Gen"
+    if any(k in t for k in ["guide", "playbook", "how to", "beginner", "setup", "checklist"]):
+        return "Guides & Playbooks"
+    if any(k in t for k in ["agent", "automation", "workflow", "platform", "openclaw", "notebooklm", "perplexity"]):
+        return "AI Tools & Platforms"
+    return "LLMs & Reasoning Models"
+
+
+def extract_card_summary(html_content: str, fallback: str, title: str) -> str:
+    import re as _re
+    no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', html_content, flags=_re.IGNORECASE | _re.DOTALL)
+    lis = _re.findall(r'<li>(.*?)</li>', no_headers, flags=_re.IGNORECASE | _re.DOTALL)
+    ps = _re.findall(r'<p>(.*?)</p>', no_headers, flags=_re.IGNORECASE | _re.DOTALL)
+
+    hook = ''
+    for li in lis:
+        c = clean_text(li)
+        if len(c) > 35:
+            hook = c
+            break
+    if len(hook) < 20:
+        for p in ps:
+            c = clean_text(p)
+            if len(c) > 35 and not c.lower().startswith("source:"):
+                hook = c
+                break
+    if len(hook) < 20:
+        hook = clean_text(fallback)
+
+    if len(hook) < 20:
+        hook = f"Get the practical takeaways and next steps for {title}."
+
+    if len(hook) > 160:
+        hook = hook[:157].rstrip() + '...'
+    return hook
 
 def format_title(title):
     title = str(title).replace('-', ' ').replace('_', ' ')
@@ -113,6 +157,8 @@ def generate_site():
 
     valid_articles = []
     for md_path in md_files:
+        if not briefing_is_ai(md_path):
+            continue
         content_raw = md_path.read_text(encoding='utf-8')
         aid = md_path.stem.replace('briefing_', '')
 
@@ -134,8 +180,16 @@ def generate_site():
             'id': aid,
             'title': title,
             'summary': summary,
+            'category': classify_article(title, content_raw),
+            'published': datetime.fromtimestamp(md_path.stat().st_mtime).strftime("%b %d, %Y").replace(" 0", " "),
             'content_raw': content_raw
         })
+
+    # remove stale article HTML pages that are no longer in filtered markdown set
+    keep_ids = {a['id'] for a in valid_articles}
+    for html_path in ARTICLE_DIR.glob("*.html"):
+        if html_path.stem not in keep_ids:
+            html_path.unlink(missing_ok=True)
 
     # 2. Generate HTML for ALL valid articles
     import markdown
@@ -146,33 +200,10 @@ def generate_site():
         title = art['title']
         html_content = markdown.markdown(art['content_raw'], extensions=['tables'])
 
-        _no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', html_content, flags=_re.IGNORECASE|_re.DOTALL)
-        _lis = _re.findall(r'<li>(.*?)</li>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
-        _ps = _re.findall(r'<p>(.*?)</p>', _no_headers, flags=_re.IGNORECASE|_re.DOTALL)
-
-        _hook = ''
-        for _li in _lis:
-            _clean_li = _re.sub(r'<[^>]+>', '', _li).strip()
-            if len(_clean_li) > 30:
-                _hook = _clean_li
-                break
-        if len(_hook) < 20:
-            if len(_ps) > 1: _hook = _re.sub(r'<[^>]+>', '', _ps[1]).strip()
-            elif len(_ps) > 0: _hook = _re.sub(r'<[^>]+>', '', _ps[0]).strip()
-        if len(_hook) < 20 and art['summary']:
-            _hook = art['summary'].split('|')[0]
-
-        _hook = _re.sub(r'\s+', ' ', _hook).replace('**', '').replace('*', '').replace('`', '').strip()
-        if _hook.lower().startswith('based on'):
-            _hook = _re.sub(r'(?i)based on.*?(video|channel)\.?\s*', '', _hook).strip()
-
-        display_summary = _hook[:127] + '...' if len(_hook) > 130 else _hook
-        if len(display_summary) < 15:
-            display_summary = f"Discover the technical breakdown and use cases for {title}."
-
+        display_summary = extract_card_summary(html_content, art['summary'], title)
         art['display_summary'] = display_summary
 
-        source_clean = "INTEL"
+        source_clean = art.get('category', 'INTEL')
         img_url = get_contextual_img(title, i)
         art['img_url'] = img_url
         art['source_clean'] = source_clean
@@ -268,6 +299,70 @@ def generate_site():
     archive_html += '</div></main>' + footer_part
 
     (WEBSITE_DIR / "archive.html").write_text(enforce_english(archive_html), encoding='utf-8')
+
+    # 5. Build Articles Index with coherent categories and summaries
+    category_order = [
+        "LLMs & Reasoning Models",
+        "AI Tools & Platforms",
+        "Image, Video & Music Gen",
+        "Guides & Playbooks",
+    ]
+    grouped = {k: [] for k in category_order}
+    for art in valid_articles:
+        grouped.setdefault(art['category'], []).append(art)
+
+    latest_cards = ""
+    for art in valid_articles[:12]:
+        latest_cards += (
+            f'<article class="tool"><div class="tool-cat">LATEST UPDATE</div><h3>{art["title"]}</h3>'
+            f'<div class="card-date">Published {art["published"]}</div><p>{art["display_summary"]}</p>'
+            f'<a class="tool-link" href="articles/{art["id"]}.html">Read full article &rarr;</a></article>'
+        )
+
+    section_html = (
+        '<section class="sect" style="padding-top:12px; padding-bottom:28px;">'
+        '<div class="sect-head"><p class="tag">LATEST UPDATES</p><h2>Most recently published</h2>'
+        '<p class="sect-sub">Newest posts across approved AI topics.</p></div>'
+        f'<section class="articles-grid">{latest_cards}</section></section>'
+    )
+
+    for cat in category_order:
+        cards = ""
+        for art in grouped.get(cat, []):
+            cards += (
+                f'<article class="tool"><div class="tool-cat">{cat}</div><h3>{art["title"]}</h3>'
+                f'<div class="card-date">Published {art["published"]}</div><p>{art["display_summary"]}</p>'
+                f'<a class="tool-link" href="articles/{art["id"]}.html">Read full article &rarr;</a></article>'
+            )
+        if cards:
+            section_html += (
+                '<section class="sect" style="padding-top:12px; padding-bottom:28px;">'
+                f'<div class="sect-head"><p class="tag">{cat.upper()}</p><h2>{cat}</h2></div>'
+                f'<section class="articles-grid">{cards}</section></section>'
+            )
+
+    articles_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Articles | The AI Update</title>
+<link rel="stylesheet" href="./styles.css?v=14"/>
+</head>
+<body>
+<canvas id="particles"></canvas><div class="top-glow"></div>
+<nav id="nav"><div class="nav-wrap"><a class="logo-group" href="./index.html"><img alt="" class="logo-img" src="./assets/logo.png" onerror="this.style.display='none'"/><div class="logo-text">THE AI<span class="logo-accent">UPDATE</span></div></a><div class="nav-links" id="navLinks"><a href="./intel.html">Latest Intel</a><a href="./workflows.html">Workflows</a><a href="./tools.html">Tools</a><a href="./guides/index.html">Guides</a><a href="./articles.html">Articles</a><a href="./resources.html">Resources</a><a class="nav-btn" href="./starter-kit.html">Get Free Kit</a></div><button class="burger" onclick="document.getElementById('navLinks').classList.toggle('show')"><span></span><span></span><span></span></button></div></nav>
+<main class="articles-index">
+<div class="sect-head"><p class="tag">ARTICLES</p><h1>All published articles</h1><p class="sect-sub">Browse clean titles, clear summaries, and practical AI categories.</p></div>
+{section_html}
+<p class="article-cta"><a class="btn-main" href="guides/index.html">Start with the beginner roadmap</a></p>
+</main>
+<footer><div class="contain foot-inner"><div class="foot-brand"><img alt="" class="foot-logo" src="./assets/logo.png" onerror="this.style.display='none'"/><span>THE AI UPDATE</span></div><div class="foot-links"><a href="./index.html">Home</a><a href="./guides/index.html">Guides</a><a href="./articles.html">Articles</a><a href="./tools.html">Tools</a><a href="./resources.html">Resources</a><a href="./starter-kit.html">Starter Kit</a></div></div></footer>
+<script src="./site.js?v=14"></script>
+</body>
+</html>'''
+
+    (WEBSITE_DIR / "articles.html").write_text(enforce_english(articles_html), encoding='utf-8')
 
 if __name__ == "__main__":
     generate_site()

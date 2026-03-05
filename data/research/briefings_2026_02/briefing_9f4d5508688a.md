@@ -1,11 +1,11 @@
-# Google Gemini Free Upgrades: Six New Features Explained
+# Build a Repeatable AI Content Workflow in One Hour
 
 **Why you should care**
 You can use this update right now to improve your AI workflow this week.
 Most teams delay action, then lose speed and learning momentum.
 
 **What changed**
-This update focuses on image, video & music gen and practical execution.
+This update focuses on ai tools & platforms and practical execution.
 The source was published or reviewed on Mar 4, 2026.
 You should treat this as a working playbook, not background noise.
 
@@ -25,7 +25,7 @@ You should treat this as a working playbook, not background noise.
 - Cost per run across your top three prompts.
 
 **Source**
-- [Google Gemini's NEW FREE Upgrades Are INSANE!](https://www.youtube.com/watch?v=pa7U8LPP3oA)
+- [NEW Claude Update is INSANE! (FREE)](https://www.youtube.com/watch?v=QcQ0j6rcYb4)
 
 **Bottom line**
 You should test this now, keep what works, and cut what slows you down.
