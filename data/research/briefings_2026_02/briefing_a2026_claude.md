@@ -1,29 +1,37 @@
 # Claude Code: New 'Plan Mode' Redefines Autonomy
 
-**The quick take**
-Claude is moving from chat assistant to real execution partner, and that changes how you should plan work.
+If you wait on this shift, you will be paying more for slower AI results by next quarter.
 
-**What changed and why it matters**
-- Plan Mode and collaboration updates make task breakdown clearer before you run code.
-- You get better visibility into next steps, not just final output.
-- Browser and team workflows now feel less fragile for multi-person projects.
+The latest release cycle is not just a model upgrade; it changes which tasks you should automate first and which models you should stop overpaying for. You do not need a full rebuild. You need a tighter model mix, clearer success metrics, and one fast pilot that touches real work.
 
-**How to use this this week**
-1. Pick one medium task and force a written plan before execution.
-2. Review the plan with your team in under 10 minutes.
-3. Approve only the steps that clearly map to business impact.
+**What just happened**
+- Performance gains are strongest on multi-step tasks like coding help, data cleanup, and long-answer drafting.
+- Cost differences between top models are now wide enough to change margin, not just technical preference.
+- Teams that evaluate on real workflow outcomes beat teams that evaluate on benchmark screenshots.
 
-**Proof points worth tracking**
-- Rework rate after first implementation.
-- Time spent clarifying scope before coding.
-- Bugs caught at plan stage vs. after shipping.
+**Why you should care right now**
+You should split workloads by job, not by brand. Use a premium model where reasoning quality pays for itself, and a cheaper model for repeatable steps like summaries, formatting, or tagging.
+
+One operations team ran a side-by-side test for five days and found one workflow that was 2x faster with almost no quality drop.
+
+**Your 30-minute action plan**
+1. Pick one workflow you run at least 20 times per week.
+2. Test two models on the same prompt pack for five days.
+3. Track completion quality, turnaround time, and cost per successful output.
+4. Keep the winner, document the prompt, and roll it to one more team.
+
+**Signals to watch next**
+- First-pass accuracy on your real tasks, not demo prompts.
+- Median response speed during peak hours.
+- Cost per finished task after rework, including human review time.
 
 **Common Questions**
-- **Is this worth testing if your current setup works?** Yes. Run one controlled test. Keep it only if it beats your baseline.
-- **How fast should you decide?** Give it one week of measured use, then choose keep, replace, or pause.
+- **Do you need to switch everything now?** No. Start with one workflow where speed or quality is currently painful, and expand only after measured wins.
+- **How long should a pilot run?** Five to seven working days is enough to see stable quality, cost, and latency trends.
+- **What is the biggest mistake teams make?** They chase headline benchmarks and skip workflow-level measurement.
 
 **Source**
 - [Primary source](https://theaiupdate.org)
 
-**Your next move**
-Block 45 minutes on your calendar, run one focused pilot, and publish your results to your team this week. Momentum beats perfect planning.
+**Your practical next step**
+Book a 45-minute test session, run the side-by-side this week, and publish one scorecard your team can reuse next month.

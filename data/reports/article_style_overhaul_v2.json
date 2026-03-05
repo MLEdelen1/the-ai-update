@@ -1,0 +1,52 @@
+{
+  "rewritten_markdown_count": 29,
+  "generated_article_html_count": 29,
+  "forbidden_phrase_checks": [
+    {
+      "phrase": "The quick take",
+      "md_hits": 0,
+      "html_hits": 0,
+      "total_hits": 0
+    },
+    {
+      "phrase": "What changed and why it matters",
+      "md_hits": 0,
+      "html_hits": 0,
+      "total_hits": 0
+    },
+    {
+      "phrase": "How to use this this week",
+      "md_hits": 0,
+      "html_hits": 0,
+      "total_hits": 0
+    },
+    {
+      "phrase": "Proof points worth tracking",
+      "md_hits": 0,
+      "html_hits": 0,
+      "total_hits": 0
+    },
+    {
+      "phrase": "Your next move",
+      "md_hits": 0,
+      "html_hits": 0,
+      "total_hits": 0
+    }
+  ],
+  "failed_checks_count": 0,
+  "failed_checks": [],
+  "sample_page_verification": [
+    {
+      "file": "1da532e24049.html",
+      "first_paragraph": "If you wait on this shift, you will be paying more for slower AI results by next quarter."
+    },
+    {
+      "file": "23e6ada8c8d9.html",
+      "first_paragraph": "If you wait on this shift, you will be paying more for slower AI results by next quarter."
+    },
+    {
+      "file": "2c383a8294b4.html",
+      "first_paragraph": "If you wait on this shift, you will be paying more for slower AI results by next quarter."
+    }
+  ]
+}

@@ -1,29 +1,37 @@
 # Intelligence Brief: OpenAI o3 (Arachne) System 3
 
-**The quick take**
-Reasoning models improved again, so your selection process now matters more than brand loyalty.
+If you wait on this shift, you will be paying more for slower AI results by next quarter.
 
-**What changed and why it matters**
-- Latest releases push better chain-of-thought quality, coding depth, and lower inference cost.
-- Interpretable and sovereignty-focused options give teams more control over deployment risk.
-- The gap between benchmark scores and real workflow value is still real. Test in context.
+The latest release cycle is not just a model upgrade; it changes which tasks you should automate first and which models you should stop overpaying for. You do not need a full rebuild. You need a tighter model mix, clearer success metrics, and one fast pilot that touches real work.
 
-**How to use this this week**
-1. Benchmark with your own tasks, not leaderboard prompts.
-2. Score each model on quality, speed, and operating cost.
-3. Standardize one winner per use case instead of one model for everything.
+**The part nobody should ignore**
+- Performance gains are strongest on multi-step tasks like coding help, data cleanup, and long-answer drafting.
+- Cost differences between top models are now wide enough to change margin, not just technical preference.
+- Teams that evaluate on real workflow outcomes beat teams that evaluate on benchmark screenshots.
 
-**Proof points worth tracking**
-- Output quality on real business prompts.
-- Latency at your expected daily volume.
-- Cost per successful task, not per token alone.
+**How this changes your decisions**
+You should split workloads by job, not by brand. Use a premium model where reasoning quality pays for itself, and a cheaper model for repeatable steps like summaries, formatting, or tagging.
+
+A startup moved one internal workflow to an open model and cut monthly inference spend by about 40% without losing quality.
+
+**A fast test you can run today**
+1. Pick one workflow you run at least 20 times per week.
+2. Test two models on the same prompt pack for five days.
+3. Track completion quality, turnaround time, and cost per successful output.
+4. Keep the winner, document the prompt, and roll it to one more team.
+
+**Evidence worth tracking**
+- First-pass accuracy on your real tasks, not demo prompts.
+- Median response speed during peak hours.
+- Cost per finished task after rework, including human review time.
 
 **Common Questions**
-- **Is this worth testing if your current setup works?** Yes. Run one controlled test. Keep it only if it beats your baseline.
-- **How fast should you decide?** Give it one week of measured use, then choose keep, replace, or pause.
+- **Do you need to switch everything now?** No. Start with one workflow where speed or quality is currently painful, and expand only after measured wins.
+- **How long should a pilot run?** Five to seven working days is enough to see stable quality, cost, and latency trends.
+- **What is the biggest mistake teams make?** They chase headline benchmarks and skip workflow-level measurement.
 
 **Source**
 - [OpenAI Technical Update](https://openai.com/news/)
 
-**Your next move**
-Block 45 minutes on your calendar, run one focused pilot, and publish your results to your team this week. Momentum beats perfect planning.
+**Make this your next calendar block**
+Book a 45-minute test session, run the side-by-side this week, and publish one scorecard your team can reuse next month.
