@@ -1,32 +1,29 @@
 # Intelligence Brief: DeepSeek-V3/R1 Sovereignty
 
-**Why you should care**
-You can use this update right now to improve your AI workflow this week.
-Most teams delay action, then lose speed and learning momentum.
+**The quick take**
+Reasoning models improved again, so your selection process now matters more than brand loyalty.
 
-**What changed**
-This update focuses on guides & playbooks and practical execution.
-The source was published or reviewed on Mar 4, 2026.
-You should treat this as a working playbook, not background noise.
+**What changed and why it matters**
+- Latest releases push better chain-of-thought quality, coding depth, and lower inference cost.
+- Interpretable and sovereignty-focused options give teams more control over deployment risk.
+- The gap between benchmark scores and real workflow value is still real. Test in context.
 
-**What this means for you**
-- You can make faster decisions with fewer tool-switching mistakes.
-- You can reduce testing time by running one focused pilot first.
-- You can document wins in seven days and scale with confidence.
+**How to use this this week**
+1. Benchmark with your own tasks, not leaderboard prompts.
+2. Score each model on quality, speed, and operating cost.
+3. Standardize one winner per use case instead of one model for everything.
 
-**Action plan you can run today**
-1. Pick one workflow where output quality matters every single day.
-2. Run a 30-minute test and compare speed, quality, and cost.
-3. Keep the new setup only if results beat your current baseline.
+**Proof points worth tracking**
+- Output quality on real business prompts.
+- Latency at your expected daily volume.
+- Cost per successful task, not per token alone.
 
-**Proof points to track**
-- Time saved per task after one week.
-- Error rate before and after the change.
-- Cost per run across your top three prompts.
+**Common Questions**
+- **Is this worth testing if your current setup works?** Yes. Run one controlled test. Keep it only if it beats your baseline.
+- **How fast should you decide?** Give it one week of measured use, then choose keep, replace, or pause.
 
 **Source**
 - [DeepSeek Technical Report](https://github.com/deepseek-ai/DeepSeek-V3)
 
-**Bottom line**
-You should test this now, keep what works, and cut what slows you down.
-If you want help, start with one workflow and ship your result this week.
+**Your next move**
+Block 45 minutes on your calendar, run one focused pilot, and publish your results to your team this week. Momentum beats perfect planning.

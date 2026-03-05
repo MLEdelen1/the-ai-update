@@ -1,160 +1,93 @@
 {
-  "generated_at": "2026-03-05T04:46:11.576802+00:00",
-  "totals": {
-    "articles_rewritten": 29,
-    "website_articles_html_count": 29,
-    "category_counts": {
-      "AI Tools & Platforms": 6,
-      "LLMs & Reasoning Models": 12,
-      "Guides & Playbooks": 4,
-      "Image, Video & Music Gen": 7
-    }
-  },
-  "rewritten_articles": [
+  "timestamp": "2026-03-05T05:00:00Z",
+  "rewritten_count": 29,
+  "in_scope_ids": [
+    "1da532e24049",
+    "23e6ada8c8d9",
+    "2c383a8294b4",
+    "45ab5f019999",
+    "6262e466b11e",
+    "73185c4bc686",
+    "94187118af8d",
+    "9706b43debcb",
+    "99a495989f93",
+    "9f4d5508688a",
+    "a2026_claude",
+    "abb34d4e1c0f",
+    "b6aaab262e23",
+    "b9b65446dd37",
+    "c5ffa8c80d96",
+    "c8e0d22aa1db",
+    "cc49f23f2b91",
+    "deepseek_v3",
+    "e86c9b143b43",
+    "ed0964e35817",
+    "fce8d69189b9",
+    "m2026_music",
+    "mega_intel_2026_12",
+    "mega_intel_2026_3",
+    "mega_intel_2026_5",
+    "mega_intel_2026_6",
+    "mega_intel_2026_7",
+    "openai_o3",
+    "v2026_video"
+  ],
+  "before_after_samples": [
     {
       "id": "1da532e24049",
-      "title": "Google Gemini Full Course (3 Hours): Build and Automate AI Workflows",
-      "category": "AI Tools & Platforms"
+      "title_before": "Google Gemini Full Course (3 Hours): Build and Automate AI Workflows",
+      "sample_before": "# Google Gemini Full Course (3 Hours): Build and Automate AI Workflows\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on guides & playbooks and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Google Gemini Full Course (3 Hours): Build and Automate AI Workflows",
+      "sample_after": "# Google Gemini Full Course (3 Hours): Build and Automate AI Workflows\n\n**The quick take**\nGoogle pushed meaningful Gemini upgrades you can use without changing your whole stack.\n\n**What changed and why it matters**\n- Gemini added features that remove extra app switching for search, drafting, and analysis.\n- Free-tier access improved, so you can test serious workflows before paying.\n- The big win is speed: fewer handoffs between tools means fewer dropped details.\n\n**How to use this this week**\n1. Run your next brief in Gemini and your current tool side by side."
     },
     {
       "id": "23e6ada8c8d9",
-      "title": "With AI, Investor Loyalty Is (Almost) Dead: At Least A Dozen Open AI Vcs Now Also Back Anthropic",
-      "category": "LLMs & Reasoning Models"
+      "title_before": "With AI, Investor Loyalty Is (Almost) Dead: At Least A Dozen Open AI Vcs Now Also Back Anthropic",
+      "sample_before": "# With AI, Investor Loyalty Is (Almost) Dead: At Least A Dozen Open AI Vcs Now Also Back Anthropic\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on guides & playbooks and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "With AI, Investor Loyalty Is (Almost) Dead: At Least A Dozen Open AI Vcs Now Also Back Anthropic",
+      "sample_after": "# With AI, Investor Loyalty Is (Almost) Dead: At Least A Dozen Open AI Vcs Now Also Back Anthropic\n\n**The quick take**\nThis update is useful right now if you care about faster AI output with fewer avoidable mistakes.\n\n**What changed and why it matters**\n- The release adds practical capabilities, not just marketing claims.\n- You can apply it in a small pilot before changing your entire stack.\n- Teams that test quickly usually find a measurable advantage in days, not months.\n\n**How to use this this week**\n1. Pick one weekly workflow with clear success criteria."
     },
     {
       "id": "2c383a8294b4",
-      "title": "Perplexity and NotebookLM Workflow for Fast Research Briefs",
-      "category": "AI Tools & Platforms"
+      "title_before": "Perplexity and NotebookLM Workflow for Fast Research Briefs",
+      "sample_before": "# Perplexity and NotebookLM Workflow for Fast Research Briefs\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on ai tools & platforms and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Perplexity and NotebookLM Workflow for Fast Research Briefs",
+      "sample_after": "# Perplexity and NotebookLM Workflow for Fast Research Briefs\n\n**The quick take**\nThe real edge is not another model. It is the workflow you can repeat every day without babysitting it.\n\n**What changed and why it matters**\n- Research and automation platforms now connect source collection, drafting, and review in one flow.\n- That lowers context loss between steps and reduces copy-paste errors.\n- The teams that win here standardize prompts and review gates early.\n\n**How to use this this week**\n1. Map your current process from source intake to final publish."
     },
     {
       "id": "45ab5f019999",
-      "title": "Google Gemini Free Upgrades: Six New Features Explained",
-      "category": "LLMs & Reasoning Models"
+      "title_before": "Google Gemini Free Upgrades: Six New Features Explained",
+      "sample_before": "# Google Gemini Free Upgrades: Six New Features Explained\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on image, video & music gen and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Google Gemini Free Upgrades: Six New Features Explained",
+      "sample_after": "# Google Gemini Free Upgrades: Six New Features Explained\n\n**The quick take**\nGoogle pushed meaningful Gemini upgrades you can use without changing your whole stack.\n\n**What changed and why it matters**\n- Gemini added features that remove extra app switching for search, drafting, and analysis.\n- Free-tier access improved, so you can test serious workflows before paying.\n- The big win is speed: fewer handoffs between tools means fewer dropped details.\n\n**How to use this this week**\n1. Run your next brief in Gemini and your current tool side by side."
     },
     {
       "id": "6262e466b11e",
-      "title": "Google Gemini Free Updates: Practical Breakdown",
-      "category": "LLMs & Reasoning Models"
+      "title_before": "Google Gemini Free Updates: Practical Breakdown",
+      "sample_before": "# Google Gemini Free Updates: Practical Breakdown\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on image, video & music gen and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Google Gemini Free Updates: Practical Breakdown",
+      "sample_after": "# Google Gemini Free Updates: Practical Breakdown\n\n**The quick take**\nGoogle pushed meaningful Gemini upgrades you can use without changing your whole stack.\n\n**What changed and why it matters**\n- Gemini added features that remove extra app switching for search, drafting, and analysis.\n- Free-tier access improved, so you can test serious workflows before paying.\n- The big win is speed: fewer handoffs between tools means fewer dropped details.\n\n**How to use this this week**\n1. Run your next brief in Gemini and your current tool side by side."
     },
     {
       "id": "73185c4bc686",
-      "title": "Microsoft AI Agent vs OpenClaw: Capabilities and Tradeoffs",
-      "category": "AI Tools & Platforms"
+      "title_before": "Microsoft AI Agent vs OpenClaw: Capabilities and Tradeoffs",
+      "sample_before": "# Microsoft AI Agent vs OpenClaw: Capabilities and Tradeoffs\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on ai tools & platforms and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Microsoft AI Agent vs OpenClaw: Capabilities and Tradeoffs",
+      "sample_after": "# Microsoft AI Agent vs OpenClaw: Capabilities and Tradeoffs\n\n**The quick take**\nThe real edge is not another model. It is the workflow you can repeat every day without babysitting it.\n\n**What changed and why it matters**\n- Research and automation platforms now connect source collection, drafting, and review in one flow.\n- That lowers context loss between steps and reduces copy-paste errors.\n- The teams that win here standardize prompts and review gates early.\n\n**How to use this this week**\n1. Map your current process from source intake to final publish."
     },
     {
       "id": "94187118af8d",
-      "title": "Anthropic Accuses Chinese AI Labs Of Mining Claude As Us Debates AI Chip Exports",
-      "category": "LLMs & Reasoning Models"
+      "title_before": "Anthropic Accuses Chinese AI Labs Of Mining Claude As Us Debates AI Chip Exports",
+      "sample_before": "# Anthropic Accuses Chinese AI Labs Of Mining Claude As Us Debates AI Chip Exports\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on guides & playbooks and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Anthropic Accuses Chinese AI Labs Of Mining Claude As Us Debates AI Chip Exports",
+      "sample_after": "# Anthropic Accuses Chinese AI Labs Of Mining Claude As Us Debates AI Chip Exports\n\n**The quick take**\nModel competition is now a supply-chain and policy game, so your model strategy needs a backup plan.\n\n**What changed and why it matters**\n- Public allegations around model distillation raise trust and compliance questions.\n- Export controls can change model availability, pricing, and latency by region.\n- If you rely on one provider, policy shifts can block delivery with little warning.\n\n**How to use this this week**\n1. List your top 3 model dependencies and where they can fail."
     },
     {
       "id": "9706b43debcb",
-      "title": "Weekly Model Update Checklist for Better AI Decisions",
-      "category": "Guides & Playbooks"
-    },
-    {
-      "id": "99a495989f93",
-      "title": "Making Wolfram Tech Available As A Foundation Tool For LLM Systems",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "9f4d5508688a",
-      "title": "Build a Repeatable AI Content Workflow in One Hour",
-      "category": "AI Tools & Platforms"
-    },
-    {
-      "id": "a2026_claude",
-      "title": "Claude Code: New 'Plan Mode' Redefines Autonomy",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "abb34d4e1c0f",
-      "title": "Open-Source LLM Deployment Checklist for Small Teams",
-      "category": "Guides & Playbooks"
-    },
-    {
-      "id": "b6aaab262e23",
-      "title": "Stable Diffusion: Practical Guide to Open Image Generation",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "b9b65446dd37",
-      "title": "How to Compare AI Platforms Without Wasting Budget",
-      "category": "Guides & Playbooks"
-    },
-    {
-      "id": "c5ffa8c80d96",
-      "title": "Anthropic Accuses Deep Seek And Other Chinese Firms Of Using Claude To Train Their AI",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "c8e0d22aa1db",
-      "title": "ClaudeCodeUI (CloudCLI): Browser Interface for Claude Code",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "cc49f23f2b91",
-      "title": "AI Automation Guardrails Every Team Should Set First",
-      "category": "AI Tools & Platforms"
-    },
-    {
-      "id": "deepseek_v3",
-      "title": "Intelligence Brief: DeepSeek-V3/R1 Sovereignty",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "e86c9b143b43",
-      "title": "MemU and OpenClaw: 24/7 Proactive AI Agent Architecture",
-      "category": "AI Tools & Platforms"
-    },
-    {
-      "id": "ed0964e35817",
-      "title": "Claude Co-Work Update: New Collaboration Features Explained",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "fce8d69189b9",
-      "title": "Guide Labs Debuts A New Kind Of Interpretable LLM",
-      "category": "Guides & Playbooks"
-    },
-    {
-      "id": "m2026_music",
-      "title": "Suno Vs Udio: The Music Generation Benchmark",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "mega_intel_2026_12",
-      "title": "Claude Code: Plan Mode Efficiency",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "mega_intel_2026_3",
-      "title": "Kling 3.0: Director Mode & Spatial Consistency",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "mega_intel_2026_5",
-      "title": "Runway Gen 4: Multi Act Storytelling",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "mega_intel_2026_6",
-      "title": "Suno V4.5: The Multi Track Mastery",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "mega_intel_2026_7",
-      "title": "Udio 2.0: The Pro Vocal Revolution",
-      "category": "Image, Video & Music Gen"
-    },
-    {
-      "id": "openai_o3",
-      "title": "Intelligence Brief: OpenAI o3 (Arachne) System 3",
-      "category": "LLMs & Reasoning Models"
-    },
-    {
-      "id": "v2026_video",
-      "title": "Kling 3.0 Vs Sora 2 Pro: The Video Wars",
-      "category": "Image, Video & Music Gen"
+      "title_before": "Weekly Model Update Checklist for Better AI Decisions",
+      "sample_before": "# Weekly Model Update Checklist for Better AI Decisions\n\n**Why you should care**\nYou can use this update right now to improve your AI workflow this week.\nMost teams delay action, then lose speed and learning momentum.\n\n**What changed**\nThis update focuses on image, video & music gen and practical execution.\nThe source was published or reviewed on Mar 4, 2026.\nYou should treat this as a working playbook, not background noise.",
+      "title_after": "Weekly Model Update Checklist for Better AI Decisions",
+      "sample_after": "# Weekly Model Update Checklist for Better AI Decisions\n\n**The quick take**\nThis update is useful right now if you care about faster AI output with fewer avoidable mistakes.\n\n**What changed and why it matters**\n- The release adds practical capabilities, not just marketing claims.\n- You can apply it in a small pilot before changing your entire stack.\n- Teams that test quickly usually find a measurable advantage in days, not months.\n\n**How to use this this week**\n1. Pick one weekly workflow with clear success criteria."
     }
   ]
 }
