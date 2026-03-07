@@ -62,30 +62,28 @@ def classify_article(title: str, content: str = "") -> str:
 
 def extract_card_summary(html_content: str, fallback: str, title: str) -> str:
     import re as _re
-    no_headers = _re.sub(r'<h[1-6].*?</h[1-6]>', '', html_content, flags=_re.IGNORECASE | _re.DOTALL)
-    lis = _re.findall(r'<li>(.*?)</li>', no_headers, flags=_re.IGNORECASE | _re.DOTALL)
-    ps = _re.findall(r'<p>(.*?)</p>', no_headers, flags=_re.IGNORECASE | _re.DOTALL)
 
-    hook = ''
-    for li in lis:
-        c = clean_text(li)
-        if len(c) > 35:
-            hook = c
-            break
-    if len(hook) < 20:
-        for p in ps:
-            c = clean_text(p)
-            if len(c) > 35 and not c.lower().startswith("source:"):
-                hook = c
-                break
-    if len(hook) < 20:
-        hook = clean_text(fallback)
+    t = clean_text(title)
+    t = _re.sub(r'\s+', ' ', t).strip()
+    if not t:
+        t = clean_text(fallback) or "New AI update"
 
-    if len(hook) < 20:
-        hook = f"Get the practical takeaways and next steps for {title}."
+    if len(t) > 64:
+        t = t[:61].rstrip(' ,.;:') + '...'
 
-    if len(hook) > 160:
-        hook = hook[:157].rstrip() + '...'
+    hooks = [
+        f"{t} just dropped. The real advantage is inside.",
+        f"This one can move fast if you use it right: {t}",
+        f"Do not scroll past this one: {t}",
+        f"Big signal, not noise: {t}",
+        f"Read this now, save hours later: {t}",
+    ]
+
+    idx = abs(hash(t)) % len(hooks)
+    hook = hooks[idx]
+
+    if len(hook) > 118:
+        hook = hook[:115].rstrip(' ,.;:') + '...'
     return hook
 
 def format_title(title):
