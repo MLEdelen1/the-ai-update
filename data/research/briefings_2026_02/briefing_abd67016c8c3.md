@@ -1,0 +1,13 @@
+# Claude Code Just Added Scheduled Tasks: Daily Automations Move Into the Desktop Workflow
+
+## What changed
+
+Claude Code desktop now includes a scheduled-tasks capability, described in the demo as rolling out “today,” with a workflow that starts from a plain request like “create a scheduled task.” In the shown flow, Claude invokes a schedule-related skill, asks for timing, and configures a recurring run using local time, with a concrete example set to **8:00 a.m. daily**. The demo task itself is an “AI automation news update,” which is useful because it shows this feature is not limited to code compilation or debugging and can run repeatable research-style jobs. The interface also surfaces task metadata, including next-run timing, so users can verify cadence before waiting for output. The presenter further states scheduling previously existed in another Claude workflow and is now available in the **Code** area, indicating a scope expansion rather than a brand-new scheduling concept.
+
+## Why it matters
+
+This is a practical shift from one-shot prompting to recurring execution inside the same desktop environment many developers already use for day-to-day work. If the rollout is broadly live, teams can stop manually re-triggering routine jobs like morning summaries, dependency checks, content drafts, and monitoring-style pull reports. Creators benefit too, because scheduled local-time runs support consistent publishing pipelines without relying on memory, calendar alarms, or external glue tools. The operational gain is straightforward: fewer manual steps, steadier output cadence, and clearer accountability when next-run data is visible in-product. There is still a reliability caveat: the evidence here comes from a noisy transcript with naming inconsistencies, so exact product labels and limits should be confirmed in official docs or directly in the app UI.
+
+## What to do next
+
+Open Claude and check the **Code** section for a Scheduled or Schedule entry, then confirm you can create a recurring task and see the next-run preview. Start with one low-risk automation on a fixed daily schedule, define a strict output format, and review several consecutive runs before trusting it for business-critical workflows. Record each task’s prompt, run time, and expected output in a shared doc so you can version changes and audit failures instead of treating automation setup as disposable chat history. If your team publishes daily updates, this is a strong first candidate because the demo already validated that pattern. Source: [YouTube demo transcript context](https://www.youtube.com/watch?v=FXfAnWMxQao).
