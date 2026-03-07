@@ -1,0 +1,1535 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.560 --> 00:00:09.040
+AI never sleeps and this week has been absolutely&nbsp;
+insane. We have a new realtime video generator&nbsp;&nbsp;
+
+00:00:09.040 --> 00:00:14.880
+that can run on a consumer GPU. We also have&nbsp;
+a real-time texttospech generator that's super&nbsp;&nbsp;
+
+00:00:14.880 --> 00:00:19.680
+lightweight. It can run on any CPU or even&nbsp;
+just your mobile phone. Bite Dance continues&nbsp;&nbsp;
+
+00:00:19.680 --> 00:00:24.480
+to cook this week by releasing an incredible&nbsp;
+state-of-the-art AI model. We have an open-&nbsp;&nbsp;
+
+00:00:24.480 --> 00:00:29.840
+source thought to text AI. This can analyze your&nbsp;
+brain waves and figure out what you're thinking.&nbsp;&nbsp;
+
+00:00:29.840 --> 00:00:36.160
+This open- source AI can generate videos that&nbsp;
+are 2K or even 4K in resolution. Alibaba releases&nbsp;&nbsp;
+
+00:00:36.160 --> 00:00:43.520
+their best model yet, Quen 3.5. Google also drops&nbsp;
+their best model, Gemini 3.1 Pro. Plus, they also&nbsp;&nbsp;
+
+00:00:43.520 --> 00:00:50.000
+released an incredible and free music generator.&nbsp;
+This AI can turn your prompt into a full 4D scene.&nbsp;&nbsp;
+
+00:00:50.000 --> 00:00:56.000
+We have some ridiculous humanoid robot demos and&nbsp;
+a lot more. So, let's jump right in. First up,&nbsp;&nbsp;
+
+00:00:56.000 --> 00:01:04.800
+Alibaba releases their most performant model yet,&nbsp;
+Quen 3.5. This is a multimodal model that has 397&nbsp;&nbsp;
+
+00:01:04.800 --> 00:01:09.600
+billion parameters. But when you use it, only&nbsp;
+17 billion parameters are active, so it's quite&nbsp;&nbsp;
+
+00:01:09.600 --> 00:01:14.880
+efficient. And like the top models out there,&nbsp;
+this is especially good at reasoning, coding,&nbsp;&nbsp;
+
+00:01:14.880 --> 00:01:20.240
+agentic abilities, and multimodal understanding.&nbsp;
+The really awesome thing is this has a million&nbsp;&nbsp;
+
+00:01:20.240 --> 00:01:24.880
+token context window. So this is like how much&nbsp;
+information you can fit into your prompt at once.&nbsp;&nbsp;
+
+00:01:24.880 --> 00:01:31.040
+And a million tokens is among the largest in the&nbsp;
+industry. You can fit like over 700,000 words or&nbsp;&nbsp;
+
+00:01:31.040 --> 00:01:36.080
+a medium-sized codebase or over an hour of&nbsp;
+video into your prompt at once. And if you&nbsp;&nbsp;
+
+00:01:36.080 --> 00:01:40.800
+look at these benchmarks, it's very impressive.&nbsp;
+So, it's really good at instruction following,&nbsp;&nbsp;
+
+00:01:40.800 --> 00:01:46.720
+also graduate level science questions as well as&nbsp;
+agentic abilities. And also, it's really good at&nbsp;&nbsp;
+
+00:01:46.720 --> 00:01:52.560
+document recognition and video reasoning. So like&nbsp;
+overall it's as good as some of the top closed&nbsp;&nbsp;
+
+00:01:52.560 --> 00:01:58.000
+models out there like GPT, Claude, and Gemini.&nbsp;
+The awesome thing is because this is multimodal,&nbsp;&nbsp;
+
+00:01:58.000 --> 00:02:02.480
+it doesn't just have to work with text, but this&nbsp;
+can also take in images and video. So you can just&nbsp;&nbsp;
+
+00:02:02.480 --> 00:02:06.960
+upload an entire video and ask it questions about&nbsp;
+the video or even get it to create a PowerPoint&nbsp;&nbsp;
+
+00:02:06.960 --> 00:02:12.480
+presentation like this. Or here's an example of a&nbsp;
+racing game that it has coded up. This is actually&nbsp;&nbsp;
+
+00:02:12.480 --> 00:02:17.920
+the most impressive 3D racing game I've seen so&nbsp;
+far. like the other models aren't able to get this&nbsp;&nbsp;
+
+00:02:17.920 --> 00:02:22.880
+level of detail. And of course, it's also great&nbsp;
+at front-end design. For example, we can get it&nbsp;&nbsp;
+
+00:02:22.880 --> 00:02:28.560
+to create a sunscreen product website. And here's&nbsp;
+the result. And of course, you can also link this&nbsp;&nbsp;
+
+00:02:28.560 --> 00:02:34.400
+to OpenClaw as the model to use. And then you can&nbsp;
+prompt it to do stuff via WhatsApp or Telegram.&nbsp;&nbsp;
+
+00:02:34.400 --> 00:02:39.920
+So, here's an example of that. This is also really&nbsp;
+good at spatial awareness and understanding. So,&nbsp;&nbsp;
+
+00:02:39.920 --> 00:02:45.280
+if we upload this image and we ask, is the&nbsp;
+telephone booth on the left or right side of the&nbsp;&nbsp;
+
+00:02:45.280 --> 00:02:51.840
+yellow van? This is actually a quite tricky photo&nbsp;
+because the yellow van is pointing north. So,&nbsp;&nbsp;
+
+00:02:51.840 --> 00:02:56.400
+the telephone booth is actually to the right&nbsp;
+of the yellow van even though the rest of the&nbsp;&nbsp;
+
+00:02:56.400 --> 00:03:02.080
+cars on this lane are facing south. So, it has&nbsp;
+to reason a lot, but eventually it does end up&nbsp;&nbsp;
+
+00:03:02.080 --> 00:03:07.120
+with the correct answer. Or you can also upload&nbsp;
+this maze and get it to find the shortest path&nbsp;&nbsp;
+
+00:03:07.120 --> 00:03:12.880
+and it's able to pull up Python and code up an&nbsp;
+algorithm to find the shortest path. And here's&nbsp;&nbsp;
+
+00:03:12.880 --> 00:03:18.080
+our result. A really cool thing is you can even&nbsp;
+get it to solve sudoku puzzles which a lot of&nbsp;&nbsp;
+
+00:03:18.080 --> 00:03:23.360
+top models aren't able to do well. So you can&nbsp;
+just upload this image of a Sudoku puzzle and&nbsp;&nbsp;
+
+00:03:23.360 --> 00:03:27.920
+then it would proceed to solve it for you. The&nbsp;
+awesome thing is they've actually open sourced&nbsp;&nbsp;
+
+00:03:27.920 --> 00:03:32.800
+this. So if you click on this GitHub repo and&nbsp;
+you scroll down a bit here, it contains all&nbsp;&nbsp;
+
+00:03:32.800 --> 00:03:39.760
+the instructions on how to download and run this&nbsp;
+locally on your computer. Now note that with 397&nbsp;&nbsp;
+
+00:03:39.760 --> 00:03:46.000
+billion parameters, this is quite huge. This is 87&nbsp;
+GB in size. So you're not going to be able to run&nbsp;&nbsp;
+
+00:03:46.000 --> 00:03:51.280
+this on most consumer devices unless you have your&nbsp;
+own data farm. But that being said, this is one of&nbsp;&nbsp;
+
+00:03:51.280 --> 00:03:55.680
+the best open- source models you can use right&nbsp;
+now. Even if you can't download this locally,&nbsp;&nbsp;
+
+00:03:55.680 --> 00:04:01.280
+you can also use this online for free via their&nbsp;
+Quen chat platform. So on this model dropdown,&nbsp;&nbsp;
+
+00:04:01.280 --> 00:04:06.400
+you can select these Quen 3.5 models. Anyways,&nbsp;
+if you're interested in reading further, I'll&nbsp;&nbsp;
+
+00:04:06.400 --> 00:04:12.560
+link to this main page in the description below.&nbsp;
+Also, this week we have an open-source Genie 3. So&nbsp;&nbsp;
+
+00:04:12.560 --> 00:04:17.920
+this is called Anchorwave, and this can generate&nbsp;
+interactive world videos. In other words, this is&nbsp;&nbsp;
+
+00:04:17.920 --> 00:04:25.200
+a video where you can press the WD or arrow keys&nbsp;
+and move around this 3D world. So, it just takes a&nbsp;&nbsp;
+
+00:04:25.200 --> 00:04:31.120
+starting initial frame and then you can generate a&nbsp;
+3D world from that where you can move around. Now,&nbsp;&nbsp;
+
+00:04:31.120 --> 00:04:36.800
+currently for one iteration, it can only generate&nbsp;
+81 frames, which is roughly a few seconds,&nbsp;&nbsp;
+
+00:04:36.800 --> 00:04:41.920
+but you can iterate this multiple times to create&nbsp;
+a longer video. The really impressive thing is it&nbsp;&nbsp;
+
+00:04:41.920 --> 00:04:47.520
+can maintain consistency and realism over a long&nbsp;
+period of time. Here are some other examples for&nbsp;&nbsp;
+
+00:04:47.520 --> 00:04:52.640
+your reference. Notice that this is much better&nbsp;
+than previous interactive world generators in that&nbsp;&nbsp;
+
+00:04:52.640 --> 00:04:58.400
+this one actually preserves a memory of the scene.&nbsp;
+So even if you look away and then you look back,&nbsp;&nbsp;
+
+00:04:58.400 --> 00:05:04.080
+everything remains the same as before. And then&nbsp;
+here are a few other examples. And as you can see,&nbsp;&nbsp;
+
+00:05:04.080 --> 00:05:09.840
+it doesn't just have to work in a first-person&nbsp;
+view. You can also upload a thirderson perspective&nbsp;&nbsp;
+
+00:05:09.840 --> 00:05:14.880
+like this. And it can also generate a third person&nbsp;
+video of this character moving around. The key to&nbsp;&nbsp;
+
+00:05:14.880 --> 00:05:20.000
+anchor weave is that it uses a special technique&nbsp;
+called local geometric memories to generate the&nbsp;&nbsp;
+
+00:05:20.000 --> 00:05:24.560
+video. This means it breaks down the scene into&nbsp;
+smaller parts and uses these parts to create a&nbsp;&nbsp;
+
+00:05:24.560 --> 00:05:30.720
+consistent and realistic video that preserves&nbsp;
+the overall 3D configuration of the scene. It&nbsp;&nbsp;
+
+00:05:30.720 --> 00:05:36.720
+also uses what's called a multi-anchor weaving&nbsp;
+controller to help combine these parts coherently&nbsp;&nbsp;
+
+00:05:36.720 --> 00:05:42.240
+and generate a smooth video. Now, if you compare&nbsp;
+Anchorwave with other 3D scene generators, notice&nbsp;&nbsp;
+
+00:05:42.240 --> 00:05:47.920
+that it's just a lot more coherent and detailed&nbsp;
+compared to the other methods. So, here's one&nbsp;&nbsp;
+
+00:05:47.920 --> 00:05:53.360
+example, and then the ground truth is on the lower&nbsp;
+right. Anchorwave is actually very similar to the&nbsp;&nbsp;
+
+00:05:53.360 --> 00:05:57.760
+ground truth or here's another example for your&nbsp;
+reference. The awesome thing is if you scroll up&nbsp;&nbsp;
+
+00:05:57.760 --> 00:06:02.880
+to the top of the page, they've already released&nbsp;
+the code to this. So, if you click on this GitHub&nbsp;&nbsp;
+
+00:06:02.880 --> 00:06:08.400
+repo, it contains all the instructions on how to&nbsp;
+download and run this locally on your computer.&nbsp;&nbsp;
+
+00:06:08.400 --> 00:06:14.000
+Note that currently this initial model is based&nbsp;
+off of an older video generator called Cogvideo X,&nbsp;&nbsp;
+
+00:06:14.000 --> 00:06:19.120
+but they're also planning to release a one-based&nbsp;
+example in the future as well, which should be&nbsp;&nbsp;
+
+00:06:19.120 --> 00:06:23.680
+better in quality. Anyways, if you're interested&nbsp;
+in reading further, I'll link to this main page in&nbsp;&nbsp;
+
+00:06:23.680 --> 00:06:30.800
+the description below. Next up, this AI is is very&nbsp;
+useful. It's called Tiny A by Coher Labs. And like&nbsp;&nbsp;
+
+00:06:30.800 --> 00:06:36.320
+the name implies, this is quite a small and open&nbsp;
+weights model which can help you translate stuff&nbsp;&nbsp;
+
+00:06:36.320 --> 00:06:43.520
+or respond to you in many different languages. So&nbsp;
+this is incredibly tiny. This is only like 3.35&nbsp;&nbsp;
+
+00:06:43.520 --> 00:06:49.120
+billion parameters. So this is even small enough&nbsp;
+to run on consumer hardware or even your mobile&nbsp;&nbsp;
+
+00:06:49.120 --> 00:06:54.960
+phone. And this model knows over 70 languages. So&nbsp;
+that's the base model. And then they fine-tuned it&nbsp;&nbsp;
+
+00:06:54.960 --> 00:07:00.720
+further to create this tiny AA global model.&nbsp;
+And this can support 67 languages. Here are&nbsp;&nbsp;
+
+00:07:00.720 --> 00:07:06.640
+the 67 languages that are supported by tiny AA&nbsp;
+global from five regions of the world. So here's&nbsp;&nbsp;
+
+00:07:06.640 --> 00:07:12.560
+a benchmark on multilingual generation quality&nbsp;
+comparing tiny AA with other similarsized models&nbsp;&nbsp;
+
+00:07:12.560 --> 00:07:17.360
+across languages from all these different regions.&nbsp;
+And as you can see on average, tiny AA performs&nbsp;&nbsp;
+
+00:07:17.360 --> 00:07:23.200
+better. This is also incredibly efficient. So in&nbsp;
+this graph the y-axis is the generation quality.&nbsp;&nbsp;
+
+00:07:23.200 --> 00:07:28.800
+The higher the better. And then the yaxis is the&nbsp;
+number of parameters. So the smaller the better.&nbsp;&nbsp;
+
+00:07:28.800 --> 00:07:34.240
+Ideally, you want to be in this upper left corner.&nbsp;
+And as you can see, tiny aa is over here. Now,&nbsp;&nbsp;
+
+00:07:34.240 --> 00:07:38.240
+you can try this out on hugging face for&nbsp;
+free right now. So, it looks like this. Here&nbsp;&nbsp;
+
+00:07:38.240 --> 00:07:42.320
+are some examples for your reference. Here's an&nbsp;
+example of a Spanish prompt. And as you can see,&nbsp;&nbsp;
+
+00:07:42.320 --> 00:07:47.520
+it answers incredibly fast because this is very&nbsp;
+tiny. Or here's another example where the prompt&nbsp;&nbsp;
+
+00:07:47.520 --> 00:07:53.440
+is Arabic. And again, it's able to answer you&nbsp;
+incredibly fast. Or here's a Chinese example. And&nbsp;&nbsp;
+
+00:07:53.440 --> 00:07:58.880
+here is an example where we get it to translate&nbsp;
+a sentence from Basque to French and it's able&nbsp;&nbsp;
+
+00:07:58.880 --> 00:08:03.920
+to do this very well. The awesome thing is this&nbsp;
+is open weight. So they've already released the&nbsp;&nbsp;
+
+00:08:03.920 --> 00:08:08.880
+model on hugging face. And here you can see that&nbsp;
+at least for the tiny AA global model, this is&nbsp;&nbsp;
+
+00:08:08.880 --> 00:08:16.160
+quite tiny at only 6.7 GB in size. So this can&nbsp;
+fit comfortably on most consumer GPUs. Anyways,&nbsp;&nbsp;
+
+00:08:16.160 --> 00:08:20.960
+if you're interested in reading further, I'll&nbsp;
+link to this main page in the description below.&nbsp;&nbsp;
+
+00:08:20.960 --> 00:08:27.120
+Also this week, we have an incredibly lightweight&nbsp;
+texttospech generator called Kitten TTS. This&nbsp;&nbsp;
+
+00:08:27.120 --> 00:08:33.760
+is incredibly tiny. Here it says it's under 25&nbsp;
+megabytes and it's only 15 million parameters,&nbsp;&nbsp;
+
+00:08:33.760 --> 00:08:38.400
+not even a billion parameters. So, this&nbsp;
+essentially allows you to even run this&nbsp;&nbsp;
+
+00:08:38.400 --> 00:08:44.000
+on just a normal CPU or even just your mobile&nbsp;
+phone. You don't even need a GPU to run this.&nbsp;&nbsp;
+
+00:08:44.000 --> 00:08:48.800
+And it's so lightweight that you can even run&nbsp;
+this in real time with just mediocre hardware.&nbsp;&nbsp;
+
+00:08:48.800 --> 00:08:56.000
+Kitten TTS. The super tiny and expressive open-&nbsp;
+source models are back with an upgrade. This time&nbsp;&nbsp;
+
+00:08:56.000 --> 00:09:03.600
+we're launching three tiny models, an 80 million,&nbsp;
+40 million, and the smallest one with just 14&nbsp;&nbsp;
+
+00:09:03.600 --> 00:09:11.040
+million parameters. Our smallest model is less&nbsp;
+than 25 megabytes and can run on minimal hardware.&nbsp;&nbsp;
+
+00:09:11.040 --> 00:09:17.200
+This clip was actually produced by it. These were&nbsp;
+built with love by a tiny team of kittens. We're&nbsp;&nbsp;
+
+00:09:17.200 --> 00:09:22.880
+working on packing Frontier Intelligence into tiny&nbsp;
+models. Check it out on GitHub and connect with us&nbsp;&nbsp;
+
+00:09:22.880 --> 00:09:28.720
+on our Discord community. In fact, they already&nbsp;
+released a free online demo on hugging face for&nbsp;&nbsp;
+
+00:09:28.720 --> 00:09:34.320
+you to try this out. So, for example, let's try&nbsp;
+these two tricky sentences. And here we can choose&nbsp;&nbsp;
+
+00:09:34.320 --> 00:09:39.840
+from the smallest model, the medium-sized one, or&nbsp;
+the largest one. Let's just go with the default&nbsp;&nbsp;
+
+00:09:39.840 --> 00:09:44.560
+medium-sized model. And then here we can choose&nbsp;
+from a list of different voices. Notice that right&nbsp;&nbsp;
+
+00:09:44.560 --> 00:09:49.600
+now you can't clone your own voice. So you can&nbsp;
+only choose from their preset voices. And then&nbsp;&nbsp;
+
+00:09:49.600 --> 00:09:54.320
+here you can choose the speed of the generation.&nbsp;
+And that's pretty much it. So let's click on&nbsp;&nbsp;
+
+00:09:54.320 --> 00:09:59.600
+generate. And here's our result. The record&nbsp;
+producer refused to record the band's new single.&nbsp;&nbsp;
+
+00:09:59.600 --> 00:10:04.640
+The wind was too strong to wind the kite string&nbsp;
+around the spool. All right. So it's not bad&nbsp;&nbsp;
+
+00:10:04.640 --> 00:10:10.000
+for a super tiny 40 million parameter model. The&nbsp;
+awesome thing is they've released all the models&nbsp;&nbsp;
+
+00:10:10.000 --> 00:10:15.200
+already. If you click on the largest one, this is&nbsp;
+only 80 megabytes in size. though even this can&nbsp;&nbsp;
+
+00:10:15.200 --> 00:10:20.720
+fit comfortably on like a CPU or you can even fit&nbsp;
+this just on your phone. And then the smallest one&nbsp;&nbsp;
+
+00:10:20.720 --> 00:10:26.800
+is only 25 megabytes in size. Super tiny. And then&nbsp;
+down here it contains all the instructions on how&nbsp;&nbsp;
+
+00:10:26.800 --> 00:10:31.360
+to install and run this locally. Anyways,&nbsp;
+if you're interested in reading further,&nbsp;&nbsp;
+
+00:10:31.360 --> 00:10:37.520
+I'll link to this main page in the description&nbsp;
+below. Next up, this news is pretty insane. So,&nbsp;&nbsp;
+
+00:10:37.520 --> 00:10:43.280
+this company is called Talis and they just&nbsp;
+unveiled this chip which is incredibly fast&nbsp;&nbsp;
+
+00:10:43.280 --> 00:10:49.040
+and efficient. It achieves 17,000 tokens per&nbsp;
+second. If you don't know what that means,&nbsp;&nbsp;
+
+00:10:49.040 --> 00:10:55.440
+here is a chart comparing the tokens per second&nbsp;
+or basically the output rate of this Talis HC1&nbsp;&nbsp;
+
+00:10:55.440 --> 00:11:02.080
+chip compared to the industryleading chips out&nbsp;
+there. This includes Cerebrus or Gro or even&nbsp;&nbsp;
+
+00:11:02.080 --> 00:11:09.520
+Nvidia's state-of-the-art B200 which is all the&nbsp;
+way down here. So, this is like 40 times faster&nbsp;&nbsp;
+
+00:11:09.520 --> 00:11:16.480
+than Nvidia's state-of-the-art chips. And get&nbsp;
+this, not only is it faster, but it also costs 20&nbsp;&nbsp;
+
+00:11:16.480 --> 00:11:23.200
+times less to build and it consumes 10 times less&nbsp;
+power. So, how exactly does this work? You see,&nbsp;&nbsp;
+
+00:11:23.200 --> 00:11:28.880
+an AI model is basically a neural network. This&nbsp;
+is currently made of code and this code lives in&nbsp;&nbsp;
+
+00:11:28.880 --> 00:11:34.800
+software. For example, a transformer could live in&nbsp;
+this PyTorch code. Now, this software needs to be&nbsp;&nbsp;
+
+00:11:34.800 --> 00:11:39.920
+powered by hardware in order to run. But because&nbsp;
+of this disconnect between software and hardware,&nbsp;&nbsp;
+
+00:11:39.920 --> 00:11:45.360
+it's not as efficient. But here, what Talis has&nbsp;
+done is they've basically hardcoded the AI model,&nbsp;&nbsp;
+
+00:11:45.360 --> 00:11:51.520
+specifically Llama 3.1, onto the chip itself.&nbsp;
+So this AI model that lives inside this chip can&nbsp;&nbsp;
+
+00:11:51.520 --> 00:11:56.720
+now respond to you in real time as fast as the&nbsp;
+speed of thought. You don't even need to wait&nbsp;&nbsp;
+
+00:11:56.720 --> 00:12:02.480
+for the sentence to complete. And I think this&nbsp;
+would be the future of AI models. We need custom&nbsp;&nbsp;
+
+00:12:02.480 --> 00:12:08.320
+hardware that's designed specifically for these AI&nbsp;
+models so that they can be hard-coded into these&nbsp;&nbsp;
+
+00:12:08.320 --> 00:12:15.200
+chips. This design merges memory and computation&nbsp;
+together all on just one chip which unifies the&nbsp;&nbsp;
+
+00:12:15.200 --> 00:12:20.000
+entire system. You don't need any big cooling&nbsp;
+or complicated components. And this helps cut&nbsp;&nbsp;
+
+00:12:20.000 --> 00:12:25.920
+down the costs significantly and also make it way&nbsp;
+faster. But here's the main problem I have with&nbsp;&nbsp;
+
+00:12:25.920 --> 00:12:32.320
+this. So this chip is built specifically for Llama&nbsp;
+3.1. It's not going to work if you add DeepSeek&nbsp;&nbsp;
+
+00:12:32.320 --> 00:12:38.240
+or Quen or another AI model onto this. So at least&nbsp;
+currently the technology is that you need to build&nbsp;&nbsp;
+
+00:12:38.240 --> 00:12:42.960
+a chip specifically for each model. But I think&nbsp;
+this is definitely going to be the future where&nbsp;&nbsp;
+
+00:12:42.960 --> 00:12:48.960
+we have AI living directly in hardware instead of&nbsp;
+software and this is just the beginning. Anyways,&nbsp;&nbsp;
+
+00:12:48.960 --> 00:12:53.440
+if you're interested in reading further, I'll&nbsp;
+link to this main release page in the description&nbsp;&nbsp;
+
+00:12:53.440 --> 00:13:00.960
+below. Also, this week we had Lunar New Year.&nbsp;
+So, of course, China hosted their annual spring&nbsp;&nbsp;
+
+00:13:00.960 --> 00:13:08.720
+festival gala event. And here they showcased some&nbsp;
+insane abilities from the Unitere G1 robot. This&nbsp;&nbsp;
+
+00:13:08.720 --> 00:13:13.920
+is a huge improvement compared to last year.&nbsp;
+Here you can see some clips of the rehearsal&nbsp;&nbsp;
+
+00:13:13.920 --> 00:13:19.440
+or training of these robots as well as the live&nbsp;
+performance. And as you can see, it's able to do&nbsp;&nbsp;
+
+00:13:19.440 --> 00:13:25.920
+some insanely acrobatic stuff. I mean, these&nbsp;
+robots are able to jump like two to 3 m into&nbsp;&nbsp;
+
+00:13:25.920 --> 00:13:32.480
+the air, executing full flips or even multiple&nbsp;
+sequential flips. Some of them can even perform&nbsp;&nbsp;
+
+00:13:32.480 --> 00:13:39.360
+continuous single leg flips and also run up a&nbsp;
+wall and flip. This is crazy. This is actually&nbsp;&nbsp;
+
+00:13:39.360 --> 00:13:45.360
+really impressive because jumping and flipping&nbsp;
+requires some explosive actuator torque that&nbsp;&nbsp;
+
+00:13:45.360 --> 00:13:50.480
+pushes the absolute limits of robotic hardware.&nbsp;
+And the hardest part actually isn't even the jump,&nbsp;&nbsp;
+
+00:13:50.480 --> 00:13:56.000
+but the landing. The robot must calculate its&nbsp;
+mid-air orientation in real time and anticipate&nbsp;&nbsp;
+
+00:13:56.000 --> 00:14:01.840
+the exact moment of impact and then instantly&nbsp;
+absorb the massive kinetic force through its leg&nbsp;&nbsp;
+
+00:14:01.840 --> 00:14:07.520
+joints to prevent, you know, bouncing or slipping.&nbsp;
+So, not only does this require explosive power,&nbsp;&nbsp;
+
+00:14:07.520 --> 00:14:13.760
+but also incredible balance, but as you can see,&nbsp;
+they've programmed the Uni Tree robot to do this&nbsp;&nbsp;
+
+00:14:13.760 --> 00:14:19.600
+very well. In fact, they even have one robot&nbsp;
+intentionally wobble and act like it's drunk&nbsp;&nbsp;
+
+00:14:19.600 --> 00:14:24.800
+and then falling on its back. But within a split&nbsp;
+second, it was able to spring back up like this.&nbsp;&nbsp;
+
+00:14:24.800 --> 00:14:30.000
+That was actually intentional. And then here&nbsp;
+we have some demos of multiple robots using&nbsp;&nbsp;
+
+00:14:30.000 --> 00:14:35.600
+these nunchucks, which again is actually very&nbsp;
+hard. So this fundamentally alters the robot's&nbsp;&nbsp;
+
+00:14:35.600 --> 00:14:41.360
+center of gravity and momentum with every swing.&nbsp;
+So the robot needs to constantly recalculate and&nbsp;&nbsp;
+
+00:14:41.360 --> 00:14:46.640
+recalibrate these forces to remain balanced.&nbsp;
+And then here's another demo from Unree of&nbsp;&nbsp;
+
+00:14:46.640 --> 00:14:52.000
+the rehearsal and training process of these&nbsp;
+robots. And this is another really impressive&nbsp;&nbsp;
+
+00:14:52.000 --> 00:14:58.160
+feature. You can see right now this swarm of&nbsp;
+dozens of robots are controlled by one system.&nbsp;&nbsp;
+
+00:14:58.160 --> 00:15:03.040
+They need to rapidly move around into these&nbsp;
+tight coordinations to spell out specific&nbsp;&nbsp;
+
+00:15:03.040 --> 00:15:08.160
+shapes or characters. Controlling one robot&nbsp;
+is hard enough, but networking dozens of them&nbsp;&nbsp;
+
+00:15:08.160 --> 00:15:14.080
+requires this centralized swarm intelligence&nbsp;
+system with near zero latency. So, here they're&nbsp;&nbsp;
+
+00:15:14.080 --> 00:15:20.240
+showcasing how you can now deploy not just one&nbsp;
+robot, but multiple robots in large synchronized&nbsp;&nbsp;
+
+00:15:20.240 --> 00:15:26.960
+fleets for like mass industrial or logistical&nbsp;
+operations. A pretty crazy demo. Also this week,&nbsp;&nbsp;
+
+00:15:26.960 --> 00:15:33.840
+this AI is very useful. It's called Louv, and&nbsp;
+this can generate ultra highresolution videos. So,&nbsp;&nbsp;
+
+00:15:33.840 --> 00:15:38.480
+you just need to enter a text prompt, but as you&nbsp;
+can see, this can generate some really detailed&nbsp;&nbsp;
+
+00:15:38.480 --> 00:15:44.400
+and highquality videos. It's much better than the&nbsp;
+other top open- source alternatives we have like&nbsp;&nbsp;
+
+00:15:44.400 --> 00:15:51.520
+LTX2 and 1 2.2. So, here's an example of a bee on&nbsp;
+a flower. And this is just a 2K example. I'm also&nbsp;&nbsp;
+
+00:15:51.520 --> 00:15:56.880
+going to show you some 4K examples in a second.&nbsp;
+As you can see here, even like each strand of hair&nbsp;&nbsp;
+
+00:15:56.880 --> 00:16:03.280
+on the bee is visible. This is how detailed the&nbsp;
+video is. Or here's another example of a lion fish&nbsp;&nbsp;
+
+00:16:03.280 --> 00:16:10.320
+swimming in coral. And again, note how detailed&nbsp;
+this whole video is. Super impressive. Right now,&nbsp;&nbsp;
+
+00:16:10.320 --> 00:16:16.880
+those were just some 2K examples. Here we have&nbsp;
+some 4K examples. Look how crisp and clear&nbsp;&nbsp;
+
+00:16:16.880 --> 00:16:22.560
+everything is. You can even see the ripples of the&nbsp;
+water if you look closely. This isn't just like a&nbsp;&nbsp;
+
+00:16:22.560 --> 00:16:28.640
+fake 4K video that's actually 1080p. This does&nbsp;
+actually look like 4K. And then here's another&nbsp;&nbsp;
+
+00:16:28.640 --> 00:16:34.560
+superdetailed example of this row of camels&nbsp;
+walking in the desert. Here's another example for&nbsp;&nbsp;
+
+00:16:34.560 --> 00:16:40.320
+your reference. Again, you can even make out the&nbsp;
+minute details of the waves hitting the shoreline.&nbsp;&nbsp;
+
+00:16:40.320 --> 00:16:45.600
+Very impressive. Now, if you compare this with&nbsp;
+other video generators or upscaling methods,&nbsp;&nbsp;
+
+00:16:45.600 --> 00:16:51.840
+notice that by far this new model outperforms the&nbsp;
+rest across all these different benchmarks. Now,&nbsp;&nbsp;
+
+00:16:51.840 --> 00:16:56.240
+at the top of the page, they do have&nbsp;
+some buttons for a GitHub repo and data,&nbsp;&nbsp;
+
+00:16:56.240 --> 00:17:00.560
+but these don't link to anything yet. Hopefully,&nbsp;
+they will open source this for now. If you're&nbsp;&nbsp;
+
+00:17:00.560 --> 00:17:04.640
+interested in reading further, I'll link to&nbsp;
+this main page in the description below. I've&nbsp;&nbsp;
+
+00:17:04.640 --> 00:17:09.360
+been covering a ton of video generators lately.&nbsp;
+There's Cling 3 and now Seed Dance. And just to&nbsp;&nbsp;
+
+00:17:09.360 --> 00:17:13.920
+let you in on a little secret, there's going to be&nbsp;
+more crazier models coming soon. If you're feeling&nbsp;&nbsp;
+
+00:17:13.920 --> 00:17:18.880
+overwhelmed from better models coming week after&nbsp;
+week, then Higsfield, the sponsor of this video,&nbsp;&nbsp;
+
+00:17:18.880 --> 00:17:24.560
+would be a great option. It brings together the&nbsp;
+best image and video generators all in one place.&nbsp;&nbsp;
+
+00:17:24.560 --> 00:17:30.000
+You can use the best available video model. Cling&nbsp;
+3, and of course, the legendary Seed Dance 2.0&nbsp;&nbsp;
+
+00:17:30.000 --> 00:17:34.880
+will be available as soon as possible. One of my&nbsp;
+favorite things about Higsfield is their preset&nbsp;&nbsp;
+
+00:17:34.880 --> 00:17:39.200
+templates library. you can just grab something&nbsp;
+right out of the box and start creating. Some&nbsp;&nbsp;
+
+00:17:39.200 --> 00:17:44.880
+popular ones include the skin enhancer preset or&nbsp;
+this clothes swapper or this relighting preset.&nbsp;&nbsp;
+
+00:17:44.880 --> 00:17:49.760
+There are also a ton of camera movement presets&nbsp;
+which you can easily use to make your generations&nbsp;&nbsp;
+
+00:17:49.760 --> 00:17:54.320
+even more cinematic. Plus, they have a new Vive&nbsp;
+Motion feature which allows you to easily generate&nbsp;&nbsp;
+
+00:17:54.320 --> 00:17:58.640
+motion graphics. Simply start with a prompt and&nbsp;
+you can optionally add a reference image or a&nbsp;&nbsp;
+
+00:17:58.640 --> 00:18:03.520
+video. Hicksfield then generates a professional&nbsp;
+polished motion design right away. If you're&nbsp;&nbsp;
+
+00:18:03.520 --> 00:18:08.480
+looking for one unified platform that has all the&nbsp;
+best image and video generators, so you can easily&nbsp;&nbsp;
+
+00:18:08.480 --> 00:18:13.280
+create assets without switching between sites,&nbsp;
+Higsfield is one of the best options to use.&nbsp;&nbsp;
+
+00:18:13.280 --> 00:18:18.560
+Try it for free using the link in the description&nbsp;
+below and stay tuned for Seed Dance 2.0. They're&nbsp;&nbsp;
+
+00:18:18.560 --> 00:18:23.680
+going to be the first to release it when it&nbsp;
+comes out. Next up, this AI is pretty wacky. So,&nbsp;&nbsp;
+
+00:18:23.680 --> 00:18:30.320
+it's called Zuna Thought to Text and apparently&nbsp;
+it can scan your thoughts or basically your&nbsp;&nbsp;
+
+00:18:30.320 --> 00:18:36.000
+brain waves and translate that into what you're&nbsp;
+actually thinking. Here are the specs. This is&nbsp;&nbsp;
+
+00:18:36.000 --> 00:18:45.920
+a 380 million parameter BCI foundation model for&nbsp;
+EEG data. So, EEG stands for electrophalogram and&nbsp;&nbsp;
+
+00:18:45.920 --> 00:18:50.960
+this is basically a way to measure electrical&nbsp;
+activity of the brain using small sensors or&nbsp;&nbsp;
+
+00:18:50.960 --> 00:18:57.200
+electrodes attached to your scalp. And so this is&nbsp;
+basically an AI model that's able to analyze and&nbsp;&nbsp;
+
+00:18:57.200 --> 00:19:02.800
+translate this EEG data. Now, when you connect&nbsp;
+these electrodes to your scalp and generate&nbsp;&nbsp;
+
+00:19:02.800 --> 00:19:08.240
+these electric signals, here is what the EEG data&nbsp;
+looks like. And this data by itself, it's really&nbsp;&nbsp;
+
+00:19:08.240 --> 00:19:14.080
+hard to analyze what exactly this is. Typically,&nbsp;
+these signals can be very messy and noisy. Plus,&nbsp;&nbsp;
+
+00:19:14.080 --> 00:19:18.720
+the electrode layout could be different between&nbsp;
+different subjects and different places. Plus,&nbsp;&nbsp;
+
+00:19:18.720 --> 00:19:23.920
+you could have some channels missing. Anyways,&nbsp;
+all this data is really messy. So, the point of&nbsp;&nbsp;
+
+00:19:23.920 --> 00:19:30.560
+this Zuna model is to dn noiseise this EEG&nbsp;
+data. In other words, clean it up and also&nbsp;&nbsp;
+
+00:19:30.560 --> 00:19:37.040
+reconstruct any missing channels and also predict&nbsp;
+new channel signals based on current data. Now,&nbsp;&nbsp;
+
+00:19:37.040 --> 00:19:43.360
+currently, this does not directly turn EEG data&nbsp;
+into text. So, it's not that good yet. It can't&nbsp;&nbsp;
+
+00:19:43.360 --> 00:19:48.080
+just magically interpret what you're thinking&nbsp;
+from this graph. The point of this currently is&nbsp;&nbsp;
+
+00:19:48.080 --> 00:19:54.400
+to clean up the data or reconstruct missing data&nbsp;
+and also add higher resolution to this data. So&nbsp;&nbsp;
+
+00:19:54.400 --> 00:19:59.760
+think of this as like the first open-source&nbsp;
+foundation model for brain signals. This is&nbsp;&nbsp;
+
+00:19:59.760 --> 00:20:04.240
+just the start and the long-term vision for&nbsp;
+this is to eventually of course just take&nbsp;&nbsp;
+
+00:20:04.240 --> 00:20:09.120
+this raw brainwave data and convert it into&nbsp;
+text on what the person is thinking. Anyways,&nbsp;&nbsp;
+
+00:20:09.120 --> 00:20:13.680
+the awesome thing is they've released the model&nbsp;
+weights already. So, if you click on this GitHub&nbsp;&nbsp;
+
+00:20:13.680 --> 00:20:19.280
+repo, it contains all the instructions on how to&nbsp;
+download and run this locally on your computer.&nbsp;&nbsp;
+
+00:20:19.280 --> 00:20:24.000
+Note that it's actually quite tiny. So, the&nbsp;
+model is less than 2 GB in size, so you can&nbsp;&nbsp;
+
+00:20:24.000 --> 00:20:29.200
+fit this comfortably within most consumer devices.&nbsp;
+Anyways, if you're interested in reading further,&nbsp;&nbsp;
+
+00:20:29.200 --> 00:20:34.800
+I'll link to this main page in the description&nbsp;
+below. Next up, this AI is super powerful. It's&nbsp;&nbsp;
+
+00:20:34.800 --> 00:20:40.800
+called Audio X and this is a unified model&nbsp;
+that can generate audio and music from a ton&nbsp;&nbsp;
+
+00:20:40.800 --> 00:20:46.560
+of different inputs. You can input text, images,&nbsp;
+or even videos and get it to generate audio from&nbsp;&nbsp;
+
+00:20:46.560 --> 00:20:52.080
+that. So, here are some examples. First of all,&nbsp;
+here are some text to audio examples. So, you&nbsp;&nbsp;
+
+00:20:52.080 --> 00:21:00.800
+can easily prompt this to generate sound effects.&nbsp;
+Here is Thunder and Rain during a sad piano solo.
+
+00:21:08.240 --> 00:21:19.040
+Very nice. And then here are&nbsp;
+some ocean waves crashing.
+
+00:21:19.040 --> 00:21:23.760
+Now you can add more specific details to your&nbsp;
+prompt. For example, a machine gun fires twice&nbsp;&nbsp;
+
+00:21:23.760 --> 00:21:29.760
+followed by a period of silence, then the sound of&nbsp;
+waves and surf. Let's hear what this sounds like.
+
+00:21:39.200 --> 00:21:43.040
+And it followed this very well. Or&nbsp;
+here's another example. Fireworks&nbsp;&nbsp;
+
+00:21:43.040 --> 00:21:56.240
+burst twice followed by a period of&nbsp;
+silence before a clock begins ticking.
+
+00:21:56.240 --> 00:22:00.640
+Very cool. Now text to sound effects&nbsp;
+is just simple stuff. Here we also have&nbsp;&nbsp;
+
+00:22:00.640 --> 00:22:17.200
+some text to music examples. So here is&nbsp;
+a suspenseful scene in a haunted mansion.
+
+00:22:17.200 --> 00:22:24.400
+That does sound pretty scary. And then here's&nbsp;
+an uplifting ukulele tune for a travel vlog.
+
+00:22:31.520 --> 00:22:34.720
+The quality is mediocre. You can&nbsp;
+probably get away with using this&nbsp;&nbsp;
+
+00:22:34.720 --> 00:22:51.360
+for some background music. Or here is some&nbsp;
+smooth urban R&amp;B beat with a mellow groove.
+
+00:22:51.360 --> 00:22:55.360
+Now in text to music, that's just simple&nbsp;
+stuff. We already have some really good&nbsp;&nbsp;
+
+00:22:55.360 --> 00:23:00.080
+quality music generators out there. So,&nbsp;
+that wasn't too impressive. But in addition,&nbsp;&nbsp;
+
+00:23:00.080 --> 00:23:04.560
+this can also take in video as input&nbsp;
+and generate audio from that. So,&nbsp;&nbsp;
+
+00:23:04.560 --> 00:23:14.320
+here's the final generation of the video&nbsp;
+plus its generated audio stitched together.
+
+00:23:19.520 --> 00:23:24.480
+Notice that it's able to actually detect the&nbsp;
+exact time when there was a cut in the video&nbsp;&nbsp;
+
+00:23:24.480 --> 00:23:39.200
+and then generate the appropriate audio&nbsp;
+for that. Here's another tricky example.
+
+00:23:39.200 --> 00:23:42.720
+Or here's another example.
+
+00:23:49.840 --> 00:23:54.560
+Now, in addition to inputting a video,&nbsp;
+you can also input audio and get it to&nbsp;&nbsp;
+
+00:23:54.560 --> 00:24:00.080
+repair certain sections. For example, here&nbsp;
+if we have this original audio clip where&nbsp;&nbsp;
+
+00:24:00.080 --> 00:24:14.080
+the middle part is deleted. Let's hear&nbsp;
+what this sounds like first. Thank you.
+
+00:24:14.080 --> 00:24:19.120
+All right. So, there was some silence in the&nbsp;
+middle. Well, we can just inpaint this middle&nbsp;&nbsp;
+
+00:24:19.120 --> 00:24:28.800
+section with some brief speech followed by loud&nbsp;
+applause and cheering. And here is our result.
+
+00:24:34.400 --> 00:24:38.880
+As you can hear, it's quite seamless. You&nbsp;
+can barely tell like when it's actually&nbsp;&nbsp;
+
+00:24:38.880 --> 00:24:42.480
+filling in this part. Now, similarly,&nbsp;
+instead of filling in the middle,&nbsp;&nbsp;
+
+00:24:42.480 --> 00:24:52.080
+you can also use this to extend an audio clip.&nbsp;
+So, for example, here is the original audio.
+
+00:24:52.080 --> 00:24:54.560
+And then let's get it to continue this. The prompt&nbsp;&nbsp;
+
+00:24:54.560 --> 00:24:58.000
+would be action-packed orchestral&nbsp;
+music. And here's the result.
+
+00:25:10.800 --> 00:25:15.440
+Now, those were just some examples. The&nbsp;
+audio quality isn't great, to be honest,&nbsp;&nbsp;
+
+00:25:15.440 --> 00:25:20.080
+but it's really impressive how it's able to&nbsp;
+take in so many different types of inputs.&nbsp;&nbsp;
+
+00:25:20.080 --> 00:25:26.080
+This is truly a unified audio model. And if you&nbsp;
+compare this with other competitors, notice that&nbsp;&nbsp;
+
+00:25:26.080 --> 00:25:32.000
+this one by far outperforms the rest in terms of&nbsp;
+not only performance, but the amount of abilities&nbsp;&nbsp;
+
+00:25:32.000 --> 00:25:37.360
+that this has. It can do pretty much everything&nbsp;
+from text to audio, text to music, video to music,&nbsp;&nbsp;
+
+00:25:37.360 --> 00:25:43.360
+image to audio, inpainting, etc., etc. The awesome&nbsp;
+thing is they've released this already. So if you&nbsp;&nbsp;
+
+00:25:43.360 --> 00:25:47.760
+click on this GitHub repo, this contains all&nbsp;
+the instructions on how to download and run&nbsp;&nbsp;
+
+00:25:47.760 --> 00:25:54.560
+this locally on your computer. This is quite a&nbsp;
+small model. So, the model size is less than 6 GB,&nbsp;&nbsp;
+
+00:25:54.560 --> 00:25:59.120
+so you should be able to fit this comfortably&nbsp;
+with most consumer GPUs. Anyways, if you're&nbsp;&nbsp;
+
+00:25:59.120 --> 00:26:04.320
+interested in reading further, I'll link to this&nbsp;
+main page in the description below. Next up, this&nbsp;&nbsp;
+
+00:26:04.320 --> 00:26:12.320
+AI is quite interesting. It's called Veto Pix, and&nbsp;
+this is a quite unique way of editing images. So,&nbsp;&nbsp;
+
+00:26:12.320 --> 00:26:18.640
+here's how it works. It would basically convert&nbsp;
+your image into vector shapes like this and then&nbsp;&nbsp;
+
+00:26:18.640 --> 00:26:23.920
+you can edit each vector shape individually and&nbsp;
+then from that it would reconstruct the final&nbsp;&nbsp;
+
+00:26:23.920 --> 00:26:30.880
+image like this. If you do want to like really&nbsp;
+control the shape or composition of certain things&nbsp;&nbsp;
+
+00:26:30.880 --> 00:26:35.840
+in the image, then this might be a good way to do&nbsp;
+so. So here's another example where we can stretch&nbsp;&nbsp;
+
+00:26:35.840 --> 00:26:41.200
+out this mountain and set it to the exact shape&nbsp;
+that we want and regenerate the image from this&nbsp;&nbsp;
+
+00:26:41.200 --> 00:26:46.560
+vector reference. Now, this doesn't just have to&nbsp;
+change the shape of stuff. You can also select&nbsp;&nbsp;
+
+00:26:46.560 --> 00:26:51.360
+a certain element and then change the color of&nbsp;
+the vector and it would apply the color change&nbsp;&nbsp;
+
+00:26:51.360 --> 00:26:56.960
+like this. Here's a cool example where we can&nbsp;
+convert this image into a vector and then move&nbsp;&nbsp;
+
+00:26:56.960 --> 00:27:02.000
+the rose vector somewhere else. And here's our&nbsp;
+results. So, this is really good for like moving&nbsp;&nbsp;
+
+00:27:02.000 --> 00:27:07.360
+or repositioning objects in a photo. The cool&nbsp;
+thing about working with vectors is you can also&nbsp;&nbsp;
+
+00:27:07.360 --> 00:27:13.520
+add additional vectors on top of your image. So&nbsp;
+for example, we can add this vector of sunglasses&nbsp;&nbsp;
+
+00:27:13.520 --> 00:27:19.200
+onto this and then here's what we get. Or we can&nbsp;
+also remove anything from an image. For example,&nbsp;&nbsp;
+
+00:27:19.200 --> 00:27:24.960
+we can remove this toothbrush vector and here is&nbsp;
+our result. Or you can just add any other image&nbsp;&nbsp;
+
+00:27:24.960 --> 00:27:30.240
+onto this vector render like this and it would&nbsp;
+still work. It can seamlessly add that object&nbsp;&nbsp;
+
+00:27:30.240 --> 00:27:35.360
+into your photo. Now, given that we already have&nbsp;
+Nano Banana Pro and also Quinn ImageEdit and other&nbsp;&nbsp;
+
+00:27:35.360 --> 00:27:39.600
+state-of-the-art image editors where you can just&nbsp;
+simply edit any image you want with a text prompt,&nbsp;&nbsp;
+
+00:27:39.600 --> 00:27:45.360
+I think this method might be overkill unless you&nbsp;
+really want to microedit something in the image to&nbsp;&nbsp;
+
+00:27:45.360 --> 00:27:50.320
+be of a certain shape or position. But if this is&nbsp;
+of interest to you, then at the top of the page,&nbsp;&nbsp;
+
+00:27:50.320 --> 00:27:55.520
+it does say the code is coming soon. Currently,&nbsp;
+this doesn't link to anything yet, but if you&nbsp;&nbsp;
+
+00:27:55.520 --> 00:28:00.320
+are interested, I'll link to this main page in&nbsp;
+the description below for you to read further.&nbsp;&nbsp;
+
+00:28:00.320 --> 00:28:05.680
+Next up, this AI is really cool. So, this&nbsp;
+can generate 4D scenes, in other words,&nbsp;&nbsp;
+
+00:28:05.680 --> 00:28:10.320
+3D videos or simulations just from a text&nbsp;
+description. So, it's basically a chatbot&nbsp;&nbsp;
+
+00:28:10.320 --> 00:28:14.880
+where you can just enter a prompt and it would&nbsp;
+create an entire 3D scene which you can edit&nbsp;&nbsp;
+
+00:28:14.880 --> 00:28:19.600
+further in Blender. Here's an example. Here we&nbsp;
+have a breeze stirs through the autumn forest,&nbsp;&nbsp;
+
+00:28:19.600 --> 00:28:25.520
+gently swaying the entire tree as leaves dance&nbsp;
+in the wind. And here's our result. Here is a&nbsp;&nbsp;
+
+00:28:25.520 --> 00:28:30.720
+full 3D scene that can move over time. Or here's&nbsp;
+another example. Here's a 10-second time-lapse&nbsp;&nbsp;
+
+00:28:30.720 --> 00:28:36.880
+capturing the transition from warm pre-dawn to&nbsp;
+sunrise followed by a midday sunlight through&nbsp;&nbsp;
+
+00:28:36.880 --> 00:28:41.920
+a green canopy, golden late afternoon light,&nbsp;
+etc., etc., and it's able to generate this&nbsp;&nbsp;
+
+00:28:41.920 --> 00:28:47.440
+3D scene of a time-lapse very accurately. Or&nbsp;
+here's lush green forest with heavy rainstorm.&nbsp;&nbsp;
+
+00:28:47.440 --> 00:28:53.360
+And then here's a vibrant underwater scene with&nbsp;
+a translucent jellyfish, etc., etc. Pretty cool.&nbsp;&nbsp;
+
+00:28:53.360 --> 00:28:59.680
+Here's another example where we have some chopped&nbsp;
+trees burning fiercely in this dark forest. Now,&nbsp;&nbsp;
+
+00:28:59.680 --> 00:29:04.240
+of course, this can also generate indoor&nbsp;
+scenes with different actions. For example,&nbsp;&nbsp;
+
+00:29:04.240 --> 00:29:09.920
+here we have this tall ceramic cup which tips&nbsp;
+on its side, spilling water and flooding the&nbsp;&nbsp;
+
+00:29:09.920 --> 00:29:15.120
+tabletop as it flows toward the edge and drips&nbsp;
+down. Or here's another indoor example. Here we&nbsp;&nbsp;
+
+00:29:15.120 --> 00:29:20.640
+have a cozy bedroom with warm lighting. Notice&nbsp;
+that everything in the scene is 3D. You can edit&nbsp;&nbsp;
+
+00:29:20.640 --> 00:29:26.560
+any object further using some 3D editing software&nbsp;
+like Blender. Or here we have a brown glass bottle&nbsp;&nbsp;
+
+00:29:26.560 --> 00:29:31.840
+rolling slowly across the living room floor. If&nbsp;
+you click on this GitHub repo and you scroll down&nbsp;&nbsp;
+
+00:29:31.840 --> 00:29:36.320
+a bit, it seems like they will release the code&nbsp;
+to this soon. And then here it contains all the&nbsp;&nbsp;
+
+00:29:36.320 --> 00:29:41.200
+instructions on how to get started. Anyways, if&nbsp;
+you're interested in reading further, I'll link&nbsp;&nbsp;
+
+00:29:41.200 --> 00:29:46.320
+to this main page in the description below.&nbsp;
+All right, next up. This AI is pretty crazy.&nbsp;&nbsp;
+
+00:29:46.320 --> 00:29:52.960
+What if I told you that we can now get realtime&nbsp;
+video generation on just a single RTX 1590? Well,&nbsp;&nbsp;
+
+00:29:52.960 --> 00:30:00.880
+this AI called Monarch RT does exactly that. This&nbsp;
+can generate true realtime video at 16 frames per&nbsp;&nbsp;
+
+00:30:00.880 --> 00:30:07.120
+second on just a single consumer GPU, specifically&nbsp;
+the RTX 5090. Now, I know this is still a pretty&nbsp;&nbsp;
+
+00:30:07.120 --> 00:30:12.320
+high-end GPU, but hey, at least you don't need&nbsp;
+like a data farm to run this. It's still pretty&nbsp;&nbsp;
+
+00:30:12.320 --> 00:30:17.760
+affordable. And by the way, speaking of the RTX&nbsp;
+5090, I'm actually doing a giveaway of this. So,&nbsp;&nbsp;
+
+00:30:17.760 --> 00:30:22.480
+make sure you watch to the end to learn about the&nbsp;
+full details of the giveaway. Now, if you compare&nbsp;&nbsp;
+
+00:30:22.480 --> 00:30:28.720
+this to another acceleration method called flash&nbsp;
+attention, notice that Monarch RT is almost four&nbsp;&nbsp;
+
+00:30:28.720 --> 00:30:34.560
+times as fast. Now, you might think that with such&nbsp;
+a fast generator, you might see some degradation&nbsp;&nbsp;
+
+00:30:34.560 --> 00:30:39.360
+in quality, but that's actually not true. So&nbsp;
+if you compare this with dense attention which&nbsp;&nbsp;
+
+00:30:39.360 --> 00:30:44.800
+is like a video generation at full quality with&nbsp;
+the same prompt here it says it's able to reach&nbsp;&nbsp;
+
+00:30:44.800 --> 00:30:51.440
+like 95% of the quality of this. So at the bottom&nbsp;
+is this new monarch real time and as you can see&nbsp;&nbsp;
+
+00:30:51.440 --> 00:30:57.280
+the quality is very similar. Here are some other&nbsp;
+examples for your reference. The awesome thing is&nbsp;&nbsp;
+
+00:30:57.280 --> 00:31:01.840
+at the top of the page they've already released&nbsp;
+the code to this. So, if you click on this GitHub&nbsp;&nbsp;
+
+00:31:01.840 --> 00:31:06.800
+repo and you scroll down a bit here, it contains&nbsp;
+all the instructions on how to download and run&nbsp;&nbsp;
+
+00:31:06.800 --> 00:31:11.600
+this locally on your computer. Anyways, if you're&nbsp;
+interested in reading further, I'll link to this&nbsp;&nbsp;
+
+00:31:11.600 --> 00:31:17.280
+main page in the description below. Also, this&nbsp;
+week, Google releases their best and latest model,&nbsp;&nbsp;
+
+00:31:17.280 --> 00:31:23.440
+Gemini 3.1 Pro. Now, this is just an incremental&nbsp;
+upgrade. It's just 3.1. It's not Gemini 4,&nbsp;&nbsp;
+
+00:31:23.440 --> 00:31:29.200
+but nevertheless, this is incredibly powerful, and&nbsp;
+it already tops independent leaderboards, as you&nbsp;&nbsp;
+
+00:31:29.200 --> 00:31:34.640
+can see here. Plus, the price is extremely cheap&nbsp;
+compared to other closed source competitors. And&nbsp;&nbsp;
+
+00:31:34.640 --> 00:31:39.920
+the awesome thing about Gemini is it's multimodal.&nbsp;
+Not only can it understand text, but also images,&nbsp;&nbsp;
+
+00:31:39.920 --> 00:31:45.280
+audio, and video. Now, I already did a full review&nbsp;
+video on it, so I'm not going to repeat too much&nbsp;&nbsp;
+
+00:31:45.280 --> 00:31:51.440
+here. See this video if you want to learn more.&nbsp;
+But in addition to Gemini 3 Pro, Google also&nbsp;&nbsp;
+
+00:31:51.440 --> 00:31:57.760
+released an insane music generator called LIIA&nbsp;
+3. This is completely free to use. You can use it&nbsp;&nbsp;
+
+00:31:57.760 --> 00:32:03.760
+right now on the Gemini platform or app. So on the&nbsp;
+Gemini app, simply click on create music and then&nbsp;&nbsp;
+
+00:32:03.760 --> 00:32:09.360
+here you can just enter a prompt to describe your&nbsp;
+track or you can even upload an image to guide&nbsp;&nbsp;
+
+00:32:09.360 --> 00:32:14.400
+the generation. So here's an example where I just&nbsp;
+uploaded this image of a barbecue and then asked&nbsp;&nbsp;
+
+00:32:14.400 --> 00:32:20.000
+it to make a song based on the image and then it&nbsp;
+composed this. Let me play this for you. Sun's&nbsp;&nbsp;
+
+00:32:20.000 --> 00:32:28.080
+going down, the grill is hot. Flipping burgers for&nbsp;
+the whole dang lot. Got that blueg grass blasting&nbsp;&nbsp;
+
+00:32:28.080 --> 00:32:36.640
+on the speakers loud. So raise them up. We're&nbsp;
+feeling proud. Yeah, this is what it's all about.&nbsp;&nbsp;
+
+00:32:36.640 --> 00:32:47.920
+Good friends and good times on a Friday night.&nbsp;
+Everything is feeling right. Yeah, feeling right.
+
+00:32:50.320 --> 00:32:54.400
+All right, so that was the song for this&nbsp;
+image. Let me know in the comments below&nbsp;&nbsp;
+
+00:32:54.400 --> 00:32:58.720
+if it fits the image. Or here's another&nbsp;
+example where I uploaded this image and&nbsp;&nbsp;
+
+00:32:58.720 --> 00:33:10.800
+then asked it to make a J-pop song about&nbsp;
+this image. And here is what I got.
+
+00:33:10.800 --> 00:33:15.360
+Going
+
+00:33:15.360 --> 00:33:16.720
+racers.
+
+00:33:20.560 --> 00:33:24.480
+precious time.
+
+00:33:24.480 --> 00:33:34.240
+We are the winding road racers.
+
+00:33:34.240 --> 00:33:39.760
+All right, so it wasn't too bad, but there you go.&nbsp;
+Here's a high energy J-pop example based on this&nbsp;&nbsp;
+
+00:33:39.760 --> 00:33:51.280
+image. Now, this can do a ton of other styles.&nbsp;
+So, for example, here is some retro synth wave
+
+00:33:51.280 --> 00:33:59.680
+tonight. Oh, the neon dreams.
+
+00:33:59.680 --> 00:34:03.760
+It seems
+
+00:34:03.760 --> 00:34:10.640
+or here are some Hindi lyrics in pop ballad style.
+
+00:34:10.640 --> 00:34:22.080
+Amen.
+
+00:34:22.080 --> 00:34:35.600
+Make me
+
+00:34:35.600 --> 00:35:00.480
+or here are some Spanish lyrics in funk&nbsp;
+and city pop style. Fore! Foreign! Foreign!
+
+00:35:10.240 --> 00:35:20.160
+And then here are some other&nbsp;
+styles for your reference.
+
+00:35:20.160 --> 00:35:30.160
+Oh baby, it's been a long cold winter walking.&nbsp;
+The wind is up and the sail is set. Give away&nbsp;&nbsp;
+
+00:35:30.160 --> 00:35:42.960
+the finest crew. City lights are bleeding through&nbsp;
+the rain. We're dancing in the memories behind.
+
+00:35:42.960 --> 00:35:51.360
+Here are some other examples of songs&nbsp;
+generated from different images.
+
+00:35:51.360 --> 00:35:56.400
+Pain salt on your skin in the snow.
+
+00:36:10.960 --> 00:36:14.560
+Everything
+
+00:36:14.560 --> 00:36:22.240
+is fine. Now, like I said, this should already&nbsp;
+be available on the Gemini platform or app. You&nbsp;&nbsp;
+
+00:36:22.240 --> 00:36:26.640
+should see a button down here to create music.&nbsp;
+Anyways, if you're interested in checking this&nbsp;&nbsp;
+
+00:36:26.640 --> 00:36:32.000
+out, I'll link to this main announcement page in&nbsp;
+the description below. Now, last week, Bite Dance&nbsp;&nbsp;
+
+00:36:32.000 --> 00:36:38.640
+releases a monster of a video generator called&nbsp;
+Seed Dance 2.0. This is by far the best video&nbsp;&nbsp;
+
+00:36:38.640 --> 00:36:44.480
+generator out there. It's not even close. But&nbsp;
+this week, they've continued to cook by releasing&nbsp;&nbsp;
+
+00:36:44.480 --> 00:36:50.160
+another state-of-the-art model called Seed 2.&nbsp;
+This is a large language model. So, just like the&nbsp;&nbsp;
+
+00:36:50.160 --> 00:36:55.680
+top models out there, this is especially good in&nbsp;
+terms of multimodal understanding, reasoning, and&nbsp;&nbsp;
+
+00:36:55.680 --> 00:37:02.240
+agentic capabilities. Here are some benchmarks for&nbsp;
+your reference comparing CE2 Pro on the far left&nbsp;&nbsp;
+
+00:37:02.240 --> 00:37:08.480
+with the top models out there, including Claude,&nbsp;
+GPT 5.2, and Gemini 3. Here are some benchmarks on&nbsp;&nbsp;
+
+00:37:08.480 --> 00:37:15.040
+visual reasoning. And as you can see, C2 actually&nbsp;
+outperforms the other closed models in most cases.&nbsp;&nbsp;
+
+00:37:15.040 --> 00:37:19.760
+And then, same with motion and perception. For&nbsp;
+instruction following, it's not as good. It's like&nbsp;&nbsp;
+
+00:37:19.760 --> 00:37:25.280
+on par. And then same with real world tasks. Now,&nbsp;
+because this is so good at visual understanding,&nbsp;&nbsp;
+
+00:37:25.280 --> 00:37:31.200
+we can upload this image and get Python to plot&nbsp;
+this out and make it as similar as possible.&nbsp;&nbsp;
+
+00:37:31.200 --> 00:37:37.120
+So afterwards, it under goes some deep thinking.&nbsp;
+And then here is the final result. It looks very&nbsp;&nbsp;
+
+00:37:37.120 --> 00:37:43.440
+similar to the uploaded image. Or here we're&nbsp;
+basically getting C 2.0 to autonomously click&nbsp;&nbsp;
+
+00:37:43.440 --> 00:37:50.880
+and do stuff on a computer. So here we're getting&nbsp;
+it to operate this free CAD platform to edit and&nbsp;&nbsp;
+
+00:37:50.880 --> 00:37:55.840
+manipulate 3D objects. And as you can see, it's&nbsp;
+actually doing all of this autonomously step by&nbsp;&nbsp;
+
+00:37:55.840 --> 00:38:01.600
+step. And as you can see here, it has done like&nbsp;
+almost 100 steps sequentially. So this is really&nbsp;&nbsp;
+
+00:38:01.600 --> 00:38:07.120
+good for like long horizon tasks. Now, I've been&nbsp;
+scanning some independent leaderboards to see if&nbsp;&nbsp;
+
+00:38:07.120 --> 00:38:13.200
+they've added seed 2.0 yet, and at least for LM&nbsp;
+Arena, they have. So in terms of text, Ced 2.0&nbsp;&nbsp;
+
+00:38:13.200 --> 00:38:19.840
+ranks number five. And then for vision, which C&nbsp;
+2.0 is especially good at, this ranks number four,&nbsp;&nbsp;
+
+00:38:19.840 --> 00:38:26.880
+still behind Gemini 3 and 3.1. Now, currently,&nbsp;
+you can only use this via this Volcano Engine API,&nbsp;&nbsp;
+
+00:38:26.880 --> 00:38:30.640
+but if you're interested in checking this out&nbsp;
+further, I'll link to it in the description&nbsp;&nbsp;
+
+00:38:30.640 --> 00:38:36.400
+below. And that sums up all the highlights&nbsp;
+in AI this week. Let me know in the comments&nbsp;&nbsp;
+
+00:38:36.400 --> 00:38:41.200
+what you think of all of this. Which piece of&nbsp;
+news was your favorite? And which tool are you&nbsp;&nbsp;
+
+00:38:41.200 --> 00:38:45.920
+most looking forward to trying out? Thanks&nbsp;
+for watching and if you enjoyed this video,&nbsp;&nbsp;
+
+00:38:45.920 --> 00:38:50.800
+remember to like and subscribe. And if you've&nbsp;
+made it to here, I've got a treat for you. I'm&nbsp;&nbsp;
+
+00:38:50.800 --> 00:38:58.960
+partnering with Nvidia to give away an RTX 5090&nbsp;
+GPU around their GTC 2026 event. With this, you&nbsp;&nbsp;
+
+00:38:58.960 --> 00:39:04.560
+can easily run AI tools locally on your computer.&nbsp;
+Here's how to enter. Simply click the link in the&nbsp;&nbsp;
+
+00:39:04.560 --> 00:39:12.160
+description to register and attend at least one&nbsp;
+GTC 2026 session, which will be on March 16th to&nbsp;&nbsp;
+
+00:39:12.160 --> 00:39:17.520
+19th. You can attend virtually or in person. Here&nbsp;
+are some of my favorites. Jensen Huang's keynote&nbsp;&nbsp;
+
+00:39:17.520 --> 00:39:24.480
+is an obvious one, but this one on humanoid robots&nbsp;
+at scale as well as this one on openw world models&nbsp;&nbsp;
+
+00:39:24.480 --> 00:39:30.160
+are also on my watch list. Again, make sure you&nbsp;
+sign up for GTC using the link in the description&nbsp;&nbsp;
+
+00:39:30.160 --> 00:39:34.720
+below. And then afterwards, fill out the form&nbsp;
+and you're good to go. It's totally free to
+

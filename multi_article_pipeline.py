@@ -16,6 +16,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 SRC_DIR = PROJECT_ROOT / "src"
 sys.path.insert(0, str(SRC_DIR))
 from runtime_paths import python_executable  # noqa: E402
+from topic_filter import is_ai_topic_strict  # noqa: E402
 
 DATA_DIR = PROJECT_ROOT / "data"
 CACHE_FILE = DATA_DIR / "news_cache" / "latest_scan.json"
@@ -82,8 +83,12 @@ def story_priority(story):
 
 
 def _source_allows(story):
-    text = ((story.get("title") or "") + " " + (story.get("summary") or "")).lower()
+    title = story.get("title") or ""
+    summary = story.get("summary") or ""
+    text = (title + " " + summary).lower()
     if any(term in text for term in BANNED_TERMS):
+        return False
+    if not is_ai_topic_strict(title=title, summary=summary):
         return False
     return bool(story.get("url"))
 
@@ -198,6 +203,8 @@ def get_api_key():
     return key
 
 
+import time
+
 def generate_article(story, api_key=None):
     title = story.get("title", "Untitled")
     summary = story.get("summary", "")
@@ -212,30 +219,76 @@ def generate_article(story, api_key=None):
     if transcript:
         cleaned_transcript = transcript
         for term in BANNED_TERMS:
-            cleaned_transcript = re.sub(rf"\\b{re.escape(term)}\\b", "", cleaned_transcript, flags=re.IGNORECASE)
+            cleaned_transcript = re.sub(rf"\b{re.escape(term)}\b", "", cleaned_transcript, flags=re.IGNORECASE)
         grounding += f"Transcript excerpt: {cleaned_transcript[:6000]}\n"
     else:
         grounding += f"Summary excerpt: {summary[:1000]}\n"
 
-    prompt = (
-        "Write a source-grounded markdown article for an AI updates website. "
-        "Use plain technical language and stay factual to source material. "
+    # Step 1: Research with OpenAI Codex 5.3
+    research_prompt = (
+        "You are an expert AI technical researcher. "
+        "Analyze the following story, summary, or transcript and extract the absolute most important technical facts, product launches, breakthroughs, and actionable insights. "
+        "Distill this into a dense, highly factual brief answering: 1. What changed/launched? 2. Why does it matter to developers/creators? 3. What should they do next? "
+        "Stay completely factual and grounded.\n\n"
+        f"Title: {title}\n{grounding}"
+    )
+
+    research_notes = ""
+    try:
+        endpoint = "http://127.0.0.1:18789/v1/chat/completions"
+        headers = {
+            "Authorization": "Bearer 77ccd923284fcd42f76fab03762cf4ead1749f64e08cc068",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": "openai-codex/gpt-5.3-codex",
+            "messages": [{"role": "user", "content": research_prompt}],
+            "temperature": 0.2
+        }
+        resp = requests.post(endpoint, headers=headers, json=payload, timeout=120)
+        if resp.status_code == 200:
+            research_notes = resp.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"Research failed: {e}")
+
+    if not research_notes:
+        research_notes = grounding
+
+    # Step 2: Write with Gemini 3.1 Pro Preview
+    write_prompt = (
+        "Write a highly engaging, SEO-optimized markdown article for an AI updates website based on these research notes. "
+        "The tone should be dopamine-inducing, fast-paced, and wildly exciting, keeping readers hooked on the bleeding edge of AI. "
+        "Use high-impact phrasing and strong hooks. Include natural SEO keywords related to AI breakthroughs. "
+        "Stay factual to the research but make it thrilling. "
         "Include these exact section headings in this order:\n"
         "## What changed\n## Why it matters\n## What to do next\n"
         "Include at least one explicit source link in markdown format.\n\n"
-        f"Story title: {title}\n{grounding}"
+        f"Research Notes:\n{research_notes}\n\n"
+        f"Source Link to include: {url}"
     )
 
     body = None
     if api_key:
-        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={api_key}"
-        payload = {"contents": [{"parts": [{"text": prompt}]}]}
-        try:
-            resp = requests.post(endpoint, json=payload, timeout=90)
-            if resp.status_code == 200:
-                body = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
-        except Exception:
-            body = None
+        endpoint_gemini = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={api_key}"
+        payload_gemini = {"contents": [{"parts": [{"text": write_prompt}]}]}
+        for attempt in range(3):
+            try:
+                resp = requests.post(endpoint_gemini, json=payload_gemini, timeout=90)
+                if resp.status_code == 200:
+                    body = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    break
+                elif resp.status_code == 429:
+                    print(f"Rate limit hit on Gemini. Retrying in {15 * (attempt + 1)} seconds...")
+                    time.sleep(15 * (attempt + 1))
+                else:
+                    print(f"Gemini failed with status: {resp.status_code}")
+                    break
+            except Exception as e:
+                print(f"Exception during Gemini request: {e}")
+                time.sleep(5)
+    
+    # Pace Gemini to stay under the 15 RPM limit safely
+    time.sleep(6)
 
     if not body:
         base = transcript[:900] if transcript else summary
@@ -277,6 +330,8 @@ def qa_article(item):
         banned_hits += len(re.findall(rf"\\b{re.escape(term)}\\b", low))
     if banned_hits >= 3:
         reasons.append("contains banned topic")
+    if not is_ai_topic_strict(title=item.get("title", ""), content=text):
+        reasons.append("non-ai/off-topic article")
 
     return {"id": item["id"], "title": item["title"], "file": item["file"], "passed": not reasons, "reasons": reasons}
 

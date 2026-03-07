@@ -1,0 +1,1208 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.160 --> 00:00:06.080
+Google just dropped NanoBanana 2. This is&nbsp;
+by far the best image generator and editor&nbsp;&nbsp;
+
+00:00:06.080 --> 00:00:10.720
+we have right now. This is way faster than&nbsp;
+the previous version, NanoBanana Pro. Plus,&nbsp;&nbsp;
+
+00:00:10.720 --> 00:00:15.920
+they claim it has much better world understanding,&nbsp;
+consistency, and prompt adherence. So,&nbsp;&nbsp;
+
+00:00:15.920 --> 00:00:19.840
+in this video, I'm going to go over all the crazy&nbsp;
+things that you can do with it, and I'm going to&nbsp;&nbsp;
+
+00:00:19.840 --> 00:00:24.880
+compare this with the previous version of Nano&nbsp;
+Banana. Plus, I'm going to go over its specs and&nbsp;&nbsp;
+
+00:00:24.880 --> 00:00:30.160
+performance benchmarks and where you can use it&nbsp;
+for free. Let's jump right in. Now, before I start&nbsp;&nbsp;
+
+00:00:30.160 --> 00:00:35.120
+showing you some demos, it's worth mentioning&nbsp;
+that we already have a ton of image models that&nbsp;&nbsp;
+
+00:00:35.120 --> 00:00:40.960
+can do simple stuff like colorizing and restoring&nbsp;
+old photos or removing watermarks or changing the&nbsp;&nbsp;
+
+00:00:40.960 --> 00:00:45.760
+camera angle of a photo or changing the pose of&nbsp;
+someone, doing close swapping and all that fun&nbsp;&nbsp;
+
+00:00:45.760 --> 00:00:51.280
+stuff. This is already really easy to do and all&nbsp;
+the top models can ace these tests already. So,&nbsp;&nbsp;
+
+00:00:51.280 --> 00:00:56.560
+in this video, I'm mainly going to show you some&nbsp;
+extremely challenging prompts to really test the&nbsp;&nbsp;
+
+00:00:56.560 --> 00:01:02.000
+limits of Nano Banano 2. All right. Now, one of&nbsp;
+the main advantages of Nano Banana is it has such&nbsp;&nbsp;
+
+00:01:02.000 --> 00:01:06.800
+a good world understanding of pretty much any&nbsp;
+famous celebrity or existing character in the&nbsp;&nbsp;
+
+00:01:06.800 --> 00:01:11.920
+world. We can prompt it to make a photo of a ton&nbsp;
+of celebrities all in the same shot. For example,&nbsp;&nbsp;
+
+00:01:11.920 --> 00:01:15.840
+here I have Johnny Depp, Jackie Chan, Taylor&nbsp;
+Swift, Tom Hanks, The Rock, Michael Jackson,&nbsp;&nbsp;
+
+00:01:15.840 --> 00:01:22.080
+Oprah, Blackpink, Cristiano Ronaldo, Elon Musk,&nbsp;
+Beyonce, Leonardo, Raana, Brad Pitt, Selena Gomez,&nbsp;&nbsp;
+
+00:01:22.080 --> 00:01:27.440
+Will Smith, Lady Gaga, Justin Bieber, Barack&nbsp;
+Obama, and Ariana taking a group selfie. And&nbsp;&nbsp;
+
+00:01:27.440 --> 00:01:33.120
+here is what we got from Nano Banana 2. You can&nbsp;
+see all the characters are actually present,&nbsp;&nbsp;
+
+00:01:33.120 --> 00:01:38.880
+and they do look like the actual celebrity. Now,&nbsp;
+because there's so many characters jam-packed into&nbsp;&nbsp;
+
+00:01:38.880 --> 00:01:45.200
+this one shot, the resolution isn't great. So,&nbsp;
+you can see like some noise in the facial details&nbsp;&nbsp;
+
+00:01:45.200 --> 00:01:49.280
+of some of these characters, but overall,&nbsp;
+it's not bad. And then for your reference,&nbsp;&nbsp;
+
+00:01:49.280 --> 00:01:55.120
+here is the generation from Nano Banana Pro. You&nbsp;
+can see the photo isn't really as coherent. Plus,&nbsp;&nbsp;
+
+00:01:55.120 --> 00:01:59.120
+it messed up Black Pink. That looks&nbsp;
+really weird. Anyways, as you can see,&nbsp;&nbsp;
+
+00:01:59.120 --> 00:02:04.080
+in terms of just the realism and coherence of&nbsp;
+the photo, this generation from the new Nano&nbsp;&nbsp;
+
+00:02:04.080 --> 00:02:08.560
+Banana looks much better than Nano Banana Pro,&nbsp;
+which kind of looks like they're all just glued&nbsp;&nbsp;
+
+00:02:08.560 --> 00:02:14.640
+together. This doesn't look very realistic. Now,&nbsp;
+in addition to realistic people, this also has an&nbsp;&nbsp;
+
+00:02:14.640 --> 00:02:20.400
+extremely good world knowledge of cartoon, anime,&nbsp;
+and 2D characters. So for example here we have&nbsp;&nbsp;
+
+00:02:20.400 --> 00:02:30.240
+Levi Acriman Ana Forger Rick and Morty Gohan Alons&nbsp;
+Chica Fujiada Emmelia Gojo Nzuko Curto Kenny Bart&nbsp;&nbsp;
+
+00:02:30.240 --> 00:02:34.320
+Simpson and Snow White taking a selfie. Notice&nbsp;
+that these are from a ton of different anime&nbsp;&nbsp;
+
+00:02:34.320 --> 00:02:38.560
+shows and American cartoons Disney characters.&nbsp;
+And some of these aren't even like the main&nbsp;&nbsp;
+
+00:02:38.560 --> 00:02:43.360
+characters. These are just secondary characters.&nbsp;
+But as you can see for both Nano Banana models,&nbsp;&nbsp;
+
+00:02:43.360 --> 00:02:48.480
+they were able to understand and generate all&nbsp;
+of these characters really well. So, first let's&nbsp;&nbsp;
+
+00:02:48.480 --> 00:02:54.080
+inspect Nano Banana 2. I can't really spot any&nbsp;
+errors with this. It can generate everyone very&nbsp;&nbsp;
+
+00:02:54.080 --> 00:03:00.160
+well. And it looks like it put them in some anime&nbsp;
+expo 2024. Pretty cool. It even got the fingers&nbsp;&nbsp;
+
+00:03:00.160 --> 00:03:04.880
+correct. So, you can see that actually Kenny&nbsp;
+and Bart Simpson only has four fingers, which&nbsp;&nbsp;
+
+00:03:04.880 --> 00:03:10.000
+is what they actually have in the real cartoon.&nbsp;
+And then here we have Nano Banana Pro. And again,&nbsp;&nbsp;
+
+00:03:10.000 --> 00:03:15.680
+it got pretty much all the characters correct. I&nbsp;
+can't really spot any flaws with this. So overall,&nbsp;&nbsp;
+
+00:03:15.680 --> 00:03:20.320
+I would say it's a pass and a tie between both&nbsp;
+models. All right, next. Here's a test on how good&nbsp;&nbsp;
+
+00:03:20.320 --> 00:03:26.240
+it is at generating tricky expressions. This still&nbsp;
+trips up even the top image generators out there.&nbsp;&nbsp;
+
+00:03:26.240 --> 00:03:32.000
+So here we have a 4x4 grid of a young female with&nbsp;
+these emotions. From left to right, top to bottom,&nbsp;&nbsp;
+
+00:03:32.000 --> 00:03:36.880
+we have happiness, awe, enthusiasm, confidence,&nbsp;
+sadness, jealousy, irritation, embarrassment,&nbsp;&nbsp;
+
+00:03:36.880 --> 00:03:42.480
+surprise, confusion, nostalgia, fear, love,&nbsp;
+relief, pride, and anticipation. So let's&nbsp;&nbsp;
+
+00:03:42.480 --> 00:03:48.080
+review Nano Banana 2 first. She does look happy.&nbsp;
+This does look awe. The first row looks very good.&nbsp;&nbsp;
+
+00:03:48.080 --> 00:03:53.120
+She does look like each of these emotions. Even&nbsp;
+the confidence one, which is pretty tricky. It&nbsp;&nbsp;
+
+00:03:53.120 --> 00:03:57.760
+rendered this very well. And then for the second&nbsp;
+row, we have sadness, jealousy, irritation,&nbsp;&nbsp;
+
+00:03:57.760 --> 00:04:02.560
+embarrassment. And even for these three, jealousy,&nbsp;
+irritation, and embarrassment. It also rendered&nbsp;&nbsp;
+
+00:04:02.560 --> 00:04:07.680
+these very well. And then for the third row,&nbsp;
+we have surprise, confusion, nostalgia, and&nbsp;&nbsp;
+
+00:04:07.680 --> 00:04:13.600
+fear. It's also really good. Like she does look&nbsp;
+confused here. And this does look like nostalgia.&nbsp;&nbsp;
+
+00:04:13.600 --> 00:04:19.600
+And then for the last row, we have love, relief,&nbsp;
+pride, and anticipation. For love, I'm not sure&nbsp;&nbsp;
+
+00:04:19.600 --> 00:04:23.920
+if this really looks like love. Let me know in&nbsp;
+the comments below. This one looks really good.&nbsp;&nbsp;
+
+00:04:23.920 --> 00:04:29.360
+She does look relieved. And I guess this does look&nbsp;
+like pride. Anticipation looks very good. And then&nbsp;&nbsp;
+
+00:04:29.360 --> 00:04:35.200
+here we have the previous Nano Banana Pro. So for&nbsp;
+the first row, it's very good. Here's the second&nbsp;&nbsp;
+
+00:04:35.200 --> 00:04:41.600
+row. Jealousy looks kind of weird. I wouldn't say&nbsp;
+it's as good as Nano Banana 2. For the third row,&nbsp;&nbsp;
+
+00:04:41.600 --> 00:04:46.240
+all of these look pretty good. And then here's&nbsp;
+the last row for love and pride. Let me know in&nbsp;&nbsp;
+
+00:04:46.240 --> 00:04:50.320
+the comments if this actually looks like love&nbsp;
+and pride to you. For relief, this does look&nbsp;&nbsp;
+
+00:04:50.320 --> 00:04:55.360
+pretty accurate. And then same with anticipation.&nbsp;
+So overall, both of them are decent. But if I had&nbsp;&nbsp;
+
+00:04:55.360 --> 00:05:00.400
+to pick a winner, I would have to go for Nano&nbsp;
+Banana 2. It looks just slightly more realistic&nbsp;&nbsp;
+
+00:05:00.400 --> 00:05:05.680
+for some expressions, especially for jealousy and&nbsp;
+awe. All right, here's an even trickier test. I&nbsp;&nbsp;
+
+00:05:05.680 --> 00:05:11.840
+got it to make a 4x4 grid featuring Pokémon with&nbsp;
+these Pokédex numbers. And here's what I got. Now,&nbsp;&nbsp;
+
+00:05:11.840 --> 00:05:17.520
+interestingly, even though I got it to make a&nbsp;
+4x4 grid, Nanobanana Pro kind of hallucinated&nbsp;&nbsp;
+
+00:05:17.520 --> 00:05:23.920
+and gave me a 3x5 grid instead. So, it messed&nbsp;
+this up pretty badly. But anyways, let's go&nbsp;&nbsp;
+
+00:05:23.920 --> 00:05:30.560
+over Nano Banana 2 first. So, 07 is Squirtle and&nbsp;
+then 18 is Pidgeot. These are all correct and they&nbsp;&nbsp;
+
+00:05:30.560 --> 00:05:35.440
+also look correct. And then for the second row,&nbsp;
+these are also correct. Now, for the third row,&nbsp;&nbsp;
+
+00:05:35.440 --> 00:05:40.640
+2011 is really tricky because this is unknown. So&nbsp;
+there's actually an unknown for each letter of the&nbsp;&nbsp;
+
+00:05:40.640 --> 00:05:47.120
+alphabet. Here it says the label is unknown A. But&nbsp;
+if I Google what unknown A looks like, it should&nbsp;&nbsp;
+
+00:05:47.120 --> 00:05:52.240
+look like this. So this one is actually wrong.&nbsp;
+Again, this is a really tricky prompt. I don't&nbsp;&nbsp;
+
+00:05:52.240 --> 00:05:58.800
+expect it to get it 100% correct. And then for&nbsp;
+the last row, we also have an error for this one,&nbsp;&nbsp;
+
+00:05:58.800 --> 00:06:05.200
+Cascoon, which should actually look like this.&nbsp;
+So Nano Banana 2 completely messed this up. So&nbsp;&nbsp;
+
+00:06:05.200 --> 00:06:11.040
+it got two out of the 16 wrong. Now, the previous&nbsp;
+Nano Banana Pro didn't do too well either. So,&nbsp;&nbsp;
+
+00:06:11.040 --> 00:06:18.240
+again, it hallucinated and gave me a 3x5 grid.&nbsp;
+So, it has repeats here like gold duck and&nbsp;&nbsp;
+
+00:06:18.240 --> 00:06:23.920
+[&nbsp;__&nbsp;] apparently. So, this is completely wrong.&nbsp;
+And then it also added this extra grimer here,&nbsp;&nbsp;
+
+00:06:23.920 --> 00:06:28.640
+which is really weird. And then for unknown, let&nbsp;
+me just double check if there is an unknown with&nbsp;&nbsp;
+
+00:06:28.640 --> 00:06:33.440
+this shape. And it doesn't look like anything&nbsp;
+in this diagram. I was expecting it to be a K&nbsp;&nbsp;
+
+00:06:33.440 --> 00:06:40.240
+or an F, but this looks slightly off. So that's&nbsp;
+also a fail. However, it did get Cascoon correct&nbsp;&nbsp;
+
+00:06:40.240 --> 00:06:44.640
+over here. So I don't know. I would say it's a&nbsp;
+tie between these two models. Both of them were&nbsp;&nbsp;
+
+00:06:44.640 --> 00:06:49.680
+not able to get unknown correct. The new Nano&nbsp;
+Banana 2 wasn't able to get Cascoon correct,&nbsp;&nbsp;
+
+00:06:49.680 --> 00:06:55.600
+but it was able to follow my 4x4 grid instruction&nbsp;
+in the prompt. Whereas for Nano Banana Pro,&nbsp;&nbsp;
+
+00:06:55.600 --> 00:07:01.120
+it did not give me a 4x4 grid, but it got casc. So&nbsp;
+there's pros and cons to each. All right, here's&nbsp;&nbsp;
+
+00:07:01.120 --> 00:07:05.840
+another cool test on its world understanding.&nbsp;
+Here I got to make a highresolution where's Waldo&nbsp;&nbsp;
+
+00:07:05.840 --> 00:07:10.960
+image. It should be very complex and filled with&nbsp;
+meme characters. Waldo should be hidden somewhere&nbsp;&nbsp;
+
+00:07:10.960 --> 00:07:16.560
+in the image. So here's what we got from Nano&nbsp;
+Banana 2. You can see a ton of meme characters in&nbsp;&nbsp;
+
+00:07:16.560 --> 00:07:22.880
+this image, including this rainbow cat plus Doge&nbsp;
+over here. Meme coins, plus all these different&nbsp;&nbsp;
+
+00:07:22.880 --> 00:07:28.880
+meme characters. This is really cool. And it&nbsp;
+did insert Waldo in the photo, although he isn't&nbsp;&nbsp;
+
+00:07:28.880 --> 00:07:33.920
+really hidden. And then I guess we have an extra&nbsp;
+Waldo clone here, which isn't really correct,&nbsp;&nbsp;
+
+00:07:33.920 --> 00:07:38.320
+but anyways, that is Nano Banana 2. You can see&nbsp;
+that it has a really good world understanding&nbsp;&nbsp;
+
+00:07:38.320 --> 00:07:43.760
+of all these meme characters. And then here's&nbsp;
+what we got from Nano Banana Pro. Also really&nbsp;&nbsp;
+
+00:07:43.760 --> 00:07:49.120
+impressive. And it did insert Waldo somewhere&nbsp;
+in the image. So I would say both of these&nbsp;&nbsp;
+
+00:07:49.120 --> 00:07:55.600
+are okay. But in terms of the quality and how&nbsp;
+similar it is to an actual Where's Waldo image,&nbsp;&nbsp;
+
+00:07:55.600 --> 00:08:00.880
+I would have to give the point to Nano Banana Pro.&nbsp;
+This looks a lot more detailed and complex and it&nbsp;&nbsp;
+
+00:08:00.880 --> 00:08:05.200
+resembles a Where's Waldo image a lot more. Let&nbsp;
+me know in the comments what you think. All right,&nbsp;&nbsp;
+
+00:08:05.200 --> 00:08:09.920
+here's another really tricky prompt, which&nbsp;
+I don't expect it to get 100% correct. So,&nbsp;&nbsp;
+
+00:08:09.920 --> 00:08:14.800
+here's a grid of the six most endangered frogs in&nbsp;
+the world with their scientific name and a short&nbsp;&nbsp;
+
+00:08:14.800 --> 00:08:20.320
+description at the bottom of each photo. So, here&nbsp;
+is what I got from Nano Banana 2. The first one&nbsp;&nbsp;
+
+00:08:20.320 --> 00:08:25.600
+it gave me is a mountain chicken frog. I have not&nbsp;
+heard of this frog. This looks super normal to me,&nbsp;&nbsp;
+
+00:08:25.600 --> 00:08:30.080
+but let me just Google its scientific name&nbsp;
+really quickly. And would you look at that?&nbsp;&nbsp;
+
+00:08:30.080 --> 00:08:36.080
+There is a leptodactylus phallax frog and it&nbsp;
+is called the mountain chicken frog and it is&nbsp;&nbsp;
+
+00:08:36.080 --> 00:08:41.280
+critically endangered and it does look like this.&nbsp;
+And then next up we have this Panameanian golden&nbsp;&nbsp;
+
+00:08:41.280 --> 00:08:46.720
+frog. Let me again Google this really quickly. And&nbsp;
+here's our result. It does look like this. It is&nbsp;&nbsp;
+
+00:08:46.720 --> 00:08:52.400
+called the Panameanian golden frog. And this is&nbsp;
+critically endangered and possibly extinct in the&nbsp;&nbsp;
+
+00:08:52.400 --> 00:08:57.600
+wild, which is very sad. But there you go. This&nbsp;
+is also correct. Now, next one, we have this ticky&nbsp;&nbsp;
+
+00:08:57.600 --> 00:09:03.360
+kaka water frog, which looks like Oh my god, what&nbsp;
+is it doing? Anyways, it should look something&nbsp;&nbsp;
+
+00:09:03.360 --> 00:09:08.080
+like this, I guess. Now, this is endangered. It's&nbsp;
+not critically endangered. I'm not sure if it's&nbsp;&nbsp;
+
+00:09:08.080 --> 00:09:13.360
+like part of the top 10 most endangered frogs&nbsp;
+out there. I would say the photo doesn't look&nbsp;&nbsp;
+
+00:09:13.360 --> 00:09:20.640
+exactly like the real thing. And then next we have&nbsp;
+this golden Mantela frog which indeed exists and&nbsp;&nbsp;
+
+00:09:20.640 --> 00:09:26.320
+pretty cool. It has a golden form and a red form.&nbsp;
+It has an extremely restricted distribution and&nbsp;&nbsp;
+
+00:09:26.320 --> 00:09:32.800
+so here it lists it as endangered. So apparently&nbsp;
+it's only found in this tiny part of Madagascar.&nbsp;&nbsp;
+
+00:09:32.800 --> 00:09:37.520
+Pretty crazy. So this does look correct. And&nbsp;
+then we have Archie's frog from New Zealand.&nbsp;&nbsp;
+
+00:09:37.520 --> 00:09:42.560
+And here's what it looks like in real life. And&nbsp;
+this is critically endangered. So, I guess going&nbsp;&nbsp;
+
+00:09:42.560 --> 00:09:46.800
+back to this photo from Nanopanana, it looks kind&nbsp;
+of similar to the real thing. I wouldn't say it's&nbsp;&nbsp;
+
+00:09:46.800 --> 00:09:53.200
+like 100% correct. And then finally, we have this&nbsp;
+Kihanzi spray toad, which looks like this. And&nbsp;&nbsp;
+
+00:09:53.200 --> 00:09:59.360
+this is extinct in the wild. Very sad. Again, I&nbsp;
+wouldn't say this looks like the real thing. Here&nbsp;&nbsp;
+
+00:09:59.360 --> 00:10:04.800
+are some additional photos. The real frog looks a&nbsp;
+lot more yellow. So, I would say it got like the&nbsp;&nbsp;
+
+00:10:04.800 --> 00:10:09.760
+descriptions and the names correct, but in terms&nbsp;
+of the photos, it's not that good. And I don't&nbsp;&nbsp;
+
+00:10:09.760 --> 00:10:14.080
+expect it to get this correct. This is a really&nbsp;
+tricky prompt because an AI model needs a lot&nbsp;&nbsp;
+
+00:10:14.080 --> 00:10:19.760
+of existing data to know and generate that thing.&nbsp;
+But if we have these critically endangered species&nbsp;&nbsp;
+
+00:10:19.760 --> 00:10:24.160
+with only a few photos, then it's really hard for&nbsp;
+an AI to actually understand and generate this&nbsp;&nbsp;
+
+00:10:24.160 --> 00:10:29.440
+from scratch. Anyways, here is the generation from&nbsp;
+NanoPanana Pro. And interestingly, it gave me like&nbsp;&nbsp;
+
+00:10:29.440 --> 00:10:33.760
+four different frogs compared to the generation&nbsp;
+from Nano Banana 2. So, this panameanian golden&nbsp;&nbsp;
+
+00:10:33.760 --> 00:10:39.680
+frog we've gone over before. And then we have this&nbsp;
+cycinillaa Andes frog which apparently is so rare&nbsp;&nbsp;
+
+00:10:39.680 --> 00:10:44.480
+that there's not even any information about this.&nbsp;
+And then we have this midwife toad which looks&nbsp;&nbsp;
+
+00:10:44.480 --> 00:10:49.680
+like this and this is endangered and it's only&nbsp;
+found in small parts of this tiny island somewhere&nbsp;&nbsp;
+
+00:10:49.680 --> 00:10:54.560
+in the world. Now I wouldn't say this image looks&nbsp;
+exactly like the real thing. So this is wrong. And&nbsp;&nbsp;
+
+00:10:54.560 --> 00:11:00.000
+then we have this Alcatraz snouted tree frog which&nbsp;
+is critically endangered and it looks something&nbsp;&nbsp;
+
+00:11:00.000 --> 00:11:04.720
+like this. I would say it's pretty close. And then&nbsp;
+this one we've gone over already. And then we have&nbsp;&nbsp;
+
+00:11:04.720 --> 00:11:09.680
+this Hamilton's frog which looks like this.&nbsp;
+And apparently this is vulnerable globally but&nbsp;&nbsp;
+
+00:11:09.680 --> 00:11:14.880
+nationally critical. And it's only found in like&nbsp;
+these small islands in New Zealand. Pretty crazy.&nbsp;&nbsp;
+
+00:11:14.880 --> 00:11:19.840
+Now it looks something like this. So again, it's&nbsp;
+not like entirely correct, but it's pretty close.&nbsp;&nbsp;
+
+00:11:19.840 --> 00:11:23.760
+Anyways, it's a tough call here. Let me know in&nbsp;
+the comments which one you prefer. Now the awesome&nbsp;&nbsp;
+
+00:11:23.760 --> 00:11:28.720
+thing about Nano Banana Pro is you can upload&nbsp;
+multiple images and get it to edit those images.&nbsp;&nbsp;
+
+00:11:28.720 --> 00:11:33.120
+So here I'm testing to see if it can help me do&nbsp;
+homework. Here, I'm going to upload this worksheet&nbsp;&nbsp;
+
+00:11:33.120 --> 00:11:38.320
+of an animal cell. And for the prompt, I got to&nbsp;
+fill in the blanks and use messy handwriting so&nbsp;&nbsp;
+
+00:11:38.320 --> 00:11:44.320
+it looks like I actually did it. So, here's what I&nbsp;
+got from both models. Here's Nano Banana 2. And as&nbsp;&nbsp;
+
+00:11:44.320 --> 00:11:50.560
+you can see, it can get some stuff correct, but&nbsp;
+not all of them. So, for example, mitochondri.&nbsp;&nbsp;
+
+00:11:50.560 --> 00:11:55.680
+And then cell membrane, it also got correct.&nbsp;
+Same with cytoplasm, GG apparatus, and then&nbsp;&nbsp;
+
+00:11:55.680 --> 00:12:01.440
+rough endopplasmic reticulum, it also got correct.&nbsp;
+However, it also labeled some of them completely&nbsp;&nbsp;
+
+00:12:01.440 --> 00:12:06.640
+wrong. So, for example, this one here should be&nbsp;
+the nucleus, not the nucleololis. And then this&nbsp;&nbsp;
+
+00:12:06.640 --> 00:12:11.760
+one here should be the nucleololis, not the rough&nbsp;
+ER. And then here's what I got from the previous&nbsp;&nbsp;
+
+00:12:11.760 --> 00:12:17.840
+Nano Banana Pro. And I would say it got even more&nbsp;
+stuff wrong. So, for example, here it labeled the&nbsp;&nbsp;
+
+00:12:17.840 --> 00:12:22.800
+cell membrane to be the nucleololis, which is just&nbsp;
+absolutely horrible. And then here, this should&nbsp;&nbsp;
+
+00:12:22.800 --> 00:12:27.680
+be the cytoplasm, but it labeled it the cell&nbsp;
+membrane. In terms of having the fewest errors, I&nbsp;&nbsp;
+
+00:12:27.680 --> 00:12:33.520
+would say Nano Banana 2 did a better job. However,&nbsp;
+note that for some strange reason, it turned this&nbsp;&nbsp;
+
+00:12:33.520 --> 00:12:39.040
+into like a photo copy. This looks like a photo&nbsp;
+of this worksheet, whereas for Nano Banana Pro,&nbsp;&nbsp;
+
+00:12:39.040 --> 00:12:44.240
+it retained the original white background. All&nbsp;
+right, maybe biology was too hard for it. So,&nbsp;&nbsp;
+
+00:12:44.240 --> 00:12:50.480
+here I uploaded this math assignment and also got&nbsp;
+it to solve these problems with messy handwriting.&nbsp;&nbsp;
+
+00:12:50.480 --> 00:12:56.080
+And here's what I got from Nano Banana 2. You can&nbsp;
+see it does look like I wrote this. It even added&nbsp;&nbsp;
+
+00:12:56.080 --> 00:13:00.720
+this part over here as if I cross this out to&nbsp;
+make this look more natural. Pretty sneaky. And&nbsp;&nbsp;
+
+00:13:00.720 --> 00:13:06.160
+then here is Nano Banana Pro's generation. This&nbsp;
+is also really good. This also does look like the&nbsp;&nbsp;
+
+00:13:06.160 --> 00:13:11.440
+answers are handwritten. However, it got a lot&nbsp;
+more errors with this generation. For example,&nbsp;&nbsp;
+
+00:13:11.440 --> 00:13:17.120
+here it repeated this divide by 4.8 twice, which&nbsp;
+is not correct. We only need one line. And then&nbsp;&nbsp;
+
+00:13:17.120 --> 00:13:22.960
+over here, this is also wrong. Whereas you can&nbsp;
+see for Nanoban 2, it's actually able to show my&nbsp;&nbsp;
+
+00:13:22.960 --> 00:13:27.360
+work a lot more correctly. So, in this instance,&nbsp;
+I would have to give the points to Nano Banana&nbsp;&nbsp;
+
+00:13:27.360 --> 00:13:32.160
+2. I've been covering the best image and video&nbsp;
+generators, and it can get very overwhelming.&nbsp;&nbsp;
+
+00:13:32.160 --> 00:13:37.600
+Fortunately, Higsfield, the sponsor of this video,&nbsp;
+brings everything together all in one place. You&nbsp;&nbsp;
+
+00:13:37.600 --> 00:13:43.120
+can use the best image and video models all in one&nbsp;
+integrated platform. They're usually the first to&nbsp;&nbsp;
+
+00:13:43.120 --> 00:13:48.160
+release models when they come out, and Nano Banana&nbsp;
+2 is already available on their platform. Simply&nbsp;&nbsp;
+
+00:13:48.160 --> 00:13:54.640
+click on image and then Nanobanana 2 to start&nbsp;
+creating. And they just launched Higsfield Soul 2,&nbsp;&nbsp;
+
+00:13:54.640 --> 00:13:59.440
+their own foundation image model built&nbsp;
+specifically for creative, fashionware,&nbsp;&nbsp;
+
+00:13:59.440 --> 00:14:04.160
+culture native image generation. This isn't&nbsp;
+just a general purpose image generator. Soul&nbsp;&nbsp;
+
+00:14:04.160 --> 00:14:09.360
+2 is designed to give you aesthetically awesome&nbsp;
+images. Let me show you how this actually works.&nbsp;&nbsp;
+
+00:14:09.360 --> 00:14:14.880
+So inside Higsfield under image, simply click&nbsp;
+on soul 2. And here you can just enter a text&nbsp;&nbsp;
+
+00:14:14.880 --> 00:14:20.000
+prompt and then also select the aspect ratio&nbsp;
+and the resolution. Or if you want more control,&nbsp;&nbsp;
+
+00:14:20.000 --> 00:14:24.960
+Soul Reference lets you upload an image and&nbsp;
+generate new variations that feel like they&nbsp;&nbsp;
+
+00:14:24.960 --> 00:14:30.720
+belong to the same visual world. And it doesn't&nbsp;
+stop there. Because Soul 2.0 is built to be the&nbsp;&nbsp;
+
+00:14:30.720 --> 00:14:36.080
+foundation of your creative process, it pairs&nbsp;
+really well with other tools inside Higsfield&nbsp;&nbsp;
+
+00:14:36.080 --> 00:14:41.680
+like Nano Banana Pro. The idea is simple. Generate&nbsp;
+your image in Soul 2.0 first. Nail the lighting,&nbsp;&nbsp;
+
+00:14:41.680 --> 00:14:45.840
+composition, and aesthetic, and then bring it&nbsp;
+into Nano Banana Pro for editing. The stronger&nbsp;&nbsp;
+
+00:14:45.840 --> 00:14:52.400
+your bass, the better everything downstream looks.&nbsp;
+Sold 2.0 currently comes with 20 curated presets,&nbsp;&nbsp;
+
+00:14:52.400 --> 00:14:58.880
+things like Y2K, editorial, street style, old&nbsp;
+smartphone, and more. These are fully trained&nbsp;&nbsp;
+
+00:14:58.880 --> 00:15:04.080
+aesthetic directions that act as creative starting&nbsp;
+points. It understands fashion culture, camera&nbsp;&nbsp;
+
+00:15:04.080 --> 00:15:09.200
+mediums, and even posing. You get more natural&nbsp;
+body language, better physics, and editorial&nbsp;&nbsp;
+
+00:15:09.200 --> 00:15:15.840
+quality results. Try Nano Banana 2, Soul 2.0, know&nbsp;
+and other top models on Higsfield today. Click&nbsp;&nbsp;
+
+00:15:15.840 --> 00:15:20.960
+the link in the description below. All right,&nbsp;
+here's an even harder test. So, I uploaded this&nbsp;&nbsp;
+
+00:15:20.960 --> 00:15:25.120
+image and I got it to put this image into four&nbsp;
+quadrants. For the first quadrant, it needs to&nbsp;&nbsp;
+
+00:15:25.120 --> 00:15:30.080
+be an infrared thermal map of the photo. For the&nbsp;
+second quadrant, it should be a segmentation map&nbsp;&nbsp;
+
+00:15:30.080 --> 00:15:34.400
+of the photo. For the third quadrant, it should&nbsp;
+be a depth map. And for the fourth quadrant,&nbsp;&nbsp;
+
+00:15:34.400 --> 00:15:39.280
+the photo should have inverted colors. So, first&nbsp;
+of all, here's what I got from Nano Banana 2. For&nbsp;&nbsp;
+
+00:15:39.280 --> 00:15:45.200
+this infrared map, it's actually pretty good.&nbsp;
+So indeed her skin should be warmer than for&nbsp;&nbsp;
+
+00:15:45.200 --> 00:15:51.040
+example her dress plus this sofa. But she should&nbsp;
+also be emitting heat. So like parts of the sofa&nbsp;&nbsp;
+
+00:15:51.040 --> 00:15:55.840
+where she's touching should be more yellow which&nbsp;
+is indeed correct. I'm not sure why it's making&nbsp;&nbsp;
+
+00:15:55.840 --> 00:16:01.040
+her eyes and then her knees here white though. So&nbsp;
+the white part is an error for the windows in the&nbsp;&nbsp;
+
+00:16:01.040 --> 00:16:06.160
+background. They should be a lot cooler and that's&nbsp;
+why these are darker in color. So the infrared map&nbsp;&nbsp;
+
+00:16:06.160 --> 00:16:11.920
+is like 80% correct. Here is the segmentation map.&nbsp;
+This is pretty good. Here's the depth map. This&nbsp;&nbsp;
+
+00:16:11.920 --> 00:16:17.440
+also looks pretty good. And then here is the&nbsp;
+inverted pictures. So if I invert the colors,&nbsp;&nbsp;
+
+00:16:17.440 --> 00:16:23.040
+while this is close, these aren't the original&nbsp;
+colors of the photo, which should look like this.&nbsp;&nbsp;
+
+00:16:23.040 --> 00:16:28.640
+So again, not entirely correct here. And then here&nbsp;
+is Nano Banana Pro's generation. For the heat map,&nbsp;&nbsp;
+
+00:16:28.640 --> 00:16:34.720
+it's pretty good. However, one slight error here&nbsp;
+is that maybe the dress should actually be lighter&nbsp;&nbsp;
+
+00:16:34.720 --> 00:16:39.680
+in color. So in that case, I would have to give&nbsp;
+the point more to Nano Banana 2. And then here's&nbsp;&nbsp;
+
+00:16:39.680 --> 00:16:44.400
+the segmentation map. Here's the depth map. And&nbsp;
+then here is the inversion. Let me invert the&nbsp;&nbsp;
+
+00:16:44.400 --> 00:16:49.440
+colors again. And here is the original photos.&nbsp;
+So again, not entirely correct here. Anyways,&nbsp;&nbsp;
+
+00:16:49.440 --> 00:16:53.600
+this is a really tricky prompt. Let me know in the&nbsp;
+comments which one you prefer. All right. Next,&nbsp;&nbsp;
+
+00:16:53.600 --> 00:16:59.760
+here's a tricky prompt that no image generator has&nbsp;
+gotten correct so far. So, the prompt is 11:15 on&nbsp;&nbsp;
+
+00:16:59.760 --> 00:17:06.720
+a clock and a wine glass filled to the top. For&nbsp;
+Nano Banana 2, it's not really clear which hand is&nbsp;&nbsp;
+
+00:17:06.720 --> 00:17:11.920
+the minute hand and which is the hour hand. So, I&nbsp;
+mean, at least to me, this one looks shorter. So,&nbsp;&nbsp;
+
+00:17:11.920 --> 00:17:19.040
+it's like showing 255 instead of 11:15. And then&nbsp;
+the wine glass is also not filled to the top. Very&nbsp;&nbsp;
+
+00:17:19.040 --> 00:17:23.840
+disappointing. And then here is Nano Banana Pro.&nbsp;
+The wine glass is filled to the top. However, it&nbsp;&nbsp;
+
+00:17:23.840 --> 00:17:30.000
+failed to generate 11:15. It was very close, but&nbsp;
+the hourhand should be a quarter past 11 and not&nbsp;&nbsp;
+
+00:17:30.000 --> 00:17:34.560
+exactly at 11. So, both are not good, but in terms&nbsp;
+of the least amount of errors, I would have to&nbsp;&nbsp;
+
+00:17:34.560 --> 00:17:40.800
+give the point to NanoBanana Pro. All right. Next,&nbsp;
+I uploaded this manga page and got it to colorize&nbsp;&nbsp;
+
+00:17:40.800 --> 00:17:46.880
+and translate this to Chinese. So, here's what I&nbsp;
+got from Nano Banana 2. The Chinese looks perfect,&nbsp;&nbsp;
+
+00:17:46.880 --> 00:17:53.280
+and the colorization is also really good. It's&nbsp;
+also able to detect that this dude is called Red&nbsp;&nbsp;
+
+00:17:53.280 --> 00:17:59.440
+Hair Shanks and then color this guy's hair red.&nbsp;
+And then here is Nano Banana Pro. It also got&nbsp;&nbsp;
+
+00:17:59.440 --> 00:18:03.760
+the Chinese and the coloration correct. But you&nbsp;
+know, an interesting difference here is that for&nbsp;&nbsp;
+
+00:18:03.760 --> 00:18:09.920
+Nano Banana 2, it decided to translate this into&nbsp;
+traditional Chinese, whereas for the Pro version,&nbsp;&nbsp;
+
+00:18:09.920 --> 00:18:15.200
+it translated it into simplified Chinese. Very&nbsp;
+interesting. All right. Next, here's a test on&nbsp;&nbsp;
+
+00:18:15.200 --> 00:18:20.960
+its spatial understanding. So, I uploaded this&nbsp;
+floor plan, and here's my prompt. Based on this&nbsp;&nbsp;
+
+00:18:20.960 --> 00:18:26.640
+floor plan, generate a photo of this room from the&nbsp;
+main door. So, not only does it need to analyze&nbsp;&nbsp;
+
+00:18:26.640 --> 00:18:32.000
+the spatial configuration of this room, but it&nbsp;
+also needs to understand where the main door is,&nbsp;&nbsp;
+
+00:18:32.000 --> 00:18:37.520
+which is over here, and generate a photo from&nbsp;
+this corner. Now, here's what I got from Nano&nbsp;&nbsp;
+
+00:18:37.520 --> 00:18:42.480
+Banana 2. Unfortunately, this is not correct.&nbsp;
+There are some errors with this. For example,&nbsp;&nbsp;
+
+00:18:42.480 --> 00:18:47.680
+the bathroom should be in this corner and not&nbsp;
+over here. And then there should be sofas and&nbsp;&nbsp;
+
+00:18:47.680 --> 00:18:53.280
+plants over here in the foreground instead of&nbsp;
+on this left wall. The piano is also facing the&nbsp;&nbsp;
+
+00:18:53.280 --> 00:18:58.240
+wrong direction. It should be facing the lower&nbsp;
+right corner instead. So, a lot of errors with&nbsp;&nbsp;
+
+00:18:58.240 --> 00:19:03.280
+this generation. It does not look like the floor&nbsp;
+plans configuration at all. And then here is Nano&nbsp;&nbsp;
+
+00:19:03.280 --> 00:19:09.200
+Banana Pros generation. It was able to get the&nbsp;
+configuration of things more correct, but this&nbsp;&nbsp;
+
+00:19:09.200 --> 00:19:15.360
+wasn't a photo of the room from the main door over&nbsp;
+here. So, ideally, I would wanted to make a photo&nbsp;&nbsp;
+
+00:19:15.360 --> 00:19:21.040
+of this room taken from this corner. However,&nbsp;
+it did get more details correct. For example,&nbsp;&nbsp;
+
+00:19:21.040 --> 00:19:26.640
+the round bed plus the piano should be facing the&nbsp;
+lower right corner. Plus, the sofas and plants&nbsp;&nbsp;
+
+00:19:26.640 --> 00:19:32.320
+here are also correct according to this original&nbsp;
+floor plan. So, in terms of having fewer errors,&nbsp;&nbsp;
+
+00:19:32.320 --> 00:19:36.640
+I would have to give the point to Nano Banana&nbsp;
+Pro. Now, here's a test on the reverse. Here,&nbsp;&nbsp;
+
+00:19:36.640 --> 00:19:42.000
+I got to make a 2D floor plan of this room. And&nbsp;
+then I uploaded this image. Here's what I got from&nbsp;&nbsp;
+
+00:19:42.000 --> 00:19:48.720
+Nano Banana 2 and everything looks pretty good.&nbsp;
+the configurations of the plants and the sofas&nbsp;&nbsp;
+
+00:19:48.720 --> 00:19:53.600
+plus the TV screen. Everything looked correct&nbsp;
+to me. Now, interestingly, for Nano Banana Pro,&nbsp;&nbsp;
+
+00:19:53.600 --> 00:19:59.280
+this one had more errors. For example, it added&nbsp;
+two additional sofas here which did not exist&nbsp;&nbsp;
+
+00:19:59.280 --> 00:20:04.560
+in the original photo. Plus, the plants in the&nbsp;
+foreground are also not correct. So, here I would&nbsp;&nbsp;
+
+00:20:04.560 --> 00:20:10.800
+have to give the point to Nano Banana 2. Now, Nano&nbsp;
+Banana is also extremely good in converting data&nbsp;&nbsp;
+
+00:20:10.800 --> 00:20:17.120
+tables into charts. So, for example, I can just&nbsp;
+upload this data table and then prompt it to turn&nbsp;&nbsp;
+
+00:20:17.120 --> 00:20:21.920
+it into a nice chart. You can decide the best type&nbsp;
+of chart to use. And here's what I got from Nano&nbsp;&nbsp;
+
+00:20:21.920 --> 00:20:26.880
+Banana 2. And the numbers are actually correct.&nbsp;
+So, if I compare like the first two bars here,&nbsp;&nbsp;
+
+00:20:26.880 --> 00:20:32.960
+the total sample size is 88, which is&nbsp;
+correct. And then we have 5 50 28 2 and 3,&nbsp;&nbsp;
+
+00:20:32.960 --> 00:20:38.720
+which is what we have here. And then for&nbsp;
+this RR percent, it's 62.5, which is correct.&nbsp;&nbsp;
+
+00:20:38.720 --> 00:20:45.920
+And then for fullf fox the sample size is 52 which&nbsp;
+is correct. Then we have 2 26 212 and 1 which are&nbsp;&nbsp;
+
+00:20:45.920 --> 00:20:52.480
+correct over here. And then we have 53.8 which is&nbsp;
+the RR percent which is correct. It even added a&nbsp;&nbsp;
+
+00:20:52.480 --> 00:20:58.000
+nice legend at the bottom plus some nice styling&nbsp;
+for this chart. However, if you look at the third&nbsp;&nbsp;
+
+00:20:58.000 --> 00:21:03.200
+row then here is where it starts to fall apart.&nbsp;
+So here the sample size is 7 which is correct but&nbsp;&nbsp;
+
+00:21:03.200 --> 00:21:10.160
+then it should be 2 3 1 0 1. However, as you can&nbsp;
+see here, the size of these bars are way too tall.&nbsp;&nbsp;
+
+00:21:10.160 --> 00:21:16.160
+So, this should be way smaller in size. Now, if&nbsp;
+you compare this same bar with Nano Banana Pro,&nbsp;&nbsp;
+
+00:21:16.160 --> 00:21:21.600
+it actually got this correct. So, indeed, it&nbsp;
+should be 2 3 1 and 1. So, this is actually a lot&nbsp;&nbsp;
+
+00:21:21.600 --> 00:21:27.120
+better than Nano Banana 2. In terms of accuracy&nbsp;
+and the least amount of errors in this instance,&nbsp;&nbsp;
+
+00:21:27.120 --> 00:21:31.680
+I would have to give the points to Nano Banana&nbsp;
+Pro. All right, so that sums up my series of&nbsp;&nbsp;
+
+00:21:31.680 --> 00:21:36.480
+really challenging tests. Hopefully that gives you&nbsp;
+a sense of the strengths and weaknesses of Nano&nbsp;&nbsp;
+
+00:21:36.480 --> 00:21:41.680
+Banana 2 and how it compares with the previous&nbsp;
+version. Here are some additional examples from&nbsp;&nbsp;
+
+00:21:41.680 --> 00:21:46.720
+Google. Here we can get it to generate a flat lay&nbsp;
+infographic depicting the water cycle and it's&nbsp;&nbsp;
+
+00:21:46.720 --> 00:21:52.320
+able to generate this pretty much flawlessly. With&nbsp;
+both models of Nano Banana, you can input multiple&nbsp;&nbsp;
+
+00:21:52.320 --> 00:21:58.000
+reference images. So here they're inputting like&nbsp;
+14 reference images into the same photo and it's&nbsp;&nbsp;
+
+00:21:58.000 --> 00:22:04.080
+able to generate this very well. You can of course&nbsp;
+also use Nano Banana to crop or outpaint or change&nbsp;&nbsp;
+
+00:22:04.080 --> 00:22:10.000
+the aspect ratio of an existing photo. Next, let's&nbsp;
+go over the specs of Nano Banana 2 and why this is&nbsp;&nbsp;
+
+00:22:10.000 --> 00:22:15.920
+so good. First of all, note that Nano Banana 2&nbsp;
+is based off of Gemini 3.1 Flash, whereas Nano&nbsp;&nbsp;
+
+00:22:15.920 --> 00:22:21.600
+Banana Pro, the previous version, was based off&nbsp;
+of Gemini 3 Pro. There's pros and cons of each,&nbsp;&nbsp;
+
+00:22:21.600 --> 00:22:28.080
+right? For this one, it's the latest 3.1, which is&nbsp;
+better than 3.0, but it's also flash and not pro.&nbsp;&nbsp;
+
+00:22:28.080 --> 00:22:33.840
+So this is more designed for speed whereas the&nbsp;
+pro version is designed for quality. Now if you've&nbsp;&nbsp;
+
+00:22:33.840 --> 00:22:38.640
+been using Nano Banana Pro then definitely one&nbsp;
+of the main disadvantages is you have to wait a&nbsp;&nbsp;
+
+00:22:38.640 --> 00:22:44.400
+long time for it to generate an image. Whereas for&nbsp;
+this new Nano Banana 2, it can generate an image&nbsp;&nbsp;
+
+00:22:44.400 --> 00:22:50.320
+in only a few seconds. So it's way faster while&nbsp;
+having very similar quality and understanding.&nbsp;&nbsp;
+
+00:22:50.320 --> 00:22:55.840
+Here are some additional specs for your reference.&nbsp;
+So this can maintain character resemblance of up&nbsp;&nbsp;
+
+00:22:55.840 --> 00:23:03.200
+to five characters and the fidelity of up to 14&nbsp;
+objects in a single prompt. It also has enhanced&nbsp;&nbsp;
+
+00:23:03.200 --> 00:23:08.400
+instruction following as you can see from some of&nbsp;
+my tests. So it's really good at prompt adherence.&nbsp;&nbsp;
+
+00:23:08.400 --> 00:23:15.440
+You can generate photos in multiple aspect ratios&nbsp;
+and resolutions from 512 pixels all the way to 4K&nbsp;&nbsp;
+
+00:23:15.440 --> 00:23:21.680
+resolution. The really awesome thing about Nano&nbsp;
+Banana 2 is they've added four new aspect ratios.&nbsp;&nbsp;
+
+00:23:21.680 --> 00:23:28.800
+4:1, 8:1, and vice versa. So, this allows you to&nbsp;
+create some super long panoramic photos like this,&nbsp;&nbsp;
+
+00:23:28.800 --> 00:23:33.600
+which aren't possible with earlier versions of&nbsp;
+Nano Banana. Now, the awesome thing is they've&nbsp;&nbsp;
+
+00:23:33.600 --> 00:23:39.760
+released Nano Banana 2 already, and you can use it&nbsp;
+for free across Google's platforms right now. So,&nbsp;&nbsp;
+
+00:23:39.760 --> 00:23:45.600
+here it says if you're using the Gemini app, then&nbsp;
+Nano Banana 2 will replace Nano Banana Pro across&nbsp;&nbsp;
+
+00:23:45.600 --> 00:23:51.360
+the fasting and pro models. In other words, on&nbsp;
+the Gemini app, if you click on create image,&nbsp;&nbsp;
+
+00:23:51.360 --> 00:23:57.040
+it automatically uses the latest NanoBanana&nbsp;
+2 already. And apparently in AI mode,&nbsp;&nbsp;
+
+00:23:57.040 --> 00:24:02.000
+when you're using Google search, you also&nbsp;
+have access to Nano Banana 2. For example,&nbsp;&nbsp;
+
+00:24:02.000 --> 00:24:06.400
+if you're doing a Google search, well, you&nbsp;
+can click on this AI mode to basically pull&nbsp;&nbsp;
+
+00:24:06.400 --> 00:24:11.760
+up Gemini to answer the question for you. And&nbsp;
+then over here, you can prompt it further to,&nbsp;&nbsp;
+
+00:24:11.760 --> 00:24:17.520
+for example, generate an infographic or any other&nbsp;
+image from this topic. and it would proceed to use&nbsp;&nbsp;
+
+00:24:17.520 --> 00:24:23.760
+Nano Banana 2 to generate an image for you.&nbsp;
+So, here's what I got. How cool is that? So,&nbsp;&nbsp;
+
+00:24:23.760 --> 00:24:29.280
+you can get Gemini to do a Google search on a&nbsp;
+specific topic first and then get Nano Banana&nbsp;&nbsp;
+
+00:24:29.280 --> 00:24:34.640
+to create an image on your topic. Really cool.&nbsp;
+Everything is seamlessly integrated into this AI&nbsp;&nbsp;
+
+00:24:34.640 --> 00:24:40.800
+mode in Google search already. Now, in addition,&nbsp;
+you can also use this via Google's AI Studio. So,&nbsp;&nbsp;
+
+00:24:40.800 --> 00:24:45.760
+it's just a studio.google.com, which I'll link&nbsp;
+to in the description below. And here is where&nbsp;&nbsp;
+
+00:24:45.760 --> 00:24:51.440
+you can click on image generation and then use&nbsp;
+the new Nano Banana 2. Now here it says you do&nbsp;&nbsp;
+
+00:24:51.440 --> 00:24:57.600
+need to link a paid API key to access Nano&nbsp;
+Banana 2 via this AI studio platform. But&nbsp;&nbsp;
+
+00:24:57.600 --> 00:25:03.200
+the advantage of this is you can control a lot&nbsp;
+more settings like temperature, the aspect ratio,&nbsp;&nbsp;
+
+00:25:03.200 --> 00:25:08.000
+the resolution. Notice that this is up to 4K.&nbsp;
+Plus you can also control the thinking level&nbsp;&nbsp;
+
+00:25:08.000 --> 00:25:13.680
+as well as turn on grounding with Google search.&nbsp;
+So it can actually do a web search for accurate&nbsp;&nbsp;
+
+00:25:13.680 --> 00:25:18.880
+and relevant information before generating your&nbsp;
+image. So those are the main platforms where you&nbsp;&nbsp;
+
+00:25:18.880 --> 00:25:24.800
+can use the latest Nano Banana 2. Now how good is&nbsp;
+this compared to the other leading models? Well,&nbsp;&nbsp;
+
+00:25:24.800 --> 00:25:30.080
+as you can see from this independent leaderboard&nbsp;
+called artificial analysis, Nano Banana 2,&nbsp;&nbsp;
+
+00:25:30.080 --> 00:25:36.480
+at least the initial ELO score is actually ranked&nbsp;
+number one, at least for text to image, well above&nbsp;&nbsp;
+
+00:25:36.480 --> 00:25:42.320
+GPT Image 1.5 and Nano Banana Pro. And if you&nbsp;
+look at the API pricing of this, notice that&nbsp;&nbsp;
+
+00:25:42.320 --> 00:25:48.080
+this is like two times cheaper than Nano Banana&nbsp;
+Pro. So it's way cheaper and faster and on average&nbsp;&nbsp;
+
+00:25:48.080 --> 00:25:53.360
+you get a better quality generation. Now this is&nbsp;
+just the text to image leaderboard. Next, if you&nbsp;&nbsp;
+
+00:25:53.360 --> 00:25:59.520
+look at image editing, this is where you upload an&nbsp;
+image for it to edit further. Then interestingly,&nbsp;&nbsp;
+
+00:25:59.520 --> 00:26:05.520
+Nano Banana 2 actually ranks below Nano Banana&nbsp;
+Pro. And as I showed you from some of my tests,&nbsp;&nbsp;
+
+00:26:05.520 --> 00:26:11.360
+I also get a similar vibe. It's not as accurate,&nbsp;
+especially if you get it sueedit some really&nbsp;&nbsp;
+
+00:26:11.360 --> 00:26:17.280
+complex stuff with a lot of text or data. Anyways,&nbsp;
+that sums up my review of Nano Banana 2. This is&nbsp;&nbsp;
+
+00:26:17.280 --> 00:26:22.720
+currently one of the best models you can use right&nbsp;
+now, and this is way faster and cheaper than the&nbsp;&nbsp;
+
+00:26:22.720 --> 00:26:28.640
+previous Nano Banana Pro model. It's already out&nbsp;
+and free for you to use on the Gemini app. So,&nbsp;&nbsp;
+
+00:26:28.640 --> 00:26:32.880
+definitely give it a shot, and let me know in the&nbsp;
+comments what you think of it. What other cool&nbsp;&nbsp;
+
+00:26:32.880 --> 00:26:36.800
+stuff were you able to get it to do? Thanks&nbsp;
+for watching and if you enjoyed this video,&nbsp;&nbsp;
+
+00:26:36.800 --> 00:26:41.760
+remember to like and subscribe. And if you've&nbsp;
+made it to here, I've got a treat for you. I'm&nbsp;&nbsp;
+
+00:26:41.760 --> 00:26:49.840
+partnering with Nvidia to give away an RTX 5090&nbsp;
+GPU around their GTC 2026 event. With this, you&nbsp;&nbsp;
+
+00:26:49.840 --> 00:26:55.520
+can easily run AI tools locally on your computer.&nbsp;
+Here's how to enter. Simply click the link in the&nbsp;&nbsp;
+
+00:26:55.520 --> 00:27:03.040
+description to register and attend at least one&nbsp;
+GTC 2026 session, which will be on March 16th to&nbsp;&nbsp;
+
+00:27:03.040 --> 00:27:08.480
+19th. you can attend virtually or in person. Here&nbsp;
+are some of my favorites. Jensen Huang's keynote&nbsp;&nbsp;
+
+00:27:08.480 --> 00:27:15.440
+is an obvious one, but this one on humanoid robots&nbsp;
+at scale as well as this one on openw world models&nbsp;&nbsp;
+
+00:27:15.440 --> 00:27:21.120
+are also on my watch list. Again, make sure you&nbsp;
+sign up for GTC using the link in the description&nbsp;&nbsp;
+
+00:27:21.120 --> 00:27:25.680
+below and then afterwards fill out the form&nbsp;
+and you're good to go. It's totally free to
+

@@ -1,11 +1,14 @@
-
+from pathlib import Path
 from playwright.sync_api import sync_playwright
 import json
 import time
 import re
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+COOKIE_FILE = PROJECT_ROOT / 'config' / 'x_cookies.json'
+
 ACCOUNTS = [
-    'OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'DeepSeek_AI', 'sama', 
+    'OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'DeepSeek_AI', 'sama',
     'rowancheung', 'SmokeAwayyy', 'bindureddy', 'AndrewYNg', 'karpathy'
 ]
 
@@ -14,7 +17,7 @@ with sync_playwright() as p:
     context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
     try:
-        with open('/a0/usr/projects/x-manage/config/x_cookies.json', 'r') as f:
+        with open(COOKIE_FILE, 'r', encoding='utf-8') as f:
             cookies = json.load(f)
         context.add_cookies(cookies)
     except Exception as e:
@@ -30,7 +33,6 @@ with sync_playwright() as p:
             page.wait_for_selector('[data-testid="primaryColumn"]', timeout=15000)
             time.sleep(3)
 
-            # Find a button with exact text "Follow"
             follow_btn = page.locator('button[data-testid$="-follow"]').first
             if follow_btn.count() == 0:
                 follow_btn = page.get_by_role("button", name=re.compile(r"^Follow( @.*)?$")).first

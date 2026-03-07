@@ -1,12 +1,14 @@
-
-import sys
 import time
 import json
 import re
+from pathlib import Path
 from playwright.sync_api import sync_playwright
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+COOKIE_FILE = PROJECT_ROOT / 'config' / 'x_cookies.json'
+
 ACCOUNTS = [
-    'OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'DeepSeek_AI', 'sama', 
+    'OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'DeepSeek_AI', 'sama',
     'rowancheung', 'SmokeAwayyy', 'bindureddy', 'AndrewYNg', 'karpathy'
 ]
 
@@ -17,7 +19,7 @@ with sync_playwright() as p:
         user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     )
     try:
-        with open('/a0/usr/projects/x-manage/config/x_cookies.json', 'r') as f:
+        with open(COOKIE_FILE, 'r', encoding='utf-8') as f:
             context.add_cookies(json.load(f))
     except Exception as e:
         print(f"Cookie error: {e}")
@@ -39,11 +41,11 @@ with sync_playwright() as p:
             if follow_btn.count() > 0 and follow_btn.is_visible():
                 follow_btn.click()
                 print(f"[+] Followed @{account}. Waiting 15 seconds to avoid bot detection...")
-                time.sleep(15)  # 15 SECOND DELAY
+                time.sleep(15)
                 followed += 1
             else:
                 print(f"[-] Already following or button hidden for @{account}")
-        except Exception as e:
+        except Exception:
             print(f"[!] Error on {account}: Timeout/Page Load Failed.")
 
     print(f"\nSlow Auto-Follow Complete. Total new follows: {followed}")

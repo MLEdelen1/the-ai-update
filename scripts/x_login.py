@@ -4,8 +4,10 @@ import json
 from pathlib import Path
 from playwright.async_api import async_playwright
 
-COOKIE_FILE = Path("/a0/usr/projects/x-manage/config/x_cookies.json")
-SD = Path("/a0/usr/projects/x-manage/data")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+COOKIE_FILE = PROJECT_ROOT / "config" / "x_cookies.json"
+SD = PROJECT_ROOT / "data"
+SD.mkdir(parents=True, exist_ok=True)
 
 async def login():
     async with async_playwright() as p:

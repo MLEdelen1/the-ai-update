@@ -14,6 +14,8 @@ import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
+from src.x_runtime import resolve_api_credentials, x_api_repo_config_file
+
 try:
     import httpx
 except ImportError:
@@ -38,18 +40,17 @@ class XAPIClient:
         - access_token_secret
         - bearer_token (for app-only auth)
         """
-        self.config_path = config_path or os.path.join(
-            os.path.dirname(__file__), "..", "config", "x_api_config.json"
-        )
+        self.config_path = str(config_path or x_api_repo_config_file())
         self.config = self._load_config()
         self.rate_limits = {}
         self.client = httpx.Client(timeout=30.0)
 
     def _load_config(self) -> dict:
-        """Load API configuration from file."""
-        if os.path.exists(self.config_path):
-            with open(self.config_path, "r") as f:
-                return json.load(f)
+        """Load API configuration from resolution order: env -> local secret -> repo config."""
+        creds, source = resolve_api_credentials()
+        if creds:
+            creds["_source"] = source
+            return creds
         return {}
 
     def save_config(self, config: dict):
@@ -157,7 +158,7 @@ class XAPIClient:
         self._update_rate_limits("post_tweet", response.headers)
 
         if response.status_code == 201:
-            return {"success": True, "data": response.json()}
+            return {"success": True, "data": response.json(), "status": response.status_code}
         return {"success": False, "error": response.text, "status": response.status_code}
 
     def post_thread(self, tweets: list) -> dict:
@@ -180,7 +181,11 @@ class XAPIClient:
         url = f"{self.BASE_URL}/tweets/{tweet_id}"
         headers = self._get_oauth_headers("DELETE", url)
         response = self.client.delete(url, headers=headers)
-        return {"success": response.status_code == 200, "data": response.json()}
+        try:
+            body = response.json()
+        except Exception:
+            body = {"raw": response.text}
+        return {"success": response.status_code == 200, "data": body, "status": response.status_code}
 
     def get_me(self) -> dict:
         """Get authenticated user info."""
