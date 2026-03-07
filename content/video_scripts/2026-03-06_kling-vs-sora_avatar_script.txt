@@ -1,0 +1,19 @@
+HOOK (0-5s)
+Kling 3.0 versus Sora 2 Pro just became a real business decision, not a hype debate.
+
+BODY (5-35s)
+Here’s the short version. Teams are seeing faster first cuts when they run a side-by-side workflow instead of committing to one model too early.
+The key shift is not “which model is best overall.”
+It’s which model wins for your exact job: speed, quality, and cost per finished output after edits.
+One small media team cut edit time from two days to one afternoon by using AI video for first drafts, then refining only the best outputs.
+
+ACTION PLAN (35-50s)
+Do this this week:
+Pick one repeatable video workflow,
+Test Kling and Sora on the same prompt pack for five days,
+Track quality, turnaround time, and total cost per usable result,
+Then keep the winner and document it.
+
+CTA (50-60s)
+Full breakdown is live now on The AI Update.
+Grab the free Zero-Dollar AI Toolkit in the link and use the exact workflow prompts.
