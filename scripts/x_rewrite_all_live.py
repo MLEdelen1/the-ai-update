@@ -183,49 +183,65 @@ def build_rewrite(original_text: str, article_title: str = "", article_summary: 
     original_no_tags = HASHTAG_RE.sub("", original_no_urls)
     original_no_tags = _clean_text(original_no_tags)
 
-    title = _clean_text(article_title) or _first_sentence(original_no_tags, max_len=70) or "AI update"
-    summary = _clean_text(article_summary) or _first_sentence(original_no_tags, max_len=90)
+    title = _clean_text(article_title) or _first_sentence(original_no_tags, max_len=78) or "AI update"
+    summary = _clean_text(article_summary) or _first_sentence(original_no_tags, max_len=140)
 
-    hook = _clip(f"{title}: what changed now", 40)
-    snippet = _first_sentence(summary, max_len=34) or "Key update you can use today."
-    insight_1 = _clip(f"Snippet: {snippet}", 34)
-    insight_2 = _clip("Why: faster output, fewer misses.", 30)
-    insight_3 = _clip("Test one workflow this week.", 30)
+    bits = [b.strip() for b in SENTENCE_SPLIT_RE.split(summary) if b.strip()]
+    key_bit = _clip(bits[0] if bits else summary, 78) or "A major shift just landed."
 
-    seen = {_normalize_line(hook)}
-    uniq = []
-    for ln in [insight_1, insight_2, insight_3]:
-        norm = _normalize_line(ln)
-        if norm and norm not in seen:
-            uniq.append(ln)
-            seen.add(norm)
-    while len(uniq) < 3:
-        fallback = ["Signal is clear.", "Move early.", "Ship one test."][len(uniq)]
-        if _normalize_line(fallback) not in seen:
-            uniq.append(fallback)
-            seen.add(_normalize_line(fallback))
+    hook_templates = [
+        "{title} just landed — this one is wild.",
+        "This AI drop is moving faster than most people realize:",
+        "Big shift today: {title}",
+        "You can steal an edge from this update tonight:",
+        "Most people will scroll past this. Don’t:",
+    ]
+    why_templates = [
+        "Why it hits: {key}",
+        "What changed: {key}",
+        "The lever: {key}",
+        "Fast read: {key}",
+    ]
+    action_templates = [
+        "Move: test one workflow in 20 minutes.",
+        "Action: run one A/B test this week.",
+        "Next: apply this to your highest-friction task.",
+        "Do this now: ship one small experiment.",
+    ]
+    cta_templates = [
+        "Full breakdown:",
+        "Read the full article:",
+        "Deep dive here:",
+        "See the complete breakdown:",
+    ]
+
+    seed = abs(hash((title or "") + "|" + (article_url or "")))
+    hook = _clip(hook_templates[seed % len(hook_templates)].format(title=title), 92)
+    why = _clip(why_templates[seed % len(why_templates)].format(key=key_bit), 92)
+    action = _clip(action_templates[seed % len(action_templates)], 70)
+    cta = cta_templates[seed % len(cta_templates)]
 
     article = (article_url or "").strip()
-    close = "Would you test this now? #AI #LLM"
+    lines = [hook, why, action, cta, article if article else HOMEPAGE_URL, "#AI #LLM"]
 
-    lines = [hook, uniq[0], uniq[1], uniq[2], HOMEPAGE_URL]
-    if article:
-        lines.append(article)
-    lines.append(close)
+    # Deduplicate near-identical lines
+    deduped = []
+    seen = set()
+    for ln in lines:
+        n = _normalize_line(ln)
+        if not n or n in seen:
+            continue
+        seen.add(n)
+        deduped.append(ln)
 
-    tweet = "\n".join(lines).strip()
+    tweet = "\n".join(deduped).strip()
 
     if len(tweet) > 280:
-        hook = _clip(hook, 34)
-        uniq[0] = _clip(uniq[0], 28)
-        uniq[1] = _clip(uniq[1], 24)
-        uniq[2] = _clip(uniq[2], 22)
-        close = "Would you test? #AI #LLM"
-        lines = [hook, uniq[0], uniq[1], uniq[2], HOMEPAGE_URL]
-        if article:
-            lines.append(article)
-        lines.append(close)
-        tweet = "\n".join(lines).strip()
+        hook = _clip(hook, 72)
+        why = _clip(why, 72)
+        action = _clip(action, 54)
+        deduped = [hook, why, action, article if article else HOMEPAGE_URL, "#AI #LLM"]
+        tweet = "\n".join(deduped).strip()
 
     return tweet[:280]
 
