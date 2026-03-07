@@ -105,7 +105,7 @@ def _build_tweet(title: str, url: str, idx: int) -> str:
 
     lead = f"{title} {hook}"
     body = "The AI acceleration is moving faster than human comprehension. Missing this means you are already falling behind. Stay sharp."
-    cta = f"Read the full breakdown: {url}"
+    cta = f"Read + grab the free AI Toolkit: {url}"
 
     tweet = f"{lead}\n\n{body}\n\n{cta}"
     if len(tweet) <= 280:
