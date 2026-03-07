@@ -31,13 +31,20 @@ ARTICLES_DIR = PROJECT_ROOT / "data" / "research" / "briefings_2026_02"
 BASE_URL = "https://theaiupdate.org/articles"
 
 HOOKS = [
-    "is literally breaking the internet right now 🤯",
-    "just completely changed the game. Again 🚀",
-    "is the most insane AI drop we've seen all week 🔥",
-    "will make you question reality 👁️",
-    "is absolutely blowing minds everywhere ⚡",
+    "just dropped and people are already moving on it.",
+    "changed the game again.",
+    "is a real signal, not noise.",
+    "is worth your attention today.",
+    "has practical impact right now.",
 ]
 
+BODIES = [
+    "What changed, why it matters, and the one move to test first.",
+    "If you build with AI, this is the one you should not skip.",
+    "Short breakdown, clear takeaway, and next step inside.",
+    "This can save time fast if you use it the right way.",
+    "Most people will miss this angle. You do not have to.",
+]
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -104,7 +111,7 @@ def _build_tweet(title: str, url: str, idx: int) -> str:
     hook = HOOKS[idx % len(HOOKS)]
 
     lead = f"{title} {hook}"
-    body = "The AI acceleration is moving faster than human comprehension. Missing this means you are already falling behind. Stay sharp."
+    body = BODIES[idx % len(BODIES)]
     cta = f"Read + grab the free AI Toolkit: {url}"
 
     tweet = f"{lead}\n\n{body}\n\n{cta}"
@@ -119,7 +126,7 @@ def _build_tweet(title: str, url: str, idx: int) -> str:
     if len(tweet) <= 280:
         return tweet
 
-    compact_body = "AI is accelerating. Don't fall behind."
+    compact_body = BODIES[idx % len(BODIES)]
     tweet = f"{lead}\n\n{compact_body}\n\n{cta}"
     return tweet[:280]
 
