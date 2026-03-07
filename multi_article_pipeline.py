@@ -256,13 +256,12 @@ def generate_article(story, api_key=None):
 
     # Step 2: Write with Gemini 3.1 Pro Preview
     write_prompt = (
-        "Write a highly engaging, SEO-optimized markdown article for an AI updates website based on these research notes. "
-        "The tone should be dopamine-inducing, fast-paced, and wildly exciting, keeping readers hooked on the bleeding edge of AI. "
-        "Use high-impact phrasing and strong hooks. Include natural SEO keywords related to AI breakthroughs. "
-        "Stay factual to the research but make it thrilling. "
+        "Write a high-energy but factual markdown article for an AI updates website based on these research notes. "
+        "No fluff, no generic claims, no repeated phrases. Every paragraph must contain concrete information. "
+        "Keep it punchy and engaging, but grounded in specifics. Include practical implications and who benefits. "
         "Include these exact section headings in this order:\n"
         "## What changed\n## Why it matters\n## What to do next\n"
-        "Include at least one explicit source link in markdown format.\n\n"
+        "Requirements: title line as '# ...', at least 220 words total, at least 3 concrete facts, and one explicit source link in markdown format.\n\n"
         f"Research Notes:\n{research_notes}\n\n"
         f"Source Link to include: {url}"
     )
@@ -291,15 +290,15 @@ def generate_article(story, api_key=None):
     time.sleep(6)
 
     if not body:
-        base = transcript[:900] if transcript else summary
         body = (
-            f"## What changed\n{base or 'A fresh AI update was published and reviewed from the source material.'}\n\n"
+            f"# {title}\n\n"
+            "## What changed\n"
+            "Generation failed due to upstream model/rate limits.\n\n"
             f"Source: [{title}]({url})\n\n"
             "## Why it matters\n"
-            "This affects near-term AI workflows, model/tool selection, and practical implementation decisions. "
-            "It should be validated in a real use case before broad rollout.\n\n"
+            "Article quality gate blocked placeholder publishing.\n\n"
             "## What to do next\n"
-            "Read the primary source, run a small pilot in one workflow, track quality and speed impact, and only scale if measurable gains hold."
+            "Retry generation on next cycle."
         )
 
     body = enforce_english(body)
@@ -324,8 +323,19 @@ def qa_article(item):
     if "http://" not in low and "https://" not in low and "](" not in low:
         reasons.append("missing source link")
     wc = len(re.findall(r"\b\w+\b", text))
-    if wc < 160:
-        reasons.append("insufficient substance (<160 words)")
+    if wc < 180:
+        reasons.append("insufficient substance (<180 words)")
+
+    if "generation failed" in low or "quality gate blocked" in low:
+        reasons.append("generation failure placeholder")
+
+    repeated_chunks = re.findall(r"\b([a-z0-9]{3,}(?:\s+[a-z0-9]{3,}){2,6})\b", low)
+    if repeated_chunks:
+        from collections import Counter
+        cnt = Counter(repeated_chunks)
+        if cnt and cnt.most_common(1)[0][1] >= 3:
+            reasons.append("repetitive/duplicated phrasing")
+
     banned_hits = 0
     for term in BANNED_TERMS:
         banned_hits += len(re.findall(rf"\\b{re.escape(term)}\\b", low))
