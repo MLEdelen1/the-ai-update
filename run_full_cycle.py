@@ -45,5 +45,14 @@ def main():
             print(f"WARN: automatic X posting step failed safely: {exc}")
 
 
+    print("Committing and pushing changes to GitHub for Cloudflare deployment...")
+    try:
+        subprocess.run(["git", "add", "."], check=True, cwd=str(PROJECT_ROOT))
+        subprocess.run(["git", "commit", "-m", "Automated daily update: articles and SEO fixes"], check=False, cwd=str(PROJECT_ROOT))
+        subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(PROJECT_ROOT))
+        print("Successfully deployed to Cloudflare via GitHub.")
+    except Exception as exc:
+        print(f"WARN: automatic git deployment failed: {exc}")
+
 if __name__ == "__main__":
     main()
