@@ -1,3 +1,5 @@
+# Google AI Studio + Gemini 3.1 Flash Lite: Build & Automate ANYTHING!
+
 ## What changed
 Google AI Studio plus Gemini 3.1 Google AI Studio plus Gemini 3.1 Google AI Studio plus Gemini 3.1 Flashlight. Build and automate anything. Flashlight. Build and automate anything. Flashlight. Build and automate anything. Google just dropped something wild. It's Google just dropped something wild. It's Google just dropped something wild. It's called Gemini 3.1 Flashlight. And when called Gemini 3.1 Flashlight. And when called Gemini 3.1 Flashlight. And when you pair it with Google AI Studio, you you pair it with Google AI Studio, you you pair it with Google AI Studio, you can build AI tools, apps, and automation can build AI tools, apps, and automation can build AI tools, apps, and automation systems with just a few prompts. No systems with just a few prompts. No systems with just a few prompts. No code, no tech degree. And it's so fast, code, no tech degree. And it's so fast, code, no t
 

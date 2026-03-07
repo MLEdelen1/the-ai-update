@@ -303,8 +303,9 @@ def generate_article(story, api_key=None):
         )
 
     body = enforce_english(body)
-    if not body.lstrip().startswith("#"):
-        body = f"# {title}\n\n" + body
+    stripped = body.lstrip()
+    if not stripped.startswith("# "):
+        body = f"# {title}\n\n" + stripped
 
     sid = story.get("id") or re.sub(r"[^a-z0-9]+", "_", title.lower())[:40]
     out_file = RESEARCH_DIR / f"briefing_{sid}.md"
